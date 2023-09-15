@@ -1,4 +1,4 @@
 public class Pumpkin : IIngredient
 {
-    public string Name => "Pumpkin";
+    public string Name => "pumpkin";
 }

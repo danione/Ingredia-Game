@@ -1,0 +1,8 @@
+water pumpkin
+water ashes
+water fishbones
+pumpkin silkThread
+pumpkin fishbones
+silkThread ashes
+silkThread fishbones
+ashes fishbones

@@ -5,6 +5,7 @@ public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
     private List<IIngredient> cauldronContents;
+    [SerializeField] private IngredientCombos combos;
 
     public List<BaseRecipe> recipes;
     // Start is called before the first frame updates
@@ -20,6 +21,18 @@ public class PlayerInventory: MonoBehaviour
         if (recipes.Count > size) { return; }
 
         recipes.Add(recipe);
+    }
+
+    public void AddToCauldron(IIngredient ingredient)
+    {
+        foreach (IIngredient ingr in cauldronContents)
+        {
+            if(!combos.CheckIngredientCombos(ingredient, ingr))
+            {
+                return;
+            }
+        }
+        Debug.Log("Great!");
     }
 
     public int CookIngredient(string ingredientName)

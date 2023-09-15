@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Water : IIngredient
 {
-    public string Name => "Silken Thread";
+    public string Name => "water";
 }
