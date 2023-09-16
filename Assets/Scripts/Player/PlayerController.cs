@@ -31,19 +31,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Ingredient"))
         {
-            stats.TakeDamage();
-            int accepted = inventory.CookIngredient(gameObject.name);
-            if (accepted >= 0)
-            {
-                GameManager.Instance.AddScore(scoreMult);
-            }
-            else
-            {
-                GameManager.Instance.AddScore(-scoreMult * 2);
-            }
+            IIngredient ingredient = other.GetComponent<IIngredient>();
+            inventory.AddToCauldron(ingredient);
         }
-
-        if (other.CompareTag("Recipe"))
+        else if (other.CompareTag("Recipe"))
         {
             Debug.Log(other.gameObject.GetComponent<Recipe>().type);
             BaseRecipe baseRecipe = RecipeFactory.CreateRecipe(other.gameObject.GetComponent<Recipe>().type);

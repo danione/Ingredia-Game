@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
-    private List<IIngredient> cauldronContents;
+    private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
 
     public List<BaseRecipe> recipes;
@@ -12,7 +12,7 @@ public class PlayerInventory: MonoBehaviour
 
     private void Awake()
     {
-        cauldronContents = new List<IIngredient>();
+        cauldronContents = new Dictionary<string, int>();
         recipes = new List<BaseRecipe>();
     }
 
@@ -25,14 +25,26 @@ public class PlayerInventory: MonoBehaviour
 
     public void AddToCauldron(IIngredient ingredient)
     {
-        foreach (IIngredient ingr in cauldronContents)
+        foreach (var ingr in cauldronContents)
         {
-            if(!combos.CheckIngredientCombos(ingredient, ingr))
+            if(cauldronContents.ContainsKey(ingredient.Name))
             {
+                cauldronContents[ingredient.Name] += 1;
+                Debug.Log(ingredient.Name + " has now " + cauldronContents[ingredient.Name]);
+                return;
+            } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
+            {
+                Debug.Log("No combination, aborting!");
+                cauldronContents.Clear();
                 return;
             }
         }
-        Debug.Log("Great!");
+
+        if (cauldronContents.Count < size)
+        {
+            cauldronContents[ingredient.Name] = 1;
+            Debug.Log(ingredient.Name + " added to cauldron!");
+        }
     }
 
     public int CookIngredient(string ingredientName)

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Water : IIngredient
+public class Water : FallableObject, IIngredient
 {
     public string Name => "water";
 }

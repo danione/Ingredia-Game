@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] objectsToSpawn;
-    public RecipeType recipeVariants;
-    public float leftBorder = 13.0f;
-    public float rightBorder = -13.0f;
-    public float minSeconds;
-    public float maxSeconds;
+    [SerializeField] private GameObject[] objectsToSpawn;
+    [SerializeField] private RecipeType recipeVariants;
+    [SerializeField] private float leftBorder = 13.0f;
+    [SerializeField] private float rightBorder = -13.0f;
+    [SerializeField] private float minSeconds;
+    [SerializeField] private float maxSeconds;
 
     // Private Variables
     private float spawnYLocation = 11.0f;
@@ -19,12 +19,6 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         Invoke("SpawnIngredients",1.0f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     // Spawns ingredients at random times

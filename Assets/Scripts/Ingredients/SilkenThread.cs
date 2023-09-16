@@ -1,7 +1,4 @@
-
-using System.Collections.Generic;
-
-public class SilkenThread : IIngredient
+public class SilkenThread : FallableObject, IIngredient
 {
     public string Name => "silkenThread";
 }

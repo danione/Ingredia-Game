@@ -31,9 +31,9 @@ public class IngredientCombos: MonoBehaviour
         }
     }
 
-    public bool CheckIngredientCombos(IIngredient ingredient1, IIngredient ingredient2)
+    public bool CheckIngredientCombos(string ingredient1, string ingredient2)
     {
-        return combinations.Contains(GetCombinationKey(ingredient1.Name, ingredient2.Name));
+        return combinations.Contains(GetCombinationKey(ingredient1, ingredient2));
     }
 
     private bool CheckIngredientCombos(string combo)
