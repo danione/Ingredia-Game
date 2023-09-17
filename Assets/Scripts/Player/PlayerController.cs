@@ -34,16 +34,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("Recipe"))
         {
-            Debug.Log(other.gameObject.GetComponent<Recipe>().type);
-            BaseRecipe baseRecipe = RecipeFactory.CreateRecipe(other.gameObject.GetComponent<Recipe>().type);
-            if (inventory != null)
-            {
-                inventory.recipes.Add(baseRecipe);
-            }
-            else
-            {
-                Debug.Log("Not initialised");
-            }
+            Debug.Log("TBA");
         }
         Destroy(other.gameObject);
     }
