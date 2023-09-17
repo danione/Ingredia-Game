@@ -1,19 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Unity.VisualScripting;
 
 public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
-
+    public event Action<IIngredient> CollectedIngredient;
     public List<BaseRecipe> recipes;
+
+    public CollectItemRecipeAction testRecipeAction;
     // Start is called before the first frame updates
 
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
         recipes = new List<BaseRecipe>();
+        SilkenThread silk = new SilkenThread();
+        testRecipeAction = new CollectItemRecipeAction(silk, 6, this);
     }
 
     public void AddRecipe(BaseRecipe recipe)
@@ -31,11 +37,13 @@ public class PlayerInventory: MonoBehaviour
             {
                 cauldronContents[ingredient.Name] += 1;
                 Debug.Log(ingredient.Name + " has now " + cauldronContents[ingredient.Name]);
+                CollectedIngredient.Invoke(ingredient);
                 return;
             } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
             {
                 Debug.Log("No combination, aborting!");
                 cauldronContents.Clear();
+                CollectedIngredient.Invoke(null);
                 return;
             }
         }
@@ -43,6 +51,7 @@ public class PlayerInventory: MonoBehaviour
         if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Name] = 1;
+            CollectedIngredient.Invoke(ingredient);
             Debug.Log(ingredient.Name + " added to cauldron!");
         }
     }

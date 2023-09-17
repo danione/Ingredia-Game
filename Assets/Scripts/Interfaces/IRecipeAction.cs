@@ -1,4 +1,6 @@
 public interface IRecipeAction
 {
-    public int ID { get; }
+    public string Description { get; }
+
+    public bool IsCompleted();
 }

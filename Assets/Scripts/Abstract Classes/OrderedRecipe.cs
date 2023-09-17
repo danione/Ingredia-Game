@@ -7,20 +7,30 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe<List<IRecipeAction>
     public List<IRecipeAction> ActionContainer => new List<IRecipeAction>();
     protected int currentAction = 0;
 
-    public void Destroy()
+    public virtual void Destroy()
     {
         ActionContainer.Clear();
   
     }
 
-    public IRecipeAction GetAction()
+    public virtual IRecipeAction GetAction()
     {
         if(currentAction == ActionContainer.Count) { Destroy(); return null; }
         return ActionContainer[currentAction++];
     }
 
-    public void Init(List<IRecipeAction> actions)
+    public virtual void Init(List<IRecipeAction> actions)
     {
         ActionContainer.AddRange(actions);
+    }
+
+    public bool IsAllCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StartRecipe()
+    {
+        throw new System.NotImplementedException();
     }
 }
