@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSpawn:
-  - {fileID: 4763823597294061326, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
   - {fileID: 8970860154554545808, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
-  - {fileID: 5371575594308154956, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
+  - {fileID: 8970860154554545808, guid: 38d5c736295cf5f47a12f89209da5de5, type: 3}
+  - {fileID: 4763823597294061326, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
   recipeVariants: 0
   leftBorder: 13
   rightBorder: -13
@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 3
   combos: {fileID: 1760316105}
+  recipe: {fileID: 0}
 --- !u!114 &1931644266
 MonoBehaviour:
   m_ObjectHideFlags: 0

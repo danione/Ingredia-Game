@@ -10,14 +10,14 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient> CollectedIngredient;
     public List<BaseRecipe> recipes;
-    public GoldRecipe recipe;
+    public SizeRecipe recipe;
     // Start is called before the first frame updates
 
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
         recipes = new List<BaseRecipe>();
-        recipe = new GoldRecipe();
+        recipe = new SizeRecipe();
         recipe.Init(this);
     }
 

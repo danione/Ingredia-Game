@@ -5,6 +5,6 @@ public interface IRecipe
 
     public abstract void Init(PlayerInventory inventory);
     public abstract bool IsAllCompleted();
-    public abstract void StartRecipe();
+    public abstract void OnActionTriggered(IRecipeAction action);
     public abstract void Uninit();
 }

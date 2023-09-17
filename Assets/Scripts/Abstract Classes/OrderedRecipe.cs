@@ -1,14 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 public abstract class OrderedRecipe : MonoBehaviour, IRecipe
 {
-    protected List<IRecipeAction> actionContainer;
+    protected List<IRecipeAction> actionContainer = new List<IRecipeAction>();
     public List<IRecipeAction> ActionContainer => actionContainer;
 
     protected RecipeStatus status = RecipeStatus.Initial;
@@ -16,16 +11,17 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
 
     protected int currentAction = 0;
 
+    // Clean the code after completed or after failed
     public virtual void Uninit()
     {
-        for (int i = currentAction; i < actionContainer.Count; i++)
-        {
-            actionContainer[i].DestroyRecipe();
-            actionContainer[i].Triggered -= OnActionTriggered;
-        }
-        actionContainer.Clear();
+        CleanupRestOfActions();
+        DropOrLog();
+    }
 
-        if(status == RecipeStatus.Completed)
+    // To be destroyed, for testing purposes
+    private void DropOrLog()
+    {
+        if (status == RecipeStatus.Completed)
         {
             Debug.Log("Success!");
         }
@@ -35,16 +31,28 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
         }
     }
 
+    // Clean up in case we have leftovers after recipe fails
+    private void CleanupRestOfActions()
+    {
+        for (int i = currentAction; i < actionContainer.Count; i++)
+        {
+            actionContainer[i].DestroyRecipe();
+            actionContainer[i].Triggered -= OnActionTriggered;
+        }
+        actionContainer.Clear();
+    }
+
+    // Add one event handler
     public virtual void ListenRecipes()
     {
         actionContainer[currentAction].Triggered += OnActionTriggered;
     }
 
-    public virtual void Init(PlayerInventory inventory)
-    {
-        actionContainer = new List<IRecipeAction>();
-    }
+    // Will be initialised as a child class
+    public abstract void Init(PlayerInventory inventory);
 
+    // When an action was triggered, check if the current action
+    // is the action needed
     public virtual void OnActionTriggered(IRecipeAction action)
     {
         if(currentAction > actionContainer.Count - 1) { return; } 
@@ -52,7 +60,7 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
         if (ReferenceEquals(action, actionContainer[currentAction]))
         {
             Debug.Log("Correct Action");
-            if(IsAllCompleted()) { Uninit(); }
+            if(IsAllCompleted()) Uninit();
         }
         else
         {
@@ -61,33 +69,24 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
         }
     }
 
+    // Check if recipe was completed
     public virtual bool IsAllCompleted()
     {
-        for (int i = 0; i < actionContainer.Count; i++)
+        for (int i = currentAction; i < actionContainer.Count; i++)
         {             
-            if (i > currentAction)
-            {
-                IterateActions();
-            }
+            if (i > currentAction) IterateActions();
 
-            if (!actionContainer[i].IsCompleted())
-            {
-                return false;
-            }
+            if (!actionContainer[i].IsCompleted()) return false;
         }
         status = RecipeStatus.Completed;
         return true;
     }
 
+    // Destroy the recipe, and reattach event handlers. 
     private void IterateActions()
     {
         actionContainer[currentAction].DestroyRecipe();
         actionContainer[currentAction++].Triggered -= OnActionTriggered;
         ListenRecipes();
-    }
-
-    public virtual void StartRecipe()
-    {
-        status = RecipeStatus.Ongoing;
     }
 }

@@ -6,8 +6,6 @@ public class GoldRecipe : OrderedRecipe
 {
     public override void Init(PlayerInventory inventory)
     {
-        base.Init(inventory);
-
         List<IRecipeAction> recipes = new()
         {
             new CollectItemRecipeAction("water", 3, inventory),
