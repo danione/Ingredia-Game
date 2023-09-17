@@ -1,8 +1,10 @@
-public interface IRecipe<TContainer>
+public enum RecipeStatus  { Ongoing, Completed, Failed, Initial} 
+public interface IRecipe
 {
-    public TContainer ActionContainer { get; }
-    public abstract void Init(TContainer container);
+    public RecipeStatus Status { get; }
+
+    public abstract void Init(PlayerInventory inventory);
     public abstract bool IsAllCompleted();
     public abstract void StartRecipe();
-    public abstract void Destroy();
+    public abstract void Uninit();
 }

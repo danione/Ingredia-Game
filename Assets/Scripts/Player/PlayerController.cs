@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         {
             IIngredient ingredient = other.GetComponent<IIngredient>();
             inventory.AddToCauldron(ingredient);
-
         }
         else if (other.CompareTag("Recipe"))
         {

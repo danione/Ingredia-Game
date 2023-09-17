@@ -10,16 +10,15 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient> CollectedIngredient;
     public List<BaseRecipe> recipes;
-
-    public CollectItemRecipeAction testRecipeAction;
+    public GoldRecipe recipe;
     // Start is called before the first frame updates
 
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
         recipes = new List<BaseRecipe>();
-        SilkenThread silk = new SilkenThread();
-        testRecipeAction = new CollectItemRecipeAction(silk, 6, this);
+        recipe = new GoldRecipe();
+        recipe.Init(this);
     }
 
     public void AddRecipe(BaseRecipe recipe)
@@ -37,13 +36,13 @@ public class PlayerInventory: MonoBehaviour
             {
                 cauldronContents[ingredient.Name] += 1;
                 Debug.Log(ingredient.Name + " has now " + cauldronContents[ingredient.Name]);
-                CollectedIngredient.Invoke(ingredient);
+                CollectedIngredient?.Invoke(ingredient);
                 return;
             } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
             {
                 Debug.Log("No combination, aborting!");
                 cauldronContents.Clear();
-                CollectedIngredient.Invoke(null);
+                CollectedIngredient?.Invoke(null);
                 return;
             }
         }
@@ -51,7 +50,7 @@ public class PlayerInventory: MonoBehaviour
         if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Name] = 1;
-            CollectedIngredient.Invoke(ingredient);
+            CollectedIngredient?.Invoke(ingredient);
             Debug.Log(ingredient.Name + " added to cauldron!");
         }
     }
