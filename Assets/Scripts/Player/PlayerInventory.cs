@@ -8,7 +8,7 @@ public class PlayerInventory: MonoBehaviour
     public int size = 0;
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
-    public event Action<IIngredient> CollectedIngredient;
+    public event Action<IIngredient, int> CollectedIngredient;
 
     // Start is called before the first frame updates
 
@@ -24,14 +24,12 @@ public class PlayerInventory: MonoBehaviour
             if(cauldronContents.ContainsKey(ingredient.Name))
             {
                 cauldronContents[ingredient.Name] += 1;
-                Debug.Log(ingredient.Name + " has now " + cauldronContents[ingredient.Name]);
-                CollectedIngredient?.Invoke(ingredient);
+                CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
                 return;
             } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
             {
-                Debug.Log("No combination, aborting!");
                 cauldronContents.Clear();
-                CollectedIngredient?.Invoke(null);
+                CollectedIngredient?.Invoke(null, 0);
                 return;
             }
         }
@@ -39,7 +37,7 @@ public class PlayerInventory: MonoBehaviour
         if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Name] = 1;
-            CollectedIngredient?.Invoke(ingredient);
+            CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
             Debug.Log(ingredient.Name + " added to cauldron!");
         }
     }

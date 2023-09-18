@@ -23,7 +23,7 @@ public class CollectItemRecipeAction : IRecipeAction
         _description = "Collect " + _amount + " " + ingredient;
     }
 
-    private void OnCollectedIngredient(IIngredient ingredient)
+    private void OnCollectedIngredient(IIngredient ingredient, int amount = 0)
     {
         if(ingredient == null) _amount = _startingAmount;
 
