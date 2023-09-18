@@ -6,9 +6,11 @@ using Unity.VisualScripting;
 public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
+    public int gold { get; private set; }
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient, int> CollectedIngredient;
+    public event Action<int> CollectedGold;
     public IRecipe currentRecipe;
 
     // Start is called before the first frame updates
@@ -16,9 +18,6 @@ public class PlayerInventory: MonoBehaviour
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
-        currentRecipe = new SpeedRecipe();
-        currentRecipe.Init(this);
-        RecipeUIManager.Instance.Activate(currentRecipe);
     }
 
     public void AddToCauldron(IIngredient ingredient)
@@ -29,6 +28,7 @@ public class PlayerInventory: MonoBehaviour
             {
                 cauldronContents[ingredient.Name] += 1;
                 CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
+                AddGold(5);
                 return;
             } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
             {
@@ -43,5 +43,11 @@ public class PlayerInventory: MonoBehaviour
             cauldronContents[ingredient.Name] = 1;
             CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
         }
+    }
+
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        CollectedGold?.Invoke(gold);
     }
 }
