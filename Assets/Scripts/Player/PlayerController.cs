@@ -27,15 +27,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ingredient"))
+
+        switch (other.tag)
         {
-            IIngredient ingredient = other.GetComponent<IIngredient>();
-            inventory.AddToCauldron(ingredient);
+            default:
+                break;
+            case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
+            case ("Recipe"): Debug.Log("TBA"); break;
+            case ("Loot"): inventory.AddGold(105); break;
+
         }
-        else if (other.CompareTag("Recipe"))
-        {
-            Debug.Log("TBA");
-        }
+
         Destroy(other.gameObject);
     }
 }

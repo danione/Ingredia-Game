@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Recipe
   - Ingredient
+  - Loot
   layers:
   - Default
   - TransparentFX
