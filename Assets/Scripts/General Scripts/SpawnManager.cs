@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] objectsToSpawn;
-    [SerializeField] private RecipeType recipeVariants;
     [SerializeField] private float leftBorder = 13.0f;
     [SerializeField] private float rightBorder = -13.0f;
     [SerializeField] private float minSeconds;
@@ -34,8 +33,7 @@ public class SpawnManager : MonoBehaviour
 
         if (ingredient.CompareTag("Recipe"))
         {
-            RecipeType randomType = (RecipeType)Random.Range(0, System.Enum.GetValues(typeof(RecipeType)).Length);
-            ingredient.gameObject.GetComponent<Recipe>().type = randomType;
+            Debug.Log("TBA");
         }
 
         if (!GameManager.Instance.gameOver)

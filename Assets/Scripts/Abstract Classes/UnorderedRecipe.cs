@@ -5,6 +5,8 @@ public abstract class UnorderedRecipe : MonoBehaviour, IRecipe
 {
     protected List<IRecipeAction> actionContainer = new List<IRecipeAction>();
 
+    public List<IRecipeAction> ActionContainer => actionContainer;
+
     protected RecipeStatus status = RecipeStatus.Initial;
     public RecipeStatus Status => status;
 

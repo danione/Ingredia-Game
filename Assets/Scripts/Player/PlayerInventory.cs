@@ -9,12 +9,16 @@ public class PlayerInventory: MonoBehaviour
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient, int> CollectedIngredient;
+    public IRecipe currentRecipe;
 
     // Start is called before the first frame updates
 
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
+        currentRecipe = new SpeedRecipe();
+        currentRecipe.Init(this);
+        RecipeUIManager.Instance.Activate(currentRecipe);
     }
 
     public void AddToCauldron(IIngredient ingredient)
@@ -38,7 +42,6 @@ public class PlayerInventory: MonoBehaviour
         {
             cauldronContents[ingredient.Name] = 1;
             CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
-            Debug.Log(ingredient.Name + " added to cauldron!");
         }
     }
 }

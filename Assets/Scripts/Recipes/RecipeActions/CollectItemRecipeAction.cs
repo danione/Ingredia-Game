@@ -8,7 +8,11 @@ public class CollectItemRecipeAction : IRecipeAction
     public string Description => _description;
 
     private string _ingredient;
+    public string Ingredient => _ingredient;
+
     private int _amount;
+    public int Amount => _amount;
+
     private int _startingAmount;
     protected PlayerInventory _subjectToObserve;
     public event Action<IRecipeAction> Triggered;

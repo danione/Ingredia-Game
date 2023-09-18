@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+
 public enum RecipeStatus  { Ongoing, Completed, Failed, Initial} 
 public interface IRecipe
 {
+    public List<IRecipeAction> ActionContainer { get; }
     public RecipeStatus Status { get; }
 
     public abstract void Init(PlayerInventory inventory);
