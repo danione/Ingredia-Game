@@ -3,11 +3,13 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour, IUnitStats
 {
     [SerializeField] private int startingHealth;
-    public int Health { get; private set; }
+
+    private float health;
+    public float Health => health;
 
     private void Awake()
     {
-        Health = startingHealth;
+        health = startingHealth;
     }
 
     public void Die()
@@ -20,19 +22,27 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     {
         if (Health < startingHealth)
         {
-            Health++;
+            health++;
         }
 
     }
 
-    public void Heal(int health)
+    public void Heal(int _health)
     {
-        Health = Mathf.Min(Health + health, startingHealth);
+        health = Mathf.Min(health + _health, startingHealth);
     }
 
     public void TakeDamage()
     {
-        Health--;
+        health--;
+
+        Debug.Log("Ugh, taken damage " + Health);
+        if (Health < 1) { Die(); }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
 
         Debug.Log("Ugh, taken damage " + Health);
         if (Health < 1) { Die(); }
