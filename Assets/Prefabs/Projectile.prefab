@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3511568854308767429}
   - component: {fileID: 8598922180365103133}
   - component: {fileID: 5368419385454295755}
-  - component: {fileID: 2891836302505371131}
   - component: {fileID: 6727003454291864648}
   - component: {fileID: 6269708690806282521}
+  - component: {fileID: 5175858294968364270}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -110,19 +110,6 @@ CapsuleCollider:
   m_Height: 4.35797
   m_Direction: 1
   m_Center: {x: 0.0070567755, y: 0, z: -0.00000011920929}
---- !u!114 &2891836302505371131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5401105550724593064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7559dc5a3cce164aae74e80471ce0b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 25
 --- !u!114 &6727003454291864648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +149,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &5175858294968364270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401105550724593064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13ad6ff7de8aa4494b6e6b07d47774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 10

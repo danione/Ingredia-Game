@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private PlayerStats stats;
@@ -11,6 +12,19 @@ public class PlayerController : MonoBehaviour
 
     public int scoreMult = 5;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        } 
+    }
+
     void Start()
     {
         inventory = GetComponent<PlayerInventory>();
