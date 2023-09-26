@@ -28,7 +28,8 @@ public abstract class UIManager : MonoBehaviour
 
     public void OnAdjustInventoryUI(IIngredient itemName, int count)
     {
-        OnAdjustInventoryUI(itemName.Name, count); 
+        if(itemName != null)
+            OnAdjustInventoryUI(itemName.Name, count); 
     }
 
     public void OnAdjustInventoryUI(string itemName, int count)
