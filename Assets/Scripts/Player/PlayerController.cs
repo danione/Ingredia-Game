@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private PlayerStats stats;
+    public Action<int> collision;
 
     public float cooldown;
     
@@ -41,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         switch (other.tag)
         {
             default:
@@ -52,6 +53,11 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        Destroy(other.gameObject);
+        if (!other.CompareTag("Untagged"))
+        {
+            collision?.Invoke(other.gameObject.GetInstanceID());
+            Destroy(other.gameObject);
+        }
+
     }
 }

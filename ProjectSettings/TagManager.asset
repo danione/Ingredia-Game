@@ -7,6 +7,7 @@ TagManager:
   - Recipe
   - Ingredient
   - Loot
+  - RitualistCircle
   layers:
   - Default
   - TransparentFX
