@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596683716}
-  - component: {fileID: 596683715}
+  - component: {fileID: 596683717}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -274,26 +274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &596683715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596683714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ca9584434d00b4fa4da201b063a34d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToSpawn:
-  - {fileID: 8970860154554545808, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
-  - {fileID: 8970860154554545808, guid: 38d5c736295cf5f47a12f89209da5de5, type: 3}
-  - {fileID: 4763823597294061326, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
-  leftBorder: 13
-  rightBorder: -13
-  minSeconds: 0.02
-  maxSeconds: 1
 --- !u!4 &596683716
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +289,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &596683717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596683714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32aff27dc457c23479ca1a468c389339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ashes: {fileID: 7729180061935608911, guid: 41acc24c1bd17e243b407d30cb5ae08f, type: 3}
+  fishbones: {fileID: 208321677234800181, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
+  pumpkin: {fileID: -913729956508042796, guid: 38d5c736295cf5f47a12f89209da5de5, type: 3}
+  silkenthread: {fileID: -2565508194720055180, guid: 588daa6946508d848abd061f1e754d13, type: 3}
+  water: {fileID: 629933534108407443, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
+  leftBorder: 13
+  rightBorder: -13
+  minSeconds: 0.02
+  maxSeconds: 1
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0

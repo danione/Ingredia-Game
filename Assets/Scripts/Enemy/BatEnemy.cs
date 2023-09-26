@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatEnemy : Enemy
 {
-    private EntityStateMachine _state;
+    private BatRitualistStateMachine _state;
 
     [SerializeField] private float movementSpeed = 1.0f;
     [SerializeField] private float boundaryMovement = 2f;
@@ -16,7 +16,7 @@ public class BatEnemy : Enemy
 
     private void Start()
     {
-        _state = new EntityStateMachine(PlayerController.Instance, this, movementSpeed);
+        _state = new BatRitualistStateMachine(PlayerController.Instance, this, movementSpeed);
         _state.Initialise(_state.MoveState);
         currentPositionDifferenceX = GetCurrentPositionDifferenceX();
     }
