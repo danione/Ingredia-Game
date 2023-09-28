@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (!other.CompareTag("Untagged"))
+        if (!other.CompareTag("Untagged") && !other.CompareTag("Protection Barrier"))
         {
             collision?.Invoke(other.gameObject.GetInstanceID());
             Destroy(other.gameObject);

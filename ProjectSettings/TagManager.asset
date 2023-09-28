@@ -8,6 +8,9 @@ TagManager:
   - Ingredient
   - Loot
   - RitualistCircle
+  - ProtectionBarrier
+  - Protection Barrier
+  - Projectile
   layers:
   - Default
   - TransparentFX

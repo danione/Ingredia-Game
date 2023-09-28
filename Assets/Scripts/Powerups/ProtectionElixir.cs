@@ -22,6 +22,7 @@ public class ProtectionElixir : IPowerUp
 
     public void Destroy()
     {
+        if (protectionBarrier == null) return;
         protectionBarrier?.gameObject.SetActive(false);
         destroyed = true;
     }
