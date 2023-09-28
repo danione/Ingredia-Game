@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private PlayerStats stats;
+    private PlayerPowerupManager powerupManager;
     public Action<int> collision;
 
     public float cooldown;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<PlayerInventory>();
         movement = GetComponent<PlayerMovement>();
         stats = GetComponent<PlayerStats>();
+        powerupManager = GetComponent<PlayerPowerupManager>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.gameOver) return;
         movement.Move();
+        powerupManager.HandlePowerups();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -12,6 +12,7 @@ public class PlayerInventory: MonoBehaviour
     public event Action<IIngredient, int> CollectedIngredient;
     public event Action<int> CollectedGold;
     public IRecipe currentRecipe;
+    public IPowerUp protection;
 
     // Start is called before the first frame updates
 
