@@ -9,9 +9,9 @@ public class PlayerPowerupManager: MonoBehaviour
 
     private void Start()
     {
-        IPowerUp powerup = new ProtectionElixir();
-        powerupsInUse.Add(powerup);
-        powerup.Use();
+        IPowerUp overloadElixir = new OverloadElixir();
+        overloadElixir.Use();
+        powerupsInUse.Add(overloadElixir);
     }
 
     public void HandlePowerups()

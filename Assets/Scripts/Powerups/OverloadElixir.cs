@@ -1,0 +1,39 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OverloadElixir : IPowerUp
+{
+    private float timer = 10.0f;
+    private float strength = 3.20f;
+    private bool destroyed = false;
+    public bool Destroyed => destroyed;
+    
+    public void Destroy()
+    {
+        destroyed = true;
+        if (destroyed)
+        {
+            Debug.Log("Here too!");
+        }
+    }
+
+    public void Tick()
+    {
+        timer -= Time.deltaTime;
+        if(timer <= 0 || strength <= 0)
+        {
+            Destroy();
+            return;
+        }else if (Input.GetKey(KeyCode.Q))
+        {
+            strength -= Time.deltaTime;
+        }
+    }
+
+    public void Use()
+    {
+        // Some animation or an effect
+    }
+}
