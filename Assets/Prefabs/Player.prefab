@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 1721426842820912189}
   - component: {fileID: 453012806714794115}
   - component: {fileID: 7759249205259069879}
+  - component: {fileID: 8574045374956826587}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -633,7 +634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  scoreMult: 5
 --- !u!114 &1086812123244242071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +687,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c753b38efd4994e94393d7252cf7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldenNuggets: {fileID: 0}
+--- !u!114 &8574045374956826587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735097968459126054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709d67b774e28041adc76f928945e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  spawnPoint: {fileID: 1945744635020908731}
+  fireRate: 2
 --- !u!1 &8792282949493363313
 GameObject:
   m_ObjectHideFlags: 0
