@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
+
 
 public class GameManager: MonoBehaviour
 {
     public static GameManager Instance;
-    public Text scoreText;
-    private int playerScore = 0;
     public bool gameOver = false;
 
     private void Awake()
@@ -21,20 +16,12 @@ public class GameManager: MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddScore(int points)
+    private void Update()
     {
-        playerScore += points;
-        UpdateScoreUI();
-        if(playerScore < 0)
+        if (gameOver)
         {
-            gameOver = true;
-            Debug.Log("Game Over");
+            Time.timeScale = 0;
         }
     }
 
-    private void UpdateScoreUI()
-    {
-        if (scoreText != null)
-            scoreText.text = "Score: " + playerScore.ToString();
-    }
 }

@@ -6,7 +6,7 @@ public abstract class FallableObject : MonoBehaviour, IMovable
 {
     [SerializeField] protected float fallSpeed;
 
-    public void Move()
+    public virtual void Move()
     {
         gameObject.transform.Translate(Vector3.down * Time.deltaTime * fallSpeed);
     }
