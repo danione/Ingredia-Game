@@ -9,9 +9,9 @@ public class PlayerPowerupManager: MonoBehaviour
 
     private void Start()
     {
-        IPowerUp elixir = new FireSpitterElixir();
-        elixir.Use();
-        powerupsInUse.Add(elixir);
+        IPowerUp potion = new GhostPotion(gameObject.transform);
+        potion.Use();
+        powerupsInUse.Add(potion);
     }
 
     public void HandlePowerups()
