@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireSpitterElixir : MonoBehaviour
+public class FireSpitterElixir : IPowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool destroyed = false;
+    public bool Destroyed => destroyed;
+    private int ammoToAdd = 30;
+
+    public void Destroy()
     {
-        
+        destroyed = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Tick()
     {
-        
+        Destroy();
+    }
+
+    public void Use()
+    {
+        PlayerController.Instance.inventory.AddAmmo(ammoToAdd);
     }
 }

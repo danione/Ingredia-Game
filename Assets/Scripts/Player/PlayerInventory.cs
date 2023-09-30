@@ -6,19 +6,20 @@ using Unity.VisualScripting;
 public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
+    public int ammo { get; private set; }
     public int gold { get; private set; }
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient, int> CollectedIngredient;
     public event Action<int> CollectedGold;
     public IRecipe currentRecipe;
-    public IPowerUp protection;
 
     // Start is called before the first frame updates
 
     private void Awake()
     {
         cauldronContents = new Dictionary<string, int>();
+        ammo = 0;
     }
 
     public void AddToCauldron(IIngredient ingredient)
@@ -50,5 +51,18 @@ public class PlayerInventory: MonoBehaviour
     {
         gold += amount;
         CollectedGold?.Invoke(gold);
+    }
+
+    public void AddAmmo(int amount)
+    {
+        ammo += amount;
+    }
+
+    public void SubtractAmmo()
+    {
+        if(ammo > 0)
+        {
+            ammo--;
+        }
     }
 }

@@ -5,17 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    private PlayerInventory inventory;
+    public PlayerInventory inventory { get; private set; }
     private PlayerStats stats;
     private PlayerPowerupManager powerupManager;
     private PlayerInputHandler input;
     public Action<int> collision;
-
     public float cooldown;
-    
-
-    public int scoreMult = 5;
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -26,10 +21,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        } 
+        }
+
+        SetUp();
     }
 
-    void Start()
+    void SetUp()
     {
         inventory = GetComponent<PlayerInventory>();
         stats = GetComponent<PlayerStats>();
@@ -46,6 +43,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.gameOver) return;
+
+        input.HandleInput();
         powerupManager.HandlePowerups();
     }
 
