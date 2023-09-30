@@ -1,13 +1,14 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-
+[RequireComponent(typeof(PlayerInventory), typeof(PlayerStats), typeof(PlayerPowerupManager))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    private PlayerMovement movement;
     private PlayerInventory inventory;
     private PlayerStats stats;
     private PlayerPowerupManager powerupManager;
+    private PlayerInputHandler input;
     public Action<int> collision;
 
     public float cooldown;
@@ -31,16 +32,20 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inventory = GetComponent<PlayerInventory>();
-        movement = GetComponent<PlayerMovement>();
         stats = GetComponent<PlayerStats>();
         powerupManager = GetComponent<PlayerPowerupManager>();
+        input = GetComponent<PlayerInputHandler>();
+
+        if(input == null)
+        {
+            gameObject.AddComponent<PlayerInputHandler>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.gameOver) return;
-        movement.Move();
         powerupManager.HandlePowerups();
     }
 
