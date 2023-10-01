@@ -14,11 +14,12 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private float rightBorder = -13.0f;
     [SerializeField] private float minSeconds;
     [SerializeField] private float maxSeconds;
+    [SerializeField] private float spawnYLocation = 11.0f;
 
     private List<Factory> ingredientsFactories = new List<Factory>();
 
     // Private Variables
-    private float spawnYLocation = 11.0f;
+
     private float spawnZLocation = 2.0f;
 
     private void Awake()

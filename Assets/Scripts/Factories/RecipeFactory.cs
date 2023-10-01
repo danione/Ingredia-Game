@@ -10,9 +10,13 @@ public class RecipeFactory : MonoBehaviour
     [SerializeField] private Transform recipeObject;
     private List<Type> recipeTypes = new List<Type>();
     [SerializeField] private float spawnChance = 0.01f;
-    [SerializeField] private float chanceIncreasePerFrame = 0.01f;
+    [SerializeField] private float chanceIncreasePerFrame = 1f;
     [SerializeField] private const float spawnChanceDefault = 0.01f;
     [SerializeField] private float spawnCheckFrequencyInSeconds = 1f;
+
+    [SerializeField] private float xBorderSpawnLeft;
+    [SerializeField] private float xBorderSpawnRight;
+    [SerializeField] private float yPointSpawn;
 
     private void Awake()
     {
@@ -61,7 +65,7 @@ public class RecipeFactory : MonoBehaviour
             }
         }
 
-        return new DummyRecipe();
+        return null;
     }
     private void Start()
     {
@@ -73,11 +77,17 @@ public class RecipeFactory : MonoBehaviour
     {
         while (!GameManager.Instance.gameOver)
         {
-            float randomValue = UnityEngine.Random.Range(0f, 1f);
+            float randomValue = UnityEngine.Random.Range(0.01f, 1.00f);
             if (randomValue < spawnChance)
             {
-                Debug.Log("Spawned new recipe");
-                spawnChance = spawnChanceDefault;
+                IRecipe recipe = GetRandomRecipe();
+                if(recipe != null)
+                {
+                    Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(xBorderSpawnLeft, xBorderSpawnRight), yPointSpawn, 1);
+                    GameObject spawnedObject = Instantiate(recipeObject.gameObject, spawnPosition, recipeObject.rotation);
+                    spawnedObject.AddComponent(recipe.GetType());
+                    spawnChance = spawnChanceDefault;
+                }
             }
             else
             {
