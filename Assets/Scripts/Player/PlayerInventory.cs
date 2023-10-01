@@ -55,8 +55,10 @@ public class PlayerInventory: MonoBehaviour
     public void AddRecipe(IRecipe recipe)
     {
         currentRecipe = recipe;
-        currentRecipe.Init();
-        RecipeUIManager.Instance.Activate(currentRecipe);
+
+        PlayerEventHandler.Instance.EmptyCauldron();
+
+        PlayerEventHandler.Instance.CollectRecipe(currentRecipe);
     }
 
     public void AddGold(int amount)

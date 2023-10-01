@@ -34,7 +34,7 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
     {
         if (status == RecipeStatus.Completed)
         {
-            Debug.Log("Success!");
+            PlayerEventHandler.Instance.EmptyCauldron();
         }
         else
         {

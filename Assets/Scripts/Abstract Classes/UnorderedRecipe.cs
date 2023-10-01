@@ -77,7 +77,10 @@ public abstract class UnorderedRecipe : MonoBehaviour, IRecipe
             item.Triggered -= OnActionTriggered;
         }
 
-        if (status == RecipeStatus.Completed) Debug.Log("Success!");
+        if (status == RecipeStatus.Completed) 
+        {
+            PlayerEventHandler.Instance.EmptyCauldron();
+        }
         else Debug.Log("Fail!");
     }
 }

@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class GoldRecipe : OrderedRecipe
 {
-
     public override void Init()
     {
         List<IRecipeAction> recipes = new()

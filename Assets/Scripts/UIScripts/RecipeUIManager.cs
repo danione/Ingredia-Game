@@ -19,6 +19,7 @@ public class RecipeUIManager : UIManager
         {
             Destroy(Instance);
         }
+        PlayerEventHandler.Instance.CollectedRecipe += OnCollectedRecipe;
     }
 
     public void Activate(IRecipe _recipe)
@@ -46,5 +47,11 @@ public class RecipeUIManager : UIManager
         }
         RemoveAllInventoryItems(); 
         recipe = null;
+    }
+
+    private void OnCollectedRecipe(IRecipe recipe)
+    {
+        recipe.Init();
+        Activate(recipe);
     }
 }
