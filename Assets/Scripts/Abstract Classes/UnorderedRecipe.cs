@@ -9,10 +9,20 @@ public abstract class UnorderedRecipe : MonoBehaviour, IRecipe
 
     protected RecipeStatus status = RecipeStatus.Initial;
     public RecipeStatus Status => status;
-
+    protected float probability;
     protected int sizeOfContainer { get { return actionContainer.Count; } }
+
     protected int currentNulls = 0;
     private int counter = 0;
+
+    protected abstract void SetProbability();
+
+    public float GetProbability()
+    {
+        // Ensure that SetProbability is called before accessing the probability.
+        SetProbability();
+        return probability;
+    }
 
     public abstract void Init(PlayerInventory inventory);
 

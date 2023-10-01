@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SizeRecipe : UnorderedRecipe
 {
+
     public override void Init(PlayerInventory inventory)
     {
         List<IRecipeAction> actions = new()
@@ -16,5 +17,10 @@ public class SizeRecipe : UnorderedRecipe
         actionContainer.AddRange(actions);
 
         AddAllActions();
+    }
+
+    protected override void SetProbability()
+    {
+        probability = 0.1f;
     }
 }

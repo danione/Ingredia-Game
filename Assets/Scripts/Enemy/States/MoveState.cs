@@ -31,7 +31,7 @@ public class MoveState : IState
 
     public void Exit()
     {
-        Debug.Log("Not required Exit");
+        // Debug.Log("Not required Exit");
     }
 
 

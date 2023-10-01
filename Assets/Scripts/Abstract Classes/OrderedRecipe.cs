@@ -9,7 +9,18 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
     protected RecipeStatus status = RecipeStatus.Initial;
     public RecipeStatus Status => status;
 
+    protected float probability;
+    
     protected int currentAction = 0;
+
+    protected abstract void SetProbability();
+
+    public float GetProbability()
+    {
+        // Ensure that SetProbability is called before accessing the probability.
+        SetProbability();
+        return probability;
+    }
 
     // Clean the code after completed or after failed
     public virtual void Uninit()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoldRecipe : OrderedRecipe
 {
+
     public override void Init(PlayerInventory inventory)
     {
         List<IRecipeAction> recipes = new()
@@ -16,5 +17,10 @@ public class GoldRecipe : OrderedRecipe
         actionContainer.AddRange(recipes);
 
         ListenRecipes();
+    }
+
+    protected override void SetProbability()
+    {
+        probability = 0.5f;
     }
 }

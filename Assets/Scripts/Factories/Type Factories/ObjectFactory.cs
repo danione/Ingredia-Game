@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientFactory<T> : Factory where T : MonoBehaviour
+public class ObjectFactory<T> : Factory where T : MonoBehaviour
 {
     private T productPrefab;
 
-    public IngredientFactory(T product)
+    public ObjectFactory(T product)
     {
         productPrefab = product;
     }

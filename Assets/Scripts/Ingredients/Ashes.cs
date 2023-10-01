@@ -7,6 +7,6 @@ public class Ashes : FallableObject, IIngredient, IProduct
 
     public void Initialise()
     {
-        Debug.Log("Nothing for now");
+       // Debug.Log("Nothing for now");
     }
 }

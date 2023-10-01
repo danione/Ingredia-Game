@@ -8,6 +8,6 @@ public class Pumpkin : FallableObject, IIngredient,IProduct
 
     public void Initialise()
     {
-        Debug.Log("Nothing yet");
+       // Debug.Log("Nothing yet");
     }
 }

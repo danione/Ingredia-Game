@@ -15,7 +15,7 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private float minSeconds;
     [SerializeField] private float maxSeconds;
 
-    private List<Factory> ingredientFactories = new List<Factory>();
+    private List<Factory> ingredientsFactories = new List<Factory>();
 
     // Private Variables
     private float spawnYLocation = 11.0f;
@@ -23,11 +23,11 @@ public class IngredientsFactory: MonoBehaviour
 
     private void Awake()
     {
-        ingredientFactories.Add(new IngredientFactory<Ashes>(ashes));
-        ingredientFactories.Add(new IngredientFactory<Fishbones>(fishbones));
-        ingredientFactories.Add(new IngredientFactory<Pumpkin>(pumpkin));
-        ingredientFactories.Add(new IngredientFactory<SilkenThread>(silkenthread));
-        ingredientFactories.Add(new IngredientFactory<Water>(water));
+        ingredientsFactories.Add(new ObjectFactory<Ashes>(ashes));
+        ingredientsFactories.Add(new ObjectFactory<Fishbones>(fishbones));
+        ingredientsFactories.Add(new ObjectFactory<Pumpkin>(pumpkin));
+        ingredientsFactories.Add(new ObjectFactory<SilkenThread>(silkenthread));
+        ingredientsFactories.Add(new ObjectFactory<Water>(water));
     }
 
     void Start()
@@ -42,11 +42,11 @@ public class IngredientsFactory: MonoBehaviour
         {
 
             // Select a random object to spawn
-            int randomIndex = Random.Range(0, ingredientFactories.Count);
+            int randomIndex = Random.Range(0, ingredientsFactories.Count);
             // Select a random location at the top of the screen
             Vector3 spawnLocation = new Vector3(Random.Range(rightBorder, leftBorder), spawnYLocation, spawnZLocation);
 
-            ingredientFactories[randomIndex].GetProduct(spawnLocation);
+            ingredientsFactories[randomIndex].GetProduct(spawnLocation);
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
             
         }

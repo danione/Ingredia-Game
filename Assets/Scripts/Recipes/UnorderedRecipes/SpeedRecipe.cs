@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpeedRecipe : UnorderedRecipe
 {
+
     public override void Init(PlayerInventory inventory)
     {
         List<IRecipeAction> actions = new()
@@ -15,5 +16,10 @@ public class SpeedRecipe : UnorderedRecipe
         actionContainer.AddRange(actions);
 
         AddAllActions();
+    }
+
+    protected override void SetProbability()
+    {
+        probability = 0.3f;
     }
 }
