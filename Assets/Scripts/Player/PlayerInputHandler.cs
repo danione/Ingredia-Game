@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerInputHandler : MonoBehaviour
@@ -7,12 +9,9 @@ public class PlayerInputHandler : MonoBehaviour
     private float nextFireTime = 0f;
     private PlayerMovement movement;
 
-
     [SerializeField] private Transform projectileObject;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
-    
-    
 
     private void Start()
     {
@@ -23,6 +22,15 @@ public class PlayerInputHandler : MonoBehaviour
     {
         movement.Move();
         Shoot();
+        EmptyCauldron();
+    }
+
+    public void EmptyCauldron()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+
+        }
     }
 
     private void Shoot()
