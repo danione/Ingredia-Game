@@ -267,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596683716}
   - component: {fileID: 596683717}
+  - component: {fileID: 596683718}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -310,6 +311,22 @@ MonoBehaviour:
   rightBorder: -13
   minSeconds: 0.01
   maxSeconds: 1
+--- !u!114 &596683718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596683714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a2d8b5d6d88b04589876dde51b3005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeObject: {fileID: 0}
+  spawnChance: 0.01
+  chanceIncreasePerFrame: 0.01
+  spawnCheckFrequencyInSeconds: 1
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0

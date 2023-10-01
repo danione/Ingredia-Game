@@ -1,13 +1,18 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 public class RecipeFactory : MonoBehaviour
 {
     [SerializeField] private Transform recipeObject;
-
     private List<Type> recipeTypes = new List<Type>();
+    [SerializeField] private float spawnChance = 0.01f;
+    [SerializeField] private float chanceIncreasePerFrame = 0.01f;
+    [SerializeField] private const float spawnChanceDefault = 0.01f;
+    [SerializeField] private float spawnCheckFrequencyInSeconds = 1f;
 
     private void Awake()
     {
@@ -26,17 +31,60 @@ public class RecipeFactory : MonoBehaviour
             Debug.LogError("No classes implementing IRecipe found.");
             return null;
         }
+        // Calculate the total probability sum.
+        float totalProbability = recipeTypes.Sum(type =>
+        {
+            MethodInfo getProbabilityMethod = type.GetMethod("GetProbability");
+            if (getProbabilityMethod != null)
+            {
+                return (float)getProbabilityMethod.Invoke(Activator.CreateInstance(type), null);
+            }
+            return 0f;
+        });
 
-        // Choose a random type that implements IRecipe.
-        Type randomRecipeType = recipeTypes[UnityEngine.Random.Range(0, recipeTypes.Count)];
+        // Generate a random value between 0 and the total probability.
+        float randomValue = UnityEngine.Random.Range(0f, totalProbability);
 
-        // Create an instance of the selected type.
-        return Activator.CreateInstance(randomRecipeType) as IRecipe;
+        // Iterate through recipe types to find the selected type.
+        foreach (var type in recipeTypes)
+        {
+            MethodInfo getProbabilityMethod = type.GetMethod("GetProbability");
+            if (getProbabilityMethod != null)
+            {
+                float probability = (float)getProbabilityMethod.Invoke(Activator.CreateInstance(type), null);
+                if (randomValue < probability)
+                {
+                    // Create an instance of the selected type.
+                    return Activator.CreateInstance(type) as IRecipe;
+                }
+                randomValue -= probability;
+            }
+        }
+
+        return new DummyRecipe();
     }
-
     private void Start()
     {
-        IRecipe recipe = GetRandomRecipe();
-        Debug.Log("Recipe: " + recipe.GetType().Name + " probability " + recipe.GetProbability());
+        StartCoroutine(SpawnRecipe());
+        
+    }
+
+    IEnumerator SpawnRecipe()
+    {
+        while (!GameManager.Instance.gameOver)
+        {
+            float randomValue = UnityEngine.Random.Range(0f, 1f);
+            if (randomValue < spawnChance)
+            {
+                Debug.Log("Spawned new recipe");
+                spawnChance = spawnChanceDefault;
+            }
+            else
+            {
+                spawnChance += chanceIncreasePerFrame;
+            }
+            yield return new WaitForSeconds(spawnCheckFrequencyInSeconds);
+        }
+        
     }
 }
