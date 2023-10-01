@@ -8,11 +8,13 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private float nextFireTime = 0f;
     private PlayerMovement movement;
+    private bool isNotOnCooldown = true;
+
 
     [SerializeField] private Transform projectileObject;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
-
+    [SerializeField] private float emptyCauldronCooldown = 1.0f;
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
@@ -27,10 +29,18 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void EmptyCauldron()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && isNotOnCooldown)
         {
-
+            isNotOnCooldown = false;
+            StartCoroutine(EmptyCooldown());
+            PlayerEventHandler.Instance.EmptyCauldron();
         }
+    }
+
+    IEnumerator EmptyCooldown()
+    {
+        yield return new WaitForSeconds(emptyCauldronCooldown);
+        isNotOnCooldown = true;
     }
 
     private void Shoot()

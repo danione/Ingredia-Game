@@ -8,16 +8,16 @@ public class PlayerInventory: MonoBehaviour
     public int size = 0;
     public int ammo { get; private set; }
     public int gold { get; private set; }
+
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
-    public event Action<IIngredient, int> CollectedIngredient;
-    public event Action<int> CollectedGold;
     private IRecipe currentRecipe;
 
     // Start is called before the first frame updates
 
     private void Awake()
     {
+        PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         cauldronContents = new Dictionary<string, int>();
         ammo = 0;
     }
@@ -29,13 +29,12 @@ public class PlayerInventory: MonoBehaviour
             if(cauldronContents.ContainsKey(ingredient.Name))
             {
                 cauldronContents[ingredient.Name] += 1;
-                CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
-                AddGold(5);
+                PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Name]);
                 return;
             } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
             {
                 cauldronContents.Clear();
-                CollectedIngredient?.Invoke(null, 0);
+                PlayerEventHandler.Instance.CollectIngredient(null, 0);
                 return;
             }
         }
@@ -43,26 +42,27 @@ public class PlayerInventory: MonoBehaviour
         if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Name] = 1;
-            CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
+            PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Name]);
         }
     }
 
-    private void Update()
+    private void OnEmptiedCauldron()
     {
-
+        cauldronContents.Clear();
     }
 
+    // Have a look at that
     public void AddRecipe(IRecipe recipe)
     {
         currentRecipe = recipe;
-        currentRecipe.Init(this);
+        currentRecipe.Init();
         RecipeUIManager.Instance.Activate(currentRecipe);
     }
 
     public void AddGold(int amount)
     {
         gold += amount;
-        CollectedGold?.Invoke(gold);
+        PlayerEventHandler.Instance.CollectGold(gold);
     }
 
     public void AddAmmo(int amount)

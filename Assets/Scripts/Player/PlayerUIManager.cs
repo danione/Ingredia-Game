@@ -7,16 +7,14 @@ using UnityEngine;
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_GoldCounter;
-    private PlayerInventory m_PlayerInventory;
     private void Awake()
     {
-        m_PlayerInventory = GetComponent<PlayerInventory>();
-        m_PlayerInventory.CollectedGold += OnCollectedGold;
+        PlayerEventHandler.Instance.CollectedGold += OnCollectedGold;
     }
 
     private void OnDestroy()
     {
-        m_PlayerInventory.CollectedGold -= OnCollectedGold;
+        PlayerEventHandler.Instance.CollectedGold -= OnCollectedGold;
     }
 
     private void OnCollectedGold(int gold)

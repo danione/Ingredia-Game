@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class InventoryUIManager : UIManager
 {
-    [SerializeField] private PlayerInventory inventory;
     public override void Init()
     {
         base.Init();
-        inventory.CollectedIngredient += OnAdjustInventoryUI;
+        PlayerEventHandler.Instance.CollectedIngredient += OnAdjustInventoryUI;
+        PlayerEventHandler.Instance.EmptiedCauldron += RemoveAllInventoryItems;
     }
 
     private void OnDestroy()
     {
-        inventory.CollectedIngredient -= OnAdjustInventoryUI;
+        PlayerEventHandler.Instance.CollectedIngredient -= OnAdjustInventoryUI;
+        PlayerEventHandler.Instance.EmptiedCauldron -= RemoveAllInventoryItems;
     }
 }

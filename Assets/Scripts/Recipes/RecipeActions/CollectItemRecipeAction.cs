@@ -14,16 +14,14 @@ public class CollectItemRecipeAction : IRecipeAction
     public int Amount => _amount;
 
     private int _startingAmount;
-    protected PlayerInventory _subjectToObserve;
     public event Action<IRecipeAction> Triggered;
 
-    public CollectItemRecipeAction(string ingredient, int amount, PlayerInventory inventory)
+    public CollectItemRecipeAction(string ingredient, int amount)
     {
         _ingredient = ingredient;
         _amount = amount;
         _startingAmount = amount;
-        _subjectToObserve = inventory;
-        _subjectToObserve.CollectedIngredient += OnCollectedIngredient;
+        PlayerEventHandler.Instance.CollectedIngredient += OnCollectedIngredient;
         _description = "Collect " + _amount + " " + ingredient;
     }
 
@@ -49,7 +47,7 @@ public class CollectItemRecipeAction : IRecipeAction
 
     public void DestroyRecipe()
     {
-        _subjectToObserve.CollectedIngredient -= OnCollectedIngredient;
+        PlayerEventHandler.Instance.CollectedIngredient -= OnCollectedIngredient;
     }
 }
 

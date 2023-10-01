@@ -24,7 +24,7 @@ public abstract class UnorderedRecipe : MonoBehaviour, IRecipe
         return probability;
     }
 
-    public abstract void Init(PlayerInventory inventory);
+    public abstract void Init();
 
     protected void AddAllActions()
     {

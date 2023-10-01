@@ -5,13 +5,13 @@ using UnityEngine;
 public class SizeRecipe : UnorderedRecipe
 {
 
-    public override void Init(PlayerInventory inventory)
+    public override void Init()
     {
         List<IRecipeAction> actions = new()
         {
-            new CollectItemRecipeAction("water", 4, inventory),
-            new CollectItemRecipeAction("pumpkin", 2, inventory),
-            new CollectItemRecipeAction("fishbones", 2, inventory)
+            new CollectItemRecipeAction("water", 4),
+            new CollectItemRecipeAction("pumpkin", 2),
+            new CollectItemRecipeAction("fishbones", 2)
         };
 
         actionContainer.AddRange(actions);

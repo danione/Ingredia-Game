@@ -60,7 +60,7 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
     }
 
     // Will be initialised as a child class
-    public abstract void Init(PlayerInventory inventory);
+    public abstract void Init();
 
     // When an action was triggered, check if the current action
     // is the action needed

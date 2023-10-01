@@ -5,13 +5,13 @@ using UnityEngine;
 public class GoldRecipe : OrderedRecipe
 {
 
-    public override void Init(PlayerInventory inventory)
+    public override void Init()
     {
         List<IRecipeAction> recipes = new()
         {
-            new CollectItemRecipeAction("water", 3, inventory),
-            new CollectItemRecipeAction("fishbones", 5, inventory),
-            new CollectItemRecipeAction("pumpkin", 3, inventory)
+            new CollectItemRecipeAction("water", 3),
+            new CollectItemRecipeAction("fishbones", 5),
+            new CollectItemRecipeAction("pumpkin", 3)
         };
 
         actionContainer.AddRange(recipes);
