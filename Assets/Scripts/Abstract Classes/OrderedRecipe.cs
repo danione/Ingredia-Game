@@ -70,12 +70,11 @@ public abstract class OrderedRecipe : MonoBehaviour, IRecipe
        
         if (ReferenceEquals(action, actionContainer[currentAction]))
         {
-            Debug.Log("Correct Action");
             if(IsAllCompleted()) Uninit();
         }
         else
         {
-            Debug.Log("Incorrect Action");
+            status = RecipeStatus.Failed;
             Uninit();
         }
     }

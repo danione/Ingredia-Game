@@ -311,6 +311,7 @@ MonoBehaviour:
   rightBorder: -13
   minSeconds: 0.01
   maxSeconds: 1
+  spawnYLocation: 11
 --- !u!114 &596683718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +324,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a2d8b5d6d88b04589876dde51b3005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeObject: {fileID: 0}
-  spawnChance: 0.01
+  recipeObject: {fileID: 2902313569317665775, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
+  spawnChance: 1
   chanceIncreasePerFrame: 0.01
   spawnCheckFrequencyInSeconds: 1
+  xBorderSpawnLeft: 13
+  xBorderSpawnRight: -13
+  yPointSpawn: 11
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
             case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
-            case ("Recipe"): Debug.Log("TBA"); break;
+            case ("Recipe"): inventory.AddRecipe(other.GetComponent<IRecipe>()); ; break;
             case ("Loot"): inventory.AddGold(105); break;
 
         }

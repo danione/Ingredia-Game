@@ -12,7 +12,7 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private IngredientCombos combos;
     public event Action<IIngredient, int> CollectedIngredient;
     public event Action<int> CollectedGold;
-    public IRecipe currentRecipe;
+    private IRecipe currentRecipe;
 
     // Start is called before the first frame updates
 
@@ -45,6 +45,18 @@ public class PlayerInventory: MonoBehaviour
             cauldronContents[ingredient.Name] = 1;
             CollectedIngredient?.Invoke(ingredient, cauldronContents[ingredient.Name]);
         }
+    }
+
+    private void Update()
+    {
+
+    }
+
+    public void AddRecipe(IRecipe recipe)
+    {
+        currentRecipe = recipe;
+        currentRecipe.Init(this);
+        RecipeUIManager.Instance.Activate(currentRecipe);
     }
 
     public void AddGold(int amount)
