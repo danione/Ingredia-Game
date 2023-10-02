@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ritual : IRitual
+public abstract class Ritual : IRitual
 {
     private bool isAvailable = false;
     public bool IsAvailable => isAvailable;
 
-    private Dictionary<string, int> currentRitualValues;
-    private readonly Dictionary<string, int> defaultRitualValues;
+    protected IReward reward = null;
+    public IReward Reward => reward;
+
+    protected Dictionary<string, int> currentRitualValues = new Dictionary<string, int>();
+    protected readonly Dictionary<string, int> defaultRitualValues = new Dictionary<string, int>();
 
 
-    public Ritual(Dictionary<string, int> currentRitualValues)
+    public Ritual()
     {
-        this.currentRitualValues.AddRange(currentRitualValues);
-        defaultRitualValues.AddRange(currentRitualValues);
+        currentRitualValues.AddRange(GetRitualStages());
+        defaultRitualValues.AddRange(GetRitualStages());
+        reward = GetReward();
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
     }
+
+    protected abstract Dictionary<string, int> GetRitualStages();
+    protected abstract IReward GetReward();
 
     public bool AvailableRitual()
     {
@@ -48,6 +55,7 @@ public class Ritual : IRitual
         { 
             isAvailable = true;
             PlayerEventHandler.Instance.EnableRitual(this);
+            Debug.Log("Healing Ritual Enabled");
         }
     }
 }
