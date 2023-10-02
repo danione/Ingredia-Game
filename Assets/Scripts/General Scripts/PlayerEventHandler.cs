@@ -10,6 +10,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<int> CollectedGold;
     public event Action EmptiedCauldron;
     public event Action<IRecipe> CollectedRecipe;
+    public event Action<IRitual> EnabledRitual;
 
     private void Awake()
     {
@@ -41,5 +42,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void EmptyCauldron()
     {
         EmptiedCauldron?.Invoke();
+    }
+
+    public void EnableRitual(IRitual ritual)
+    {
+        EnabledRitual?.Invoke(ritual);
     }
 }
