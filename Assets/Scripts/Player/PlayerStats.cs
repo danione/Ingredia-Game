@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     private float health;
     public float Health => health;
 
-    private void Awake()
+    private void Start()
     {
         health = startingHealth;
     }
@@ -30,6 +30,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     public void Heal(int _health)
     {
         health = Mathf.Min(health + _health, startingHealth);
+        Debug.Log("Health is " + health);
     }
 
     public void TakeDamage()

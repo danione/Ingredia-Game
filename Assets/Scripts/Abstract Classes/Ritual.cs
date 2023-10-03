@@ -26,6 +26,7 @@ public abstract class Ritual : IRitual
 
     protected abstract Dictionary<string, int> GetRitualStages();
     protected abstract IReward GetReward();
+    protected abstract void GenerateEvent();
 
     public bool AvailableRitual()
     {
@@ -34,6 +35,8 @@ public abstract class Ritual : IRitual
 
     public void OnCauldronEmptied()
     {
+        isAvailable = false;
+        currentRitualValues.Clear();
         currentRitualValues.AddRange(defaultRitualValues);
     }
 
@@ -54,8 +57,7 @@ public abstract class Ritual : IRitual
         if(currentRitualValues.Count == 0) 
         { 
             isAvailable = true;
-            PlayerEventHandler.Instance.EnableRitual(this);
-            Debug.Log("Healing Ritual Enabled");
+            GenerateEvent();
         }
     }
 }

@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 6434168895987796103}
   - component: {fileID: 2654946742434032554}
   - component: {fileID: 2009872931520316262}
+  - component: {fileID: 3162510492656050142}
   - component: {fileID: 5262753251196657516}
   - component: {fileID: 7919030058201532917}
   - component: {fileID: 1086812123244242071}
@@ -607,6 +608,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3162510492656050142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735097968459126054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeaa232dd8e9c945b376108aeb9b1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5262753251196657516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c753b38efd4994e94393d7252cf7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldenNuggets: {fileID: 0}
+  goldenNuggets: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!114 &8574045374956826587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +716,7 @@ MonoBehaviour:
   projectileObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
   spawnPoint: {fileID: 1945744635020908731}
   fireRate: 2
+  emptyCauldronCooldown: 1
 --- !u!1 &8792282949493363313
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HealingRitual : Ritual
 {
+    protected override void GenerateEvent()
+    {
+        PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
+    }
+
     protected override IReward GetReward()
     {
         return new HealthReward(2);

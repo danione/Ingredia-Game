@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
 
 public class PlayerInventory: MonoBehaviour
 {
@@ -12,12 +10,14 @@ public class PlayerInventory: MonoBehaviour
     private Dictionary<string, int> cauldronContents;
     [SerializeField] private IngredientCombos combos;
     private IRecipe currentRecipe;
+    public IRitual possibleRitual;
 
     // Start is called before the first frame updates
 
-    private void Awake()
+    private void Start()
     {
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
+        PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
         cauldronContents = new Dictionary<string, int>();
         ammo = 0;
     }
@@ -49,6 +49,11 @@ public class PlayerInventory: MonoBehaviour
     private void OnEmptiedCauldron()
     {
         cauldronContents.Clear();
+    }
+
+    private void OnRitualCompleted(IRitual ritual)
+    {
+        possibleRitual = ritual;
     }
 
     // Have a look at that

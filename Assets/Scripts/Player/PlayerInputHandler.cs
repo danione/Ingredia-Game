@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
 {
     private float nextFireTime = 0f;
     private PlayerMovement movement;
+    private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
 
 
@@ -15,9 +16,11 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
+
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
+        inventory = GetComponent<PlayerInventory>();
     }
 
     public void HandleInput()
@@ -25,6 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
         movement.Move();
         Shoot();
         EmptyCauldron();
+        UseRitual();
     }
 
     public void EmptyCauldron()
@@ -53,6 +57,15 @@ public class PlayerInputHandler : MonoBehaviour
             Instantiate(projectileObject, spawnPoint.position, projectileObject.rotation);
             PlayerController.Instance.inventory.SubtractAmmo();
             nextFireTime = Time.time + fireRate;
+        }
+    }
+
+    private void UseRitual()
+    {
+        if(Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
+        {
+            RewardEventHandler.Instance.PlayerReward(inventory.possibleRitual.Reward);
+            PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
 }

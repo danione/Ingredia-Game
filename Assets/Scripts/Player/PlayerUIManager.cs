@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_GoldCounter;
-    private void Awake()
+    private void Start()
     {
         PlayerEventHandler.Instance.CollectedGold += OnCollectedGold;
     }

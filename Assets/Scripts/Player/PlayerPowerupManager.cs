@@ -7,14 +7,6 @@ public class PlayerPowerupManager: MonoBehaviour
     private Stack<IPowerUp> powerupsInInventory = new Stack<IPowerUp>();
     [SerializeField] private Transform goldenNuggets;
 
-
-    private void Start()
-    {
-        IPowerUp potion = new GoldenTicketElixir(goldenNuggets);
-        potion.Use();
-        powerupsInUse.Add(potion);
-    }
-
     public void HandlePowerups()
     {
         

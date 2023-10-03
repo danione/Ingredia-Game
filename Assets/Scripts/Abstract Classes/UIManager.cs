@@ -9,7 +9,7 @@ public abstract class UIManager : MonoBehaviour
     private Dictionary<string,TextMeshProUGUI> transforms = new Dictionary<string, TextMeshProUGUI>();
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Init();
     }
