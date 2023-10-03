@@ -42,6 +42,7 @@ public abstract class Ritual : IRitual
 
     public void OnIngredientCollected(IIngredient ingredient, int amount)
     {
+        if(ingredient == null) { return; }
         if (!currentRitualValues.ContainsKey(ingredient.Name))
         {
             isAvailable = false;

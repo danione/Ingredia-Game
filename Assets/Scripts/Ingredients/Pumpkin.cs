@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Pumpkin : FallableObject, IIngredient,IProduct
+public class Pumpkin : FallableObject, IIngredient, IProduct
 {
     public string Name => "pumpkin";
-
     public string ProductName => Name;
 
     public void Initialise()

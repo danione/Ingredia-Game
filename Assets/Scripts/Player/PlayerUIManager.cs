@@ -12,11 +12,6 @@ public class PlayerUIManager : MonoBehaviour
         PlayerEventHandler.Instance.CollectedGold += OnCollectedGold;
     }
 
-    private void OnDestroy()
-    {
-        PlayerEventHandler.Instance.CollectedGold -= OnCollectedGold;
-    }
-
     private void OnCollectedGold(int gold)
     {
         m_GoldCounter.text = "Gold: " + gold;
