@@ -18,9 +18,10 @@ public class SizeRecipe : UnorderedRecipe
 
         AddAllActions();
     }
-
+/*
     protected override void SetProbability()
     {
         probability = 0.1f;
     }
+*/
 }

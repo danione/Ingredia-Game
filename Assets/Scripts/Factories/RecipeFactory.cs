@@ -28,7 +28,7 @@ public class RecipeFactory : MonoBehaviour
         recipeTypes.AddRange(types);
     }
 
-    public IRecipe GetRandomRecipe()
+   /* public IRecipe GetRandomRecipe()
     {
         if (recipeTypes.Count == 0)
         {
@@ -66,6 +66,18 @@ public class RecipeFactory : MonoBehaviour
         }
 
         return null;
+    }*/
+    private IRecipe GetRandomRecipe()
+    {
+        if (recipeTypes.Count == 0)
+        {
+            Debug.LogError("No classes implementing IRecipe found.");
+            return null;
+        }
+
+        int randomType = UnityEngine.Random.Range(0, recipeTypes.Count);
+
+        return Activator.CreateInstance(recipeTypes[randomType]) as IRecipe;
     }
     private void Start()
     {

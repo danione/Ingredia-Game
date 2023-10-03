@@ -9,5 +9,5 @@ public interface IRecipe
     public abstract bool IsAllCompleted();
     public abstract void OnActionTriggered(IRecipeAction action);
     public abstract void Uninit();
-    public abstract float GetProbability();
+   // public abstract float GetProbability();
 }

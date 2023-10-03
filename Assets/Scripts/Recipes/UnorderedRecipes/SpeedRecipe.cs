@@ -17,9 +17,10 @@ public class SpeedRecipe : UnorderedRecipe
 
         AddAllActions();
     }
-
+/*
     protected override void SetProbability()
     {
         probability = 0.3f;
     }
+*/
 }

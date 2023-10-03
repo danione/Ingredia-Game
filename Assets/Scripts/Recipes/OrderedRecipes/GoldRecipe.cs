@@ -15,9 +15,10 @@ public class GoldRecipe : OrderedRecipe
 
         ListenRecipes();
     }
-
+/*
     protected override void SetProbability()
     {
         probability = 0.5f;
     }
+*/
 }
