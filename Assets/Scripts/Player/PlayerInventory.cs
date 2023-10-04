@@ -8,7 +8,6 @@ public class PlayerInventory: MonoBehaviour
     public int gold { get; private set; }
 
     private Dictionary<string, int> cauldronContents;
-    [SerializeField] private IngredientCombos combos;
     private IRecipe currentRecipe;
     public IRitual possibleRitual;
 
@@ -30,11 +29,6 @@ public class PlayerInventory: MonoBehaviour
             {
                 cauldronContents[ingredient.Name] += 1;
                 PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Name]);
-                return;
-            } else if (!combos.CheckIngredientCombos(ingredient.Name, ingr.Key))
-            {
-                cauldronContents.Clear();
-                PlayerEventHandler.Instance.CollectIngredient(null, 0);
                 return;
             }
         }
