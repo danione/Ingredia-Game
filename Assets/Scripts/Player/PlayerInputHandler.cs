@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))]
+[RequireComponent( typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
 {
     private float nextFireTime = 0f;

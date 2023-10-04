@@ -479,7 +479,6 @@ GameObject:
   - component: {fileID: 3162510492656050142}
   - component: {fileID: 5262753251196657516}
   - component: {fileID: 7919030058201532917}
-  - component: {fileID: 1086812123244242071}
   - component: {fileID: 1721426842820912189}
   - component: {fileID: 453012806714794115}
   - component: {fileID: 7759249205259069879}
@@ -633,7 +632,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 3
-  combos: {fileID: 0}
 --- !u!114 &7919030058201532917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,22 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cac2e417571764408dad3957043e4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   cooldown: 0
---- !u!114 &1086812123244242071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735097968459126054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626ddf2c61ef51945b0560593c748424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 20
-  leftBorder: 12
-  rightBorder: -12
 --- !u!114 &1721426842820912189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,7 +692,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6735097968459126054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1709d67b774e28041adc76f928945e64, type: 3}
   m_Name: 

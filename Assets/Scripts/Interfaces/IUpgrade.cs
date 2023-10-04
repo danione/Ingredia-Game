@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IUpgrade : MonoBehaviour
+public interface IUpgrade
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string Name { get; }
+    public string Description { get; }
+    public int MaxStage { get; }
+    public int CurrentStage { get; }
+    public bool IsAvailable { get; }
+    public int GoldCost { get; }
+    public void Init();
+    public void Upgrade();
 }

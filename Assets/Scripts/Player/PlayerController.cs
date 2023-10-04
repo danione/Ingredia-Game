@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public PlayerInventory inventory { get; private set; }
-    private PlayerStats stats;
+    public PlayerStats stats;
     private PlayerPowerupManager powerupManager;
     private PlayerInputHandler input;
     public Action<int> collision;

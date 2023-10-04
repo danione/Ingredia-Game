@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IMovable
 {
-    [SerializeField] private float movementSpeed;
+    [SerializeField] public float movementSpeed;
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
 
@@ -22,5 +22,10 @@ public class PlayerMovement : MonoBehaviour, IMovable
         {
             transform.Translate(movementSpeed * goingLeft * Time.deltaTime * Vector3.left);
         }
+    }
+
+    public void SetMovementSpeed(float newMovementSpeed)
+    {
+        movementSpeed = newMovementSpeed;
     }
 }

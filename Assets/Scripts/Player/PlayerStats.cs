@@ -27,6 +27,12 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     }
 
+    public void UpgradeHealth(int newMaxHealth)
+    {
+        startingHealth = newMaxHealth;
+        Heal(newMaxHealth);
+    }
+
     public void Heal(int _health)
     {
         health = Mathf.Min(health + _health, startingHealth);
