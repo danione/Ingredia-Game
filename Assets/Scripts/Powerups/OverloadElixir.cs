@@ -10,6 +10,7 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
     private bool destroyed = false;
     public bool Destroyed => destroyed;
     private LaserBeam laser;
+    private bool isFiringLaser = false;
     
     public void Destroy()
     {
@@ -19,6 +20,12 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
         {
             Debug.Log("Here too!");
         }
+        PlayerEventHandler.Instance.LaserFired -= OnFiringLaser;
+    }
+
+    public void OnFiringLaser()
+    {
+        isFiringLaser = true;
     }
 
     public void Tick()
@@ -28,7 +35,7 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
         {
             Destroy();
             return;
-        }else if (Input.GetKey(KeyCode.Q))
+        }else if (isFiringLaser)
         {
             strength -= Time.deltaTime;
             laser.Execute();
@@ -36,12 +43,14 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
         else
         {
             laser.Refresh();
+            isFiringLaser = false;
         }
     }
 
     public void Use()
     {
         laser = new LaserBeam(PlayerController.Instance.transform, Vector3.up);
+        PlayerEventHandler.Instance.LaserFired += OnFiringLaser;
         // Some basic animation
     }
 }

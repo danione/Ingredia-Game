@@ -20,20 +20,7 @@ public class GoldenTicketElixir : IPowerUp
 
     public void Tick()
     {
-        if (destroyed) return;
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            string[] tags = { "Projectile", "Ingredient", "Recipe" };
-
-            foreach (string tag in tags)
-            {
-                ConvertToGoldenNugget(GetAllObjectsWithTag(tag));
-            }
-
-            Destroy();
-        }
-        
+        // Nothing
     }
 
     private GameObject[] GetAllObjectsWithTag(string tag)
@@ -53,6 +40,15 @@ public class GoldenTicketElixir : IPowerUp
 
     public void Use()
     {
-        // Animation
+        if (destroyed) return;
+
+        string[] tags = { "Projectile", "Ingredient", "Recipe" };
+
+        foreach (string tag in tags)
+        {
+            ConvertToGoldenNugget(GetAllObjectsWithTag(tag));
+        }
+
+        Destroy();
     }
 }

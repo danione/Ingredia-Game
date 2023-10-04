@@ -68,4 +68,11 @@ public class PlayerInputHandler : MonoBehaviour
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
+
+    private void ShootLaser()
+    {
+        if (Input.GetKey(KeyCode.Q)){
+            PlayerEventHandler.Instance.FireLaser();
+        }
+    }
 }
