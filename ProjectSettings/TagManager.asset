@@ -12,6 +12,7 @@ TagManager:
   - Protection Barrier
   - Projectile
   - Enemy
+  - Dangerous Object
   layers:
   - Default
   - TransparentFX

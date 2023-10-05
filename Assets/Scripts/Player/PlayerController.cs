@@ -56,11 +56,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
             case ("Recipe"): inventory.AddRecipe(other.GetComponent<IRecipe>()); ; break;
-            case ("Loot"): inventory.AddGold(105); break;
-
         }
 
-        if (!other.CompareTag("Untagged") && !other.CompareTag("Protection Barrier"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile"))
         {
             collision?.Invoke(other.gameObject.GetInstanceID());
             Destroy(other.gameObject);
