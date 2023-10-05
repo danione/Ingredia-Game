@@ -1463,6 +1463,7 @@ MonoBehaviour:
   xBorderRight: -13
   yPosition: 6
   spawnFrequency: 2
+  dangerousObject: {fileID: 3061362062766351863, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
 --- !u!114 &1931644272 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7919030058201532917, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
