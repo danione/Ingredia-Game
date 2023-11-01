@@ -1226,37 +1226,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598591607}
   m_CullTransparentMesh: 1
---- !u!1 &1625415701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1625415702}
-  m_Layer: 0
-  m_Name: MovementBoundary
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1625415702
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625415701}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.305, y: -3.96, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682831356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1313,7 @@ GameObject:
   - component: {fileID: 1760316106}
   - component: {fileID: 1760316107}
   - component: {fileID: 1760316108}
+  - component: {fileID: 1760316109}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1433,6 +1403,18 @@ MonoBehaviour:
   yPosition: 6
   spawnFrequency: 2
   dangerousObject: {fileID: 3061362062766351863, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
+--- !u!114 &1760316109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb8d979c11826c43be59c31938d3682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1926648073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1450,7 @@ MonoBehaviour:
   fieldOfMovement:
     xLeftBoundary: 13
     xRightBoundary: -13
-    yTopBoundary: 10
+    yTopBoundary: 0
     yBottomBoundary: -6.3
   cooldownWaitingSeconds: 3
 --- !u!135 &1926648075
@@ -1910,4 +1892,3 @@ SceneRoots:
   - {fileID: 1237524436}
   - {fileID: 672665155}
   - {fileID: 1926648078}
-  - {fileID: 1625415702}
