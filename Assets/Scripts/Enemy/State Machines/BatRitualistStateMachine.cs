@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BatRitualistStateMachine : EntityStateMachine
 {
-    public MoveState MoveState;
+    public BatMoveState MoveState;
     public IdleState IdleState;
 
     public BatRitualistStateMachine(PlayerController controller, Enemy currentUnit, float movementSpeed)
     {
-        this.MoveState = new MoveState(controller, currentUnit, movementSpeed);
+        this.MoveState = new BatMoveState(controller, currentUnit, movementSpeed);
         this.IdleState = new IdleState();
     }
 }

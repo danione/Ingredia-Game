@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 453012806714794115}
   - component: {fileID: 7759249205259069879}
   - component: {fileID: 8574045374956826587}
+  - component: {fileID: 7652357504156553977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -692,7 +693,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6735097968459126054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1709d67b774e28041adc76f928945e64, type: 3}
   m_Name: 
@@ -701,6 +702,21 @@ MonoBehaviour:
   spawnPoint: {fileID: 1945744635020908731}
   fireRate: 2
   emptyCauldronCooldown: 1
+--- !u!114 &7652357504156553977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735097968459126054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626ddf2c61ef51945b0560593c748424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 10
+  leftBorder: 12
+  rightBorder: -12
 --- !u!1 &8792282949493363313
 GameObject:
   m_ObjectHideFlags: 0

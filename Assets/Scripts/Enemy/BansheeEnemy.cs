@@ -1,29 +1,52 @@
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class BansheeEnemy : Enemy
 {
-    private Vector3 direction;
-    private bool setDirection = false;
+    private bool hasReachedDestination = false;
     public BansheeStateMachine _state;
-
+    [SerializeField] private Boundaries fieldOfMovement;
+    [SerializeField] private float cooldownWaitingSeconds;
     private void Start()
     {
-        _state = new BansheeStateMachine(this.transform);
-        _state.Initialise(_state.PickDirectionState);
+        _state = new BansheeStateMachine(this, fieldOfMovement);
+        _state.Initialise(_state.MoveState);
     }
 
     private void Update()
     {
-       if(setDirection)
-       {
-            setDirection = false;
+        if (hasReachedDestination)
+        {
+            hasReachedDestination = false;
             _state.TransitiontTo(_state.IdleState);
-       }
+            StartCoroutine(CooldownOfMakingDecision());
+        }
+       _state.Update();
     }
 
-    public void SetDirection(Vector3 direction)
+    public void ReachedDestination()
     {
-        this.direction = direction;
-        setDirection = true;
+        hasReachedDestination = true;
+    }
+
+    IEnumerator CooldownOfMakingDecision()
+    {
+        yield return new WaitForSeconds(cooldownWaitingSeconds);
+        _state.TransitiontTo(_state.MoveState);
+    }
+
+    IEnumerator DisableTheCollider()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(cooldownWaitingSeconds);
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _state.TransitiontTo(_state.IdleState);
+        StartCoroutine(DisableTheCollider());
+        _state.TransitiontTo(_state.MoveState);
     }
 }

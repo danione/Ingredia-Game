@@ -3,12 +3,12 @@ using UnityEngine;
 public class BansheeStateMachine : EntityStateMachine
 {
     public IdleState IdleState;
-    public PickDirectionState PickDirectionState;
+    public BansheeMoveState MoveState;
 
-    public BansheeStateMachine(Transform thisGameObject)
+    public BansheeStateMachine(BansheeEnemy thisGameObject, Boundaries fieldOfMovement)
     {
         IdleState = new IdleState();
-        PickDirectionState = new PickDirectionState(thisGameObject);
+        MoveState = new BansheeMoveState(PlayerController.Instance, thisGameObject, 10.0f, fieldOfMovement);
     }
 
 }
