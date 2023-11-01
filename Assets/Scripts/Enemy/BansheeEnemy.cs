@@ -16,7 +16,7 @@ public class BansheeEnemy : Enemy
 
     private void Update()
     {
-        if (hasReachedDestination)
+        if (hasReachedDestination && _state.CurrentState != _state.AttackState)
         {
             hasReachedDestination = false;
             _state.TransitiontTo(_state.IdleState);
@@ -33,7 +33,10 @@ public class BansheeEnemy : Enemy
     IEnumerator CooldownOfMakingDecision()
     {
         yield return new WaitForSeconds(cooldownWaitingSeconds);
-        _state.TransitiontTo(_state.MoveState);
+        if(_state.CurrentState != _state.AttackState)
+        {
+            _state.TransitiontTo(_state.MoveState);
+        }
     }
 
     IEnumerator DisableTheCollider()
@@ -45,8 +48,11 @@ public class BansheeEnemy : Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        _state.TransitiontTo(_state.IdleState);
-        StartCoroutine(DisableTheCollider());
-        _state.TransitiontTo(_state.MoveState);
+        _state.TransitiontTo(_state.AttackState);
+    }
+
+    private void OnDestroy()
+    {
+        InputEventHandler.instance.SetMovement(isMoving: true);
     }
 }

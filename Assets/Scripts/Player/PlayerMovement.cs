@@ -5,9 +5,17 @@ public class PlayerMovement : MonoBehaviour, IMovable
     [SerializeField] public float movementSpeed;
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
+    private bool isMovementEnabled = true;
+
+    private void Start()
+    {
+        InputEventHandler.instance.MovementInputTampering += SetEnabledMovement;
+    }
 
     public void Move()
     {
+        if (!isMovementEnabled) { return; }
+
         float goingLeft = Input.GetAxis("Horizontal");
 
         if (transform.position.x > leftBorder)
@@ -27,5 +35,11 @@ public class PlayerMovement : MonoBehaviour, IMovable
     public void SetMovementSpeed(float newMovementSpeed)
     {
         movementSpeed = newMovementSpeed;
+    }
+
+    public void SetEnabledMovement(bool newValue)
+    {
+        Debug.Log("Tuk sum");
+        isMovementEnabled = newValue;
     }
 }

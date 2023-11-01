@@ -28,7 +28,6 @@ public class BansheeMoveState : MoveState
 
         direction = m_targetPosition - currentUnit.transform.position;
         direction.Normalize();
-        Debug.Log(m_targetPosition);
     }
 
     private bool HasReachedDestination()
