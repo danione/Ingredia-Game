@@ -5,9 +5,12 @@ using UnityEngine;
 public class BansheeEnemy : Enemy
 {
     private bool hasReachedDestination = false;
+    private bool hasDetectedPlayer = false;
+
     public BansheeStateMachine _state;
     [SerializeField] private Boundaries fieldOfMovement;
     [SerializeField] private float cooldownWaitingSeconds;
+    [SerializeField] private float cooldownDetectionOfPlayer;
     private void Start()
     {
         _state = new BansheeStateMachine(this, fieldOfMovement);
@@ -16,11 +19,10 @@ public class BansheeEnemy : Enemy
 
     private void Update()
     {
-        if (hasReachedDestination && _state.CurrentState != _state.AttackState)
+        if (hasReachedDestination && !hasDetectedPlayer)
         {
             hasReachedDestination = false;
-            _state.TransitiontTo(_state.IdleState);
-            StartCoroutine(CooldownOfMakingDecision());
+            StartCoroutine(CooldownOfReachedDestination(_state.MoveState));
         }
        _state.Update();
     }
@@ -30,26 +32,38 @@ public class BansheeEnemy : Enemy
         hasReachedDestination = true;
     }
 
-    IEnumerator CooldownOfMakingDecision()
+    IEnumerator CooldownOfReachedDestination(IState transitionTo)
     {
+        _state.TransitiontTo(_state.IdleState);
         yield return new WaitForSeconds(cooldownWaitingSeconds);
-        if(_state.CurrentState != _state.AttackState)
+        _state.TransitiontTo(transitionTo);
+
+        if(transitionTo == _state.AttackState)
         {
+            yield return new WaitForSeconds(cooldownWaitingSeconds);
             _state.TransitiontTo(_state.MoveState);
+            StartCoroutine(CooldownOfDetection());
+            hasDetectedPlayer = false;
         }
     }
 
-    void DisableTheCollider()
+    IEnumerator CooldownOfDetection()
     {
-        gameObject.GetComponent<Collider>().enabled = false;
-        //yield return new WaitForSeconds(cooldownWaitingSeconds);
-       // gameObject.GetComponent<Collider>().enabled = true;
+        yield return new WaitForSeconds(cooldownDetectionOfPlayer);
+        SetTheCollider(true);
+    }
+
+    private void SetTheCollider(bool isEnabled)
+    {
+        gameObject.GetComponent<Collider>().enabled = isEnabled;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _state.TransitiontTo(_state.AttackState);
-        DisableTheCollider();
+        hasReachedDestination = false;
+        hasDetectedPlayer = true;
+        StartCoroutine(CooldownOfReachedDestination(_state.AttackState));
+        SetTheCollider(false);
     }
 
     private void OnDestroy()

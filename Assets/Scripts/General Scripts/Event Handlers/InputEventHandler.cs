@@ -15,11 +15,11 @@ public class InputEventHandler : MonoBehaviour
     {
         if(instance == null)
         {
-            instance = new InputEventHandler();
+            instance = this;
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
