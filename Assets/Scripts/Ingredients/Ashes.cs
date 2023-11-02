@@ -1,4 +1,5 @@
 using UnityEngine;
+[System.Serializable]
 public class Ashes : FallableObject, IIngredient, IProduct
 {
     public string Name => "ashes";
