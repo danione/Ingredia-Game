@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class IngredientsFactory: MonoBehaviour
 {
-    [SerializeField] private Ashes ashes;
-    [SerializeField] private Fishbones fishbones;
-    [SerializeField] private Pumpkin pumpkin;
-    [SerializeField] private SilkenThread silkenthread;
-    [SerializeField] private Water water;
+    [SerializeField] private List<MonoBehaviour> _ingredients;
 
     [SerializeField] private float leftBorder = 13.0f;
     [SerializeField] private float rightBorder = -13.0f;
@@ -24,11 +20,10 @@ public class IngredientsFactory: MonoBehaviour
 
     private void Awake()
     {
-        ingredientsFactories.Add(new ObjectFactory<Ashes>(ashes));
-        ingredientsFactories.Add(new ObjectFactory<Fishbones>(fishbones));
-        ingredientsFactories.Add(new ObjectFactory<Pumpkin>(pumpkin));
-        ingredientsFactories.Add(new ObjectFactory<SilkenThread>(silkenthread));
-        ingredientsFactories.Add(new ObjectFactory<Water>(water));
+        foreach(var ingredient in _ingredients)
+        {
+            ingredientsFactories.Add(new ObjectFactory(ingredient));
+        }
     }
 
     void Start()

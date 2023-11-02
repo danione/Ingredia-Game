@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ObjectFactory<T> : Factory where T : MonoBehaviour
+public class ObjectFactory : Factory
 {
-    private T productPrefab;
+    private MonoBehaviour productPrefab;
 
-    public ObjectFactory(T product)
+    public ObjectFactory(MonoBehaviour product)
     {
         productPrefab = product;
     }
@@ -17,5 +16,6 @@ public class ObjectFactory<T> : Factory where T : MonoBehaviour
         IProduct product = instance.GetComponent<IProduct>();
         product.Initialise();
         return product;
+
     }
 }

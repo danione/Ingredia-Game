@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class SilkenThread : FallableObject, IIngredient, IProduct
 {
     public string Name => "silkenThread";

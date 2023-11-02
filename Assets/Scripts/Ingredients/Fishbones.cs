@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[System.Serializable]
 public class Fishbones : FallableObject, IIngredient, IProduct
 {
     public string Name => "fishbones";
