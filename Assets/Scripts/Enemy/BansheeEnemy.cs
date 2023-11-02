@@ -39,16 +39,17 @@ public class BansheeEnemy : Enemy
         }
     }
 
-    IEnumerator DisableTheCollider()
+    void DisableTheCollider()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(cooldownWaitingSeconds);
-        gameObject.GetComponent<Collider>().enabled = true;
+        //yield return new WaitForSeconds(cooldownWaitingSeconds);
+       // gameObject.GetComponent<Collider>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         _state.TransitiontTo(_state.AttackState);
+        DisableTheCollider();
     }
 
     private void OnDestroy()
