@@ -13,6 +13,7 @@ public class RitualistEnemy : Enemy
     [SerializeField] private Transform ingredientCircle;
     [SerializeField] public GameObject[] ingredientTypes;
 
+
     private RitualistStateMachine stateMachine;
 
     private void Awake()

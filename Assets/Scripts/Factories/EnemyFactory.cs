@@ -23,7 +23,8 @@ public class EnemyFactory : MonoBehaviour
             if (currentCurrency - enemies[index].cost >= 0)
             {
                 currentCurrency -= enemies[index].cost;
-                Instantiate(enemies[index].enemy, gameObject.transform.position, Quaternion.identity);
+                Enemy within = enemies[index].enemy.GetComponent<Enemy>();
+                Instantiate(enemies[index].enemy, within.GetRandomPosition(), Quaternion.identity);
                 break;
             }
         }

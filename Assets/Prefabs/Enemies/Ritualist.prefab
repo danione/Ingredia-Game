@@ -120,6 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1be9165be6c8044c937f708de2f6dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xLeftMaxSpawn: 13
+  xRightMaxSpawn: -13
+  yTopMaxSpawn: 5
+  yBottomMaxSpawn: 0
   ritualistCircle: {fileID: 2235031436882646317}
   ingredientCircle: {fileID: 2127728769232630325}
   ingredientTypes:
