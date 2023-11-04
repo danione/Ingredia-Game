@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HealingRitual : Ritual
 {
+    public HealingRitual(RitualScriptableObject data) : base(data)
+    {
+
+    }
+
     protected override void CompleteAnEvent()
     {
         PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
@@ -11,11 +16,6 @@ public class HealingRitual : Ritual
 
     protected override IReward GetReward()
     {
-        return new HealthReward(2);
-    }
-
-    protected override void SetUpScriptableObject()
-    {
-        SriptableObject = = NewRitual.CreateInstance<NewRitual>();
+        return new HealthReward(1);
     }
 }

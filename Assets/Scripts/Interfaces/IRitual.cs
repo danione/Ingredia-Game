@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public interface IRitual
 {
-    public RitualScriptableObject ScriptableObject { get; }
+    public RitualScriptableObject RitualData { get; set; }
     public IReward Reward { get; }
     public bool IsAvailable { get; }
     public void OnCauldronEmptied();

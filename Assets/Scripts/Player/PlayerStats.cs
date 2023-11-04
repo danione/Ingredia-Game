@@ -3,8 +3,9 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour, IUnitStats
 {
     [SerializeField] private int startingHealth;
+    [SerializeField] private int maxHealth;
 
-    private float health;
+    [SerializeField] private float health;
     public float Health => health;
 
     private void Start()
@@ -20,7 +21,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     public void Heal()
     {
-        if (Health < startingHealth)
+        if (Health < maxHealth)
         {
             health++;
         }
@@ -29,13 +30,13 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     public void UpgradeHealth(int newMaxHealth)
     {
-        startingHealth = newMaxHealth;
+        maxHealth = newMaxHealth;
         Heal(newMaxHealth);
     }
 
     public void Heal(int _health)
     {
-        health = Mathf.Min(health + _health, startingHealth);
+        health = Mathf.Min(health + _health, maxHealth);
         Debug.Log("Health is " + health);
     }
 

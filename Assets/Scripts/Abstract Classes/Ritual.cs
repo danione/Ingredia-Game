@@ -12,16 +12,15 @@ public abstract class Ritual : IRitual
     protected IReward reward = null;
     public IReward Reward => reward;
 
-    private RitualScriptableObject scriptableObject;
-    public RitualScriptableObject ScriptableObject { get => scriptableObject; set { scriptableObject = value; } }
+    private RitualScriptableObject ritualData;
+    public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
 
     protected Dictionary<string, int> currentRitualValues = new Dictionary<string, int>();
     protected readonly Dictionary<string, int> defaultRitualValues = new Dictionary<string, int>();
 
-    protected abstract void SetUpScriptableObject();
-
-    public Ritual()
+    public Ritual(RitualScriptableObject data)
     {
+        ritualData = data;
         currentRitualValues.AddRange(GetRitualStages());
         defaultRitualValues.AddRange(GetRitualStages());
         reward = GetReward();
@@ -34,7 +33,7 @@ public abstract class Ritual : IRitual
     }
     protected Dictionary<string, int> GetRitualStages()
     {
-        Dictionary<string, int> ritualStages = scriptableObject.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
+        Dictionary<string, int> ritualStages = ritualData.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
         return ritualStages;
     }
     protected abstract IReward GetReward();

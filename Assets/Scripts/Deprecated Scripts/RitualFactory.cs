@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RitualFactory : MonoBehaviour
 {
+    /*
     private List<IRitual> rituals = new List<IRitual>();
     private List<Type> ritualTypes = new List<Type>();
 
@@ -35,5 +36,5 @@ public class RitualFactory : MonoBehaviour
                 rituals.Add(Activator.CreateInstance(type) as IRitual);
             }
         }
-    }
+    }*/
 }

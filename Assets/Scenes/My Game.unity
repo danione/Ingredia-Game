@@ -307,9 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredients:
   - {fileID: 8759815341031948626, guid: 41acc24c1bd17e243b407d30cb5ae08f, type: 3}
-  - {fileID: 5711008500316858799, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
-  - {fileID: 8759815341031948626, guid: 38d5c736295cf5f47a12f89209da5de5, type: 3}
-  - {fileID: 4858776614699285547, guid: 588daa6946508d848abd061f1e754d13, type: 3}
   - {fileID: 8759815341031948626, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
   leftBorder: 13
   rightBorder: -13
@@ -371,7 +368,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596683714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -1354,6 +1351,7 @@ GameObject:
   - component: {fileID: 1760316106}
   - component: {fileID: 1760316107}
   - component: {fileID: 1760316109}
+  - component: {fileID: 1760316110}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1438,6 +1436,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb8d979c11826c43be59c31938d3682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1760316110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7c4b58eb1c03e4d8ddcaa78058f943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healingRitualData: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
 --- !u!114 &1931644272 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7919030058201532917, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
@@ -1732,10 +1743,6 @@ PrefabInstance:
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7652357504156553977, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: mSpeedStruggleModifier
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_LocalPosition.x

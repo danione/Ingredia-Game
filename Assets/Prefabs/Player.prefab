@@ -660,6 +660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+  maxHealth: 5
+  health: 0
 --- !u!114 &453012806714794115
 MonoBehaviour:
   m_ObjectHideFlags: 0

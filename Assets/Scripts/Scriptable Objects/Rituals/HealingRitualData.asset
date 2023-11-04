@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3d9c334a9053ce478205269ecd0fb7d, type: 3}
-  m_Name: NewRitual
+  m_Name: HealingRitualData
   m_EditorClassIdentifier: 
   name: Healing Ritual
   description: This ritual recovers part of the player's health.
