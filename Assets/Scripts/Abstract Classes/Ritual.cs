@@ -9,11 +9,13 @@ public abstract class Ritual : IRitual
     private bool isAvailable = false;
     public bool IsAvailable => isAvailable;
 
-    protected IReward reward = null;
-    public IReward Reward => reward;
+    
 
     private RitualScriptableObject ritualData;
     public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
+
+    protected IPotion reward = null;
+    public IPotion RewardPotion => reward;
 
     protected Dictionary<string, int> currentRitualValues = new Dictionary<string, int>();
     protected readonly Dictionary<string, int> defaultRitualValues = new Dictionary<string, int>();
@@ -36,7 +38,7 @@ public abstract class Ritual : IRitual
         Dictionary<string, int> ritualStages = ritualData.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
         return ritualStages;
     }
-    protected abstract IReward GetReward();
+    protected abstract IPotion GetReward();
     protected abstract void CompleteAnEvent();
 
     public bool AvailableRitual()

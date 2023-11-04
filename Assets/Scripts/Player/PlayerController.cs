@@ -1,13 +1,12 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
-[RequireComponent(typeof(PlayerInventory), typeof(PlayerStats), typeof(PlayerPowerupManager))]
+[RequireComponent(typeof(PlayerInventory), typeof(PlayerStats), typeof(PlayerPotionsManager))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public PlayerInventory inventory { get; private set; }
     public PlayerStats stats;
-    private PlayerPowerupManager powerupManager;
     private PlayerInputHandler input;
     public Action<int> collision;
     public float cooldown;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         inventory = GetComponent<PlayerInventory>();
         stats = GetComponent<PlayerStats>();
-        powerupManager = GetComponent<PlayerPowerupManager>();
         input = GetComponent<PlayerInputHandler>();
 
         if(input == null)
@@ -45,7 +43,6 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.gameOver) return;
 
         input.HandleInput();
-        powerupManager.HandlePowerups();
     }
 
     private void OnTriggerEnter(Collider other)

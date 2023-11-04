@@ -7,7 +7,9 @@ public class PlayerInventory: MonoBehaviour
     public int ammo { get; private set; }
     public int gold { get; private set; }
 
-    private Dictionary<string, int> cauldronContents;
+    private Dictionary<string, int> cauldronContents = new();
+    private PlayerPotionsManager powerupManager;
+
     private IRecipe currentRecipe;
     public IRitual possibleRitual;
 
@@ -15,10 +17,20 @@ public class PlayerInventory: MonoBehaviour
 
     private void Start()
     {
+        powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        cauldronContents = new Dictionary<string, int>();
         ammo = 0;
+    }
+
+    private void Update()
+    {
+        powerupManager.HandlePotions();
+    }
+
+    public void AddPotion(IPotion potion)
+    {
+        powerupManager.AddPotion(potion);
     }
 
     public void AddToCauldron(IIngredient ingredient)
@@ -47,6 +59,7 @@ public class PlayerInventory: MonoBehaviour
 
     private void OnRitualCompleted(IRitual ritual)
     {
+        Debug.Log(ritual);
         possibleRitual = ritual;
     }
 
@@ -77,5 +90,10 @@ public class PlayerInventory: MonoBehaviour
         {
             ammo--;
         }
+    }
+
+    public void UsePotion(int slot)
+    {
+        powerupManager.UsePotion(slot);
     }
 }

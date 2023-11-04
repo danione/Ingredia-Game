@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldenTicketElixir : IPowerUp
+public class GoldenTicketElixir : IPotion
 {
     private bool destroyed = false;
     public bool Destroyed => destroyed;
@@ -50,5 +50,10 @@ public class GoldenTicketElixir : IPowerUp
         }
 
         Destroy();
+    }
+
+    public void Reset()
+    {
+        destroyed = false;
     }
 }

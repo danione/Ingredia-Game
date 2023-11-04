@@ -18,10 +18,10 @@ public class RewardEventHandler : MonoBehaviour
             Destroy(Instance);
         }
     }
-
+/*
     public void PlayerReward(IReward reward)
     {
         reward.GrantReward(player);
-    }
+    }*/
 
 }

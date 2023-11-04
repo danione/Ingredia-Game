@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverloadElixir : MonoBehaviour, IPowerUp
+public class OverloadElixir : MonoBehaviour, IPotion
 {
-    private float timer = 10.0f;
-    private float strength = 3.20f;
+    private const float timerDefault = 10.0f;
+    private const float strengthDefault = 3.2f;
+    private float timer;
+    private float strength;
     private bool destroyed = false;
     public bool Destroyed => destroyed;
     private LaserBeam laser;
@@ -16,10 +18,6 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
     {
         destroyed = true;
         laser.Refresh();
-        if (destroyed)
-        {
-            Debug.Log("Here too!");
-        }
         PlayerEventHandler.Instance.LaserFired -= OnFiringLaser;
     }
 
@@ -51,6 +49,13 @@ public class OverloadElixir : MonoBehaviour, IPowerUp
     {
         laser = new LaserBeam(PlayerController.Instance.transform, Vector3.up);
         PlayerEventHandler.Instance.LaserFired += OnFiringLaser;
+        timer = timerDefault;
+        strength = strengthDefault;
         // Some basic animation
+    }
+
+    public void Reset()
+    {
+        destroyed = false;
     }
 }

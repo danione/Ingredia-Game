@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 596683716}
   - component: {fileID: 596683717}
   - component: {fileID: 596683718}
-  - component: {fileID: 596683719}
   - component: {fileID: 596683720}
   - component: {fileID: 596683721}
   m_Layer: 0
@@ -332,18 +331,6 @@ MonoBehaviour:
   xBorderSpawnLeft: 13
   xBorderSpawnRight: -13
   yPointSpawn: 11
---- !u!114 &596683719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596683714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb623e616c33db4491487984b0a6cae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class GhostPotion : IPowerUp
+public class GhostPotion : IPotion
 {
     private bool destroyed = false;
     public bool Destroyed => destroyed;
-    private float countdownTimer = 999.0f; // How long until the potion is destroyed
-    private float powerPool = 999.0f; // How much the entity can be untargetable for
+    private const float countdownTimerDefault = 999.0f;
+    private const float powerPoolDefault = 999.0f;
+    private float countdownTimer; // How long until the potion is destroyed
+    private float powerPool; // How much the entity can be untargetable for
     private Transform target; // Who will be untargetable
     
     // Visual transparency
@@ -14,11 +16,11 @@ public class GhostPotion : IPowerUp
     public GhostPotion(Transform target)
     {
         this.target = target;
-
         // Visual transparency
         renderer = target.GetComponent<Renderer>();
         SetTransparencyModeToMaterial();
-
+        countdownTimer = countdownTimerDefault;
+        powerPool = powerPoolDefault;
     }
 
     private void SetTransparencyModeToMaterial()
@@ -85,5 +87,12 @@ public class GhostPotion : IPowerUp
     {
         if(target.gameObject.GetComponent<Collider>() == null) { destroyed = true; }
         // Animation
+    }
+
+    public void Reset()
+    {
+        destroyed = false;
+        countdownTimer = countdownTimerDefault;
+        powerPool = powerPoolDefault;
     }
 }

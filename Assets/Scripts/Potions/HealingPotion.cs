@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireSpitterElixir : IPowerUp
+public class HealingPotion : IPotion
 {
     private bool destroyed = false;
     public bool Destroyed => destroyed;
-    private int ammoToAdd = 30;
+    private int healAmount = 1;
 
     public void Destroy()
     {
@@ -20,6 +20,11 @@ public class FireSpitterElixir : IPowerUp
 
     public void Use()
     {
-        PlayerController.Instance.inventory.AddAmmo(ammoToAdd);
+        PlayerController.Instance.stats.Heal(healAmount);
+    }
+
+    public void Reset()
+    {
+        destroyed = false;
     }
 }

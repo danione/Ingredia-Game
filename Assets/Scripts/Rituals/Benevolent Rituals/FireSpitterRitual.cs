@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealingRitual : Ritual
+public class FireSpitterRitual : Ritual
 {
-    public HealingRitual(RitualScriptableObject data) : base(data)
+    public FireSpitterRitual(RitualScriptableObject data) : base(data)
     {
-
     }
 
     protected override void CompleteAnEvent()
@@ -16,6 +15,7 @@ public class HealingRitual : Ritual
 
     protected override IPotion GetReward()
     {
-        return new HealingPotion();
+        return new FireSpitterElixir();
     }
+
 }

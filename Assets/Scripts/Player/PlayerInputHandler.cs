@@ -28,7 +28,15 @@ public class PlayerInputHandler : MonoBehaviour
         movement.Move();
         Shoot();
         EmptyCauldron();
-        UseRitual();
+        AttemptRitual();
+        UsePotion();
+    }
+
+    private void UsePotion()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) inventory.UsePotion(0);
+        else if(Input.GetKeyDown(KeyCode.Alpha2)) inventory.UsePotion(1);
+        else if(Input.GetKeyDown(KeyCode.Alpha3)) inventory.UsePotion(2);
     }
 
     public void EmptyCauldron()
@@ -60,11 +68,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    private void UseRitual()
+    private void AttemptRitual()
     {
         if(Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
-            RewardEventHandler.Instance.PlayerReward(inventory.possibleRitual.Reward);
+            inventory.AddPotion(inventory.possibleRitual.RewardPotion);
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }

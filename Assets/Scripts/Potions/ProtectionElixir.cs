@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class ProtectionElixir : IPowerUp
+public class ProtectionElixir : IPotion
 {
     private Transform protectionBarrier = null;
-    private float powerupDuration = 4.0f;
+    private const float powerupDurationDefault = 4.0f;
+    private float powerupDuration;
 
     private bool destroyed = false;
     public bool Destroyed { get => destroyed;}
@@ -16,8 +17,9 @@ public class ProtectionElixir : IPowerUp
         {
             protectionBarrier = gameObject.transform;
             protectionBarrier?.gameObject.SetActive(true);
-
         }
+
+        powerupDuration = powerupDurationDefault;
     }
 
     public void Destroy()
@@ -34,5 +36,10 @@ public class ProtectionElixir : IPowerUp
         {
             Destroy();
         }
+    }
+
+    public void Reset()
+    {
+        destroyed = false;
     }
 }
