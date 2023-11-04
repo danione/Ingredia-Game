@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +12,13 @@ public abstract class Ritual : IRitual
     protected IReward reward = null;
     public IReward Reward => reward;
 
+    private RitualScriptableObject scriptableObject;
+    public RitualScriptableObject ScriptableObject { get => scriptableObject; set { scriptableObject = value; } }
+
     protected Dictionary<string, int> currentRitualValues = new Dictionary<string, int>();
     protected readonly Dictionary<string, int> defaultRitualValues = new Dictionary<string, int>();
 
+    protected abstract void SetUpScriptableObject();
 
     public Ritual()
     {
@@ -23,10 +28,17 @@ public abstract class Ritual : IRitual
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
     }
-
-    protected abstract Dictionary<string, int> GetRitualStages();
+    private KeyValuePair<string, int> ConvertToKeyValuePair(RitualRecipe item)
+    {
+        return new KeyValuePair<string, int>(item.item, item.amount);
+    }
+    protected Dictionary<string, int> GetRitualStages()
+    {
+        Dictionary<string, int> ritualStages = scriptableObject.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
+        return ritualStages;
+    }
     protected abstract IReward GetReward();
-    protected abstract void GenerateEvent();
+    protected abstract void CompleteAnEvent();
 
     public bool AvailableRitual()
     {
@@ -58,7 +70,7 @@ public abstract class Ritual : IRitual
         if(currentRitualValues.Count == 0) 
         { 
             isAvailable = true;
-            GenerateEvent();
+            CompleteAnEvent();
         }
     }
 }
