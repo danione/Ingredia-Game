@@ -1525,6 +1525,7 @@ MonoBehaviour:
   healingRitualData: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
   firespitterRitualData: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
   protectionRitualData: {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
+  steelspitterRitualData: {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
 --- !u!114 &1931644272 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7919030058201532917, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

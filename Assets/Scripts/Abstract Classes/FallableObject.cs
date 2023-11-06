@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class FallableObject : MonoBehaviour, IMovable
 {
-    [SerializeField] protected float fallSpeed;
+    [SerializeField] protected float fallSpeed = 10.0f;
 
     public virtual void Move()
     {
