@@ -1,4 +1,4 @@
 public interface IIngredient
 {
-    public string Name { get; }
+    public string IngredientName { get; }
 }

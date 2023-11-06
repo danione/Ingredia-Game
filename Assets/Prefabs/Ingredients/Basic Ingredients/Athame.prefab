@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 10
-  name: athame
+  nameOfIngredient: athame
 --- !u!114 &8759815341031948626
 MonoBehaviour:
   m_ObjectHideFlags: 0

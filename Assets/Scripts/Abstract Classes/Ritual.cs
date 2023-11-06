@@ -9,8 +9,6 @@ public abstract class Ritual : IRitual
     private bool isAvailable = false;
     public bool IsAvailable => isAvailable;
 
-    
-
     private RitualScriptableObject ritualData;
     public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
 
@@ -56,16 +54,16 @@ public abstract class Ritual : IRitual
     public void OnIngredientCollected(IIngredient ingredient, int amount)
     {
         if(ingredient == null) { return; }
-        if (!currentRitualValues.ContainsKey(ingredient.Name))
+        if (!currentRitualValues.ContainsKey(ingredient.IngredientName))
         {
             isAvailable = false;
             currentRitualValues.Clear();
             return;
         }
 
-        if (currentRitualValues[ingredient.Name] - amount == 0)
+        if (currentRitualValues[ingredient.IngredientName] - amount == 0)
         {
-            currentRitualValues.Remove(ingredient.Name);
+            currentRitualValues.Remove(ingredient.IngredientName);
         }
 
         if(currentRitualValues.Count == 0) 

@@ -3,9 +3,9 @@ using UnityEngine;
 public class BasicIngredient : FallableObject, IIngredient, IProduct
 {
     [SerializeField] private string nameOfIngredient;
-    public string Name => name;
+    public string IngredientName => nameOfIngredient;
 
-    public string ProductName => name;
+    public string ProductName => nameOfIngredient;
 
     public void Initialise()
     {

@@ -29,10 +29,10 @@ public class CollectItemRecipeAction : IRecipeAction
     {
         if(ingredient == null) _amount = _startingAmount;
 
-        if(ingredient == null || ingredient.Name != _ingredient) 
+        if(ingredient == null || ingredient.IngredientName != _ingredient) 
         {
             Triggered?.Invoke(null);
-        } else if (ingredient.Name == _ingredient && _amount != 0)
+        } else if (ingredient.IngredientName == _ingredient && _amount != 0)
         {
             _amount--;
             Triggered?.Invoke(this);

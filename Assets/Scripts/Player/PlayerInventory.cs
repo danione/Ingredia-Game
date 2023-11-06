@@ -37,18 +37,18 @@ public class PlayerInventory: MonoBehaviour
     {
         foreach (var ingr in cauldronContents)
         {
-            if(cauldronContents.ContainsKey(ingredient.Name))
+            if(cauldronContents.ContainsKey(ingredient.IngredientName))
             {
-                cauldronContents[ingredient.Name] += 1;
-                PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Name]);
+                cauldronContents[ingredient.IngredientName] += 1;
+                PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.IngredientName]);
                 return;
             }
         }
 
         if (cauldronContents.Count < size)
         {
-            cauldronContents[ingredient.Name] = 1;
-            PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Name]);
+            cauldronContents[ingredient.IngredientName] = 1;
+            PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.IngredientName]);
         }
     }
 
