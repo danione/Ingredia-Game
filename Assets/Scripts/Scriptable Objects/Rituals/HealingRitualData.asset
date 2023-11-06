@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Healing Ritual
   description: This ritual recovers part of the player's health.
   ritualRecipes:
-  - item: ashes
+  - item: humanHand
     amount: 1
-  - item: water
+  - item: bandage
     amount: 1
