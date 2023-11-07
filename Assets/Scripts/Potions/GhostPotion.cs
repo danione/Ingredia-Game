@@ -9,6 +9,7 @@ public class GhostPotion : IPotion
     private float countdownTimer; // How long until the potion is destroyed
     private float powerPool; // How much the entity can be untargetable for
     private Transform target; // Who will be untargetable
+    private bool isTransforming = false;
     
     // Visual transparency
     private Renderer renderer;
@@ -21,6 +22,7 @@ public class GhostPotion : IPotion
         SetTransparencyModeToMaterial();
         countdownTimer = countdownTimerDefault;
         powerPool = powerPoolDefault;
+        PlayerEventHandler.Instance.TransformIntoGhost += OnGhostTransform;
     }
 
     private void SetTransparencyModeToMaterial()
@@ -44,12 +46,17 @@ public class GhostPotion : IPotion
         target.gameObject.GetComponent<Collider>().enabled = true;
     }
 
+    private void OnGhostTransform(bool isTargetTransforming)
+    {
+        isTransforming = isTargetTransforming;
+    }
+
     public void Tick()
     {
         if(!destroyed && countdownTimer > 0 && powerPool > 0)
         {
             countdownTimer -= Time.deltaTime;
-            if(Input.GetKey(KeyCode.Space))
+            if(isTransforming)
             {
                 powerPool -= Time.deltaTime;
                 target.gameObject.GetComponent<Collider>().enabled = false;

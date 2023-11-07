@@ -12,6 +12,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<IRecipe> CollectedRecipe;
     public event Action<IRitual> BenevolentRitualCompleted;
     public event Action<bool> LaserFired;
+    public event Action<bool> TransformIntoGhost;
 
     private void Awake()
     {
@@ -53,5 +54,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void FireLaser(bool isPlayerPressingFiring)
     {
         LaserFired?.Invoke(isPlayerPressingFiring);
+    }
+
+    public void GhostTransform(bool isTransformingIntoAGhost)
+    {
+        TransformIntoGhost?.Invoke(isTransformingIntoAGhost);
     }
 }

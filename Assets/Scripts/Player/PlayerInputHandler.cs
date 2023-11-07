@@ -31,6 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
         EmptyCauldron();
         AttemptRitual();
         UsePotion();
+        TurnIntoGhost();
     }
 
     private void UsePotion()
@@ -87,5 +88,12 @@ public class PlayerInputHandler : MonoBehaviour
         {
             PlayerEventHandler.Instance.FireLaser(false);
         }
+    }
+
+    private void TurnIntoGhost()
+    {
+        if (Input.GetKey(KeyCode.Space)) PlayerEventHandler.Instance.GhostTransform(true);
+        else PlayerEventHandler.Instance.GhostTransform(false);
+
     }
 }
