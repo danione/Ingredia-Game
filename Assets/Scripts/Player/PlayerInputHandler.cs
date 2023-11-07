@@ -27,6 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         movement.Move();
         Shoot();
+        ShootLaser();
         EmptyCauldron();
         AttemptRitual();
         UsePotion();
@@ -70,7 +71,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void AttemptRitual()
     {
-        if(inventory.possibleRitual != null) Debug.Log(inventory.possibleRitual.RitualData.name);
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
             inventory.AddPotion(inventory.possibleRitual.RewardPotion);
@@ -81,7 +81,11 @@ public class PlayerInputHandler : MonoBehaviour
     private void ShootLaser()
     {
         if (Input.GetKey(KeyCode.Q)){
-            PlayerEventHandler.Instance.FireLaser();
+            PlayerEventHandler.Instance.FireLaser(true);
+        }
+        else
+        {
+            PlayerEventHandler.Instance.FireLaser(false);
         }
     }
 }

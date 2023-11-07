@@ -17,8 +17,4 @@ MonoBehaviour:
     attacks.
   ritualRecipes:
   - item: humanEye
-    amount: 2
-  - item: athame
-    amount: 1
-  - item: fire
-    amount: 1
+    amount: 3

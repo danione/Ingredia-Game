@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverloadElixir : MonoBehaviour, IPotion
+public class OverloadElixir : IPotion
 {
-    private const float timerDefault = 10.0f;
-    private const float strengthDefault = 3.2f;
+    private const float timerDefault = 30.0f;
+    private const float strengthDefault = 20.0f;
     private float timer;
     private float strength;
     private bool destroyed = false;
@@ -21,9 +21,9 @@ public class OverloadElixir : MonoBehaviour, IPotion
         PlayerEventHandler.Instance.LaserFired -= OnFiringLaser;
     }
 
-    public void OnFiringLaser()
+    public void OnFiringLaser(bool isPlayerPressingFiring)
     {
-        isFiringLaser = true;
+        isFiringLaser = isPlayerPressingFiring;
     }
 
     public void Tick()
@@ -41,7 +41,6 @@ public class OverloadElixir : MonoBehaviour, IPotion
         else
         {
             laser.Refresh();
-            isFiringLaser = false;
         }
     }
 

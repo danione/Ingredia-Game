@@ -17,8 +17,4 @@ MonoBehaviour:
     objects
   ritualRecipes:
   - item: humanSkull
-    amount: 2
-  - item: helmet
-    amount: 1
-  - item: water
     amount: 1

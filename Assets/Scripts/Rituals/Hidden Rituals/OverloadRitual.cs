@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldenRitual : Ritual
+public class OverloadRitual : Ritual
 {
-    public GoldenRitual(RitualScriptableObject data) : base(data)
+    public OverloadRitual(RitualScriptableObject data) : base(data)
     {
     }
 
@@ -15,6 +15,6 @@ public class GoldenRitual : Ritual
 
     protected override IPotion GetReward()
     {
-        return new GoldenTicketElixir(GameObjectsHolder.instance.GoldenNuggets.transform);
+        return new OverloadElixir();
     }
 }

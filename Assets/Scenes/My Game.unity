@@ -312,6 +312,11 @@ MonoBehaviour:
   - {fileID: 8759815341031948626, guid: 7c624dde63914314786f2e2cfe7e2647, type: 3}
   - {fileID: 8759815341031948626, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
   - {fileID: 8759815341031948626, guid: aac0a39aa2fd40c4db9c2180ef318dcb, type: 3}
+  - {fileID: 8759815341031948626, guid: 24cad8e2fecc249409b4456963ec9a9c, type: 3}
+  - {fileID: 8759815341031948626, guid: ff55f423ec3030a448c23c0823ade92d, type: 3}
+  - {fileID: 8759815341031948626, guid: 31c9a65bfbabbc448bc7de377b2ae760, type: 3}
+  - {fileID: 8759815341031948626, guid: be2c49f2b2271944f9748842eb72c9da, type: 3}
+  - {fileID: 8759815341031948626, guid: 789f5ef49a08ebe4dbd0aa54d6858db5, type: 3}
   leftBorder: 13
   rightBorder: -13
   minSeconds: 0.01
@@ -343,7 +348,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596683714}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f29413da23f74b4691cb071f4133def, type: 3}
   m_Name: 
@@ -1342,6 +1347,7 @@ GameObject:
   - component: {fileID: 1760316105}
   - component: {fileID: 1760316107}
   - component: {fileID: 1760316109}
+  - component: {fileID: 1760316111}
   - component: {fileID: 1760316110}
   m_Layer: 0
   m_Name: GameManager
@@ -1431,6 +1437,21 @@ MonoBehaviour:
   protectionRitualData: {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
   steelspitterRitualData: {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
   goldenRitualData: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+  overloadRitualData: {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
+  ghostRitualData: {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
+--- !u!114 &1760316111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f66d76b70fa6604dbea08d539071425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldenNuggets: {fileID: 9016824908832684428, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!1 &1947860120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1732,10 @@ PrefabInstance:
       propertyPath: m_GoldCounter
       value: 
       objectReference: {fileID: 2031736205}
+    - target: {fileID: 3208950079421334232, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: m_TagString
+      value: Laser
+      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player

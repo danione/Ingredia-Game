@@ -9,6 +9,8 @@ public class RitualManager : MonoBehaviour
     [SerializeField] private RitualScriptableObject protectionRitualData;
     [SerializeField] private RitualScriptableObject steelspitterRitualData;
     [SerializeField] private RitualScriptableObject goldenRitualData;
+    [SerializeField] private RitualScriptableObject overloadRitualData;
+    [SerializeField] private RitualScriptableObject ghostRitualData;
     private List<IRitual> rituals = new List<IRitual>();
 
     private void Start()
@@ -18,5 +20,7 @@ public class RitualManager : MonoBehaviour
         rituals.Add(new ProtectionRitual(protectionRitualData));
         rituals.Add(new SteelSpitterRitual(steelspitterRitualData));
         rituals.Add(new GoldenRitual(goldenRitualData));
+        rituals.Add(new OverloadRitual(overloadRitualData));
+        rituals.Add(new GhostProtectionRitual(ghostRitualData));
     }
 }

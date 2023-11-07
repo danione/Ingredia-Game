@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleProjectile : FallableObject
 {
-    [SerializeField] private string target = "Player";
+    [SerializeField] private List<string> target = new ();
     [SerializeField] private Vector3 direction;
     [SerializeField] private int strength;
 
@@ -14,14 +15,18 @@ public class SimpleProjectile : FallableObject
     private void OnTriggerEnter(Collider other)
     {
         if(target == null) { return; }
-        IUnitStats unitStats = other.GetComponent<IUnitStats>();
 
-        if(other.CompareTag(target) && unitStats != null)
+        IUnitStats unitStats = other.GetComponent<IUnitStats>();
+        bool isValidTarget = target.Contains(other.tag);
+
+        if (isValidTarget && unitStats != null)
         {
             unitStats.TakeDamage(strength);
             Destroy(gameObject);
+        } else if (isValidTarget)
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
-
-        
     }
 }

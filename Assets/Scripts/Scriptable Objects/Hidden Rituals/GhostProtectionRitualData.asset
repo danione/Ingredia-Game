@@ -18,9 +18,3 @@ MonoBehaviour:
   ritualRecipes:
   - item: humanSkull
     amount: 2
-  - item: helmet
-    amount: 1
-  - item: spectralCape
-    amount: 1
-  - item: acid
-    amount: 1

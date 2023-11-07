@@ -11,7 +11,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action EmptiedCauldron;
     public event Action<IRecipe> CollectedRecipe;
     public event Action<IRitual> BenevolentRitualCompleted;
-    public event Action LaserFired;
+    public event Action<bool> LaserFired;
 
     private void Awake()
     {
@@ -50,8 +50,8 @@ public class PlayerEventHandler : MonoBehaviour
         BenevolentRitualCompleted?.Invoke(ritual);
     }
 
-    public void FireLaser()
+    public void FireLaser(bool isPlayerPressingFiring)
     {
-        LaserFired?.Invoke();
+        LaserFired?.Invoke(isPlayerPressingFiring);
     }
 }

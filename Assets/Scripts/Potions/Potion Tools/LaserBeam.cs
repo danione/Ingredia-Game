@@ -60,7 +60,7 @@ public class LaserBeam
         {
             Vector3 positionToRender = new Vector3(laserOrigin.position.x, rayData.point.y, attachedEntity.position.z);
             laserLine.SetPosition(1, rayData.point);
-            // UnityEngine.Object.Destroy(rayData.collider.gameObject);
+            UnityEngine.Object.Destroy(rayData.collider.gameObject);
         }
         else
         {
