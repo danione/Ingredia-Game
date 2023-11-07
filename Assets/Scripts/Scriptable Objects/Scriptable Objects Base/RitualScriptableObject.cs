@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Ritual", menuName = "Rituals")]
+[CreateAssetMenu(fileName = "New Ritual", menuName = "Scriptable Objects/Ritual")]
 public class RitualScriptableObject : ScriptableObject
 {
     public new string name;

@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipeScriptableObject : MonoBehaviour
+[CreateAssetMenu(fileName = "New Recipe", menuName = "Scriptable Objects/Recipe")]
+public class RecipeScriptableObject : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public new string name;
+    public string description;
+    public List<RitualRecipe> ritualRecipes = new List<RitualRecipe>();
 }
