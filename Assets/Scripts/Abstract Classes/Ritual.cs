@@ -9,6 +9,8 @@ public abstract class Ritual : IRitual
     private bool isAvailable = false;
     public bool IsAvailable => isAvailable;
 
+    public bool isEnabled { get; private set; }
+
     private RitualScriptableObject ritualData;
     public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
 
@@ -24,13 +26,23 @@ public abstract class Ritual : IRitual
         currentRitualValues.AddRange(GetRitualStages());
         defaultRitualValues.AddRange(GetRitualStages());
         reward = GetReward();
+        isEnabled = false;
+    }
+
+    public void EnableRitual()
+    {
+        isEnabled = true;
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
     }
-    private KeyValuePair<string, int> ConvertToKeyValuePair(RitualRecipe item)
-    {
-        return new KeyValuePair<string, int>(item.item, item.amount);
+
+    public void DisableRitual() { 
+        isEnabled = false;
+        PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
+        PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;
+        OnCauldronEmptied();
     }
+
     protected Dictionary<string, int> GetRitualStages()
     {
         Dictionary<string, int> ritualStages = ritualData.ritualRecipes.ToDictionary(item => item.item, item => item.amount);

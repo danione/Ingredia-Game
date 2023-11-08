@@ -7,12 +7,13 @@ using UnityEngine;
 
 public class RecipeFactory : MonoBehaviour
 {
+    /*
     [SerializeField] private Transform recipeObject;
-    private List<Type> recipeTypes = new List<Type>();
     [SerializeField] private float spawnChance = 0.01f;
     [SerializeField] private float chanceIncreasePerFrame = 1f;
     [SerializeField] private const float spawnChanceDefault = 0.01f;
     [SerializeField] private float spawnCheckFrequencyInSeconds = 1f;
+    [SerializeField] private List<IHidden> recipeTypes;
 
     [SerializeField] private float xBorderSpawnLeft;
     [SerializeField] private float xBorderSpawnRight;
@@ -20,12 +21,7 @@ public class RecipeFactory : MonoBehaviour
 
     private void Awake()
     {
-        // Find all types in the assembly that implement IRecipe.
-        var types = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(assembly => assembly.GetTypes())
-            .Where(type => typeof(IRecipe).IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract);
-
-        recipeTypes.AddRange(types);
+        
     }
 
    /* public IRecipe GetRandomRecipe()
@@ -67,6 +63,7 @@ public class RecipeFactory : MonoBehaviour
 
         return null;
     }*/
+    /*
     private IRecipe GetRandomRecipe()
     {
         if (recipeTypes.Count == 0)
@@ -108,5 +105,5 @@ public class RecipeFactory : MonoBehaviour
             yield return new WaitForSeconds(spawnCheckFrequencyInSeconds);
         }
         
-    }
+    }*/
 }
