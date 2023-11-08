@@ -334,13 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a2d8b5d6d88b04589876dde51b3005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeObject: {fileID: 2902313569317665775, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
-  spawnChance: 1
-  chanceIncreasePerFrame: 0.01
-  spawnCheckFrequencyInSeconds: 1
-  xBorderSpawnLeft: 13
-  xBorderSpawnRight: -13
-  yPointSpawn: 11
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1342,7 @@ GameObject:
   - component: {fileID: 1760316109}
   - component: {fileID: 1760316111}
   - component: {fileID: 1760316110}
+  - component: {fileID: 1760316112}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1452,6 +1446,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoldenNuggets: {fileID: 9016824908832684428, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
+--- !u!114 &1760316112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefc00d6cc2963647821452a0f206a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1947860120
 GameObject:
   m_ObjectHideFlags: 0
