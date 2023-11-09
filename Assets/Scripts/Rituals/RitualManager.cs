@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,8 +15,9 @@ public class RitualManager : MonoBehaviour
     [SerializeField] private RitualScriptableObject ghostRitualData;
     private List<IRitual> basicRituals = new ();
     private Dictionary<string, Ritual> hiddenRituals = new ();
+    private HashSet<string> lockedHiddenRituals = new ();
 
-    private void Awake()
+    private void Start()
     {
         basicRituals.Add(new HealingRitual(healingRitualData));
         basicRituals.Add(new FireSpitterRitual(firespitterRitualData));
@@ -25,21 +27,50 @@ public class RitualManager : MonoBehaviour
         hiddenRituals[goldenRitualData.name] = new GoldenRitual(goldenRitualData);
         hiddenRituals[overloadRitualData.name] = new OverloadRitual(overloadRitualData);
         hiddenRituals[ghostRitualData.name] = new GhostProtectionRitual(ghostRitualData);
-    }
 
-    private void Start()
-    {
-        foreach(Ritual ritual in basicRituals)
+        lockedHiddenRituals = hiddenRituals.Keys.ToHashSet();
+
+        foreach (Ritual ritual in basicRituals)
         {
             ritual.EnableRitual();
         }
     }
 
+    private bool IsValidRitual(string ritual)
+    {
+        bool isInHiddenRitualsArray = hiddenRituals.ContainsKey(ritual) && hiddenRituals[ritual] != null && hiddenRituals[ritual].isEnabled;
+        bool isInLockedRitualsSet = lockedHiddenRituals.Contains(ritual);
+        return isInHiddenRitualsArray && isInLockedRitualsSet;
+    }
+
     public void AddRitual(string newRitual)
     {
-        if (hiddenRituals.ContainsKey(newRitual) && hiddenRituals[newRitual] != null && hiddenRituals[newRitual].isEnabled)
+        if (IsValidRitual(newRitual))
         {
             hiddenRituals[newRitual].EnableRitual();
+            lockedHiddenRituals.Remove(newRitual);
         }
     }
+
+    public void RemoveRitual(string newRitual)
+    {
+        if (IsValidRitual(newRitual))
+        {
+            hiddenRituals[newRitual].EnableRitual();
+            lockedHiddenRituals.Add(newRitual);
+        }
+    }
+
+    public bool HasLockedHiddenRituals()
+    {
+        return lockedHiddenRituals.Count > 0;
+    }
+
+    public HiddenRitual GetRandomLockedRitual()
+    {
+        string[] asArray = lockedHiddenRituals.ToArray();
+        int randomIndex = Random.Range(0, asArray.Length);
+        string randomElement = asArray[randomIndex];
+        return new HiddenRitual(randomElement);
+    } 
 }

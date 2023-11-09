@@ -5,12 +5,9 @@ using UnityEngine;
 public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private List<MonoBehaviour> _ingredients;
-
-    [SerializeField] private float leftBorder = 13.0f;
-    [SerializeField] private float rightBorder = -13.0f;
+    [SerializeField] private SpawnPointsScriptableObject spawnLocation;
     [SerializeField] private float minSeconds;
     [SerializeField] private float maxSeconds;
-    [SerializeField] private float spawnYLocation = 11.0f;
 
     private List<Factory> ingredientsFactories = new List<Factory>();
 
@@ -40,9 +37,9 @@ public class IngredientsFactory: MonoBehaviour
             // Select a random object to spawn
             int randomIndex = Random.Range(0, ingredientsFactories.Count);
             // Select a random location at the top of the screen
-            Vector3 spawnLocation = new Vector3(Random.Range(rightBorder, leftBorder), spawnYLocation, spawnZLocation);
+            Vector3 newRandomLocation = new Vector3(Random.Range(spawnLocation.xRightMax, spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
 
-            ingredientsFactories[randomIndex].GetProduct(spawnLocation);
+            ingredientsFactories[randomIndex].GetProduct(newRandomLocation);
             yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
             
         }

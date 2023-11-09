@@ -31,6 +31,6 @@ public class HiddenRitual : IHidden
 
     private void Lock()
     {
-
+        GameManager.Instance.GetComponent<RitualManager>().RemoveRitual(ritual);
     }
 }
