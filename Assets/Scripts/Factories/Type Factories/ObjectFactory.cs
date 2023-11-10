@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ObjectFactory : Factory
 {
-    private MonoBehaviour productPrefab;
+    private Transform productPrefab;
 
-    public ObjectFactory(MonoBehaviour product)
+    public ObjectFactory(Transform product)
     {
         productPrefab = product;
     }

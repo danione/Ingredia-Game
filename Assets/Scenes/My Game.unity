@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 596683717}
   - component: {fileID: 596683720}
   - component: {fileID: 596683721}
+  - component: {fileID: 596683722}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -316,11 +317,8 @@ MonoBehaviour:
   - {fileID: 8759815341031948626, guid: 31c9a65bfbabbc448bc7de377b2ae760, type: 3}
   - {fileID: 8759815341031948626, guid: be2c49f2b2271944f9748842eb72c9da, type: 3}
   - {fileID: 8759815341031948626, guid: 789f5ef49a08ebe4dbd0aa54d6858db5, type: 3}
-  leftBorder: 13
-  rightBorder: -13
-  minSeconds: 0.01
-  maxSeconds: 1
-  spawnYLocation: 11
+  spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
+  spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,9 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f29413da23f74b4691cb071f4133def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBorderLeft: 13
-  xBorderRight: -13
-  yPosition: 6
+  spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: 2
   dangerousObject: {fileID: 3061362062766351863, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
 --- !u!114 &596683721
@@ -359,6 +355,21 @@ MonoBehaviour:
     cost: 5
   currentCurrency: 5
   spawnFrequencyInSeconds: 2
+--- !u!114 &596683722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596683714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeObject: {fileID: 0}
+  spawnFrequencyData: {fileID: 0}
+  spawnLocationData: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0

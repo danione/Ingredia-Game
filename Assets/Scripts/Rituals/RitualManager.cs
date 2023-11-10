@@ -68,6 +68,8 @@ public class RitualManager : MonoBehaviour
 
     public HiddenRitual GetRandomLockedRitual()
     {
+        if (!HasLockedHiddenRituals()) return null;
+
         string[] asArray = lockedHiddenRituals.ToArray();
         int randomIndex = Random.Range(0, asArray.Length);
         string randomElement = asArray[randomIndex];

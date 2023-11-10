@@ -5,9 +5,8 @@ using UnityEngine;
 public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private List<MonoBehaviour> _ingredients;
-    [SerializeField] private SpawnPointsScriptableObject spawnLocation;
-    [SerializeField] private float minSeconds;
-    [SerializeField] private float maxSeconds;
+    [SerializeField] private SpawnLocationData spawnLocation;
+    [SerializeField] private SpawnFrequencyData spawnFrequency;
 
     private List<Factory> ingredientsFactories = new List<Factory>();
 
@@ -19,7 +18,7 @@ public class IngredientsFactory: MonoBehaviour
     {
         foreach(var ingredient in _ingredients)
         {
-            ingredientsFactories.Add(new ObjectFactory(ingredient));
+            ingredientsFactories.Add(new ObjectFactory(ingredient.transform));
         }
     }
 
@@ -37,10 +36,11 @@ public class IngredientsFactory: MonoBehaviour
             // Select a random object to spawn
             int randomIndex = Random.Range(0, ingredientsFactories.Count);
             // Select a random location at the top of the screen
-            Vector3 newRandomLocation = new Vector3(Random.Range(spawnLocation.xRightMax, spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
+            Vector3 newRandomLocation = new Vector3(Random.Range(spawnLocation.xRightMax,
+                spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
 
             ingredientsFactories[randomIndex].GetProduct(newRandomLocation);
-            yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
+            yield return new WaitForSeconds(Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
             
         }
         yield return null;

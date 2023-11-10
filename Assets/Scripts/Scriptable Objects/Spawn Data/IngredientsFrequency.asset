@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b6b3ac8fecac69469ad3b3f2ac9b204, type: 3}
-  m_Name: BasicObjectSpawnLocation
+  m_Script: {fileID: 11500000, guid: 11f582a41489f904b87d00812441cd76, type: 3}
+  m_Name: IngredientsFrequency
   m_EditorClassIdentifier: 
-  xLeftMax: 0
-  xRightMax: 0
-  yTopMax: 0
-  yBottomMax: 0
+  minFrequency: 0.01
+  maxFrequency: 1
+  spawnChance: 0
+  spawnChanceIncrease: 0
+  spawnFrequency: 0

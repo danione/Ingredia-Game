@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DObjectFactory : MonoBehaviour
 {
-    [SerializeField] private SpawnPointsScriptableObject spawnLocation;
+    [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private float spawnFrequency;
 
     [SerializeField] private GameObject dangerousObject;
