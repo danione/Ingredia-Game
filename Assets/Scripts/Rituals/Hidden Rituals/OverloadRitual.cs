@@ -11,6 +11,7 @@ public class OverloadRitual : Ritual
     protected override void CompleteAnEvent()
     {
         PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
+        PlayerEventHandler.Instance.UnlockThisRitual();
     }
 
     protected override IPotion GetReward()

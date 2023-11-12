@@ -13,6 +13,8 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<IRitual> BenevolentRitualCompleted;
     public event Action<bool> LaserFired;
     public event Action<bool> TransformIntoGhost;
+    public event Action UnlockRitual;
+    public event Action FailRitual;
 
     private void Awake()
     {
@@ -59,5 +61,15 @@ public class PlayerEventHandler : MonoBehaviour
     public void GhostTransform(bool isTransformingIntoAGhost)
     {
         TransformIntoGhost?.Invoke(isTransformingIntoAGhost);
+    }
+
+    public void UnlockThisRitual()
+    {
+        UnlockRitual?.Invoke();
+    }
+
+    public void FailThisRitual()
+    {
+        FailRitual?.Invoke();
     }
 }

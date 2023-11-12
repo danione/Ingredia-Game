@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeObject: {fileID: 0}
-  spawnFrequencyData: {fileID: 0}
+  recipeObject: {fileID: 2902313569317665775, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
+  spawnFrequencyData: {fileID: 11400000, guid: 21a69ea06dfd0f34a95033bad9d49800, type: 2}
   spawnLocationData: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
 --- !u!1 &672665152
 GameObject:
