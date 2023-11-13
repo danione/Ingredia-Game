@@ -36,19 +36,6 @@ public class RitualManager : MonoBehaviour
         }
     }
 
-    public List<KeyValuePair<string, int>> GetIngredientsOfRitual(string name)
-    {
-        List<KeyValuePair<string,int>> ritualIngredients = new List<KeyValuePair<string, int>>();
-
-        if (hiddenRituals.ContainsKey(name))
-        {
-            var list = hiddenRituals[name].RitualData.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
-            ritualIngredients = list.ToList();
-        }
-
-        return ritualIngredients;
-    }
-
     private bool IsValidRitual(string ritual)
     {
         bool isInHiddenRitualsArray = hiddenRituals.ContainsKey(ritual) && hiddenRituals[ritual] != null && hiddenRituals[ritual].isEnabled;

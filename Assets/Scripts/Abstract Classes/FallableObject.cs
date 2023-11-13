@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallableObject : MonoBehaviour, IMovable
+public abstract class FallableObject : MonoBehaviour, IMovable
 {
     [SerializeField] protected float fallSpeed = 10.0f;
 

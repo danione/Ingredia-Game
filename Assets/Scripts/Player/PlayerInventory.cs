@@ -59,6 +59,7 @@ public class PlayerInventory: MonoBehaviour
 
     private void OnRitualCompleted(IRitual ritual)
     {
+        Debug.Log(ritual);
         possibleRitual = ritual;
     }
 

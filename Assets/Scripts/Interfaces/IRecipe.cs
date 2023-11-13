@@ -5,6 +5,7 @@ public interface IRecipe
 {
     public List<IRecipeAction> ActionContainer { get; }
     public RecipeStatus Status { get; }
+    public abstract void Init();
     public abstract bool IsAllCompleted();
     public abstract void OnActionTriggered(bool isActionValid);
     public abstract void Uninit();

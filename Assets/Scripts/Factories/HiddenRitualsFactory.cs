@@ -5,20 +5,18 @@ using UnityEngine;
 public class HiddenRitualsFactory : MonoBehaviour
 {
     [SerializeField] private Transform recipeObject;
+    [SerializeField] private ObjectFactory recipeFactory;
     [SerializeField] private SpawnFrequencyData spawnFrequencyData;
     [SerializeField] private SpawnLocationData spawnLocationData;
-
-    private HiddenRitual selectedRitual = null;
-    private UnorderedRecipe recipe = null;
+    
     private float currentSpawnChance;
 
     // Start is called before the first frame update
     void Start()
     {
+        recipeFactory = new ObjectFactory(recipeObject);
         currentSpawnChance = spawnFrequencyData.spawnChance;
         StartCoroutine(SpawnHiddenRitual());
-        PlayerEventHandler.Instance.UnlockRitual += OnUnlockedRitual;
-        PlayerEventHandler.Instance.FailRitual += OnFailedRitual;
     }
 
     IEnumerator SpawnHiddenRitual()
@@ -37,32 +35,16 @@ public class HiddenRitualsFactory : MonoBehaviour
 
     private void GenerateNewRitual(RitualManager manager)
     {
-        if (!manager.HasLockedHiddenRituals() || selectedRitual != null) { return; } 
+        if (manager.HasLockedHiddenRituals()) { return; } 
         
         if(Random.Range(0f, 1f) < currentSpawnChance)
         {
             Vector3 position = new(Random.Range(spawnLocationData.xRightMax, spawnLocationData.xLeftMax), spawnLocationData.yLocation, 2);
-            Instantiate(recipeObject, position, Quaternion.identity);
-            selectedRitual = manager.GetRandomLockedRitual();
-            recipe = new UnorderedRecipe(manager.GetIngredientsOfRitual(selectedRitual.ritual));
-            selectedRitual.TemporaryEnable();
-            RecipeUIManager.Instance.Activate(recipe);
+            recipeFactory.GetProduct(position);
         }
         else
         {
             currentSpawnChance += spawnFrequencyData.spawnChanceIncrease;
         }
-    }
-
-    private void OnUnlockedRitual()
-    {
-        selectedRitual.Unlock();
-        OnFailedRitual();
-    }
-
-    private void OnFailedRitual()
-    {
-        recipe = null;
-        selectedRitual = null;
     }
 }

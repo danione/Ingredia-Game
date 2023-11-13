@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnorderedRecipe : IRecipe
+public abstract class UnorderedRecipe : MonoBehaviour, IRecipe
 {
     protected List<IRecipeAction> actionContainer = new List<IRecipeAction>();
 
@@ -10,19 +10,22 @@ public class UnorderedRecipe : IRecipe
     protected RecipeStatus status = RecipeStatus.Initial;
     public RecipeStatus Status => status;
 
+    // protected float probability;
     protected int sizeOfContainer { get { return actionContainer.Count; } }
 
     protected bool validAction = false;
     private int counter = 0;
+/*
+    protected abstract void SetProbability();
 
-    public UnorderedRecipe(List<KeyValuePair<string, int>> ingredients)
-    {   
-        foreach (var ingredient in ingredients)
-        {
-            actionContainer.Add(new CollectItemRecipeAction(ingredient.Key, ingredient.Value));
-            AddAllActions();
-        }
+    public float GetProbability()
+    {
+        // Ensure that SetProbability is called before accessing the probability.
+        SetProbability();
+        return probability;
     }
+*/
+    public abstract void Init();
 
     protected void AddAllActions()
     {
@@ -69,6 +72,7 @@ public class UnorderedRecipe : IRecipe
             item.Triggered -= OnActionTriggered;
         }
 
+<<<<<<< HEAD:Assets/Scripts/Rituals/Hidden Rituals/HiddenRituals/UnorderedRecipe.cs
         PlayerEventHandler.Instance.EmptyCauldron();
         PlayerEventHandler.Instance.UnlockThisRitual();
 
@@ -76,5 +80,12 @@ public class UnorderedRecipe : IRecipe
         {
            action.DestroyRecipe();
         }
+=======
+        if (status == RecipeStatus.Completed) 
+        {
+            PlayerEventHandler.Instance.EmptyCauldron();
+        }
+        else Debug.Log("Fail!");
+>>>>>>> parent of fe9afb8 (recipes appear):Assets/Scripts/Deprecated Scripts/UnorderedRecipe.cs
     }
 }
