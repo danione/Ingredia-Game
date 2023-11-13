@@ -65,6 +65,4 @@ public class HiddenRitualsFactory : MonoBehaviour
         recipe = null;
         selectedRitual = null;
     }
-
-
 }

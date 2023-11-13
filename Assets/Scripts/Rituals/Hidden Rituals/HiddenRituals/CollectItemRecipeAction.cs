@@ -13,7 +13,7 @@ public class CollectItemRecipeAction : IRecipeAction
     public int Amount => _amount;
 
     private int _startingAmount;
-    public event Action<IRecipeAction> Triggered;
+    public event Action<bool> Triggered;
 
     public CollectItemRecipeAction(string ingredient, int amount)
     {
@@ -26,16 +26,16 @@ public class CollectItemRecipeAction : IRecipeAction
 
     private void OnCollectedIngredient(IIngredient ingredient, int amount = 0)
     {
+        bool validAction = false;
+
         if(ingredient == null) _amount = _startingAmount;
 
-        if(ingredient == null || ingredient.IngredientName != _ingredient) 
-        {
-            Triggered?.Invoke(null);
-        } else if (ingredient.IngredientName == _ingredient && _amount != 0)
+        if (ingredient.IngredientName == _ingredient && _amount != 0)
         {
             _amount--;
-            Triggered?.Invoke(this);
+            validAction = true;
         }
+        Triggered?.Invoke(validAction);
     }
 
     public bool IsCompleted()

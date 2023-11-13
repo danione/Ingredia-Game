@@ -12,7 +12,7 @@ public class UnorderedRecipe : IRecipe
 
     protected int sizeOfContainer { get { return actionContainer.Count; } }
 
-    protected int currentNulls = 0;
+    protected bool validAction = false;
     private int counter = 0;
 
     public UnorderedRecipe(List<KeyValuePair<string, int>> ingredients)
@@ -42,30 +42,24 @@ public class UnorderedRecipe : IRecipe
         return true;
     }
 
-    public void OnActionTriggered(IRecipeAction action)
+    public void OnActionTriggered(bool action)
     {
-        // adds number of actions
         counter++;
+        if (validAction && counter < sizeOfContainer || status == RecipeStatus.Failed) return;
         
-        // check if the previous action was a valid (there would 
-        // always be at least one invalid) 
-        if (status == RecipeStatus.Failed) return;
-        if (action == null) { currentNulls++; }
-        else { currentNulls = 0; }
-
-        // If all the actions were completed and all of them were null,
-        // there has been an illegal action - fail
-        if(currentNulls >= sizeOfContainer && counter == sizeOfContainer) 
+        if (counter == sizeOfContainer - 1 && !validAction)
         {
             status = RecipeStatus.Failed;
             Uninit();
             return;
         }
-        // Check if the recipe was completed
+        else
+        {
+            validAction = false;
+            counter = 0;
+        }
+
         if (IsAllCompleted()) { Uninit(); }
-        // The counter would be set up at 0 when reaches full actions
-        counter %= sizeOfContainer;
-        currentNulls %= sizeOfContainer;
     }
 
     public void Uninit()
@@ -77,5 +71,10 @@ public class UnorderedRecipe : IRecipe
 
         PlayerEventHandler.Instance.EmptyCauldron();
         PlayerEventHandler.Instance.UnlockThisRitual();
+
+        foreach (var action in actionContainer)
+        {
+           action.DestroyRecipe();
+        }
     }
 }
