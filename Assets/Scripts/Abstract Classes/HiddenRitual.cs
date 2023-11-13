@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiddenRitual : IHidden
+public class HiddenRitual
 {
     public string ritual;
     public bool isEnabled = false;

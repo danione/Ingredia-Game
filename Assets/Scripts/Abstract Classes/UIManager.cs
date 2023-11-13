@@ -20,12 +20,6 @@ public abstract class UIManager : MonoBehaviour
         templateObject.transform.parent.gameObject.SetActive(false);
     }
 
-    public void WrapperForActions(IRecipeAction action)
-    {
-        if(action != null)
-            OnAdjustInventoryUI(action.Ingredient, action.Amount);
-    }
-
     public void OnAdjustInventoryUI(IIngredient itemName, int count)
     {
         if(itemName != null)

@@ -9,7 +9,6 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<IIngredient, int> CollectedIngredient;
     public event Action<int> CollectedGold;
     public event Action EmptiedCauldron;
-    public event Action<IRecipe> CollectedRecipe;
     public event Action<IRitual> BenevolentRitualCompleted;
     public event Action<bool> LaserFired;
     public event Action<bool> TransformIntoGhost;
@@ -34,11 +33,6 @@ public class PlayerEventHandler : MonoBehaviour
     public void CollectGold(int amount)
     {
         CollectedGold?.Invoke(amount);
-    }
-
-    public void CollectRecipe(IRecipe recipe)
-    {
-        CollectedRecipe?.Invoke(recipe);
     }
 
     public void EmptyCauldron()

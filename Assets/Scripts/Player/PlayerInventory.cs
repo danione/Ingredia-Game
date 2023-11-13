@@ -10,7 +10,6 @@ public class PlayerInventory: MonoBehaviour
     private Dictionary<string, int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
 
-    private IRecipe currentRecipe;
     public IRitual possibleRitual;
 
     // Start is called before the first frame updates
@@ -61,16 +60,6 @@ public class PlayerInventory: MonoBehaviour
     {
         Debug.Log(ritual);
         possibleRitual = ritual;
-    }
-
-    // Have a look at that
-    public void AddRecipe(IRecipe recipe)
-    {
-        currentRecipe = recipe;
-
-        PlayerEventHandler.Instance.EmptyCauldron();
-
-        PlayerEventHandler.Instance.CollectRecipe(currentRecipe);
     }
 
     public void AddGold(int amount)

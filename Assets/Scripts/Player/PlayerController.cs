@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
             case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
-            case ("Recipe"): inventory.AddRecipe(other.GetComponent<IRecipe>()); ; break;
+            case ("Recipe"): break;
         }
 
         if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile"))
