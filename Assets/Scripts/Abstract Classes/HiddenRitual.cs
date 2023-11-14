@@ -26,11 +26,11 @@ public class HiddenRitual
 
     public void Unlock()
     {
-        GameManager.Instance.GetComponent<RitualManager>().AddRitual(ritual);
+        GameManager.Instance.GetComponent<RitualManager>().AddRitualToUnlocked(ritual);
     }
 
     private void Lock()
     {
-        GameManager.Instance.GetComponent<RitualManager>().RemoveRitual(ritual);
+        GameManager.Instance.GetComponent<RitualManager>().RemoveRitualFromUnlocked(ritual);
     }
 }

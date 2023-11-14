@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeObject: {fileID: 0}
-  spawnFrequencyData: {fileID: 0}
+  recipeObject: {fileID: 2902313569317665775, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
+  spawnFrequencyData: {fileID: 11400000, guid: 21a69ea06dfd0f34a95033bad9d49800, type: 2}
   spawnLocationData: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
 --- !u!1 &672665152
 GameObject:
@@ -829,7 +829,6 @@ GameObject:
   - component: {fileID: 1237524434}
   - component: {fileID: 1237524433}
   - component: {fileID: 1237524437}
-  - component: {fileID: 1237524438}
   m_Layer: 5
   m_Name: UI Display Canvas
   m_TagString: Untagged
@@ -935,19 +934,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateObject: {fileID: 812109263}
---- !u!114 &1237524438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237524432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06be768b90d33d41971560a9ec86429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  templateObject: {fileID: 1377259880}
 --- !u!1 &1377259879
 GameObject:
   m_ObjectHideFlags: 0

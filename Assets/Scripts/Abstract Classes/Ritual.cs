@@ -66,10 +66,12 @@ public abstract class Ritual : IRitual
     public void OnIngredientCollected(IIngredient ingredient, int amount)
     {
         if(ingredient == null) { return; }
+
         if (!currentRitualValues.ContainsKey(ingredient.IngredientName))
         {
             isAvailable = false;
             currentRitualValues.Clear();
+            PlayerEventHandler.Instance.CollectedWrongIngredient(ritualData.name);
             return;
         }
 
@@ -82,6 +84,7 @@ public abstract class Ritual : IRitual
         { 
             isAvailable = true;
             CompleteAnEvent();
+            PlayerEventHandler.Instance.UnlockARitual(ritualData.name);
         }
     }
 }

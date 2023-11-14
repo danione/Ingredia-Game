@@ -12,6 +12,8 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<IRitual> BenevolentRitualCompleted;
     public event Action<bool> LaserFired;
     public event Action<bool> TransformIntoGhost;
+    public event Action<string> CollectedInvalidIngredient;
+    public event Action<string> UnlockedRitual;
 
     private void Awake()
     {
@@ -53,5 +55,15 @@ public class PlayerEventHandler : MonoBehaviour
     public void GhostTransform(bool isTransformingIntoAGhost)
     {
         TransformIntoGhost?.Invoke(isTransformingIntoAGhost);
+    }
+
+    public void CollectedWrongIngredient(string ritual)
+    {
+        CollectedInvalidIngredient?.Invoke(ritual);
+    }
+
+    public void UnlockARitual(string ritual)
+    {
+        UnlockedRitual?.Invoke(ritual);
     }
 }

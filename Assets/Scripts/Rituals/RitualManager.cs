@@ -13,7 +13,7 @@ public class RitualManager : MonoBehaviour
     [SerializeField] private RitualScriptableObject goldenRitualData;
     [SerializeField] private RitualScriptableObject overloadRitualData;
     [SerializeField] private RitualScriptableObject ghostRitualData;
-    private List<IRitual> basicRituals = new ();
+    private List<IRitual> basicRituals = new();
     private Dictionary<string, Ritual> hiddenRituals = new ();
     private HashSet<string> lockedHiddenRituals = new ();
 
@@ -38,26 +38,49 @@ public class RitualManager : MonoBehaviour
 
     private bool IsValidRitual(string ritual)
     {
-        bool isInHiddenRitualsArray = hiddenRituals.ContainsKey(ritual) && hiddenRituals[ritual] != null && hiddenRituals[ritual].isEnabled;
+        bool isInHiddenRitualsArray = hiddenRituals.ContainsKey(ritual) && hiddenRituals[ritual] != null;
         bool isInLockedRitualsSet = lockedHiddenRituals.Contains(ritual);
         return isInHiddenRitualsArray && isInLockedRitualsSet;
     }
 
-    public void AddRitual(string newRitual)
+    // The ritual won't be selected, this is considered permanent
+    // unlocking
+    public void AddRitualToUnlocked(string newRitual)
     {
-        if (IsValidRitual(newRitual))
+        if (IsValidRitual(newRitual) && !hiddenRituals[newRitual].isEnabled)
         {
             hiddenRituals[newRitual].EnableRitual();
             lockedHiddenRituals.Remove(newRitual);
         }
     }
 
-    public void RemoveRitual(string newRitual)
+    // The ritual won't be selected, this is considered permanent
+    // locking
+    // Would not work, will have to be modified !!!!!!
+    public void RemoveRitualFromUnlocked(string newRitual)
     {
-        if (IsValidRitual(newRitual))
+        if (IsValidRitual(newRitual) && hiddenRituals[newRitual].isEnabled)
         {
-            hiddenRituals[newRitual].EnableRitual();
+            hiddenRituals[newRitual].DisableRitual();
             lockedHiddenRituals.Add(newRitual);
+        }
+    }
+
+    // Temporary Unlocking
+    public void UnlockRitual(string ritual)
+    {
+        if (IsValidRitual(ritual) && !hiddenRituals[ritual].isEnabled)
+        {
+            hiddenRituals[ritual].EnableRitual();
+        }
+    }
+
+    // Temporary Locking
+    public void LockRitual(string ritual)
+    {
+        if (IsValidRitual(ritual) && hiddenRituals[ritual].isEnabled)
+        {
+            hiddenRituals[ritual].DisableRitual();
         }
     }
 
@@ -66,13 +89,13 @@ public class RitualManager : MonoBehaviour
         return lockedHiddenRituals.Count > 0;
     }
 
-    public HiddenRitual GetRandomLockedRitual()
+    public string GetRandomLockedRitual()
     {
         if (!HasLockedHiddenRituals()) return null;
-
+   
         string[] asArray = lockedHiddenRituals.ToArray();
         int randomIndex = Random.Range(0, asArray.Length);
         string randomElement = asArray[randomIndex];
-        return new HiddenRitual(randomElement);
+        return randomElement;
     } 
 }
