@@ -45,6 +45,7 @@ public class HiddenRitualsFactory : MonoBehaviour
             Instantiate(recipeObject, position, Quaternion.identity);
             randomRitual = manager.GetRandomLockedRitual();
             manager.UnlockRitual(randomRitual);
+            PlayerEventHandler.Instance.SetUpHiddenRitual(manager.GetRitualScriptableObject(randomRitual));
             Debug.Log(randomRitual);
         }
         else
@@ -59,6 +60,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         {
             manager.LockRitual(randomRitual);
             randomRitual = null;
+            PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
 
@@ -68,6 +70,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         {
             manager.AddRitualToUnlocked(randomRitual);
             randomRitual = null;
+            PlayerEventHandler.Instance.EmptyCauldron();
         } 
         else OnCollectedWrongIngredient(ritual);
     }

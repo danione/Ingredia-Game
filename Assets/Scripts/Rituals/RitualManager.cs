@@ -98,4 +98,11 @@ public class RitualManager : MonoBehaviour
         string randomElement = asArray[randomIndex];
         return randomElement;
     } 
+
+    public RitualScriptableObject GetRitualScriptableObject(string ritual)
+    {
+        if (!IsValidRitual(ritual)) return null;
+
+        return hiddenRituals[ritual].RitualData;
+    }
 }

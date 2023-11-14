@@ -45,6 +45,17 @@ public abstract class UIManager : MonoBehaviour
         transforms[itemName].text = itemName + " x" + count;
     }
 
+    public void OnAdjustInventoryUIRitual(IIngredient ingredient, int count)
+    {
+        string itemName = ingredient.IngredientName;
+        if (transforms.ContainsKey(itemName))
+        {
+            int itemCount = int.Parse(transforms[itemName].text.Split('x')[1]);
+            if (count > 1) count--;
+            transforms[itemName].text = itemName + " x" + (itemCount - count);
+        }        
+    }
+
     public void RemoveInventoryUI(string itemName)
     {
         if (transforms.ContainsKey(itemName))

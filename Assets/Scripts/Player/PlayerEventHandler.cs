@@ -14,6 +14,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<bool> TransformIntoGhost;
     public event Action<string> CollectedInvalidIngredient;
     public event Action<string> UnlockedRitual;
+    public event Action<RitualScriptableObject> SetUpUIRitualInterface;
 
     private void Awake()
     {
@@ -66,4 +67,10 @@ public class PlayerEventHandler : MonoBehaviour
     {
         UnlockedRitual?.Invoke(ritual);
     }
+
+    public void SetUpHiddenRitual(RitualScriptableObject data)
+    {
+        SetUpUIRitualInterface?.Invoke(data);
+    }
+
 }
