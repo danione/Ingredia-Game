@@ -15,6 +15,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<string> CollectedInvalidIngredient;
     public event Action<string> UnlockedRitual;
     public event Action<RitualScriptableObject> SetUpUIRitualInterface;
+    public event Action CollidedWithRecipe;
 
     private void Awake()
     {
@@ -73,4 +74,8 @@ public class PlayerEventHandler : MonoBehaviour
         SetUpUIRitualInterface?.Invoke(data);
     }
 
+    public void CollidedWithRecipeObject()
+    {
+        CollidedWithRecipe?.Invoke();
+    }
 }
