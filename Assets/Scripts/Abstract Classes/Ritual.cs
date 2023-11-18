@@ -67,7 +67,7 @@ public abstract class Ritual : IRitual
     {
         if(ingredient == null) { return; }
 
-        if (!currentRitualValues.ContainsKey(ingredient.IngredientName))
+        if (!currentRitualValues.ContainsKey(ingredient.Data.ingredientName))
         {
             isAvailable = false;
             currentRitualValues.Clear();
@@ -75,9 +75,9 @@ public abstract class Ritual : IRitual
             return;
         }
 
-        if (currentRitualValues[ingredient.IngredientName] - amount == 0)
+        if (currentRitualValues[ingredient.Data.ingredientName] - amount == 0)
         {
-            currentRitualValues.Remove(ingredient.IngredientName);
+            currentRitualValues.Remove(ingredient.Data.ingredientName);
         }
 
         if(currentRitualValues.Count == 0) 

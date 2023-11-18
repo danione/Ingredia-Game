@@ -305,20 +305,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ingredients:
-  - {fileID: 3767596377598889398, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
-  - {fileID: 8759815341031948626, guid: b6ec40f6a6e218949b08d9cf08fb991e, type: 3}
-  - {fileID: 8759815341031948626, guid: 8253082fd7b44bc46968381f604915bb, type: 3}
-  - {fileID: 8759815341031948626, guid: cb56c83cfec2fac4bbe00b5fe19c576b, type: 3}
-  - {fileID: 8759815341031948626, guid: 7c624dde63914314786f2e2cfe7e2647, type: 3}
-  - {fileID: 8759815341031948626, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
-  - {fileID: 8759815341031948626, guid: aac0a39aa2fd40c4db9c2180ef318dcb, type: 3}
-  - {fileID: 8759815341031948626, guid: 24cad8e2fecc249409b4456963ec9a9c, type: 3}
-  - {fileID: 8759815341031948626, guid: ff55f423ec3030a448c23c0823ade92d, type: 3}
-  - {fileID: 8759815341031948626, guid: 31c9a65bfbabbc448bc7de377b2ae760, type: 3}
-  - {fileID: 8759815341031948626, guid: be2c49f2b2271944f9748842eb72c9da, type: 3}
-  - {fileID: 8759815341031948626, guid: 789f5ef49a08ebe4dbd0aa54d6858db5, type: 3}
+  - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
+  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
+  _rareIngredients:
+  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
   spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
+  prefab: {fileID: 3146358866196992162, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
+  spawnDefaultRateRare: 2
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0

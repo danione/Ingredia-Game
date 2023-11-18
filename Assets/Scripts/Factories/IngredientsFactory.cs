@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IngredientsFactory: MonoBehaviour
 {
-    [SerializeField] private List<MonoBehaviour> _ingredients;
+    [SerializeField] private List<IngredientData> _ingredients;
+    [SerializeField] private List<IngredientData> _rareIngredients;
     [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
-
-    private List<Factory> ingredientsFactories = new List<Factory>();
+    [SerializeField] private Transform prefab;
+    [SerializeField] private float spawnDefaultRateRare = 2.0f;
+    private Factory ingredientsFactories;
 
     // Private Variables
 
@@ -16,34 +19,49 @@ public class IngredientsFactory: MonoBehaviour
 
     private void Awake()
     {
-        foreach(var ingredient in _ingredients)
-        {
-            ingredientsFactories.Add(new ObjectFactory(ingredient.transform));
-        }
+        ingredientsFactories = new ObjectFactory(prefab);
     }
 
     void Start()
     {
-        StartCoroutine(SpawnIngredients());
+        StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
+        StartCoroutine(SpawnIngredients(() => SpawnRandomRareIngredient()));
+    }
+
+    private void SpawnRandomIngredient()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
+        // Select a random location at the top of the screen
+        Vector3 newRandomLocation = new Vector3(UnityEngine.Random.Range(spawnLocation.xRightMax,
+            spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
+
+        ingredientsFactories.GetProduct(newRandomLocation, _ingredients[randomIndex]);
+    }
+
+    private void SpawnRandomRareIngredient()
+    {
+        float randomChance = UnityEngine.Random.Range(0f, 1f);
+        int randomIndex = UnityEngine.Random.Range(0, _rareIngredients.Count);
+        if(randomChance < _rareIngredients[randomIndex].spawnChance)
+        {
+            // Select a random location at the top of the screen
+            Vector3 newRandomLocation = new Vector3(UnityEngine.Random.Range(spawnLocation.xRightMax,
+                spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
+
+            ingredientsFactories.GetProduct(newRandomLocation, _rareIngredients[randomIndex]);
+        }
     }
 
     // Spawns ingredients at random times
-    private IEnumerator SpawnIngredients()
+    private IEnumerator SpawnIngredients(Action spawnMethod)
     {
         while (!GameManager.Instance.gameOver)
         {
-
             // Select a random object to spawn
-            int randomIndex = Random.Range(0, ingredientsFactories.Count);
-            // Select a random location at the top of the screen
-            Vector3 newRandomLocation = new Vector3(Random.Range(spawnLocation.xRightMax,
-                spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
+            spawnMethod();
+            yield return new WaitForSeconds(UnityEngine.Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
 
-            ingredientsFactories[randomIndex].GetProduct(newRandomLocation);
-            yield return new WaitForSeconds(Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
-            
         }
         yield return null;
     }
-
 }

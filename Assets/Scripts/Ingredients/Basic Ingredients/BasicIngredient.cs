@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class BasicIngredient : FallableObject, IIngredient, IProduct
+public class BasicIngredient : FallableObject, IIngredient
 {
-    [SerializeField] private string nameOfIngredient;
-    public string IngredientName => nameOfIngredient;
+    private IngredientData _data;
+    public IngredientData Data { get { return _data; } set => Initialise(value); }
 
-    public string ProductName => nameOfIngredient;
-
-    public void Initialise()
+    public void Initialise(IngredientData data)
     {
-        // TBA
+        _data = data;
+        gameObject.GetComponent<SpriteRenderer>().sprite = _data.sprite;
     }
 }

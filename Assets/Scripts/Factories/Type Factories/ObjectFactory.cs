@@ -10,11 +10,11 @@ public class ObjectFactory : Factory
         productPrefab = product;
     }
 
-    public override IProduct GetProduct(Vector3 position)
+    public override IIngredient GetProduct(Vector3 position, IngredientData scriptableObject)
     {
         GameObject instance = GameObject.Instantiate(productPrefab.gameObject, position, Quaternion.identity);
-        IProduct product = instance.GetComponent<IProduct>();
-        product.Initialise();
+        IIngredient product = instance.GetComponent<IIngredient>();
+        product.Initialise(scriptableObject);
         return product;
 
     }

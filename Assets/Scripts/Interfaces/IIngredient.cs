@@ -1,4 +1,6 @@
 public interface IIngredient
 {
-    public string IngredientName { get; }
+    public IngredientData Data { get; set; }
+
+    public void Initialise(IngredientData data);
 }

@@ -23,7 +23,7 @@ public abstract class UIManager : MonoBehaviour
     public void OnAdjustInventoryUI(IIngredient itemName, int count)
     {
         if(itemName != null)
-            OnAdjustInventoryUI(itemName.IngredientName, count); 
+            OnAdjustInventoryUI(itemName.Data.ingredientName, count); 
     }
 
     public void OnAdjustInventoryUI(string itemName, int count)
@@ -47,7 +47,7 @@ public abstract class UIManager : MonoBehaviour
 
     public void OnAdjustInventoryUIRitual(IIngredient ingredient, int count)
     {
-        string itemName = ingredient.IngredientName;
+        string itemName = ingredient.Data.ingredientName;
         if (transforms.ContainsKey(itemName))
         {
             int itemCount = int.Parse(transforms[itemName].text.Split('x')[1]);
