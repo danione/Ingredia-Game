@@ -53,9 +53,10 @@ public class PlayerController : MonoBehaviour
                 break;
             case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
             case ("Recipe"): PlayerEventHandler.Instance.CollidedWithRecipeObject();  break;
+            case ("Loot"): inventory.AddGold(other.GetComponent<GoldenNuggets>().Amount); break;
         }
 
-        if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile") || other.CompareTag("Loot"))
         {
             collision?.Invoke(other.gameObject.GetInstanceID());
             Destroy(other.gameObject);

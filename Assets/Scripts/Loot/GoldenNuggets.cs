@@ -1,10 +1,6 @@
-public class GoldenNuggets
-{
-    private int _amount;
-    public int Amount => _amount;
+using UnityEngine;
 
-    GoldenNuggets(int amount) 
-    { 
-        _amount = amount;
-    }
+public class GoldenNuggets: FallableObject
+{
+    [SerializeField] public int Amount { get { return 10; } set { Amount = value; } }
 }
