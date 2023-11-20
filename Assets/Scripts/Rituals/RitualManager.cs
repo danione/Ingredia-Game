@@ -5,35 +5,27 @@ using UnityEngine;
 
 public class RitualManager : MonoBehaviour
 {
+    [SerializeField] private List<RitualScriptableObject> basicRitualsData;
+    [SerializeField] private List<RitualScriptableObject> hiddenRitualsData;
 
-    [SerializeField] private RitualScriptableObject healingRitualData;
-    [SerializeField] private RitualScriptableObject firespitterRitualData;
-    [SerializeField] private RitualScriptableObject protectionRitualData;
-    [SerializeField] private RitualScriptableObject steelspitterRitualData;
-    [SerializeField] private RitualScriptableObject goldenRitualData;
-    [SerializeField] private RitualScriptableObject overloadRitualData;
-    [SerializeField] private RitualScriptableObject ghostRitualData;
-    private List<IRitual> basicRituals = new();
+    private List<Ritual> basicRituals = new();
     private Dictionary<string, Ritual> hiddenRituals = new ();
     private HashSet<string> lockedHiddenRituals = new ();
 
     private void Start()
     {
-        basicRituals.Add(new HealingRitual(healingRitualData));
-        basicRituals.Add(new FireSpitterRitual(firespitterRitualData));
-        basicRituals.Add(new ProtectionRitual(protectionRitualData));
-        basicRituals.Add(new SteelSpitterRitual(steelspitterRitualData));
+        foreach(var ritual in basicRitualsData)
+        {
+            basicRituals.Add(new Ritual(ritual, PotionsDatabase.Instance.GetPotion(ritual.reward)));
+            basicRituals[basicRituals.Count - 1].EnableRitual();
+        }
 
-        hiddenRituals[goldenRitualData.name] = new GoldenRitual(goldenRitualData);
-        hiddenRituals[overloadRitualData.name] = new OverloadRitual(overloadRitualData);
-        hiddenRituals[ghostRitualData.name] = new GhostProtectionRitual(ghostRitualData);
+        foreach(var hidden in hiddenRitualsData)
+        {
+             hiddenRituals[hidden.name] = new Ritual(hidden, PotionsDatabase.Instance.GetPotion(hidden.reward));
+        }
 
         lockedHiddenRituals = hiddenRituals.Keys.ToHashSet();
-
-        foreach (Ritual ritual in basicRituals)
-        {
-            ritual.EnableRitual();
-        }
     }
 
     private bool IsValidRitual(string ritual)

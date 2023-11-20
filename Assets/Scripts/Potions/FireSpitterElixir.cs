@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class FireSpitterElixir : IPotion
 {
     private bool destroyed = false;
