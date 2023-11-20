@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RitualManager : MonoBehaviour
 {
-    [SerializeField] private List<RitualScriptableObject> basicRitualsData;
-    [SerializeField] private List<RitualScriptableObject> hiddenRitualsData;
+    [SerializeField] private List<RitualScriptableObject> basicRitualsData = new();
+    [SerializeField] private List<RitualScriptableObject> hiddenRitualsData = new();
 
     private List<Ritual> basicRituals = new();
     private Dictionary<string, Ritual> hiddenRituals = new ();

@@ -6,9 +6,9 @@ public class PotionsDatabase : MonoBehaviour
 {
     public static PotionsDatabase Instance;
     [SerializeField] private Transform goldenNugget;
-    public Dictionary<string, IPotion> potionsDatabase { get; private set; }
+    private Dictionary<string, IPotion> potionsDatabase = new();
 
-    private void Start()
+    private void Awake()
     {
         if(Instance == null)
         {
