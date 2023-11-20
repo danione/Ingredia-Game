@@ -18,3 +18,4 @@ MonoBehaviour:
   ritualRecipes:
   - item: humanEye
     amount: 1
+  reward: OverloadElixir

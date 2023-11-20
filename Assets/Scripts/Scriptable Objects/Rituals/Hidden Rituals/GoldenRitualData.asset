@@ -24,3 +24,4 @@ MonoBehaviour:
     amount: 4
   - item: stirringMotion
     amount: 1
+  reward: GoldenTicketElixir

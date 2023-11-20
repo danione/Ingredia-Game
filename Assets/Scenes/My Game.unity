@@ -1335,6 +1335,7 @@ GameObject:
   - component: {fileID: 1760316109}
   - component: {fileID: 1760316111}
   - component: {fileID: 1760316110}
+  - component: {fileID: 1760316112}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1419,8 +1420,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicRitualsData:
-  - {fileID: 0}
-  hiddenRitualsData: []
+  - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
+  - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
+  - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
+  - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
+  hiddenRitualsData:
+  - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
+  - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+  - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
 --- !u!114 &1760316111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,6 +1441,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoldenNuggets: {fileID: 9016824908832684428, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
+--- !u!114 &1760316112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec1be75e75ac5648b1243dfe4186b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldenNugget: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!1 &1947860120
 GameObject:
   m_ObjectHideFlags: 0

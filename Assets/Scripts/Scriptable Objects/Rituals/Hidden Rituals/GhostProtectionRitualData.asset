@@ -18,3 +18,4 @@ MonoBehaviour:
   ritualRecipes:
   - item: humanSkull
     amount: 2
+  reward: GhostPotion

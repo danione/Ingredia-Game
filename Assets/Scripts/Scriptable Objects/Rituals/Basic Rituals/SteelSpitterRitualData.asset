@@ -19,3 +19,4 @@ MonoBehaviour:
     amount: 2
   - item: athame
     amount: 1
+  reward: Steel

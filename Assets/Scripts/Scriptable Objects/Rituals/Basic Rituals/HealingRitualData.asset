@@ -19,3 +19,4 @@ MonoBehaviour:
     amount: 1
   - item: bandage
     amount: 1
+  reward: HealingPotion
