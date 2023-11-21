@@ -6,13 +6,13 @@ public class PotionsDatabase : MonoBehaviour
 {
     public static PotionsDatabase Instance;
     [SerializeField] private Transform goldenNugget;
-    private Dictionary<string, IPotion> potionsDatabase = new();
+    private Dictionary<string, IPotion> potionsDatabase = new Dictionary<string, IPotion>();
 
     private void Awake()
     {
         if(Instance == null)
         {
-            Instance = new PotionsDatabase();
+            Instance = this;
         }
         else
         {

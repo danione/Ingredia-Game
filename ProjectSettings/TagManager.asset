@@ -14,6 +14,9 @@ TagManager:
   - Enemy
   - Dangerous Object
   - Laser
+  - Slot 1
+  - Slot 2
+  - Slot 3
   layers:
   - Default
   - TransparentFX

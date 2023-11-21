@@ -32,6 +32,8 @@ public class PlayerPotionsManager: MonoBehaviour
 
     public void AddPotion(IPotion potion)
     {
+        if (potion == null) return;
+
         // Check if we have the potion
         for (int i = 0; i < potionsInInventory.Count; i++)
         {
@@ -40,6 +42,7 @@ public class PlayerPotionsManager: MonoBehaviour
             if(potion.GetType() == potionsInInventory[i].GetType())
             {
                 potionsQuantity[i]++;
+                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.GetType().ToString(), potionsQuantity[i], i+1);
                 return;
             }
         }
@@ -51,6 +54,8 @@ public class PlayerPotionsManager: MonoBehaviour
             {
                 potionsInInventory[i] = potion;
                 potionsQuantity[i]++;
+                
+                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.GetType().ToString(), potionsQuantity[i], i + 1);
                 return;
             }
         }
@@ -81,10 +86,12 @@ public class PlayerPotionsManager: MonoBehaviour
             potionsInUse.Add(potionsInInventory[slot]); // Add it to the in use pile
             potionsQuantity[slot]--; // Decrease quantity of the said potion
 
+            PlayerEventHandler.Instance.UpdateInventoryPotions(potionsInInventory[slot].GetType().ToString(), potionsQuantity[slot], slot + 1);
+
             if (potionsQuantity[slot] == 0) // Remove the potion if none are left
             {
                 potionsInInventory[slot] = null;
-            } 
+            }
         }      
     }
 }
