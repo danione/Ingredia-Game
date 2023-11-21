@@ -13,6 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
 
 
     [SerializeField] private Transform projectileObject;
+    [SerializeField] private Transform knifeObject;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
@@ -61,12 +62,27 @@ public class PlayerInputHandler : MonoBehaviour
     {
         bool hasAvailableAmmo = PlayerController.Instance.inventory.ammo > 0;
         bool isNotOnCooldown = Time.time >= nextFireTime;
+        bool hasAvailableKnifes = PlayerController.Instance.inventory.knifeAmmo > 0;
+        Transform objectToShoot = null;
 
-        if (Input.GetKey(KeyCode.E) && hasAvailableAmmo && isNotOnCooldown)
+        if (Input.GetKey(KeyCode.E)) {
+            if(hasAvailableKnifes && isNotOnCooldown)
+            {
+                objectToShoot = knifeObject;
+                PlayerController.Instance.inventory.SubtractKnifeAmmo();
+                nextFireTime = Time.time + fireRate;
+            } else if(hasAvailableAmmo && isNotOnCooldown)
+            {
+                objectToShoot = projectileObject;
+                PlayerController.Instance.inventory.SubtractAmmo();
+                nextFireTime = Time.time + fireRate;
+            }
+        }
+
+        if(objectToShoot != null)
         {
-            Instantiate(projectileObject, spawnPoint.position, projectileObject.rotation);
-            PlayerController.Instance.inventory.SubtractAmmo();
-            nextFireTime = Time.time + fireRate;
+            Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
+            
         }
     }
 

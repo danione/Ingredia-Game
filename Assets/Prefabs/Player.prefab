@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 2668646157924114929}
   m_Layer: 0
   m_Name: LaserBeam
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,6 +708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GoldCounter: {fileID: 0}
+  m_slotsContainer: {fileID: 0}
+  m_maxSlots: 3
 --- !u!114 &7759249205259069879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  knifeObject: {fileID: 8033629693610461425, guid: 811d5304b5e68a4449c90be59dc21ac5, type: 3}
   spawnPoint: {fileID: 1945744635020908731}
   fireRate: 2
   emptyCauldronCooldown: 1

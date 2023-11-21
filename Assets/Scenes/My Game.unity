@@ -715,6 +715,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
   - {fileID: 11400000, guid: 7df2079410562364c8198029a4721f4c, type: 2}
   - {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
+  - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
   _rareIngredients:
   - {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
@@ -2523,10 +2524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1760316104}
   - component: {fileID: 1760316103}
-  - component: {fileID: 1760316105}
   - component: {fileID: 1760316107}
   - component: {fileID: 1760316109}
-  - component: {fileID: 1760316111}
   - component: {fileID: 1760316110}
   - component: {fileID: 1760316112}
   m_Layer: 0
@@ -2564,18 +2563,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1760316105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760316102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f98cf34dedee384ea7fed574be68c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1760316107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2616,23 +2603,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
   - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
   - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
+  - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
   hiddenRitualsData:
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
   - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
---- !u!114 &1760316111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760316102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f66d76b70fa6604dbea08d539071425, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GoldenNuggets: {fileID: 9016824908832684428, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!114 &1760316112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3150,6 +3125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: knifeObject
+      value: 
+      objectReference: {fileID: 8033629693610461425, guid: 811d5304b5e68a4449c90be59dc21ac5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

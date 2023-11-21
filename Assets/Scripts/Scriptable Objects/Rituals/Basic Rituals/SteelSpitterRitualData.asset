@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Adds a knife projectile to the player's arsenal.
   ritualRecipes:
   - item: humanEye
-    amount: 2
+    amount: 1
   - item: athame
     amount: 1
-  reward: Steel
+  reward: SteelSpitterElixir

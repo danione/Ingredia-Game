@@ -5,6 +5,7 @@ public class PlayerInventory: MonoBehaviour
 {
     public int size = 0;
     public int ammo { get; private set; }
+    public int knifeAmmo { get; private set; }
     public int gold { get; private set; }
 
     private Dictionary<string, int> cauldronContents = new();
@@ -73,12 +74,19 @@ public class PlayerInventory: MonoBehaviour
         ammo += amount;
     }
 
+    public void AddKnifeAmmo(int ammo)
+    {
+        knifeAmmo += ammo;
+    }
+
     public void SubtractAmmo()
     {
-        if(ammo > 0)
-        {
-            ammo--;
-        }
+        if(ammo > 0) ammo--;
+    }
+
+    public void SubtractKnifeAmmo()
+    {
+        if (knifeAmmo > 0) knifeAmmo--;
     }
 
     public void UsePotion(int slot)

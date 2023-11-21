@@ -25,6 +25,7 @@ public class PotionsDatabase : MonoBehaviour
         potionsDatabase["HealingPotion"] = new HealingPotion();
         potionsDatabase["OverloadElixir"] = new OverloadElixir();
         potionsDatabase["ProtectionElixir"] = new ProtectionElixir();
+        potionsDatabase["SteelSpitterElixir"] = new SteelSpitterElixir();
     }
 
     public bool AddEntry(IPotion potion)
