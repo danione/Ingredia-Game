@@ -41,7 +41,14 @@ public class RitualistEnemy : Enemy
     {
         foreach (var ingredient in ritualistEnemyCapsule.GetComponent<GetNearbyObjects>().ingredients)
         {
-            SwapIngredient(ingredient.Value);
+            try
+            {
+                SwapIngredient(ingredient.Value);
+            } catch (Exception ex)
+            {
+
+            }
+            
         }
         stateMachine.TransitiontTo(stateMachine.IdleState);
         StartCoroutine(CooldownSwapPosition(stateMachine.SelectIngredientState));
@@ -72,6 +79,7 @@ public class RitualistEnemy : Enemy
     private void SwapIngredient(GameObject ingredient)
     {
         if(ingredient == null) { return; }
+
         Vector3 currentPos = ingredient.transform.position;
         GameObject newIngredient = ingredientTypes[UnityEngine.Random.Range(0, ingredientTypes.Length)];
         

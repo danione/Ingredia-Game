@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyFactory : MonoBehaviour
 {
     [SerializeField] private List<WaveEnemy> enemies;
-    [SerializeField] private int currentCurrency = 0;
+    [SerializeField] private float currentCurrency = 0;
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
+    [SerializeField] private float currencyGenerationCooldown = 0.5f;
+    [SerializeField] private float currencyIncreaserTimewise = 1f;
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class EnemyFactory : MonoBehaviour
     {
         if (enemies.Count == 0) return;
 
-        while (true)
+        while (!GameManager.Instance.gameOver)
         {
             int index = Random.Range(0, enemies.Count);
             if (currentCurrency - enemies[index].cost >= 0)
@@ -30,7 +32,7 @@ public class EnemyFactory : MonoBehaviour
         }
     }
 
-    // Spawns ingredients at random times
+        // Spawns ingredients at random times
     private IEnumerator SpawnEnemies()
     {
         while (!GameManager.Instance.gameOver)
