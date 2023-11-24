@@ -7,8 +7,7 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private List<WaveEnemy> enemies;
     [SerializeField] private float currentCurrency = 0;
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
-    [SerializeField] private float currencyGenerationCooldown = 0.5f;
-    [SerializeField] private float currencyIncreaserTimewise = 1f;
+    private int currentAliveEnemies = 0;
 
     void Start()
     {
@@ -27,6 +26,7 @@ public class EnemyFactory : MonoBehaviour
                 currentCurrency -= enemies[index].cost;
                 Enemy within = enemies[index].enemy.GetComponent<Enemy>();
                 Instantiate(enemies[index].enemy, within.GetRandomPosition(), Quaternion.identity);
+                currentAliveEnemies++;
                 break;
             }
         }
