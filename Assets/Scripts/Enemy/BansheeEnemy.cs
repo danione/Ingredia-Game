@@ -67,7 +67,7 @@ public class BansheeEnemy : Enemy
         SetTheCollider(false);
     }
 
-    private void OnDestroy()
+    protected override void DestroyEnemy()
     {
         InputEventHandler.instance.SetMovement(isMoving: true);
     }

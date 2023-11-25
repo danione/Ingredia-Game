@@ -44,9 +44,9 @@ public class RitualistEnemy : Enemy
             try
             {
                 SwapIngredient(ingredient.Value);
-            } catch (Exception ex)
+            } catch (Exception)
             {
-
+                continue;
             }
             
         }
@@ -73,7 +73,6 @@ public class RitualistEnemy : Enemy
     private void Update()
     {
         stateMachine.Update();
-        
     }
 
     private void SwapIngredient(GameObject ingredient)
@@ -85,16 +84,16 @@ public class RitualistEnemy : Enemy
         
         Destroy(ingredient);
 
-        ingredient = Instantiate(newIngredient, currentPos, Quaternion.identity);
+        Instantiate(newIngredient, currentPos, Quaternion.identity);
     }
 
-    private void OnDestroy()
+    protected override void DestroyEnemy()
     {
         Debug.Log("Destroyed Enemy");
         stateMachine.LookoutState.FinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
         RitualistEnemyCount--;
-        if(RitualistEnemyCount <= 0 && ritualistEnemyCapsule.gameObject != null)
+        if (RitualistEnemyCount <= 0 && ritualistEnemyCapsule.gameObject != null)
         {
             ritualistEnemyCapsule.gameObject.SetActive(false);
         }

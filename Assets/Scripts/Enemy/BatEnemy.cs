@@ -47,4 +47,9 @@ public class BatEnemy : Enemy
         yield return new WaitForSeconds(spawnCooldown);
         attacked = false;
     }
+
+    protected override void DestroyEnemy()
+    {
+        return;
+    }
 }

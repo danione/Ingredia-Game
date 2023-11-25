@@ -722,7 +722,6 @@ MonoBehaviour:
   spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
   prefab: {fileID: 3146358866196992162, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
-  spawnDefaultRateRare: 2
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,8 +758,6 @@ MonoBehaviour:
     cost: 5
   currentCurrency: 5
   spawnFrequencyInSeconds: 2
-  currencyGenerationCooldown: 0.5
-  currencyIncreaserTimewise: 0.1
 --- !u!114 &596683722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2530,6 +2527,7 @@ GameObject:
   - component: {fileID: 1760316109}
   - component: {fileID: 1760316110}
   - component: {fileID: 1760316112}
+  - component: {fileID: 1760316113}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2623,6 +2621,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldenNugget: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
+--- !u!114 &1760316113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d179d5f78c0b884cbfab6db5f3a30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1947860120
 GameObject:
   m_ObjectHideFlags: 0

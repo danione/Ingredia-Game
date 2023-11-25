@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IUnitStats
+public abstract class Enemy : MonoBehaviour, IUnitStats
 {
     private float health;
     public float Health => health;
@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour, IUnitStats
     public virtual void Die()
     {
         Destroy(gameObject);
-        Debug.Log("Drop loot");
     }
 
     public virtual Vector3 GetRandomPosition()
@@ -38,4 +37,12 @@ public class Enemy : MonoBehaviour, IUnitStats
         health -= amount;
         if(health < 0) { Die(); }
     }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.DestroyedEnemy();
+        DestroyEnemy();
+    }
+
+    protected abstract void DestroyEnemy();
 }

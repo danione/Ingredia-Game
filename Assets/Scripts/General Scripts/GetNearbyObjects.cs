@@ -11,17 +11,11 @@ public class GetNearbyObjects : MonoBehaviour
         PlayerController.Instance.collision += OnRemoveElement;
     }
 
-    private void OnDestroy()
-    {
-        PlayerController.Instance.collision -= OnRemoveElement;
-    }
-
     public void OnRemoveElement(int instanceID)
     {
         if (ingredients.ContainsKey(instanceID))
         {
             ingredients.Remove(instanceID);
-            Debug.Log(ingredients.Count);
         }
     }
 
@@ -30,7 +24,6 @@ public class GetNearbyObjects : MonoBehaviour
         if(other.gameObject.CompareTag("Ingredient"))
         {
             ingredients[other.gameObject.GetInstanceID()] = other.gameObject;
-            Debug.Log(ingredients.Count);
         }
     }
 

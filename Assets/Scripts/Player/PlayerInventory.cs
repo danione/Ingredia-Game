@@ -20,7 +20,7 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        ammo = 0;
+        ammo = 10;
     }
 
     private void Update()

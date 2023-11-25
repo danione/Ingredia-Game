@@ -7,11 +7,25 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private List<WaveEnemy> enemies;
     [SerializeField] private float currentCurrency = 0;
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
+    [SerializeField] private float waveSpawnCooldownInSeconds = 3.0f;
+    [SerializeField] private float currentWave;
+
     private int currentAliveEnemies = 0;
 
     void Start()
     {
         StartCoroutine(SpawnEnemies());
+        GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
+        currentWave = 1;
+    }
+
+    private void OnEnemyDestroyed()
+    {
+        if(currentAliveEnemies > 0)
+            currentAliveEnemies--;
+        
+        if (currentAliveEnemies == 0 && currentCurrency == 0)
+            StartCoroutine(IncrementWave());
     }
 
     private void SpawnEnemy()
@@ -45,6 +59,15 @@ public class EnemyFactory : MonoBehaviour
 
         }
         yield return null;
+    }
+
+    private IEnumerator IncrementWave()
+    {
+        Debug.Log("Welcome");
+        yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
+
+        currentWave++;
+        currentCurrency += currentWave;
     }
 }
 

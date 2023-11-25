@@ -10,7 +10,6 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Transform prefab;
-    [SerializeField] private float spawnDefaultRateRare = 2.0f;
     private Factory ingredientsFactories;
 
     // Private Variables
