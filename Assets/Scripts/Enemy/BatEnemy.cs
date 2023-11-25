@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BatEnemy : Enemy
@@ -11,8 +12,11 @@ public class BatEnemy : Enemy
     private float currentPositionDifferenceX;
 
     private bool attacked = false;
+    private static bool hasCollided = false;
+    protected bool isUpgraded = false;
     [SerializeField] private Transform projectile;
     [SerializeField] private float spawnCooldown;
+    
 
     private void Start()
     {
@@ -29,12 +33,18 @@ public class BatEnemy : Enemy
         {
             attacked = true;
             _state.TransitiontTo(_state.IdleState);
-            Instantiate(projectile, gameObject.transform.position, projectile.rotation);
-            StartCoroutine(Cooldown());
-        } else if(currentPositionDifferenceX >= boundaryMovement)
+            Shoot();
+        }
+        else if(currentPositionDifferenceX >= boundaryMovement)
         {
             _state.TransitiontTo(_state.MoveState);
         }
+    }
+
+    protected virtual void Shoot()
+    {
+        Instantiate(projectile, gameObject.transform.position, projectile.rotation);
+        StartCoroutine(Cooldown());
     }
 
     private float GetCurrentPositionDifferenceX()
@@ -50,14 +60,22 @@ public class BatEnemy : Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null)
+        if(!hasCollided && other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null && !isUpgraded)
         {
-            Debug.Log("Fuse");
+            hasCollided = true;
+            GameEventHandler.Instance.FuseTwoBats(gameObject.transform.position);
+            Destroy(other.gameObject);
+            Die();
         }
     }
 
     protected override void DestroyEnemy()
     {
         return;
+    }
+
+    public void Upgrade()
+    {
+        isUpgraded = true;
     }
 }

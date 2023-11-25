@@ -760,6 +760,7 @@ MonoBehaviour:
   spawnFrequencyInSeconds: 2
   waveSpawnCooldownInSeconds: 3
   currentWave: 0
+  upgradedBat: {fileID: 8147655413801567454, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
 --- !u!114 &596683722
 MonoBehaviour:
   m_ObjectHideFlags: 0
