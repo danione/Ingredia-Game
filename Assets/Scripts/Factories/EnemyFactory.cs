@@ -63,9 +63,7 @@ public class EnemyFactory : MonoBehaviour
 
     private IEnumerator IncrementWave()
     {
-        Debug.Log("Welcome");
         yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
-
         currentWave++;
         currentCurrency += currentWave;
     }

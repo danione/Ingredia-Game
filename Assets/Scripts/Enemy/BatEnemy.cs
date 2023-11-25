@@ -48,6 +48,14 @@ public class BatEnemy : Enemy
         attacked = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null)
+        {
+            Debug.Log("Fuse");
+        }
+    }
+
     protected override void DestroyEnemy()
     {
         return;
