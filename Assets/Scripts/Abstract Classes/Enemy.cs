@@ -3,9 +3,9 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour, IUnitStats
 {
     private float health;
-    public float Health => health;
-    [SerializeField] protected float xLeftMaxSpawn;
-    [SerializeField] protected float xRightMaxSpawn;
+    [SerializeField] public float Health => health;
+    [SerializeField] public float xLeftMaxSpawn;
+    [SerializeField] public float xRightMaxSpawn;
     [SerializeField] protected float yTopMaxSpawn;
     [SerializeField] protected float yBottomMaxSpawn;
 

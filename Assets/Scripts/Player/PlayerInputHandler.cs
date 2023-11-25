@@ -10,13 +10,15 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
-
+    private bool hasSpawnedABat = false;
 
     [SerializeField] private Transform projectileObject;
     [SerializeField] private Transform knifeObject;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
+    [SerializeField] GameObject bat;
+
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class PlayerInputHandler : MonoBehaviour
         AttemptRitual();
         UsePotion();
         TurnIntoGhost();
+        Cheats();
     }
 
     private void UsePotion()
@@ -111,5 +114,22 @@ public class PlayerInputHandler : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) PlayerEventHandler.Instance.GhostTransform(true);
         else PlayerEventHandler.Instance.GhostTransform(false);
 
+    }
+
+    private void Cheats()
+    {
+        if (Input.GetKey(KeyCode.B) && !hasSpawnedABat)
+        {
+            BatEnemy enemy = bat.gameObject.GetComponent<BatEnemy>();
+            Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
+            hasSpawnedABat = true;
+            StartCoroutine(ResetSpawnedBatFlagAfterDelay());
+        }
+    }
+
+    IEnumerator ResetSpawnedBatFlagAfterDelay()
+    {
+        yield return new WaitForSeconds(1);
+        hasSpawnedABat = false;
     }
 }

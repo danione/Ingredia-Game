@@ -3141,6 +3141,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: bat
+      value: 
+      objectReference: {fileID: 8147655413801567454, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
+    - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: knifeObject
       value: 
       objectReference: {fileID: 8033629693610461425, guid: 811d5304b5e68a4449c90be59dc21ac5, type: 3}

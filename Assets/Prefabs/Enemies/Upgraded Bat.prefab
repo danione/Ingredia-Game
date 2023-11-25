@@ -128,7 +128,9 @@ MonoBehaviour:
   movementSpeed: 0.5
   boundaryMovement: 2
   projectile: {fileID: 6192621732674448424, guid: a6b5ef0f29d6ad242931788cc1ea504e, type: 3}
-  spawnCooldown: 1
+  spawnCooldown: 0.8
+  upgradedStateDuration: 10
+  rapidShootRateCooldown: 0.3
 --- !u!54 &-6506927491223567469
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class BatEnemy : Enemy
 {
-    private BatRitualistStateMachine _state;
+    protected BatRitualistStateMachine _state;
 
     [SerializeField] private float movementSpeed = 1.0f;
     [SerializeField] private float boundaryMovement = 2f;
     private float currentPositionDifferenceX;
 
-    private bool attacked = false;
+    protected bool attacked = false;
     private static bool hasCollided = false;
     protected bool isUpgraded = false;
-    [SerializeField] private Transform projectile;
+    [SerializeField] protected Transform projectile;
     [SerializeField] private float spawnCooldown;
+    [SerializeField] private float upgradedStateDuration;
     
 
     private void Start()
@@ -28,16 +29,28 @@ public class BatEnemy : Enemy
     private void Update()
     {
         _state.Update();
-        currentPositionDifferenceX = GetCurrentPositionDifferenceX();
-        if (currentPositionDifferenceX < boundaryMovement && !attacked)
+
+        if (_state.CurrentState == _state.FusionAttackState)
         {
-            attacked = true;
-            _state.TransitiontTo(_state.IdleState);
-            Shoot();
+            if (!attacked)
+            {
+                attacked = true;
+                Shoot();
+            }
         }
-        else if(currentPositionDifferenceX >= boundaryMovement)
+        else
         {
-            _state.TransitiontTo(_state.MoveState);
+            currentPositionDifferenceX = GetCurrentPositionDifferenceX();
+            if (currentPositionDifferenceX < boundaryMovement && !attacked)
+            {
+                attacked = true;
+                _state.TransitiontTo(_state.IdleState);
+                Shoot();
+            }
+            else if (currentPositionDifferenceX >= boundaryMovement)
+            {
+                _state.TransitiontTo(_state.MoveState);
+            }
         }
     }
 
@@ -60,22 +73,60 @@ public class BatEnemy : Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasCollided && other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null && !isUpgraded)
+        if(!hasCollided && other.CompareTag("Enemy") && !isUpgraded)
         {
-            hasCollided = true;
-            GameEventHandler.Instance.FuseTwoBats(gameObject.transform.position);
+            Fusion(other);
+        }
+    }
+
+    protected virtual void Fusion(Collider other)
+    {
+        BatEnemy batEnemy = other.GetComponent<BatEnemy>();
+        if (batEnemy == null) return;
+        hasCollided = true;
+
+        if(isUpgraded && !batEnemy.isUpgraded)
+        {
             Destroy(other.gameObject);
+        }
+        else if (!isUpgraded)
+        {
+            if (batEnemy.isUpgraded)
+            {
+                batEnemy.FusingState();
+            }
+            else
+            {
+                GameEventHandler.Instance.FuseTwoBats(gameObject.transform.position);
+                Destroy(other.gameObject);
+            }
             Die();
         }
     }
 
     protected override void DestroyEnemy()
     {
-        return;
+        hasCollided = false;
     }
 
     public void Upgrade()
     {
         isUpgraded = true;
+    }
+
+    public void FusingState()
+    {
+        if(_state.CurrentState != _state.FusionAttackState)
+        {
+            _state.TransitiontTo(_state.FusionAttackState);
+            StartCoroutine(TransitionBackToNormalState());
+        }
+    }
+
+    IEnumerator TransitionBackToNormalState()
+    {
+        yield return new WaitForSeconds(upgradedStateDuration);
+        _state.TransitiontTo(_state.MoveState);
+        attacked = false;
     }
 }

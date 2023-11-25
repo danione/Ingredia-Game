@@ -75,6 +75,7 @@ public class EnemyFactory : MonoBehaviour
     {
         GameObject bat = Instantiate(upgradedBat, position, Quaternion.identity);
         bat.GetComponent<BatEnemy>().Upgrade();
+        currentAliveEnemies++;
     }
 }
 
