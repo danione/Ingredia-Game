@@ -38,19 +38,24 @@ public class BatEnemy : Enemy
                 Shoot();
             }
         }
-        else
+        else if(_state.CurrentState == _state.MoveState || _state.CurrentState == _state.IdleState)
         {
-            currentPositionDifferenceX = GetCurrentPositionDifferenceX();
-            if (currentPositionDifferenceX < boundaryMovement && !attacked)
-            {
-                attacked = true;
-                _state.TransitiontTo(_state.IdleState);
-                Shoot();
-            }
-            else if (currentPositionDifferenceX >= boundaryMovement)
-            {
-                _state.TransitiontTo(_state.MoveState);
-            }
+            FollowPlayerAndShoot();
+        }
+    }
+
+    private void FollowPlayerAndShoot()
+    {
+        currentPositionDifferenceX = GetCurrentPositionDifferenceX();
+        if (currentPositionDifferenceX < boundaryMovement && !attacked)
+        {
+            attacked = true;
+            _state.TransitiontTo(_state.IdleState);
+            Shoot();
+        }
+        else if (currentPositionDifferenceX >= boundaryMovement)
+        {
+            _state.TransitiontTo(_state.MoveState);
         }
     }
 

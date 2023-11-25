@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84c78532fe7e9c419b4bb402c001215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
   xLeftMaxSpawn: 13
   xRightMaxSpawn: -13
   yTopMaxSpawn: 7

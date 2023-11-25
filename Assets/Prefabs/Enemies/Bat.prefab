@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ac336ac1999b747b317f4eff201bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   xLeftMaxSpawn: 13
   xRightMaxSpawn: -13
   yTopMaxSpawn: 6
@@ -129,6 +130,7 @@ MonoBehaviour:
   boundaryMovement: 2
   projectile: {fileID: 6192621732674448424, guid: a6b5ef0f29d6ad242931788cc1ea504e, type: 3}
   spawnCooldown: 2
+  upgradedStateDuration: 0
 --- !u!54 &-6506927491223567469
 Rigidbody:
   m_ObjectHideFlags: 0

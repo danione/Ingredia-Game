@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IUnitStats
 {
-    private float health;
-    [SerializeField] public float Health => health;
+    [SerializeField] private float health;
+    public float Health => health;
     [SerializeField] public float xLeftMaxSpawn;
     [SerializeField] public float xRightMaxSpawn;
     [SerializeField] protected float yTopMaxSpawn;
@@ -35,7 +35,7 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
     public virtual void TakeDamage(float amount)
     {
         health -= amount;
-        if(health < 0) { Die(); }
+        if(health <= 0) { Die(); }
     }
 
     private void OnDestroy()
