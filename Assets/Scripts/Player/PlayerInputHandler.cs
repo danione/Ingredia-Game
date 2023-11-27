@@ -36,6 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
         UsePotion();
         TurnIntoGhost();
         Cheats();
+        UpgradeMenu();
     }
 
     private void UsePotion()
@@ -131,5 +132,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         hasSpawnedABat = false;
+    }
+
+    private void UpgradeMenu()
+    {
+        if (Input.GetKey(KeyCode.I))
+        {
+            GameEventHandler.Instance.BringUpUpgradesMenu();
+        }
     }
 }

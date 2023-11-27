@@ -3819,6 +3819,7 @@ GameObject:
   - component: {fileID: 1237524433}
   - component: {fileID: 1237524437}
   - component: {fileID: 1237524438}
+  - component: {fileID: 1237524439}
   m_Layer: 5
   m_Name: UI Display Canvas
   m_TagString: Untagged
@@ -3939,6 +3940,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateObject: {fileID: 1377259880}
+--- !u!114 &1237524439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237524432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2c8bc141c301747a3dc5df9094bbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,7 +5153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652545835
 RectTransform:
   m_ObjectHideFlags: 0

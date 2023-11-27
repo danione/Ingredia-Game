@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public abstract class UIManager : MonoBehaviour
+public abstract class UIObjectsAbstract : MonoBehaviour
 {
     [SerializeField] protected Transform templateObject;
     private Dictionary<string,TextMeshProUGUI> transforms = new Dictionary<string, TextMeshProUGUI>();

@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class UpgradeData : MonoBehaviour
+public abstract class UpgradeData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string upgradeName;
+    public string description;
+    public int cost;
+    public abstract void ApplyUpgrade(GameObject obj);
 }

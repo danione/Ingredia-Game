@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiddenRitualUIManager : UIManager
+public class HiddenRitualUIManager : UIObjectsAbstract
 {
     public override void Init()
     {

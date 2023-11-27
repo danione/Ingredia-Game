@@ -9,7 +9,8 @@ public class GameEventHandler : MonoBehaviour
     public Action DestroyedEnemy;
     public Action<Vector3> FuseBats;
     public Action BansheeDetectedPlayer;
-
+    public Action UpgradesMenuOpen;
+    public Action UpgradesMenuClose;
 
     private void Awake()
     {
@@ -36,5 +37,15 @@ public class GameEventHandler : MonoBehaviour
     public void BansheeDetectPlayer()
     {
         BansheeDetectedPlayer?.Invoke();
+    }
+
+    public void BringUpUpgradesMenu()
+    {
+        UpgradesMenuOpen?.Invoke();
+    }
+
+    public void ClosingDownUpgradesMenu()
+    {
+        UpgradesMenuClose?.Invoke();
     }
 }

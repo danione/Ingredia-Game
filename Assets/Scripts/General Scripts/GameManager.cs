@@ -16,12 +16,38 @@ public class GameManager: MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        GameEventHandler.Instance.UpgradesMenuOpen += OnUpdatesMenuOpened;
+        GameEventHandler.Instance.UpgradesMenuClose += OnUpdatesMenuClosed;
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void Update()
     {
         if (gameOver)
         {
             Time.timeScale = 0;
         }
+    }
+
+    private void OnUpdatesMenuOpened()
+    {
+        PauseGame();
+    }
+
+    private void OnUpdatesMenuClosed()
+    {
+        ResumeGame();
     }
 
 }

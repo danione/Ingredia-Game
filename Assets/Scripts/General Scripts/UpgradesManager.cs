@@ -8,7 +8,6 @@ public class UpgradesManager : MonoBehaviour
 
     private void Start()
     {
-        upgrades.Add(new HealthUpgrade());
         upgrades.Add(new SpeedUpgrade());
         foreach (var upgrade in upgrades)
         {
