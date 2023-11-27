@@ -2,11 +2,11 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class BansheeEnemy : Enemy
 {
     private bool hasReachedDestination = false;
     private bool hasDetectedPlayer = false;
+    private bool isColliding = true;
 
     public BansheeStateMachine _state;
     [SerializeField] private Boundaries fieldOfMovement;
@@ -56,15 +56,20 @@ public class BansheeEnemy : Enemy
 
     private void SetTheCollider(bool isEnabled)
     {
-        gameObject.GetComponent<Collider>().enabled = isEnabled;
+        isColliding = isEnabled;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        hasReachedDestination = false;
-        hasDetectedPlayer = true;
-        StartCoroutine(CooldownOfReachedDestination(_state.AttackState));
-        SetTheCollider(false);
+        if(other.CompareTag("Player") && isColliding)
+        {
+            hasReachedDestination = false;
+            hasDetectedPlayer = true;
+            StartCoroutine(CooldownOfReachedDestination(_state.AttackState));
+            SetTheCollider(false);
+        }
+
+        Debug.Log(this.GetComponent<Collider>());
     }
 
     protected override void DestroyEnemy()

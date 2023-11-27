@@ -40,8 +40,10 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     private void OnDestroy()
     {
-        GameEventHandler.Instance.DestroyedEnemy();
+        if(GameEventHandler.Instance != null)
+            GameEventHandler.Instance.DestroyEnemy();
         DestroyEnemy();
+        
     }
 
     protected abstract void DestroyEnemy();
