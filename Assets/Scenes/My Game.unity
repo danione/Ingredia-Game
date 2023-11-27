@@ -781,7 +781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 325399681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1760316113}
+        m_TargetAssemblyTypeName: GameEventHandler, Assembly-CSharp
+        m_MethodName: ClosingDownUpgradesMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &325399681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3949,9 +3961,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1237524432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e2c8bc141c301747a3dc5df9094bbe9, type: 3}
+  m_Script: {fileID: 11500000, guid: a7625f3f181205d4184f7b941033ad5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryMenu: {fileID: 1652545835}
+  healthUIItem: {fileID: 2039303642}
+  healthUpgrades:
+  - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
+  - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
+  - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6461,7 +6479,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1881338314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237524439}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BuyHealthUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1881338314
 MonoBehaviour:
   m_ObjectHideFlags: 0
