@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IMovable
 {
-    [SerializeField] public float movementSpeed;
+    [SerializeField] private float movementSpeed;
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
     private float moveDirectionExternalControl = 0f;

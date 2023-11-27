@@ -9,7 +9,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Transform inventoryMenu;
     [SerializeField] private Transform healthUIItem;
-    [SerializeField] private List<HealthUpgrade> healthUpgrades = new();
+    [SerializeField] private List<UpgradeData> healthUpgrades = new();
+    [SerializeField] private Transform movementSpeedUIItem;
+    [SerializeField] private List<UpgradeData> movementUpgrades = new();
 
     private void Start()
     {
@@ -39,35 +41,55 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        HealthUpgrade();
+        Upgrade(healthUIItem, healthUpgrades);
+        Upgrade(movementSpeedUIItem, movementUpgrades);
     }
 
-    private void HealthUpgrade()
+    private void Upgrade(Transform uiItem, List<UpgradeData> upgrades)
     {
         string upgradeName;
         string cost;
-        if (healthUpgrades.Count > 0)
+        if (upgrades.Count > 0)
         {
-            upgradeName = healthUpgrades[0].upgradeName;
-            cost = healthUpgrades[0].cost.ToString();
+            upgradeName = upgrades[0].upgradeName;
+            cost = upgrades[0].cost.ToString();
         }
         else
         {
-            upgradeName = "Latest Endurance Upgrade Received";
+            upgradeName = "Latest Upgrade Received";
             cost = "";
-            healthUIItem.GetChild(2).gameObject.SetActive(false);
+            uiItem.GetChild(2).gameObject.SetActive(false);
         }
 
-        healthUIItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = upgradeName;
-        healthUIItem.GetChild(1).GetComponent<TextMeshProUGUI>().text = cost;
+        uiItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = upgradeName;
+        uiItem.GetChild(1).GetComponent<TextMeshProUGUI>().text = cost;
     }
 
-    public void BuyHealthUpgrade()
+    private enum UpgradeTypes
     {
-        if(healthUpgrades.Count > 0)
+        Health,
+        MovementSpeed
+    }
+
+
+    public void OnBuyHealth() { BuyButton(UpgradeTypes.Health); }
+    public void OnBuyMovement() { BuyButton(UpgradeTypes.MovementSpeed); }
+
+    private void BuyButton(UpgradeTypes type)
+    {
+        switch(type)
         {
-            healthUpgrades[0].ApplyUpgrade(PlayerController.Instance.gameObject);
-            healthUpgrades.RemoveAt(0);
+            case UpgradeTypes.Health: BuyUpgrade(healthUpgrades); break;
+            case UpgradeTypes.MovementSpeed: BuyUpgrade(movementUpgrades); break;
+        }
+    }
+
+    private void BuyUpgrade(List<UpgradeData> upgrade)
+    {
+        if(upgrade.Count > 0)
+        {
+            upgrade[0].ApplyUpgrade(PlayerController.Instance.gameObject);
+            upgrade.RemoveAt(0);
             UpdateScreen();
         }
         UpdateScreen();
