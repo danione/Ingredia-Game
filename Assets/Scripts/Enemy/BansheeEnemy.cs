@@ -16,6 +16,7 @@ public class BansheeEnemy : Enemy
     {
         _state = new BansheeStateMachine(this, fieldOfMovement);
         _state.Initialise(_state.MoveState);
+        GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
     }
 
     private void Update()
@@ -59,17 +60,15 @@ public class BansheeEnemy : Enemy
         isColliding = isEnabled;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnPlayerInDetectionZone()
     {
-        if(other.CompareTag("Player") && isColliding)
+        if(isColliding)
         {
             hasReachedDestination = false;
             hasDetectedPlayer = true;
             StartCoroutine(CooldownOfReachedDestination(_state.AttackState));
             SetTheCollider(false);
         }
-
-        Debug.Log(this.GetComponent<Collider>());
     }
 
     protected override void DestroyEnemy()

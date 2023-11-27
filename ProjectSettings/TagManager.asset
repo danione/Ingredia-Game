@@ -17,6 +17,7 @@ TagManager:
   - Slot 1
   - Slot 2
   - Slot 3
+  - BansheeDetection
   layers:
   - Default
   - TransparentFX

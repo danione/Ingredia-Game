@@ -8,6 +8,7 @@ public class GameEventHandler : MonoBehaviour
     public static GameEventHandler Instance;
     public Action DestroyedEnemy;
     public Action<Vector3> FuseBats;
+    public Action BansheeDetectedPlayer;
 
 
     private void Awake()
@@ -30,5 +31,10 @@ public class GameEventHandler : MonoBehaviour
     public void FuseTwoBats(Vector3 upgradedBatPosition)
     {
         FuseBats?.Invoke(upgradedBatPosition);
+    }
+
+    public void BansheeDetectPlayer()
+    {
+        BansheeDetectedPlayer?.Invoke();
     }
 }

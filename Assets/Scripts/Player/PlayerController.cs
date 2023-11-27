@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
             case ("Ingredient"): inventory.AddToCauldron(other.GetComponent<IIngredient>()); break;
             case ("Recipe"): PlayerEventHandler.Instance.CollidedWithRecipeObject();  break;
             case ("Loot"): inventory.AddGold(other.GetComponent<GoldenNuggets>().Amount); break;
+            case ("BansheeDetection"): GameEventHandler.Instance.BansheeDetectPlayer(); break;
         }
 
         if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile") || other.CompareTag("Loot"))
