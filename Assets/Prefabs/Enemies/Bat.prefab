@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  spawnBoundaries: {fileID: 11400000, guid: b92b28a4fb371494180f74dc40dd2ccc, type: 2}
   xLeftMaxSpawn: 13
   xRightMaxSpawn: -13
   yTopMaxSpawn: 6

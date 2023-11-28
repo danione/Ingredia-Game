@@ -6,7 +6,7 @@ public class BansheeStateMachine : EntityStateMachine
     public BansheeMoveState MoveState;
     public BansheeAttackState AttackState;
 
-    public BansheeStateMachine(BansheeEnemy thisGameObject, Boundaries fieldOfMovement)
+    public BansheeStateMachine(BansheeEnemy thisGameObject, BoundariesData fieldOfMovement)
     {
         IdleState = new IdleState();
         MoveState = new BansheeMoveState(PlayerController.Instance, thisGameObject, 10.0f, fieldOfMovement);

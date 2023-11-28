@@ -30,7 +30,7 @@ public class BatEnhancedMovementState : IState
 
         Vector3 unitPos = currentUnit.gameObject.transform.position;
 
-        if(!moveRight && unitPos.x > currentUnit.xLeftMaxSpawn)
+        if(!moveRight && unitPos.x > currentUnit.Boundaries.xLeftMax)
         {
             direction = -1;
         }
@@ -38,7 +38,7 @@ public class BatEnhancedMovementState : IState
         {
             moveRight = true;
 
-            if(unitPos.x < currentUnit.xRightMaxSpawn)
+            if(unitPos.x < currentUnit.Boundaries.xRightMax)
             {
                 direction = 1;
             }

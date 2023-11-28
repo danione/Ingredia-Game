@@ -19,7 +19,7 @@ public class SuperBatAttackState : IState
     public SuperBatAttackState(BatEnemy enemy)
     {
         currentUnit = enemy;
-        incrementalStep = (enemy.xLeftMaxSpawn - enemy.xRightMaxSpawn) / defaultNumberOfCoordinates;
+        incrementalStep = (enemy.Boundaries.xLeftMax - enemy.Boundaries.xRightMax) / defaultNumberOfCoordinates;
         timer = new Timer(defaultTeleportationCooldown);
     }
 
@@ -29,7 +29,7 @@ public class SuperBatAttackState : IState
         coordinatesVisited = defaultNumberOfCoordinates;
         indexOfLastLocation = -1;
         availableTeleportationXCoordinates = Enumerable.Range(0, defaultNumberOfCoordinates)
-                                            .Select(i => currentUnit.xRightMaxSpawn + i * incrementalStep + (float)(random.NextDouble() * incrementalStep))
+                                            .Select(i => currentUnit.Boundaries.xRightMax + i * incrementalStep + (float)(random.NextDouble() * incrementalStep))
                                             .ToList();
         Teleport();
     }

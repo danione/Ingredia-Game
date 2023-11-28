@@ -153,15 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  xLeftMaxSpawn: 13
-  xRightMaxSpawn: -13
-  yTopMaxSpawn: 7
-  yBottomMaxSpawn: 4
-  fieldOfMovement:
-    xLeftBoundary: 13
-    xRightBoundary: -13
-    yTopBoundary: 6
-    yBottomBoundary: -6.3
+  spawnBoundaries: {fileID: 11400000, guid: 92ae4d090f4de644ebec9a488347bd3e, type: 2}
+  fieldOfMovement: {fileID: 11400000, guid: e1831181be0486e4ab360decfaeec14a, type: 2}
   cooldownWaitingSeconds: 3
   cooldownDetectionOfPlayer: 5
 --- !u!54 &8650439978217509237

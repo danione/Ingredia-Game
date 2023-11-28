@@ -9,7 +9,9 @@ public class BansheeEnemy : Enemy
     private bool isColliding = true;
 
     public BansheeStateMachine _state;
-    [SerializeField] private Boundaries fieldOfMovement;
+
+
+    [SerializeField] private BoundariesData fieldOfMovement;
     [SerializeField] private float cooldownWaitingSeconds;
     [SerializeField] private float cooldownDetectionOfPlayer;
     private void Start()

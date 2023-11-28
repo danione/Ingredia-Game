@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class BansheeMoveState : MoveState
 {
-    private Boundaries m_Bounds;
+    private BoundariesData m_Bounds;
     private Vector3 direction;
     private Vector3 m_targetPosition;
     private const float differenceTolerance = 0.3f;
 
-    public BansheeMoveState(PlayerController controller, Enemy currentUnit, float movementSpeed, Boundaries boundaries) : base(controller, currentUnit, movementSpeed)
+    public BansheeMoveState(PlayerController controller, Enemy currentUnit, float movementSpeed, BoundariesData boundaries) : base(controller, currentUnit, movementSpeed)
     {
         m_Bounds = boundaries;
     }
@@ -15,12 +15,8 @@ public class BansheeMoveState : MoveState
     public override void Enter()
     {
         base.Enter();
-        float xPickerLeft = Mathf.Max(m_Bounds.xLeftBoundary, m_Bounds.xLeftBoundary);
-        float xPickerRight = Mathf.Min(m_Bounds.xRightBoundary, m_Bounds.xRightBoundary);
-        float yPickerTop = Mathf.Max(m_Bounds.yTopBoundary, m_Bounds.yTopBoundary);
-        float yPickerBottom = Mathf.Min(m_Bounds.yBottomBoundary, m_Bounds.yBottomBoundary);
-        float xPos = Random.Range(xPickerLeft, xPickerRight);
-        float yPos = Random.Range(yPickerTop, yPickerBottom);
+        float xPos = Random.Range(m_Bounds.xLeftMax, m_Bounds.xRightMax);
+        float yPos = Random.Range(m_Bounds.yTopMax, m_Bounds.yBottomMax);
 
         
 

@@ -4,20 +4,19 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 {
     [SerializeField] private float health;
     public float Health => health;
-    [SerializeField] public float xLeftMaxSpawn;
-    [SerializeField] public float xRightMaxSpawn;
-    [SerializeField] protected float yTopMaxSpawn;
-    [SerializeField] protected float yBottomMaxSpawn;
+    [SerializeField] protected BoundariesData spawnBoundaries;
 
     public virtual void Die()
     {
         Destroy(gameObject);
     }
 
+    public BoundariesData Boundaries => spawnBoundaries;
+
     public virtual Vector3 GetRandomPosition()
     {
-        float xRandomPos = Random.Range(xLeftMaxSpawn, xRightMaxSpawn);
-        float yRandomPos = Random.Range(yTopMaxSpawn, yBottomMaxSpawn);
+        float xRandomPos = Random.Range(spawnBoundaries.xLeftMax, spawnBoundaries.xRightMax);
+        float yRandomPos = Random.Range(spawnBoundaries.yTopMax, spawnBoundaries.yBottomMax);
         Vector3 randomPos = new Vector3(xRandomPos, yRandomPos, 2);
         return randomPos;
     }
