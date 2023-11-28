@@ -29,4 +29,9 @@ public class SimpleProjectile : FallableObject
             Destroy(other.gameObject);
         }
     }
+
+    public void ChangeStrength(int newStrength)
+    {
+        strength = newStrength;
+    }
 }

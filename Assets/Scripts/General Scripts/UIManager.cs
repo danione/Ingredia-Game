@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UpgradeData> healthUpgrades = new();
     [SerializeField] private Transform movementSpeedUIItem;
     [SerializeField] private List<UpgradeData> movementUpgrades = new();
+    [SerializeField] private Transform projectileUIItem;
+    [SerializeField] private Transform projectileGameObject;
+    [SerializeField] private List<UpgradeData> projectileUpgrades = new();
 
     private void Start()
     {
@@ -43,12 +46,14 @@ public class UIManager : MonoBehaviour
     {
         Upgrade(healthUIItem, healthUpgrades);
         Upgrade(movementSpeedUIItem, movementUpgrades);
+        Upgrade(projectileUIItem, projectileUpgrades);
     }
 
     private void Upgrade(Transform uiItem, List<UpgradeData> upgrades)
     {
         string upgradeName;
         string cost;
+
         if (upgrades.Count > 0)
         {
             upgradeName = upgrades[0].upgradeName;
@@ -68,12 +73,14 @@ public class UIManager : MonoBehaviour
     private enum UpgradeTypes
     {
         Health,
-        MovementSpeed
+        MovementSpeed,
+        ProjectileDMG
     }
 
 
     public void OnBuyHealth() { BuyButton(UpgradeTypes.Health); }
     public void OnBuyMovement() { BuyButton(UpgradeTypes.MovementSpeed); }
+    public void OnBuyProjectile() { BuyButton(UpgradeTypes.ProjectileDMG); }
 
     private void BuyButton(UpgradeTypes type)
     {
@@ -81,7 +88,18 @@ public class UIManager : MonoBehaviour
         {
             case UpgradeTypes.Health: BuyUpgrade(healthUpgrades); break;
             case UpgradeTypes.MovementSpeed: BuyUpgrade(movementUpgrades); break;
+            case UpgradeTypes.ProjectileDMG: BuyUpgrade(projectileUpgrades, projectileGameObject.gameObject); break;
         }
+    }
+    private void BuyUpgrade(List<UpgradeData> upgrade, GameObject obj)
+    {
+        if (upgrade.Count > 0)
+        {
+            upgrade[0].ApplyUpgrade(obj);
+            upgrade.RemoveAt(0);
+            UpdateScreen();
+        }
+        UpdateScreen();
     }
 
     private void BuyUpgrade(List<UpgradeData> upgrade)

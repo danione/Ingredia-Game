@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44504c37b93a4f409e489ca0fae7802, type: 3}
+  m_Name: MinorProjectileUpgrade
+  m_EditorClassIdentifier: 
+  upgradeName: Projectile DMG 1
+  description: Monor Projectile Damage, enhancing the strength of projectiles the
+    player shoots
+  cost: 250
+  damageAmount: 2

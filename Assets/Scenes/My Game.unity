@@ -3987,6 +3987,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
   - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
   - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
+  projectileUIItem: {fileID: 308699865}
+  projectileGameObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  projectileUpgrades:
+  - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
+  - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
+  - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5188,7 +5194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1652545835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6825,7 +6831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1929488292}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237524439}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnBuyProjectile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1929488292
 MonoBehaviour:
   m_ObjectHideFlags: 0
