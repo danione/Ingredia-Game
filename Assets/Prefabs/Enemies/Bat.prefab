@@ -122,11 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  goldRewardOnDeath: 15
   spawnBoundaries: {fileID: 11400000, guid: b92b28a4fb371494180f74dc40dd2ccc, type: 2}
-  xLeftMaxSpawn: 13
-  xRightMaxSpawn: -13
-  yTopMaxSpawn: 6
-  yBottomMaxSpawn: 6
   movementSpeed: 1
   boundaryMovement: 2
   projectile: {fileID: 6192621732674448424, guid: a6b5ef0f29d6ad242931788cc1ea504e, type: 3}

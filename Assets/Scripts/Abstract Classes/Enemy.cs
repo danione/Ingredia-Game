@@ -3,11 +3,13 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour, IUnitStats
 {
     [SerializeField] private float health;
+    [SerializeField] private int goldRewardOnDeath;
     public float Health => health;
     [SerializeField] protected BoundariesData spawnBoundaries;
 
     public virtual void Die()
     {
+        GameEventHandler.Instance.SpawnsGoldenNuggets(goldRewardOnDeath, gameObject.transform.position);
         Destroy(gameObject);
     }
 
@@ -41,7 +43,6 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
     {
         GameEventHandler.Instance.DestroyEnemy();
         DestroyEnemy();
-        
     }
 
     protected abstract void DestroyEnemy();

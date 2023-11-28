@@ -11,7 +11,7 @@ public class GameEventHandler : MonoBehaviour
     public Action BansheeDetectedPlayer;
     public Action UpgradesMenuOpen;
     public Action UpgradesMenuClose;
-
+    public Action<int, Vector3> SpawnGoldenNugget;
     private void Awake()
     {
         if(Instance == null)
@@ -47,5 +47,10 @@ public class GameEventHandler : MonoBehaviour
     public void ClosingDownUpgradesMenu()
     {
         UpgradesMenuClose?.Invoke();
+    }
+
+    public void SpawnsGoldenNuggets(int amount, Vector3 position)
+    {
+        SpawnGoldenNugget?.Invoke(amount, position);
     }
 }

@@ -666,6 +666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
+  maxFlameBombAmmo: 2
+  maxKnifeAmmo: 10
 --- !u!114 &7919030058201532917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +742,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1945744635020908731}
   fireRate: 2
   emptyCauldronCooldown: 1
+  bat: {fileID: 8147655413801567454, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
 --- !u!114 &7652357504156553977
 MonoBehaviour:
   m_ObjectHideFlags: 0

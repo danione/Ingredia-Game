@@ -121,11 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  goldRewardOnDeath: 50
   spawnBoundaries: {fileID: 11400000, guid: 853b9e5e34717d04580568ff370c0fda, type: 2}
-  xLeftMaxSpawn: 13
-  xRightMaxSpawn: -13
-  yTopMaxSpawn: 5
-  yBottomMaxSpawn: 0
   ritualistCircle: {fileID: 2235031436882646317}
   ingredientCircle: {fileID: 2127728769232630325}
   ingredientTypes:

@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerInventory: MonoBehaviour
 {
     [SerializeField] public int size = 0;
-    private int flameBombAmmo;
-    private int knifeAmmo;
+    [SerializeField] private int flameBombAmmo;
+    [SerializeField] private int knifeAmmo;
 
     [SerializeField] private int maxFlameBombAmmo;
     [SerializeField] private int maxKnifeAmmo;
@@ -24,7 +24,7 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        flameBombAmmo = 10;
+        knifeAmmo = 10;
     }
 
     private void Update()
