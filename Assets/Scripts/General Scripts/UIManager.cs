@@ -8,15 +8,13 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField] private Transform inventoryMenu;
-    [SerializeField] private Transform healthUIItem;
-    [SerializeField] private List<UpgradeData> healthUpgrades = new();
-    [SerializeField] private Transform movementSpeedUIItem;
-    [SerializeField] private List<UpgradeData> movementUpgrades = new();
-    [SerializeField] private Transform projectileUIItem;
+
+    [SerializeField] private UIUpgradeClass healthUI;
+    [SerializeField] private UIUpgradeClass movementSpeedUI;
+    [SerializeField] private UIUpgradeClass projectileUI;
     [SerializeField] private Transform projectileGameObject;
-    [SerializeField] private List<UpgradeData> projectileUpgrades = new();
-    [SerializeField] private Transform ammoUIItem;
-    [SerializeField] private List<UpgradeData> ammoUpgrades = new();
+    [SerializeField] private UIUpgradeClass ammoUI;
+    [SerializeField] private UIUpgradeClass fireballAreaUI;
 
     private void Start()
     {
@@ -46,76 +44,63 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        Upgrade(healthUIItem, healthUpgrades);
-        Upgrade(movementSpeedUIItem, movementUpgrades);
-        Upgrade(projectileUIItem, projectileUpgrades);
-        Upgrade(ammoUIItem, ammoUpgrades);
+        healthUI.Upgrade();
+        movementSpeedUI.Upgrade();
+        projectileUI.Upgrade();
+        ammoUI.Upgrade();
+        fireballAreaUI.Upgrade();
     }
 
-    private void Upgrade(Transform uiItem, List<UpgradeData> upgrades)
+    public void OnBuyHealth() { healthUI.BuyUpgrade(); UpdateScreen(); }
+    public void OnBuyMovement() { movementSpeedUI.BuyUpgrade(); UpdateScreen(); }
+    public void OnBuyProjectile() { projectileUI.BuyUpgrade(projectileGameObject.gameObject); UpdateScreen(); }
+    public void OnBuyAmmoSlot() { ammoUI.BuyUpgrade(); UpdateScreen(); }
+    public void OnBuyFireballArea() { fireballAreaUI.BuyUpgrade(projectileGameObject.gameObject); UpdateScreen(); }
+
+}
+
+[System.Serializable]
+public class UIUpgradeClass
+{
+    [SerializeField] private Transform uIItem;
+    [SerializeField] private List<UpgradeData> upgradesList = new();
+
+    public void BuyUpgrade(GameObject obj)
+    {
+        if (upgradesList.Count > 0)
+        {
+            upgradesList[0].ApplyUpgrade(obj);
+            upgradesList.RemoveAt(0);
+        }
+    }
+
+    public void BuyUpgrade()
+    {
+        if (upgradesList.Count > 0)
+        {
+            upgradesList[0].ApplyUpgrade(PlayerController.Instance.gameObject);
+            upgradesList.RemoveAt(0);
+        }
+    }
+
+    public void Upgrade()
     {
         string upgradeName;
         string cost;
 
-        if (upgrades.Count > 0)
+        if (upgradesList.Count > 0)
         {
-            upgradeName = upgrades[0].upgradeName;
-            cost = upgrades[0].cost.ToString();
+            upgradeName = upgradesList[0].upgradeName;
+            cost = upgradesList[0].cost.ToString();
         }
         else
         {
             upgradeName = "Latest Upgrade Received";
             cost = "";
-            uiItem.GetChild(2).gameObject.SetActive(false);
+            uIItem.GetChild(2).gameObject.SetActive(false);
         }
 
-        uiItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = upgradeName;
-        uiItem.GetChild(1).GetComponent<TextMeshProUGUI>().text = cost;
-    }
-
-    private enum UpgradeTypes
-    {
-        Health,
-        MovementSpeed,
-        ProjectileDMG,
-        AmmoSlot
-    }
-
-
-    public void OnBuyHealth() { BuyButton(UpgradeTypes.Health); }
-    public void OnBuyMovement() { BuyButton(UpgradeTypes.MovementSpeed); }
-    public void OnBuyProjectile() { BuyButton(UpgradeTypes.ProjectileDMG); }
-    public void OnBuyAmmoSlot() { BuyButton(UpgradeTypes.AmmoSlot); }
-
-    private void BuyButton(UpgradeTypes type)
-    {
-        switch(type)
-        {
-            case UpgradeTypes.Health: BuyUpgrade(healthUpgrades); break;
-            case UpgradeTypes.MovementSpeed: BuyUpgrade(movementUpgrades); break;
-            case UpgradeTypes.ProjectileDMG: BuyUpgrade(projectileUpgrades, projectileGameObject.gameObject); break;
-            case UpgradeTypes.AmmoSlot: BuyUpgrade(ammoUpgrades); break;
-        }
-    }
-    private void BuyUpgrade(List<UpgradeData> upgrade, GameObject obj)
-    {
-        if (upgrade.Count > 0)
-        {
-            upgrade[0].ApplyUpgrade(obj);
-            upgrade.RemoveAt(0);
-            UpdateScreen();
-        }
-        UpdateScreen();
-    }
-
-    private void BuyUpgrade(List<UpgradeData> upgrade)
-    {
-        if(upgrade.Count > 0)
-        {
-            upgrade[0].ApplyUpgrade(PlayerController.Instance.gameObject);
-            upgrade.RemoveAt(0);
-            UpdateScreen();
-        }
-        UpdateScreen();
+        uIItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = upgradeName;
+        uIItem.GetChild(1).GetComponent<TextMeshProUGUI>().text = cost;
     }
 }

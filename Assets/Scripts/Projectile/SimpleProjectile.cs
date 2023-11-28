@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleProjectile : FallableObject
+public abstract class SimpleProjectile : FallableObject
 {
-    [SerializeField] private List<string> target = new ();
+    [SerializeField] protected List<string> target = new ();
     [SerializeField] private Vector3 direction;
-    [SerializeField] private int strength;
+    [SerializeField] protected int strength;
 
     public override void Move()
     {
@@ -14,21 +14,12 @@ public class SimpleProjectile : FallableObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if(target == null) { return; }
+        if (target == null) { return; }
 
-        IUnitStats unitStats = other.GetComponent<IUnitStats>();
-        bool isValidTarget = target.Contains(other.tag);
-
-        if (isValidTarget && unitStats != null)
-        {
-            unitStats.TakeDamage(strength);
-            Destroy(gameObject);
-        } else if (isValidTarget)
-        {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+        HandleCollision(other);
     }
+
+    public abstract void HandleCollision(Collider other);
 
     public void ChangeStrength(int newStrength)
     {

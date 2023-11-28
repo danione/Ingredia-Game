@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596683714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -3390,7 +3390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1121840124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237524439}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnBuyFireballArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1121840124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3746,7 +3758,6 @@ GameObject:
   - component: {fileID: 1221582402}
   - component: {fileID: 1221582401}
   - component: {fileID: 1221582400}
-  - component: {fileID: 1221582399}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3754,28 +3765,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1221582399
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221582398}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1221582400
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3989,27 +3978,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMenu: {fileID: 1652545835}
-  healthUIItem: {fileID: 2039303642}
-  healthUpgrades:
-  - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
-  - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
-  - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
-  movementSpeedUIItem: {fileID: 343364146}
-  movementUpgrades:
-  - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
-  - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
-  - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
-  projectileUIItem: {fileID: 308699865}
+  healthUI:
+    uIItem: {fileID: 2039303642}
+    upgradesList:
+    - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
+    - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
+    - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
+  movementSpeedUI:
+    uIItem: {fileID: 343364146}
+    upgradesList:
+    - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
+    - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
+    - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
+  projectileUI:
+    uIItem: {fileID: 308699865}
+    upgradesList:
+    - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
+    - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
+    - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
   projectileGameObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-  projectileUpgrades:
-  - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
-  - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
-  - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
-  ammoUIItem: {fileID: 605892396}
-  ammoUpgrades:
-  - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
-  - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
-  - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
+  ammoUI:
+    uIItem: {fileID: 605892396}
+    upgradesList:
+    - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
+    - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
+    - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
+  fireballAreaUI:
+    uIItem: {fileID: 1076437358}
+    upgradesList:
+    - {fileID: 11400000, guid: 492c60e84963f6d46983fe8b433d889a, type: 2}
+    - {fileID: 11400000, guid: 11c902e709966ce49907920b563082c3, type: 2}
+    - {fileID: 11400000, guid: 529b782d32e5f164cbacdca5ca2cdf64, type: 2}
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0

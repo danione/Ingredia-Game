@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8033629693610461425}
   - component: {fileID: 7528497988823567319}
   - component: {fileID: 3247906682187110323}
-  - component: {fileID: 7851504767945615068}
   - component: {fileID: 4849181074528097171}
   - component: {fileID: 2714209702355315397}
-  - component: {fileID: 2326866270139299376}
+  - component: {fileID: 5249454977146834096}
+  - component: {fileID: 1790550733619182515}
   m_Layer: 0
-  m_Name: PlayerProjectile
+  m_Name: FireBombProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,29 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7851504767945615068
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697621482606319194}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.731891
-  m_Height: 3.4515262
-  m_Direction: 1
-  m_Center: {x: 0.032758597, y: 0.14823565, z: -0.019757628}
 --- !u!114 &4849181074528097171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +126,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &2326866270139299376
+--- !u!114 &5249454977146834096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8697621482606319194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac13ad6ff7de8aa4494b6e6b07d47774, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f96c5d4c64cd5418aff57d5dc018ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 10
@@ -167,4 +144,25 @@ MonoBehaviour:
   - Enemy
   - Dangerous Object
   direction: {x: 0, y: 1, z: 0}
-  strength: 2
+  strength: 1
+--- !u!65 &1790550733619182515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697621482606319194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
