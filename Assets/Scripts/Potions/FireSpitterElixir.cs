@@ -19,7 +19,7 @@ public class FireSpitterElixir : IPotion
 
     public void Use()
     {
-        PlayerController.Instance.inventory.AddAmmo(ammoToAdd);
+        PlayerController.Instance.inventory.AddFlameBombAmmo(ammoToAdd);
     }
 
     public void Reset()

@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform projectileUIItem;
     [SerializeField] private Transform projectileGameObject;
     [SerializeField] private List<UpgradeData> projectileUpgrades = new();
+    [SerializeField] private Transform ammoUIItem;
+    [SerializeField] private List<UpgradeData> ammoUpgrades = new();
 
     private void Start()
     {
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
         Upgrade(healthUIItem, healthUpgrades);
         Upgrade(movementSpeedUIItem, movementUpgrades);
         Upgrade(projectileUIItem, projectileUpgrades);
+        Upgrade(ammoUIItem, ammoUpgrades);
     }
 
     private void Upgrade(Transform uiItem, List<UpgradeData> upgrades)
@@ -74,13 +77,15 @@ public class UIManager : MonoBehaviour
     {
         Health,
         MovementSpeed,
-        ProjectileDMG
+        ProjectileDMG,
+        AmmoSlot
     }
 
 
     public void OnBuyHealth() { BuyButton(UpgradeTypes.Health); }
     public void OnBuyMovement() { BuyButton(UpgradeTypes.MovementSpeed); }
     public void OnBuyProjectile() { BuyButton(UpgradeTypes.ProjectileDMG); }
+    public void OnBuyAmmoSlot() { BuyButton(UpgradeTypes.AmmoSlot); }
 
     private void BuyButton(UpgradeTypes type)
     {
@@ -89,6 +94,7 @@ public class UIManager : MonoBehaviour
             case UpgradeTypes.Health: BuyUpgrade(healthUpgrades); break;
             case UpgradeTypes.MovementSpeed: BuyUpgrade(movementUpgrades); break;
             case UpgradeTypes.ProjectileDMG: BuyUpgrade(projectileUpgrades, projectileGameObject.gameObject); break;
+            case UpgradeTypes.AmmoSlot: BuyUpgrade(ammoUpgrades); break;
         }
     }
     private void BuyUpgrade(List<UpgradeData> upgrade, GameObject obj)

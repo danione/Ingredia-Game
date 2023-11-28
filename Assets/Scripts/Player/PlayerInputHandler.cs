@@ -64,9 +64,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Shoot()
     {
-        bool hasAvailableAmmo = PlayerController.Instance.inventory.ammo > 0;
+        bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
         bool isNotOnCooldown = Time.time >= nextFireTime;
-        bool hasAvailableKnifes = PlayerController.Instance.inventory.knifeAmmo > 0;
+        bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         Transform objectToShoot = null;
 
         if (Input.GetKey(KeyCode.E)) {
@@ -125,6 +125,11 @@ public class PlayerInputHandler : MonoBehaviour
             Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
             hasSpawnedABat = true;
             StartCoroutine(ResetSpawnedBatFlagAfterDelay());
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GetComponent<PlayerInventory>().AddKnifeAmmo(100);
+            GetComponent<PlayerInventory>().AddFlameBombAmmo(100);
         }
     }
 

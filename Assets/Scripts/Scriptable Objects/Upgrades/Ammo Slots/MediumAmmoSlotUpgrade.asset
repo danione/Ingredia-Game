@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340aa3d437b2b0245855643e9e98124e, type: 3}
+  m_Name: MediumAmmoSlotUpgrade
+  m_EditorClassIdentifier: 
+  upgradeName: Ammo Slot 2
+  description: Greatly increases the ammo slots of the fire bombs and knives
+  cost: 1000
+  fireMaxBombAmmo: 7
+  knifeMaxAmmo: 40

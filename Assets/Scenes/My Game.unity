@@ -1529,7 +1529,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557789383}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1237524439}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnBuyAmmoSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &557789383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,7 +1665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596683714}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -1665,7 +1677,7 @@ MonoBehaviour:
     cost: 2
   - enemy: {fileID: 5141636419359937255, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
     cost: 5
-  currentCurrency: 1
+  currentCurrency: 15
   spawnFrequencyInSeconds: 2
   waveSpawnCooldownInSeconds: 3
   currentWave: 0
@@ -3993,6 +4005,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
   - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
   - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
+  ammoUIItem: {fileID: 605892396}
+  ammoUpgrades:
+  - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
+  - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
+  - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,7 +5211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652545835
 RectTransform:
   m_ObjectHideFlags: 0

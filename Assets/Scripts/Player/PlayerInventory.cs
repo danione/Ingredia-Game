@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class PlayerInventory: MonoBehaviour
 {
-    public int size = 0;
-    public int ammo { get; private set; }
-    public int knifeAmmo { get; private set; }
+    [SerializeField] public int size = 0;
+    private int flameBombAmmo;
+    private int knifeAmmo;
+
+    [SerializeField] private int maxFlameBombAmmo;
+    [SerializeField] private int maxKnifeAmmo;
+    
     public int gold { get; private set; }
 
     private Dictionary<string, int> cauldronContents = new();
@@ -20,7 +24,7 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        ammo = 10;
+        flameBombAmmo = 10;
     }
 
     private void Update()
@@ -69,19 +73,34 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.CollectGold(gold);
     }
 
-    public void AddAmmo(int amount)
+    public void AddFlameBombAmmo(int amount)
     {
-        ammo += amount;
+        if (maxFlameBombAmmo >= flameBombAmmo + amount)
+            flameBombAmmo += amount;
+        else
+            flameBombAmmo = maxFlameBombAmmo;
     }
 
     public void AddKnifeAmmo(int ammo)
     {
-        knifeAmmo += ammo;
+        if (maxKnifeAmmo >= knifeAmmo + ammo)
+            knifeAmmo += ammo;
+        else
+            knifeAmmo = maxKnifeAmmo;
+    }
+
+    public int GetFlameBombAmmo() { return flameBombAmmo; }
+    public int GetKnifeAmmo() {  return knifeAmmo; }
+
+    public void SetMaxAmmo(int newMaxBombAmmo, int newMaxKnifeAmmo)
+    {
+        maxFlameBombAmmo = newMaxBombAmmo > 0 ? newMaxBombAmmo : maxFlameBombAmmo;
+        maxKnifeAmmo = newMaxKnifeAmmo > 0 ? newMaxKnifeAmmo : maxKnifeAmmo;
     }
 
     public void SubtractAmmo()
     {
-        if(ammo > 0) ammo--;
+        if(flameBombAmmo > 0) flameBombAmmo--;
     }
 
     public void SubtractKnifeAmmo()
