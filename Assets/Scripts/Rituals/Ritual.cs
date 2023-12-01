@@ -12,19 +12,15 @@ public class Ritual : IRitual
 
     private RitualScriptableObject ritualData;
     public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
-    
-    protected IPotion reward = null;
-    public IPotion RewardPotion => reward;
 
     protected Dictionary<string, int> currentRitualValues = new Dictionary<string, int>();
     protected readonly Dictionary<string, int> defaultRitualValues = new Dictionary<string, int>();
 
-    public Ritual(RitualScriptableObject data, IPotion rewardPotion)
+    public Ritual(RitualScriptableObject data)
     {
         ritualData = data;
         currentRitualValues.AddRange(GetRitualStages());
         defaultRitualValues.AddRange(GetRitualStages());
-        reward = rewardPotion;
         isEnabled = false;
     }
 

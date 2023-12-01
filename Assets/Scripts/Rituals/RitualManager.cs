@@ -16,13 +16,14 @@ public class RitualManager : MonoBehaviour
     {
         foreach(var ritual in basicRitualsData)
         {
-            basicRituals.Add(new Ritual(ritual, PotionsDatabase.Instance.GetPotion(ritual.reward)));
+            basicRituals.Add(new Ritual(ritual));
             basicRituals[basicRituals.Count - 1].EnableRitual();
         }
 
+        
         foreach(var hidden in hiddenRitualsData)
         {
-             hiddenRituals[hidden.name] = new Ritual(hidden, PotionsDatabase.Instance.GetPotion(hidden.reward));
+             hiddenRituals[hidden.name] = new Ritual(hidden);
         }
 
         lockedHiddenRituals = hiddenRituals.Keys.ToHashSet();

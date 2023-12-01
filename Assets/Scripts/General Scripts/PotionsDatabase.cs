@@ -19,13 +19,13 @@ public class PotionsDatabase : MonoBehaviour
             Destroy(gameObject);
         }
 
-        potionsDatabase["FireSpitterElixir"] = new FireSpitterElixir();
+        // potionsDatabase["FireSpitterElixir"] = new FireSpitterElixir();
         potionsDatabase["GhostPotion"] = new GhostPotion(PlayerController.Instance.gameObject.transform);
-        potionsDatabase["GoldenTicketElixir"] = new GoldenTicketElixir(goldenNugget);
-        potionsDatabase["HealingPotion"] = new HealingPotion();
+        // potionsDatabase["GoldenTicketElixir"] = new GoldenTicketElixir(goldenNugget);
+        // potionsDatabase["HealingPotion"] = new HealingPotion();
         potionsDatabase["OverloadElixir"] = new OverloadElixir();
         potionsDatabase["ProtectionElixir"] = new ProtectionElixir();
-        potionsDatabase["SteelSpitterElixir"] = new SteelSpitterElixir();
+        // potionsDatabase["SteelSpitterElixir"] = new SteelSpitterElixir();
     }
 
     public bool AddEntry(IPotion potion)

@@ -24,15 +24,9 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        knifeAmmo = 10;
     }
 
-    private void Update()
-    {
-        powerupManager.HandlePotions();
-    }
-
-    public void AddPotion(IPotion potion)
+    public void AddPotion(PotionsData potion)
     {
         powerupManager.AddPotion(potion);
     }

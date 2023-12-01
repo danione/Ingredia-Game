@@ -20,3 +20,4 @@ MonoBehaviour:
   - item: bandage
     amount: 1
   reward: HealingPotion
+  potionReward: {fileID: 11400000, guid: 1ac9dad47d74e55459f1587294cc1445, type: 2}

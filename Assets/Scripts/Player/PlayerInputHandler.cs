@@ -94,7 +94,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
-            inventory.AddPotion(inventory.possibleRitual.RewardPotion);
+            inventory.AddPotion(inventory.possibleRitual.RitualData.potionReward);
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }

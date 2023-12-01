@@ -20,3 +20,4 @@ MonoBehaviour:
   - item: athame
     amount: 1
   reward: SteelSpitterElixir
+  potionReward: {fileID: 11400000, guid: 905163cba4777744e843715e75c4aacb, type: 2}

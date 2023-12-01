@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class GameEventHandler : MonoBehaviour
@@ -52,5 +53,18 @@ public class GameEventHandler : MonoBehaviour
     public void SpawnsGoldenNuggets(int amount, Vector3 position)
     {
         SpawnGoldenNugget?.Invoke(amount, position);
+    }
+
+    public void ConvertingAllObjectsToGoldenNuggets(int amount, List<string> tags)
+    {        
+        foreach (string tag in tags)
+        {
+            GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+            foreach (GameObject obj in objects)
+            {
+                SpawnsGoldenNuggets(amount, obj.gameObject.transform.position);
+                Destroy(obj);
+            }
+        }
     }
 }
