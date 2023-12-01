@@ -566,6 +566,7 @@ GameObject:
   - component: {fileID: 7759249205259069879}
   - component: {fileID: 8574045374956826587}
   - component: {fileID: 7652357504156553977}
+  - component: {fileID: 4956312618412421421}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -666,6 +667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
+  flameBombAmmo: 0
+  knifeAmmo: 0
   maxFlameBombAmmo: 2
   maxKnifeAmmo: 10
 --- !u!114 &7919030058201532917
@@ -758,6 +761,18 @@ MonoBehaviour:
   movementSpeed: 10
   leftBorder: 12
   rightBorder: -12
+--- !u!114 &4956312618412421421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735097968459126054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ee2f0e99ea5e7499a37c75b36cacb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8792282949493363313
 GameObject:
   m_ObjectHideFlags: 0

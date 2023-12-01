@@ -5730,7 +5730,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
   - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
   - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
-  - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+  - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   hiddenRitualsData:
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
@@ -8021,13 +8021,13 @@ PrefabInstance:
       propertyPath: m_slotsContainer
       value: 
       objectReference: {fileID: 1135961848}
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: maxFlameBombAmmo
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_LocalPosition.x

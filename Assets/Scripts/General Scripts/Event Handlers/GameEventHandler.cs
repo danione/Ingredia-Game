@@ -13,6 +13,7 @@ public class GameEventHandler : MonoBehaviour
     public Action UpgradesMenuOpen;
     public Action UpgradesMenuClose;
     public Action<int, Vector3> SpawnGoldenNugget;
+    public Action<GhostPotionData> ActivatedGhost;
     private void Awake()
     {
         if(Instance == null)
@@ -66,5 +67,10 @@ public class GameEventHandler : MonoBehaviour
                 Destroy(obj);
             }
         }
+    }
+
+    public void ActivateGhost(GhostPotionData data)
+    {
+        ActivatedGhost?.Invoke(data);
     }
 }

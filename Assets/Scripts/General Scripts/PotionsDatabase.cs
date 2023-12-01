@@ -20,7 +20,7 @@ public class PotionsDatabase : MonoBehaviour
         }
 
         // potionsDatabase["FireSpitterElixir"] = new FireSpitterElixir();
-        potionsDatabase["GhostPotion"] = new GhostPotion(PlayerController.Instance.gameObject.transform);
+        // potionsDatabase["GhostPotion"] = new GhostPotion(PlayerController.Instance.gameObject.transform);
         // potionsDatabase["GoldenTicketElixir"] = new GoldenTicketElixir(goldenNugget);
         // potionsDatabase["HealingPotion"] = new HealingPotion();
         potionsDatabase["OverloadElixir"] = new OverloadElixir();

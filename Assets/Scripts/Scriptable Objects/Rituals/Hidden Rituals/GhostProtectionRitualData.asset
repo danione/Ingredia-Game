@@ -18,4 +18,4 @@ MonoBehaviour:
   ritualRecipes:
   - item: humanSkull
     amount: 2
-  reward: GhostPotion
+  potionReward: {fileID: 11400000, guid: f6c58856130eb604586715290d9116ac, type: 2}
