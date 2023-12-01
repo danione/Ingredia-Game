@@ -18,4 +18,4 @@ MonoBehaviour:
   ritualRecipes:
   - item: humanEye
     amount: 1
-  reward: OverloadElixir
+  potionReward: {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}

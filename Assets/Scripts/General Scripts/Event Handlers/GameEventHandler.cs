@@ -14,6 +14,8 @@ public class GameEventHandler : MonoBehaviour
     public Action UpgradesMenuClose;
     public Action<int, Vector3> SpawnGoldenNugget;
     public Action<GhostPotionData> ActivatedGhost;
+    public Action<OverloadElixirData> ActivatedLaser;
+
     private void Awake()
     {
         if(Instance == null)
@@ -72,5 +74,10 @@ public class GameEventHandler : MonoBehaviour
     public void ActivateGhost(GhostPotionData data)
     {
         ActivatedGhost?.Invoke(data);
+    }
+
+    public void ActivateLaser(OverloadElixirData data)
+    {
+        ActivatedLaser?.Invoke(data);
     }
 }
