@@ -21,8 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UIUpgradeClass> availableUpgrades = new();
     [SerializeField] private List<UnityEngine.UI.Button> buttons = new();
 
-    [SerializeField] private List<UIUpgradeClass> randomChosenUpgrades = new();
-    [SerializeField] private int countChosenUpgrades;
+    private List<UIUpgradeClass> randomChosenUpgrades = new();
+    private int countChosenUpgrades;
 
     private void Start()
     {
