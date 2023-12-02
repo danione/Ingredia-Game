@@ -15,6 +15,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<int, Vector3> SpawnGoldenNugget;
     public Action<GhostPotionData> ActivatedGhost;
     public Action<OverloadElixirData> ActivatedLaser;
+    public Action<float> ActivatedBarrier;
 
     private void Awake()
     {
@@ -79,5 +80,10 @@ public class GameEventHandler : MonoBehaviour
     public void ActivateLaser(OverloadElixirData data)
     {
         ActivatedLaser?.Invoke(data);
+    }
+
+    public void ActivateBarrier(float duration)
+    {
+        ActivatedBarrier?.Invoke(duration);
     }
 }
