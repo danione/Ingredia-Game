@@ -1,20 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
     [SerializeField] private Transform inventoryMenu;
+    [SerializeField] private int maxDisplayUpgrades;
 
     [SerializeField] private UIUpgradeClass healthUI;
     [SerializeField] private UIUpgradeClass movementSpeedUI;
     [SerializeField] private UIUpgradeClass projectileUI;
     [SerializeField] private Transform projectileGameObject;
-    [SerializeField] private UIUpgradeClass ammoUI;
-    [SerializeField] private UIUpgradeClass fireballAreaUI;
+
+    [SerializeField] private List<UIUpgradeClass> availableUpgrades = new();
+    [SerializeField] private List<UnityEngine.UI.Button> buttons = new();
+    [SerializeField] private List<UIUpgradeClass> randomChosenUpgrades = new();
 
     private void Start()
     {
@@ -33,13 +39,54 @@ public class UIManager : MonoBehaviour
 
     private void OnUpgradesMenuOpened()
     {
-        inventoryMenu.gameObject.SetActive(true);
         UpdateScreen();
+        ChooseRandomUpgrades();
+        inventoryMenu.gameObject.SetActive(true);
     }
 
-    public void OnUpgradesMenuClosed()
+    private void OnUpgradesMenuClosed()
     {
         inventoryMenu.gameObject.SetActive(false);
+    }
+
+    private void ChooseRandomUpgrades()
+    {
+        if (randomChosenUpgrades.Count > 0) return;
+
+        ShuffleListOfUpgrades(availableUpgrades);
+
+        availableUpgrades.Sort((x, y) => x.MinCost.CompareTo(y.MinCost));
+
+        for(int i = 0; i < maxDisplayUpgrades; i++)
+        {
+            randomChosenUpgrades.Add(availableUpgrades[i]);
+        }
+
+        HookUpgradesWithButtons();
+    }
+
+    private void HookUpgradesWithButtons()
+    {
+        for(int i = 0; i < buttons.Count; i++)
+        {
+            if (i >= randomChosenUpgrades.Count) return;
+            
+            buttons[i].onClick.RemoveAllListeners();
+            buttons[i].onClick.AddListener(() => randomChosenUpgrades[i].BuyUpgrade());
+            randomChosenUpgrades[i].Reset(buttons[i].transform.parent.transform);
+        }
+    }
+
+    void ShuffleListOfUpgrades<T>(List<T> array)
+    {
+        int numItems = array.Count;
+        for (int i = numItems - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            T temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 
     private void UpdateScreen()
@@ -47,15 +94,17 @@ public class UIManager : MonoBehaviour
         healthUI.Upgrade();
         movementSpeedUI.Upgrade();
         projectileUI.Upgrade();
-        ammoUI.Upgrade();
-        fireballAreaUI.Upgrade();
+
+        foreach(var upgrade in availableUpgrades)
+        {
+            upgrade.Upgrade();
+        }
     }
 
-    public void OnBuyHealth() { healthUI.BuyUpgrade(); UpdateScreen(); }
-    public void OnBuyMovement() { movementSpeedUI.BuyUpgrade(); UpdateScreen(); }
-    public void OnBuyProjectile() { projectileUI.BuyUpgrade(projectileGameObject.gameObject); UpdateScreen(); }
-    public void OnBuyAmmoSlot() { ammoUI.BuyUpgrade(); UpdateScreen(); }
-    public void OnBuyFireballArea() { fireballAreaUI.BuyUpgrade(projectileGameObject.gameObject); UpdateScreen(); }
+    public void OnBuyHealth() { healthUI.BuyUpgrade();}
+    public void OnBuyMovement() { movementSpeedUI.BuyUpgrade(); }
+    public void OnBuyProjectile() { projectileUI.BuyUpgrade();}
+
 
 }
 
@@ -64,31 +113,37 @@ public class UIUpgradeClass
 {
     [SerializeField] private Transform uIItem;
     [SerializeField] private List<UpgradeData> upgradesList = new();
+    [SerializeField] private bool isRandomlyGenerated = false;
+    [SerializeField] private GameObject upgradedObject;
+    private bool justPurchased = false;
 
-    public void BuyUpgrade(GameObject obj)
+    public int MinCost { get { return upgradesList.Count > 0 ? upgradesList[0].cost : -1; } }
+
+    public void Reset(Transform uIItemNew)
     {
-        if (upgradesList.Count > 0)
-        {
-            upgradesList[0].ApplyUpgrade(obj);
-            upgradesList.RemoveAt(0);
-        }
+        justPurchased = false;
+        uIItem = uIItemNew;
     }
 
     public void BuyUpgrade()
     {
         if (upgradesList.Count > 0)
         {
-            upgradesList[0].ApplyUpgrade(PlayerController.Instance.gameObject);
+            upgradesList[0].ApplyUpgrade(upgradedObject);
             upgradesList.RemoveAt(0);
+            justPurchased =  isRandomlyGenerated ? true : false;
         }
+        Upgrade();
     }
 
     public void Upgrade()
     {
+        if (uIItem == null) return;
+     
         string upgradeName;
         string cost;
 
-        if (upgradesList.Count > 0)
+        if (upgradesList.Count > 0 && !justPurchased)
         {
             upgradeName = upgradesList[0].upgradeName;
             cost = upgradesList[0].cost.ToString();
