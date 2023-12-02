@@ -1529,19 +1529,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557789383}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1237524439}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnBuyAmmoSlot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &557789383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,6 +2705,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774433705}
   m_CullTransparentMesh: 1
+--- !u!1 &786194158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  m_PrefabInstance: {fileID: 8101206105131769508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &812109262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,19 +3397,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1121840124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1237524439}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnBuyFireballArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1121840124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3994,47 +3975,55 @@ MonoBehaviour:
   inventoryMenu: {fileID: 1652545835}
   maxDisplayUpgrades: 3
   healthUI:
+    nameOfUpgrade: 
     uIItem: {fileID: 2039303642}
     upgradesList:
     - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
     - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
     - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
     isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
+    upgradedObject: {fileID: 786194158}
   movementSpeedUI:
+    nameOfUpgrade: 
     uIItem: {fileID: 343364146}
     upgradesList:
     - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
     - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
     - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
     isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
+    upgradedObject: {fileID: 786194158}
   projectileUI:
+    nameOfUpgrade: 
     uIItem: {fileID: 308699865}
     upgradesList:
     - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
     - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
     - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
     isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
-  projectileGameObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
   availableUpgrades:
-  - uIItem: {fileID: 0}
+  - nameOfUpgrade: Max Ammo Slot
+    uIItem: {fileID: 0}
     upgradesList:
     - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
     - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
     - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
     isRandomlyGenerated: 1
-    upgradedObject: {fileID: 0}
-  - uIItem: {fileID: 0}
+    upgradedObject: {fileID: 786194158}
+  - nameOfUpgrade: Fireball Area
+    uIItem: {fileID: 0}
     upgradesList:
     - {fileID: 11400000, guid: 492c60e84963f6d46983fe8b433d889a, type: 2}
     - {fileID: 11400000, guid: 11c902e709966ce49907920b563082c3, type: 2}
     - {fileID: 11400000, guid: 529b782d32e5f164cbacdca5ca2cdf64, type: 2}
     isRandomlyGenerated: 1
-    upgradedObject: {fileID: 0}
-  buttons: []
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  buttons:
+  - {fileID: 1684429661}
+  - {fileID: 1121840123}
+  - {fileID: 557789382}
   randomChosenUpgrades: []
+  countChosenUpgrades: 0
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,7 +5665,6 @@ GameObject:
   - component: {fileID: 1760316103}
   - component: {fileID: 1760316109}
   - component: {fileID: 1760316110}
-  - component: {fileID: 1760316112}
   - component: {fileID: 1760316113}
   m_Layer: 0
   m_Name: GameManager
@@ -5747,19 +5735,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
   - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
---- !u!114 &1760316112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760316102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec1be75e75ac5648b1243dfe4186b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldenNugget: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!114 &1760316113
 MonoBehaviour:
   m_ObjectHideFlags: 0
