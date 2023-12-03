@@ -11,13 +11,13 @@ public class SmartRitualHelper : MonoBehaviour
     {
         isActive = false;
         GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivate;
-        GameEventHandler.Instance.CollectedExistingIngredient += OnCollectedExistingIngredient;
-        PlayerEventHandler.Instance.EmptiedCauldron += ResetOrNoAvailableRitual;
     }
 
     private void OnActivate()
     {
         isActive = true;
+        GameEventHandler.Instance.CollectedExistingIngredient += OnCollectedExistingIngredient;
+        PlayerEventHandler.Instance.EmptiedCauldron += ResetOrNoAvailableRitual;
     }
 
     private void OnCollectedExistingIngredient(Ritual ritual)
@@ -26,12 +26,10 @@ public class SmartRitualHelper : MonoBehaviour
         {
             easiestRitualNow = ritual;
         }
-        
-        if(easiestRitualNow.Difficulty == float.PositiveInfinity)
+        if (easiestRitualNow.Difficulty == float.PositiveInfinity)
         {
             ResetOrNoAvailableRitual();
         }
-
         HighlightIngredients();
     }
 

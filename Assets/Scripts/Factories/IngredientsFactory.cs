@@ -11,6 +11,7 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Transform prefab;
     private Factory ingredientsFactories;
+    private HashSet<IngredientData> _highlight = new();
 
     // Private Variables
 
@@ -25,6 +26,7 @@ public class IngredientsFactory: MonoBehaviour
     {
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
         StartCoroutine(SpawnIngredients(() => SpawnRandomRareIngredient()));
+        GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
     }
 
     private void SpawnRandomIngredient()
@@ -49,8 +51,12 @@ public class IngredientsFactory: MonoBehaviour
         // Select a random location at the top of the screen
         Vector3 newRandomLocation = new Vector3(UnityEngine.Random.Range(spawnLocation.xRightMax,
             spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
-
-        ingredientsFactories.GetProduct(newRandomLocation, list[randomIndex]);
+        
+        Transform product = ingredientsFactories.GetProduct(newRandomLocation, list[randomIndex]);
+        if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
+        {
+            product.GetComponent<BasicIngredient>().Highlight();
+        }
     }
 
     // Spawns ingredients at random times
@@ -69,5 +75,21 @@ public class IngredientsFactory: MonoBehaviour
     public int GetCountOfIngredients()
     {
         return _ingredients.Count;
+    }
+
+    private void OnActivateHelper()
+    {
+        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmpty;
+        GameEventHandler.Instance.CollectedExistingIngredient += OnCollectExistingIngredient;
+    }
+
+    private void OnCauldronEmpty()
+    {
+        _highlight.Clear();
+    }
+
+    private void OnCollectExistingIngredient(Ritual ritual)
+    {
+        _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
     }
 }

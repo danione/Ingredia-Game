@@ -106,4 +106,9 @@ public class Ritual : IRitual
             GameEventHandler.Instance.HighlightIngredient(item.Key);
         }
     }
+
+    public List<IngredientData> GetCurrentLeftIngredients()
+    {
+        return currentRitualValues.Keys.ToList();
+    }
 }

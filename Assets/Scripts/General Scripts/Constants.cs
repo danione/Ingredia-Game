@@ -6,17 +6,13 @@ public class Constants : MonoBehaviour
 {
     public static Constants Instance;
     [SerializeField] private IngredientsFactory ingredientsFactory;
-    [SerializeField] public DifficultyModifiers DifficultyModifiers;
-
-
+    [SerializeField] public DifficultyModifiers DifficultyModifiers = new();
     public int IngredientsCount { get { return ingredientsFactory.GetCountOfIngredients(); } }
 
-
-
-    private void Start()
+    private void Awake()
     {
         if (Instance == null) { Instance = this; }
-        else Destroy(gameObject);
+        else { Destroy(gameObject); }
     }
 }
 

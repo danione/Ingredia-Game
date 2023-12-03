@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class Factory
 {
-    public abstract IIngredient GetProduct(Vector3 position, IngredientData data);
+    public abstract Transform GetProduct(Vector3 position, IngredientData data);
 }
