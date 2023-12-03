@@ -4,15 +4,28 @@ public class BasicIngredient : FallableObject, IIngredient
 {
     private IngredientData _data;
     public IngredientData Data { get { return _data; } set => Initialise(value); }
-    
-    public float Rarity { get
-        {
-            return _data.spawnChance == 0 ? (1.0f / Constants.Instance.IngredientsCount) : _data.spawnChance;
-        } }
+
+    public bool isHighlighted;
     
     public void Initialise(IngredientData data)
     {
         _data = data;
         gameObject.GetComponent<SpriteRenderer>().sprite = _data.sprite;
+        GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
+    }
+
+    private void OnHighlight(IngredientData data)
+    {
+        Debug.Log(data == _data);
+        if (data == _data)
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+            
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.HighlightedIngredient -= OnHighlight;
     }
 }

@@ -98,4 +98,12 @@ public class Ritual : IRitual
             PlayerEventHandler.Instance.UnlockARitual(ritualData.name);
         }
     }
+
+    public void HighlightIngredients()
+    {
+        foreach(var item in currentRitualValues)
+        {
+            GameEventHandler.Instance.HighlightIngredient(item.Key);
+        }
+    }
 }

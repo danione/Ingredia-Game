@@ -32,11 +32,18 @@ public class SmartRitualHelper : MonoBehaviour
             ResetOrNoAvailableRitual();
         }
 
-        Debug.Log(easiestRitualNow.RitualData.name);
+        HighlightIngredients();
     }
 
     private void ResetOrNoAvailableRitual()
     {
         easiestRitualNow = null;
+    }
+
+    private void HighlightIngredients()
+    {
+        if (easiestRitualNow == null) return;
+
+        easiestRitualNow.HighlightIngredients();
     }
 }
