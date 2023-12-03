@@ -16,7 +16,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<GhostPotionData> ActivatedGhost;
     public Action<OverloadElixirData> ActivatedLaser;
     public Action<float> ActivatedBarrier;
-
+    public Action ActivatedSmartRitualHelper;
     private void Awake()
     {
         if(Instance == null)
@@ -85,5 +85,10 @@ public class GameEventHandler : MonoBehaviour
     public void ActivateBarrier(float duration)
     {
         ActivatedBarrier?.Invoke(duration);
+    }
+
+    public void ActivateSmartRitualHelper()
+    {
+        ActivatedSmartRitualHelper?.Invoke();
     }
 }
