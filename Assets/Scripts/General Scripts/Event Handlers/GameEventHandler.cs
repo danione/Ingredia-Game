@@ -17,6 +17,8 @@ public class GameEventHandler : MonoBehaviour
     public Action<OverloadElixirData> ActivatedLaser;
     public Action<float> ActivatedBarrier;
     public Action ActivatedSmartRitualHelper;
+    public Action<Ritual> CollectedExistingIngredient;
+
     private void Awake()
     {
         if(Instance == null)
@@ -90,5 +92,10 @@ public class GameEventHandler : MonoBehaviour
     public void ActivateSmartRitualHelper()
     {
         ActivatedSmartRitualHelper?.Invoke();
+    }
+
+    public void CollectExistingIngredient(Ritual ritual)
+    {
+        CollectedExistingIngredient?.Invoke(ritual);
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807f11ef54f244945b9c8208c453e02e, type: 3}
   m_Name: BasicSmartRitualHelper
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  cost: 0
+  upgradeName: Smart Ritual Helper 1
+  description: Calculates the easiest recipe and highlights the ingredients
+  cost: 1500

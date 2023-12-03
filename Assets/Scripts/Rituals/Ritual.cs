@@ -88,6 +88,7 @@ public class Ritual : IRitual
         {
             currentRitualValues.Remove(ingredient.Data);
             Difficulty = CalculateDifficulty();
+            GameEventHandler.Instance.CollectExistingIngredient(this);
         }
 
         if(currentRitualValues.Count == 0) 

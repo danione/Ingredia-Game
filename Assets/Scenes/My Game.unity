@@ -4018,6 +4018,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 529b782d32e5f164cbacdca5ca2cdf64, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Fireball Area
+    uIItem: {fileID: 0}
+    upgradesList:
+    - {fileID: 11400000, guid: 8b9a8adc9bffce54086160b6934fab35, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
   buttons:
   - {fileID: 1684429661}
   - {fileID: 1121840123}
