@@ -16,6 +16,12 @@ MonoBehaviour:
   description: You cauldron releases a burst of energy, destroying everything in
     its path.
   ritualRecipes:
-  - item: humanEye
+  - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
+    amount: 4
+  - item: {fileID: 11400000, guid: d95c24a940e966f4badb6dbb27900099, type: 2}
     amount: 1
+  - item: {fileID: 11400000, guid: 1b0fbe056190df64ca6641f11ad6a70c, type: 2}
+    amount: 2
   potionReward: {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}

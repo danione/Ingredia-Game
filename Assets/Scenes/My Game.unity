@@ -4022,8 +4022,6 @@ MonoBehaviour:
   - {fileID: 1684429661}
   - {fileID: 1121840123}
   - {fileID: 557789382}
-  randomChosenUpgrades: []
-  countChosenUpgrades: 0
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +5664,7 @@ GameObject:
   - component: {fileID: 1760316109}
   - component: {fileID: 1760316110}
   - component: {fileID: 1760316113}
+  - component: {fileID: 1760316114}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5730,7 +5729,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
   - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
   - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
-  - {fileID: 11400000, guid: dbf31af626c3d354e87884a1f7b557a5, type: 2}
   hiddenRitualsData:
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
@@ -5747,6 +5745,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d179d5f78c0b884cbfab6db5f3a30e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1760316114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83b4690de09f274aa95cdaf51ffabf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientsFactory: {fileID: 596683717}
+  DifficultyModifiers:
+    countWeight: 0.75
+    quantityWeight: 0.5
+    timeWeight: 0.75
 --- !u!1 &1811798670
 GameObject:
   m_ObjectHideFlags: 0

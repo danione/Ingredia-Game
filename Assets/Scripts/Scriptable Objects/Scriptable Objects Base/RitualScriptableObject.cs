@@ -13,7 +13,7 @@ public class RitualScriptableObject : ScriptableObject
 [System.Serializable]
 public class RitualRecipe
 {
-    public string item;
+    public IngredientData item;
     public int amount;
 }
 

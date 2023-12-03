@@ -63,4 +63,9 @@ public class IngredientsFactory: MonoBehaviour
         }
         yield return null;
     }
+
+    public int GetCountOfIngredients()
+    {
+        return _ingredients.Count;
+    }
 }

@@ -16,6 +16,8 @@ MonoBehaviour:
   description: Leave your corporeal body behind for a limited time when holding [Insert
     button], becoming untargetable.
   ritualRecipes:
-  - item: humanSkull
+  - item: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
+    amount: 4
+  - item: {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
     amount: 2
   potionReward: {fileID: 11400000, guid: f6c58856130eb604586715290d9116ac, type: 2}
