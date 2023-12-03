@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBombProjectile : SimpleProjectile
 {
     [SerializeField] private float areaOfEffect = 4f;
+    private static bool isAffectingPlayer = true;
 
     public override void HandleCollision(Collider other)
     {
@@ -12,7 +13,10 @@ public class FireBombProjectile : SimpleProjectile
         foreach (Collider c in nearbyEnemies)
         {
             IUnitStats stats = c.GetComponent<IUnitStats>();
-            if(stats != null)
+
+            if (!isAffectingPlayer && c.CompareTag("Player")) continue;
+
+            if (stats != null)
             {
                 stats.TakeDamage(strength);
             }
@@ -27,5 +31,10 @@ public class FireBombProjectile : SimpleProjectile
     public void SetAreaOfEffect(float newArea)
     {
         areaOfEffect = newArea > 0 ? newArea : areaOfEffect;
+    }
+
+    public void StopAffectingPlayer()
+    {
+        isAffectingPlayer = false;
     }
 }
