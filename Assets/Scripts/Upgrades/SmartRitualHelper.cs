@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class SmartRitualHelper : MonoBehaviour
 {
-    private bool isActive;
     private Ritual easiestRitualNow = null;
 
     private void Start()
     {
-        isActive = false;
         GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivate;
     }
 
     private void OnActivate()
     {
-        isActive = true;
         GameEventHandler.Instance.CollectedExistingIngredient += OnCollectedExistingIngredient;
         PlayerEventHandler.Instance.EmptiedCauldron += ResetOrNoAvailableRitual;
     }
