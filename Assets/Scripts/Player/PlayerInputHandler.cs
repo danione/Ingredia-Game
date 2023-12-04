@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent( typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
 {
-    private float nextFireTime = 0f;
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
@@ -64,30 +63,36 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Shoot()
     {
+        if (!Input.GetKeyDown(KeyCode.E)) return;
+
         bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
-        bool isNotOnCooldown = Time.time >= nextFireTime;
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         Transform objectToShoot = null;
 
-        if (Input.GetKeyDown(KeyCode.E)) {
-            if(hasAvailableKnifes && isNotOnCooldown)
-            {
-                objectToShoot = knifeObject;
-                PlayerController.Instance.inventory.SubtractKnifeAmmo();
-                nextFireTime = Time.time + fireRate;
-            } else if(hasAvailableAmmo && isNotOnCooldown)
-            {
-                objectToShoot = projectileObject;
-                PlayerController.Instance.inventory.SubtractAmmo();
-                nextFireTime = Time.time + fireRate;
-            }
+        if(hasAvailableKnifes && isNotOnCooldown)
+        {
+            isNotOnCooldown = false;
+            objectToShoot = knifeObject;
+            PlayerController.Instance.inventory.SubtractKnifeAmmo();
+        } else if(hasAvailableAmmo && isNotOnCooldown)
+        {
+            isNotOnCooldown = false;
+            objectToShoot = projectileObject;
+            PlayerController.Instance.inventory.SubtractAmmo();
         }
+        
 
         if(objectToShoot != null)
         {
-            Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
-            
+            StartCoroutine(FireAProjectile(objectToShoot));
         }
+    }
+
+    private IEnumerator FireAProjectile(Transform objectToShoot)
+    {
+        Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
+        yield return new WaitForSeconds(fireRate);
+        isNotOnCooldown = true;
     }
 
     private void AttemptRitual()
@@ -150,5 +155,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             GameEventHandler.Instance.BringUpUpgradesMenu();
         }
+    }
+
+    public void ChangeFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
     }
 }

@@ -4031,6 +4031,14 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Fire Rate
+    uIItem: {fileID: 0}
+    upgradesList:
+    - {fileID: 11400000, guid: bcaae0ff4fea3d041bc45a533536054c, type: 2}
+    - {fileID: 11400000, guid: d073ca78f0a91d745b9e7867aded1b1e, type: 2}
+    - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 786194158}
   buttons:
   - {fileID: 1684429661}
   - {fileID: 1121840123}
@@ -8036,10 +8044,6 @@ PrefabInstance:
       propertyPath: m_slotsContainer
       value: 
       objectReference: {fileID: 1135961848}
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: flameBombAmmo
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8083,6 +8087,10 @@ PrefabInstance:
     - target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: fireRate
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
-  flameBombAmmo: 0
+  flameBombAmmo: 10
   knifeAmmo: 0
   maxFlameBombAmmo: 2
   maxKnifeAmmo: 10
