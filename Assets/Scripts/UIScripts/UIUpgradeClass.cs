@@ -35,7 +35,6 @@ public class UIUpgradeClass
     {
         string upgradeName;
         string cost;
-
         if (upgradesList.Count > 0 && !justPurchased)
         {
             upgradeName = upgradesList[0].upgradeName;

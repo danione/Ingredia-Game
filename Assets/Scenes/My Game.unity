@@ -4024,6 +4024,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bfbd365f92db39848bf56494c8d219b0, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Ritual Yield
+    uIItem: {fileID: 0}
+    upgradesList:
+    - {fileID: 11400000, guid: 1d121ec74cb2ca849bc1b74ad005ac92, type: 2}
+    - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
   buttons:
   - {fileID: 1684429661}
   - {fileID: 1121840123}

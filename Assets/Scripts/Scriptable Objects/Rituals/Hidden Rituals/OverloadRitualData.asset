@@ -24,4 +24,7 @@ MonoBehaviour:
     amount: 1
   - item: {fileID: 11400000, guid: 1b0fbe056190df64ca6641f11ad6a70c, type: 2}
     amount: 2
-  potionReward: {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}
+  potionRewardData:
+  - {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}
+  - {fileID: 11400000, guid: cee5586500ec10c48b58d2ca7f856041, type: 2}
+  - {fileID: 11400000, guid: ab140c6350e542f47aa7720c4fbecdf5, type: 2}

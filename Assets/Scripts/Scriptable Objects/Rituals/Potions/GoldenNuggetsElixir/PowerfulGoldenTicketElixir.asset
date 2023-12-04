@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76e8ba1d0b32ef444886213de32d2bea, type: 3}
-  m_Name: BasicGoldenTicketElixir
+  m_Name: PowerfulGoldenTicketElixir
   m_EditorClassIdentifier: 
-  potionName: Weak Golden Ticket Elixir
-  nuggetValue: 10
+  potionName: Powerful Golden Ticket Elixir
+  nuggetValue: 100
   objectTagsToConvert:
   - Ingredient
+  - Projectile
+  - Dangerous Object

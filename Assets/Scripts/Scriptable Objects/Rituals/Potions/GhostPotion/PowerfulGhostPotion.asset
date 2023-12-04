@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e8ba1d0b32ef444886213de32d2bea, type: 3}
-  m_Name: BasicGoldenTicketElixir
+  m_Script: {fileID: 11500000, guid: 42aab10419686d844bb787858737e75a, type: 3}
+  m_Name: PowerfulGhostPotion
   m_EditorClassIdentifier: 
-  potionName: Weak Golden Ticket Elixir
-  nuggetValue: 10
-  objectTagsToConvert:
-  - Ingredient
+  potionName: Powerful Spectral Potion
+  countDownTimer: 20
+  powerPoolValue: 15
+  target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

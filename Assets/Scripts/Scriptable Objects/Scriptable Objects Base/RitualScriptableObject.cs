@@ -7,7 +7,7 @@ public class RitualScriptableObject : ScriptableObject
     public new string name;
     public string description;
     public List<RitualRecipe> ritualRecipes = new();
-    public PotionsData potionReward;
+    public List<PotionsData> potionRewardData;
 }
 
 [System.Serializable]

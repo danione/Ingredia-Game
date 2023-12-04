@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e8ba1d0b32ef444886213de32d2bea, type: 3}
-  m_Name: BasicGoldenTicketElixir
+  m_Script: {fileID: 11500000, guid: 5498e810812db20498df9cb538772a9c, type: 3}
+  m_Name: PotentSteelSpitterPotion
   m_EditorClassIdentifier: 
-  potionName: Weak Golden Ticket Elixir
-  nuggetValue: 10
-  objectTagsToConvert:
-  - Ingredient
+  potionName: Potent Steel Spitter Potion
+  amount: 15

@@ -69,7 +69,7 @@ public class PlayerInputHandler : MonoBehaviour
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         Transform objectToShoot = null;
 
-        if (Input.GetKey(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E)) {
             if(hasAvailableKnifes && isNotOnCooldown)
             {
                 objectToShoot = knifeObject;
@@ -94,7 +94,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
-            inventory.AddPotion(inventory.possibleRitual.RitualData.potionReward);
+            if(Constants.Instance.currentRitualRewards >= inventory.possibleRitual.RitualData.potionRewardData.Count)
+            {
+                Debug.Log("Current requested ritual reward does not correspond to the actual data");
+                return;
+            }
+            inventory.AddPotion(inventory.possibleRitual.RitualData.potionRewardData[Constants.Instance.currentRitualRewards]);
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
@@ -119,7 +124,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Cheats()
     {
-        if (Input.GetKey(KeyCode.B) && !hasSpawnedABat)
+        if (Input.GetKeyDown(KeyCode.B) && !hasSpawnedABat)
         {
             BatEnemy enemy = bat.gameObject.GetComponent<BatEnemy>();
             Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
@@ -141,7 +146,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void UpgradeMenu()
     {
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             GameEventHandler.Instance.BringUpUpgradesMenu();
         }

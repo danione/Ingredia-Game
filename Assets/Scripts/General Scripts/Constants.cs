@@ -8,11 +8,18 @@ public class Constants : MonoBehaviour
     [SerializeField] private IngredientsFactory ingredientsFactory;
     [SerializeField] public DifficultyModifiers DifficultyModifiers = new();
     public int IngredientsCount { get { return ingredientsFactory.GetCountOfIngredients(); } }
+    [SerializeField] public int currentRitualRewards { get; private set; }
 
     private void Awake()
     {
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
+        currentRitualRewards = 0;
+    }
+
+    public void UpgradeCurrentRitualRewards(int newRitualRewards)
+    {
+        currentRitualRewards = newRitualRewards;
     }
 }
 

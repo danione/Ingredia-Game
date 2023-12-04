@@ -58,14 +58,14 @@ public class UIManager : MonoBehaviour
 
         ShuffleListOfUpgrades(availableUpgrades);
 
-        availableUpgrades.Sort((x, y) => x.MinCost.CompareTo(y.MinCost));
-
         for(int i = 0; i < maxDisplayUpgrades; i++)
         {
             if (i >= availableUpgrades.Count) break;
             randomChosenUpgrades.Add(availableUpgrades[i]);
             countChosenUpgrades++;
         }
+
+        randomChosenUpgrades.Sort((x, y) => x.MinCost.CompareTo(y.MinCost));
 
         HookUpgradesWithButtons();
     }
