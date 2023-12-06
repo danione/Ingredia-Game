@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
 public class ObjectFactory : Factory
 {
-    private Transform productPrefab;
+    private Transform productPrefab;    
 
     public ObjectFactory(Transform product)
     {
