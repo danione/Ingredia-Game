@@ -17,7 +17,7 @@ public class HiddenRitualUIManager : UIObjectsAbstract
     {
         foreach(var item in ritualData.ritualRecipes)
         {
-            OnAdjustInventoryUI(item.item, item.amount);
+            OnAdjustInventoryUI(item.item.ingredientName, item.amount);
         }
     }
 }

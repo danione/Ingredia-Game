@@ -16,8 +16,13 @@ MonoBehaviour:
   description: Convert all ingredients, projectiles, and dangerous objects into golden
     nuggets.
   ritualRecipes:
-  - item: yellowDahlia
+  - item: {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
     amount: 2
-  - item: mask
+  - item: {fileID: 11400000, guid: 7df2079410562364c8198029a4721f4c, type: 2}
     amount: 2
-  potionReward: {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
+  - item: {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
+    amount: 4
+  potionRewardData:
+  - {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
+  - {fileID: 11400000, guid: 4674b776ac37bfa4090c11b3d93a6902, type: 2}
+  - {fileID: 11400000, guid: d8fc47e54fac8bc4b82de58e60bbc331, type: 2}

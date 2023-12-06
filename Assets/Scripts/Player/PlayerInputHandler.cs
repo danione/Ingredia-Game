@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent( typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
 {
-    private float nextFireTime = 0f;
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
@@ -64,37 +63,48 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Shoot()
     {
+        if (!Input.GetKeyDown(KeyCode.E)) return;
+
         bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
-        bool isNotOnCooldown = Time.time >= nextFireTime;
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         Transform objectToShoot = null;
 
-        if (Input.GetKey(KeyCode.E)) {
-            if(hasAvailableKnifes && isNotOnCooldown)
-            {
-                objectToShoot = knifeObject;
-                PlayerController.Instance.inventory.SubtractKnifeAmmo();
-                nextFireTime = Time.time + fireRate;
-            } else if(hasAvailableAmmo && isNotOnCooldown)
-            {
-                objectToShoot = projectileObject;
-                PlayerController.Instance.inventory.SubtractAmmo();
-                nextFireTime = Time.time + fireRate;
-            }
+        if(hasAvailableKnifes && isNotOnCooldown)
+        {
+            isNotOnCooldown = false;
+            objectToShoot = knifeObject;
+            PlayerController.Instance.inventory.SubtractKnifeAmmo();
+        } else if(hasAvailableAmmo && isNotOnCooldown)
+        {
+            isNotOnCooldown = false;
+            objectToShoot = projectileObject;
+            PlayerController.Instance.inventory.SubtractAmmo();
         }
+        
 
         if(objectToShoot != null)
         {
-            Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
-            
+            StartCoroutine(FireAProjectile(objectToShoot));
         }
+    }
+
+    private IEnumerator FireAProjectile(Transform objectToShoot)
+    {
+        Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
+        yield return new WaitForSeconds(fireRate);
+        isNotOnCooldown = true;
     }
 
     private void AttemptRitual()
     {
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
-            inventory.AddPotion(inventory.possibleRitual.RitualData.potionReward);
+            if(Constants.Instance.currentRitualRewards >= inventory.possibleRitual.RitualData.potionRewardData.Count)
+            {
+                Debug.Log("Current requested ritual reward does not correspond to the actual data");
+                return;
+            }
+            inventory.AddPotion(inventory.possibleRitual.RitualData.potionRewardData[Constants.Instance.currentRitualRewards]);
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
@@ -119,9 +129,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Cheats()
     {
-        if (Input.GetKey(KeyCode.B) && !hasSpawnedABat)
+        if (Input.GetKeyDown(KeyCode.B) && !hasSpawnedABat)
         {
-            BatEnemy enemy = bat.gameObject.GetComponent<BatEnemy>();
+            RitualistEnemy enemy = bat.gameObject.GetComponent<RitualistEnemy>();
             Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
             hasSpawnedABat = true;
             StartCoroutine(ResetSpawnedBatFlagAfterDelay());
@@ -141,9 +151,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void UpgradeMenu()
     {
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             GameEventHandler.Instance.BringUpUpgradesMenu();
         }
+    }
+
+    public void ChangeFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
     }
 }

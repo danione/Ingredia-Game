@@ -16,17 +16,14 @@ public class GameEventHandler : MonoBehaviour
     public Action<GhostPotionData> ActivatedGhost;
     public Action<OverloadElixirData> ActivatedLaser;
     public Action<float> ActivatedBarrier;
+    public Action ActivatedSmartRitualHelper;
+    public Action<Ritual> CollectedExistingIngredient;
+    public Action<IngredientData> HighlightedIngredient;
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
     public void DestroyEnemy()
@@ -85,5 +82,20 @@ public class GameEventHandler : MonoBehaviour
     public void ActivateBarrier(float duration)
     {
         ActivatedBarrier?.Invoke(duration);
+    }
+
+    public void ActivateSmartRitualHelper()
+    {
+        ActivatedSmartRitualHelper?.Invoke();
+    }
+
+    public void CollectExistingIngredient(Ritual ritual)
+    {
+        CollectedExistingIngredient?.Invoke(ritual);
+    }
+
+    public void HighlightIngredient(IngredientData ingredient)
+    {
+        HighlightedIngredient?.Invoke(ingredient);
     }
 }

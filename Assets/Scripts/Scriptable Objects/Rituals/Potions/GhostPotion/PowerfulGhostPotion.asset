@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42aab10419686d844bb787858737e75a, type: 3}
+  m_Name: PowerfulGhostPotion
+  m_EditorClassIdentifier: 
+  potionName: Powerful Spectral Potion
+  countDownTimer: 20
+  powerPoolValue: 15
+  target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

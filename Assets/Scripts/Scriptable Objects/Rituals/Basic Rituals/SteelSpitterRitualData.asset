@@ -15,9 +15,11 @@ MonoBehaviour:
   name: Steel Spitter Ritual
   description: Adds a knife projectile to the player's arsenal.
   ritualRecipes:
-  - item: humanEye
+  - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
     amount: 1
-  - item: athame
+  - item: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
     amount: 1
-  reward: SteelSpitterElixir
-  potionReward: {fileID: 11400000, guid: 905163cba4777744e843715e75c4aacb, type: 2}
+  potionRewardData:
+  - {fileID: 11400000, guid: 905163cba4777744e843715e75c4aacb, type: 2}
+  - {fileID: 11400000, guid: 5ff06a109ff165c44babee3afc3c5714, type: 2}
+  - {fileID: 11400000, guid: f60e6bf4572def245a8e05bb68457fec, type: 2}

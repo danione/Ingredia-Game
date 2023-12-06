@@ -16,7 +16,13 @@ MonoBehaviour:
   description: Fire Spitter Ritual ignites the cauldron providing ammo for ranged
     attacks.
   ritualRecipes:
-  - item: humanEye
-    amount: 3
-  reward: FireSpitterElixir
-  potionReward: {fileID: 11400000, guid: f4d54879c917a8b45bd03b4a0f0c0962, type: 2}
+  - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
+    amount: 1
+  potionRewardData:
+  - {fileID: 11400000, guid: f4d54879c917a8b45bd03b4a0f0c0962, type: 2}
+  - {fileID: 11400000, guid: 1f520fd6223d21a4e9c53e03fd28ba28, type: 2}
+  - {fileID: 11400000, guid: a2c6c1f5822d02c459c5838fa99de7bc, type: 2}
