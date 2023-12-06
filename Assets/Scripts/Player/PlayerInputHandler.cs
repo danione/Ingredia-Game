@@ -131,7 +131,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B) && !hasSpawnedABat)
         {
-            BatEnemy enemy = bat.gameObject.GetComponent<BatEnemy>();
+            RitualistEnemy enemy = bat.gameObject.GetComponent<RitualistEnemy>();
             Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
             hasSpawnedABat = true;
             StartCoroutine(ResetSpawnedBatFlagAfterDelay());
