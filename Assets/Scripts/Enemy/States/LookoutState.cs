@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class LookoutState : IState
 {
-    
-    private float speed = 3.5f;
+    private float speed = 8f;
     private float stoppingDistance = 3.0f;
     private float xBorder = 13.0f;
     private float yBorder = 13.0f;
-    private readonly float defaultChannelDuration = 3.0f;
+    private readonly float defaultChannelDuration = 1.0f;
     private float channelDuration;
     public Action FinishedChanneling;
 

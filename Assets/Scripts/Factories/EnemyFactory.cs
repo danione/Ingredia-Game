@@ -26,7 +26,7 @@ public class EnemyFactory : MonoBehaviour
     {
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
-        
+        if (destroyCancellationToken.IsCancellationRequested) return;
         if (currentAliveEnemies == 0 && currentCurrency == 0)
             StartCoroutine(IncrementWave());
     }

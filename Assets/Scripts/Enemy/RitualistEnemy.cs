@@ -7,12 +7,11 @@ public class RitualistEnemy : Enemy
     public static int RitualistEnemyCount = 0;
 
     private Transform player; // Used to detect ingredients near the player
-    private Transform ritualistEnemyCapsule; // Reference to the actual capsule detector
 
     [SerializeField] private Transform ritualistCircle;
     [SerializeField] private Transform ingredientCircle;
-    [SerializeField] public GameObject[] ingredientTypes;
-
+    [SerializeField] private float radiusOfSwap;
+    [SerializeField] private float cooldownSwapSelectSeconds;
 
     private RitualistStateMachine stateMachine;
 
@@ -27,36 +26,30 @@ public class RitualistEnemy : Enemy
     private void Start()
     {
         player = PlayerController.Instance.gameObject.GetComponent<Transform>();
-        ritualistEnemyCapsule = player.GetChild(1); // Second child should always be the ritualist circle
-        if(ritualistEnemyCapsule.GetComponent<GetNearbyObjects>() == null)
-        {
-            Destroy(gameObject);
-        }
-        ritualistEnemyCapsule.gameObject.SetActive(true);
-
         RitualistEnemyCount++;
     }
 
     private void OnFinishedChanneling()
     {
-        foreach (var ingredient in ritualistEnemyCapsule.GetComponent<GetNearbyObjects>().ingredients)
+        Collider[] colliders = Physics.OverlapSphere(player.gameObject.transform.position, radiusOfSwap);
+
+        foreach (Collider collider in colliders)
         {
-            try
+            if (collider.CompareTag("Player")) continue;
+
+            if (collider.CompareTag("Ingredient"))
             {
-                SwapIngredient(ingredient.Value);
-            } catch (Exception)
-            {
-                continue;
+                SwapIngredient(collider.gameObject);
             }
-            
         }
+
         stateMachine.TransitiontTo(stateMachine.IdleState);
         StartCoroutine(CooldownSwapPosition(stateMachine.SelectIngredientState));
     }
 
     IEnumerator CooldownSwapPosition(IState change)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(cooldownSwapSelectSeconds);
         stateMachine.TransitiontTo(change);
     }
 
@@ -80,22 +73,16 @@ public class RitualistEnemy : Enemy
         if(ingredient == null) { return; }
 
         Vector3 currentPos = ingredient.transform.position;
-        GameObject newIngredient = ingredientTypes[UnityEngine.Random.Range(0, ingredientTypes.Length)];
-        
+
         Destroy(ingredient);
 
-        Instantiate(newIngredient, currentPos, Quaternion.identity);
+        GameEventHandler.Instance.GenerateIngredientAtPos(currentPos);
     }
 
     protected override void DestroyEnemy()
     {
-        Debug.Log("Destroyed Enemy");
         stateMachine.LookoutState.FinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
         RitualistEnemyCount--;
-        if (RitualistEnemyCount <= 0 && ritualistEnemyCapsule.gameObject != null)
-        {
-            ritualistEnemyCapsule.gameObject.SetActive(false);
-        }
     }
 }

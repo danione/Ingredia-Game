@@ -27,6 +27,7 @@ public class IngredientsFactory: MonoBehaviour
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
         StartCoroutine(SpawnIngredients(() => SpawnRandomRareIngredient()));
         GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
+        GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
 
     private void SpawnRandomIngredient()
@@ -34,6 +35,13 @@ public class IngredientsFactory: MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
         // Select a random location at the top of the screen
         HandleIngredientSpawn(_ingredients, randomIndex);
+    }
+
+    private void SpawnRandomIngredient(Vector3 pos)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
+        // Select a random location at the top of the screen
+        HandleIngredientSpawn(_ingredients, randomIndex, pos);
     }
 
     private void SpawnRandomRareIngredient()
@@ -49,10 +57,21 @@ public class IngredientsFactory: MonoBehaviour
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
     {
         // Select a random location at the top of the screen
-        Vector3 newRandomLocation = new Vector3(UnityEngine.Random.Range(spawnLocation.xRightMax,
-            spawnLocation.xLeftMax), spawnLocation.yLocation, spawnZLocation);
+
+        float randomXPos = UnityEngine.Random.Range(spawnLocation.xRightMax,
+            spawnLocation.xLeftMax);
+        Vector3 newRandomLocation = new Vector3(randomXPos, spawnLocation.yLocation, spawnZLocation);
         
         Transform product = ingredientsFactories.GetProduct(newRandomLocation, list[randomIndex]);
+        if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
+        {
+            product.GetComponent<BasicIngredient>().Highlight();
+        }
+    }
+
+    private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex, Vector3 pos)
+    {
+        Transform product = ingredientsFactories.GetProduct(pos, list[randomIndex]);
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();

@@ -19,6 +19,7 @@ public class GameEventHandler : MonoBehaviour
     public Action ActivatedSmartRitualHelper;
     public Action<Ritual> CollectedExistingIngredient;
     public Action<IngredientData> HighlightedIngredient;
+    public Action<Vector3> GeneratedIngredientAtPos;
 
     private void Awake()
     {
@@ -97,5 +98,10 @@ public class GameEventHandler : MonoBehaviour
     public void HighlightIngredient(IngredientData ingredient)
     {
         HighlightedIngredient?.Invoke(ingredient);
+    }
+
+    public void GenerateIngredientAtPos(Vector3 pos)
+    {
+        GeneratedIngredientAtPos?.Invoke(pos);
     }
 }

@@ -125,12 +125,8 @@ MonoBehaviour:
   spawnBoundaries: {fileID: 11400000, guid: 853b9e5e34717d04580568ff370c0fda, type: 2}
   ritualistCircle: {fileID: 2235031436882646317}
   ingredientCircle: {fileID: 2127728769232630325}
-  ingredientTypes:
-  - {fileID: 8970860154554545808, guid: 41acc24c1bd17e243b407d30cb5ae08f, type: 3}
-  - {fileID: 4763823597294061326, guid: 14c7eb9e6e280a64dbd495256695ac92, type: 3}
-  - {fileID: 8970860154554545808, guid: 38d5c736295cf5f47a12f89209da5de5, type: 3}
-  - {fileID: 4889428005921669125, guid: 588daa6946508d848abd061f1e754d13, type: 3}
-  - {fileID: 8970860154554545808, guid: c5a670cb7779e324b91c32548b8a5299, type: 3}
+  radiusOfSwap: 5.4
+  cooldownSwapSelectSeconds: 0.5
 --- !u!1 &3907166430526167895
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +237,7 @@ RectTransform:
   m_GameObject: {fileID: 6377935506055020636}
   m_LocalRotation: {x: -0.08668625, y: -0, z: -0, w: 0.99623567}
   m_LocalPosition: {x: 0, y: 0, z: 0.03}
-  m_LocalScale: {x: 0.64645, y: 0.64645, z: 0.64645}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 120965602038434335}
