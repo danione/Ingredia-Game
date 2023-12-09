@@ -111,6 +111,7 @@ public class BatEnemy : Enemy
 
     protected override void DestroyEnemy()
     {
+        base.DestroyEnemy();
         hasCollided = false;
     }
 

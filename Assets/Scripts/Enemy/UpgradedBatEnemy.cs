@@ -27,6 +27,6 @@ public class UpgradedBatEnemy : BatEnemy
 
     protected override void DestroyEnemy()
     {
-        return;
+        base.DestroyEnemy();
     }
 }

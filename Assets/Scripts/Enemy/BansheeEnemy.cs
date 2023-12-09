@@ -75,6 +75,7 @@ public class BansheeEnemy : Enemy
 
     protected override void DestroyEnemy()
     {
+        base.DestroyEnemy();
         InputEventHandler.instance.SetMovement(isMoving: true);
     }
 }

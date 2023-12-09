@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     public virtual void Die()
     {
+        GameEventHandler.Instance.DestroyEnemy();
         GameEventHandler.Instance.SpawnsGoldenNuggets(goldRewardOnDeath, gameObject.transform.position);
         GameEventHandler.Instance.DestroyObject(gameObject);
     }
@@ -39,11 +40,8 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
         if(health <= 0) { Die(); }
     }
 
-    private void OnDestroy()
+    protected virtual void DestroyEnemy()
     {
-        GameEventHandler.Instance.DestroyEnemy();
-        DestroyEnemy();
+        Die();
     }
-
-    protected abstract void DestroyEnemy();
 }

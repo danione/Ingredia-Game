@@ -82,6 +82,7 @@ public class RitualistEnemy : Enemy
 
     protected override void DestroyEnemy()
     {
+        base.DestroyEnemy();
         stateMachine.LookoutState.FinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
         RitualistEnemyCount--;
