@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8366872282582076481}
   - component: {fileID: 3947815434712912144}
   - component: {fileID: -7426713195454453607}
+  - component: {fileID: -7481374443165452413}
   m_Layer: 0
   m_Name: Recipe
   m_TagString: Recipe
@@ -134,3 +135,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 10
+--- !u!114 &-7481374443165452413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371575594308154956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

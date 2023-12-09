@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HiddenRitualsFactory : MonoBehaviour
 {
-    [SerializeField] private Transform recipeObject;
     [SerializeField] private SpawnFrequencyData spawnFrequencyData;
     [SerializeField] private SpawnLocationData spawnLocationData;
+    [SerializeField] private ObjectsSpawner spawner;
 
     private RitualManager manager;
     private string randomRitual;
@@ -20,6 +20,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         PlayerEventHandler.Instance.CollectedInvalidIngredient += OnCollectedWrongIngredient;
         PlayerEventHandler.Instance.UnlockedRitual += OnUnlockedRitual;
         PlayerEventHandler.Instance.CollidedWithRecipe += OnCollidedWithARecipeObject;
+        PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         StartCoroutine(SpawnHiddenRitual());
     }
 
@@ -43,7 +44,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         if(Random.Range(0f, 1f) < currentSpawnChance)
         {
             Vector3 position = new(Random.Range(spawnLocationData.xRightMax, spawnLocationData.xLeftMax), spawnLocationData.yLocation, 2);
-            Instantiate(recipeObject, position, Quaternion.identity);
+            spawner._pool.Get().gameObject.transform.position = position;
             currentSpawnChance = spawnFrequencyData.spawnChance;
         }
         else
@@ -57,15 +58,13 @@ public class HiddenRitualsFactory : MonoBehaviour
         randomRitual = manager.GetRandomLockedRitual();
         manager.UnlockRitual(randomRitual);
         PlayerEventHandler.Instance.SetUpHiddenRitual(manager.GetRitualScriptableObject(randomRitual));
-        Debug.Log(randomRitual);
     }
 
     private void OnCollectedWrongIngredient(string wrongIngredientRitual)
     {
         if (randomRitual != null && wrongIngredientRitual == randomRitual)
         {
-            manager.LockRitual(randomRitual);
-            randomRitual = null;
+            OnEmptiedCauldron();
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }
@@ -79,5 +78,11 @@ public class HiddenRitualsFactory : MonoBehaviour
             PlayerEventHandler.Instance.EmptyCauldron();
         } 
         else OnCollectedWrongIngredient(ritual);
+    }
+
+    private void OnEmptiedCauldron()
+    {
+        manager.LockRitual(randomRitual);
+        randomRitual = null;
     }
 }
