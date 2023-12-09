@@ -1680,7 +1680,7 @@ MonoBehaviour:
   spawnFrequencyInSeconds: 2
   waveSpawnCooldownInSeconds: 3
   currentWave: 0
-  upgradedBat: {fileID: 8147655413801567454, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
+  upgradedBat: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
 --- !u!114 &596683722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,7 +1708,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03c4c19b173f534a811befcf9b5b5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldenNuggetObject: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 20
+    maxSize: 100
+    prefab: {fileID: 8399539123009634397, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!1 &604312694
 GameObject:
   m_ObjectHideFlags: 0

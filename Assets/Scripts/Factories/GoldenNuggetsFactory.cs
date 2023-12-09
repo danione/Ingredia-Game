@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoldenNuggetsFactory : MonoBehaviour
 {
-    [SerializeField] private Transform goldenNuggetObject;
+    [SerializeField] private ObjectsSpawner spawner;
 
     private void Start()
     {
@@ -13,8 +13,8 @@ public class GoldenNuggetsFactory : MonoBehaviour
 
     private void OnSpawnGoldenNugget(int value, Vector3 position)
     {
-        GameObject goldenNugget = Instantiate(goldenNuggetObject.gameObject, position, Quaternion.identity);
-        goldenNugget.GetComponent<GoldenNuggets>().Amount = value;
+        Product product = spawner._pool.Get();
+        product.transform.position = position;
+        product.GetComponent<GoldenNuggets>().Amount = value;        
     }
-
 }
