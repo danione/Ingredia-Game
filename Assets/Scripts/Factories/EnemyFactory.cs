@@ -11,11 +11,16 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private float waveSpawnCooldownInSeconds = 3.0f;
     [SerializeField] private float currentWave;
     [SerializeField] private GameObject upgradedBat;
+    private List<ObjectsSpawner> spawner = new();
 
     private int currentAliveEnemies = 0;
 
     void Start()
     {
+        foreach (var enemy in enemies)
+        {
+            spawner.Add(new ObjectsSpawner(enemy.enemy));
+        }
         StartCoroutine(SpawnEnemies());
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
@@ -41,8 +46,12 @@ public class EnemyFactory : MonoBehaviour
             if (currentCurrency - enemies[index].cost >= 0)
             {
                 currentCurrency -= enemies[index].cost;
-                Enemy within = enemies[index].enemy.GetComponent<Enemy>();
-                Instantiate(enemies[index].enemy, within.GetRandomPosition(), Quaternion.identity);
+                Enemy enemy = enemies[index].enemy.GetComponent<Enemy>();
+
+                if (enemy == null) continue;
+                
+                Vector3 pos = enemy.GetRandomPosition();
+                spawner[index]._pool.Get().gameObject.transform.position = pos;
                 currentAliveEnemies++;
                 break;
             }
@@ -82,6 +91,6 @@ public class EnemyFactory : MonoBehaviour
 [System.Serializable]
 public class WaveEnemy
 {
-    public MonoBehaviour enemy;
+    public Product enemy;
     public int cost;
 }
