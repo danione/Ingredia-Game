@@ -1,17 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
+using static UnityEditor.PlayerSettings;
 
 public class IngredientsFactory: MonoBehaviour
 {
+    [SerializeField] private ObjectsSpawner spawner;
     [SerializeField] private List<IngredientData> _ingredients;
     [SerializeField] private List<IngredientData> _rareIngredients;
     [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
-    [SerializeField] private Transform prefab;
+    [SerializeField] private Product prefab;
     private Factory ingredientsFactories;
     private HashSet<IngredientData> _highlight = new();
+    
 
     // Private Variables
 
@@ -19,7 +24,8 @@ public class IngredientsFactory: MonoBehaviour
 
     private void Awake()
     {
-        ingredientsFactories = new ObjectFactory(prefab);
+        // ingredientsFactories = new ObjectFactory(prefab);
+        spawner = new ObjectsSpawner(prefab);
     }
 
     void Start()
@@ -61,8 +67,8 @@ public class IngredientsFactory: MonoBehaviour
         float randomXPos = UnityEngine.Random.Range(spawnLocation.xRightMax,
             spawnLocation.xLeftMax);
         Vector3 newRandomLocation = new Vector3(randomXPos, spawnLocation.yLocation, spawnZLocation);
-        
-        Transform product = ingredientsFactories.GetProduct(newRandomLocation, list[randomIndex]);
+
+        Product product = spawner.GetProduct(newRandomLocation, list[randomIndex]);
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();
@@ -71,7 +77,7 @@ public class IngredientsFactory: MonoBehaviour
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex, Vector3 pos)
     {
-        Transform product = ingredientsFactories.GetProduct(pos, list[randomIndex]);
+        Product product = spawner.GetProduct(pos, list[randomIndex]);
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();
@@ -111,4 +117,53 @@ public class IngredientsFactory: MonoBehaviour
     {
         _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
     }
+}
+
+
+[System.Serializable]
+public class ObjectsSpawner
+{
+    public IObjectPool<Product> _pool;
+    [SerializeField] private bool collectionCheck = true; // throw if we try to return an existing item
+    [SerializeField] private int defaultCapacity = 40;
+    [SerializeField] private int maxSize = 100;
+    private Product prefab;
+
+    public ObjectsSpawner(Product prefab)
+    {
+        _pool = new ObjectPool<Product>(CreateProduct, OnGetFromPool, OnReleaseToPool, OnDestroyFromPool, collectionCheck, defaultCapacity, maxSize);
+        this.prefab = prefab;
+    }
+
+    private Product CreateProduct()
+    {
+        Product product = Product.Instantiate(prefab);
+        product.ObjectPool = _pool;
+        return product;
+    }
+
+    private void OnGetFromPool(Product pooledObject)
+    {
+        pooledObject.gameObject.SetActive(true);
+    }
+
+    private void OnReleaseToPool(Product pooledObject)
+    {
+        pooledObject.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyFromPool(Product pooledObject)
+    {
+        Product.Destroy(pooledObject);
+    }
+
+    // Ingredient
+    public Product GetProduct(Vector3 pos, IngredientData data)
+    {
+        Product product = _pool.Get();
+        product.GetComponent<IIngredient>().Initialise(data);
+        product.gameObject.transform.position = pos;
+        return product;
+    }
+    
 }

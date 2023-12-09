@@ -17,7 +17,15 @@ public class DestroyOutOfBounds : MonoBehaviour
     {
         if(transform.position.y < lowerYBound || transform.position.y > upperYBound)
         {
-            Destroy(gameObject);
+            Product product = gameObject.GetComponent<Product>();
+            if (product != null)
+            {
+                product.ObjectPool.Release(product);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

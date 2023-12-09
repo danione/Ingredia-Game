@@ -1616,6 +1616,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aff27dc457c23479ca1a468c389339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 20
+    maxSize: 100
   _ingredients:
   - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
   - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
@@ -1631,7 +1635,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
   spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
-  prefab: {fileID: 3146358866196992162, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
+  prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
 --- !u!114 &596683720
 MonoBehaviour:
   m_ObjectHideFlags: 0
