@@ -82,7 +82,8 @@ public class HiddenRitualsFactory : MonoBehaviour
 
     private void OnEmptiedCauldron()
     {
-        manager.LockRitual(randomRitual);
+        if(randomRitual != null)
+            manager.LockRitual(randomRitual);
         randomRitual = null;
     }
 }

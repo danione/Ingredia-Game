@@ -13,7 +13,7 @@ public class DangerousObject : FallableObject
             {
                 stats.TakeDamage(healthCost);
             }
-            Destroy(gameObject);
+            GameEventHandler.Instance.DestroyObject(gameObject);
         }
     }
 }

@@ -66,7 +66,7 @@ public class GameEventHandler : MonoBehaviour
             foreach (GameObject obj in objects)
             {
                 SpawnsGoldenNuggets(amount, obj.gameObject.transform.position);
-                Destroy(obj);
+                DestroyObject(obj);
             }
         }
     }

@@ -74,7 +74,8 @@ public class RitualistEnemy : Enemy
 
         Vector3 currentPos = ingredient.transform.position;
 
-        Destroy(ingredient);
+        Product product = ingredient.GetComponent<Product>();
+        product.ObjectPool.Release(product);
 
         GameEventHandler.Instance.GenerateIngredientAtPos(currentPos);
     }
