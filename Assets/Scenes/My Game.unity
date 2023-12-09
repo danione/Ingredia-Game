@@ -1650,7 +1650,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: 2
-  dangerousObject: {fileID: 3061362062766351863, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
+  dangerousObject: {fileID: 2637975095154354181, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 5
+    maxSize: 15
 --- !u!114 &596683721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,7 +1662,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596683714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -8048,10 +8052,6 @@ PrefabInstance:
       propertyPath: m_slotsContainer
       value: 
       objectReference: {fileID: 1135961848}
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: flameBombAmmo
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8096,17 +8096,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: bat
-      value: 
-      objectReference: {fileID: 29723077154993869, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
-    - target: {fileID: 8574045374956826587, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: fireRate
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 221962532809048521, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

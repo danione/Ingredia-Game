@@ -20,6 +20,7 @@ public class GameManager: MonoBehaviour
     {
         GameEventHandler.Instance.UpgradesMenuOpen += OnUpdatesMenuOpened;
         GameEventHandler.Instance.UpgradesMenuClose += OnUpdatesMenuClosed;
+        GameEventHandler.Instance.DestroyedObject += OnDestroyObject;
     }
 
     private void PauseGame()
@@ -48,5 +49,18 @@ public class GameManager: MonoBehaviour
     private void OnUpdatesMenuClosed()
     {
         ResumeGame();
+    }
+
+    private void OnDestroyObject(GameObject obj)
+    {
+        Product product = obj.GetComponent<Product>();
+        if (product != null)
+        {
+            product.ObjectPool.Release(product);
+        }
+        else
+        {
+            Destroy(obj.gameObject);
+        }
     }
 }

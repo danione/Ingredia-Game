@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 413563317218498220}
   - component: {fileID: 1410098722001369912}
   - component: {fileID: 2069825318280458867}
+  - component: {fileID: 2637975095154354181}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Dangerous Object
@@ -132,6 +133,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b96b68f906ddce54bbcf011167b760f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2637975095154354181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061362062766351863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5460766405149760353

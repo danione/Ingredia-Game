@@ -20,6 +20,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<Ritual> CollectedExistingIngredient;
     public Action<IngredientData> HighlightedIngredient;
     public Action<Vector3> GeneratedIngredientAtPos;
+    public Action<GameObject> DestroyedObject;
 
     private void Awake()
     {
@@ -103,5 +104,10 @@ public class GameEventHandler : MonoBehaviour
     public void GenerateIngredientAtPos(Vector3 pos)
     {
         GeneratedIngredientAtPos?.Invoke(pos);
+    }
+
+    public void DestroyObject(GameObject obj)
+    {
+        DestroyedObject?.Invoke(obj);
     }
 }

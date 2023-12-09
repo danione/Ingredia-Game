@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile") || other.CompareTag("Loot"))
         {
             collision?.Invoke(other.gameObject.GetInstanceID());
-            Destroy(other.gameObject);
+            GameEventHandler.Instance.DestroyObject(other.gameObject);
         }
 
     }
