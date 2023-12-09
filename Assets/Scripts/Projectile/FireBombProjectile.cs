@@ -22,10 +22,10 @@ public class FireBombProjectile : SimpleProjectile
             }
             else
             {
-                Destroy(c.gameObject);
+                GameEventHandler.Instance.DestroyObject(other.gameObject);
             }
         }
-        Destroy(gameObject);
+        GameEventHandler.Instance.DestroyObject(gameObject);
     }
 
     public void SetAreaOfEffect(float newArea)

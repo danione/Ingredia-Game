@@ -10,8 +10,10 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
     [SerializeField] private float waveSpawnCooldownInSeconds = 3.0f;
     [SerializeField] private float currentWave;
-    [SerializeField] private GameObject upgradedBat;
+    [SerializeField] private Product upgradedBat;
+
     private List<ObjectsSpawner> spawner = new();
+    private ObjectsSpawner upgradedSpawner;
 
     private int currentAliveEnemies = 0;
 
@@ -21,6 +23,8 @@ public class EnemyFactory : MonoBehaviour
         {
             spawner.Add(new ObjectsSpawner(enemy.enemy));
         }
+        upgradedSpawner = new ObjectsSpawner(upgradedBat);
+
         StartCoroutine(SpawnEnemies());
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
@@ -31,7 +35,6 @@ public class EnemyFactory : MonoBehaviour
     {
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
-        if (destroyCancellationToken.IsCancellationRequested) return;
         if (currentAliveEnemies == 0 && currentCurrency == 0)
             StartCoroutine(IncrementWave());
     }
@@ -82,8 +85,9 @@ public class EnemyFactory : MonoBehaviour
 
     private void OnFusedTwoBats(Vector3 position)
     {
-        GameObject bat = Instantiate(upgradedBat, position, Quaternion.identity);
-        bat.GetComponent<BatEnemy>().Upgrade();
+        Product product = upgradedSpawner._pool.Get();
+        product.gameObject.transform.position = position;
+        product.GetComponent<BatEnemy>().Upgrade();
         currentAliveEnemies++;
     }
 }

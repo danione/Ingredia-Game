@@ -10,7 +10,7 @@ public class UpgradedBatEnemy : BatEnemy
     {
         if(_state.CurrentState == _state.FusionAttackState)
         {
-            Instantiate(projectile, gameObject.transform.position, projectile.rotation);
+            spawner._pool.Get().transform.position = gameObject.transform.position;
             StartCoroutine(RapidShootCooldown());
         }
         else if(_state.CurrentState != _state.FusionAttackState)

@@ -11,12 +11,11 @@ public class PlayerInputHandler : MonoBehaviour
     private bool isNotOnCooldown = true;
     private bool hasSpawnedABat = false;
 
-    [SerializeField] private Transform projectileObject;
-    [SerializeField] private Transform knifeObject;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
     [SerializeField] GameObject bat;
+    [SerializeField] private List<ObjectsSpawner> projectileSpawners;
 
 
     private void Start()
@@ -67,30 +66,30 @@ public class PlayerInputHandler : MonoBehaviour
 
         bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
-        Transform objectToShoot = null;
+        int objectToShoot = -1;
 
         if(hasAvailableKnifes && isNotOnCooldown)
         {
             isNotOnCooldown = false;
-            objectToShoot = knifeObject;
+            objectToShoot = 1;
             PlayerController.Instance.inventory.SubtractKnifeAmmo();
         } else if(hasAvailableAmmo && isNotOnCooldown)
         {
             isNotOnCooldown = false;
-            objectToShoot = projectileObject;
+            objectToShoot = 0;
             PlayerController.Instance.inventory.SubtractAmmo();
         }
         
 
-        if(objectToShoot != null)
+        if(objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
         {
             StartCoroutine(FireAProjectile(objectToShoot));
         }
     }
 
-    private IEnumerator FireAProjectile(Transform objectToShoot)
+    private IEnumerator FireAProjectile(int objectToShoot)
     {
-        Instantiate(objectToShoot, spawnPoint.position, projectileObject.rotation);
+        projectileSpawners[objectToShoot]._pool.Get().transform.position = spawnPoint.position;
         yield return new WaitForSeconds(fireRate);
         isNotOnCooldown = true;
     }

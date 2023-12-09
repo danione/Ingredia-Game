@@ -10,12 +10,13 @@ public class KnifeProjectile : SimpleProjectile
         if (isValidTarget && unitStats != null)
         {
             unitStats.TakeDamage(strength);
-            Destroy(gameObject);
+            GameEventHandler.Instance.DestroyObject(gameObject);
         }
         else if (isValidTarget)
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+
+            GameEventHandler.Instance.DestroyObject(gameObject);
+            GameEventHandler.Instance.DestroyObject(other.gameObject);
         }
     }
 }

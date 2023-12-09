@@ -8,12 +8,21 @@ public class ObjectsSpawner
     [SerializeField] private bool collectionCheck = true; // throw if we try to return an existing item
     [SerializeField] private int defaultCapacity = 40;
     [SerializeField] private int maxSize = 100;
-    private Product prefab;
+    [SerializeField] private Product prefab;
+
+    public ObjectsSpawner() {
+        Init();
+    }
 
     public ObjectsSpawner(Product prefab)
     {
-        _pool = new ObjectPool<Product>(CreateProduct, OnGetFromPool, OnReleaseToPool, OnDestroyFromPool, collectionCheck, defaultCapacity, maxSize);
+        Init();
         this.prefab = prefab;
+    }
+
+    private void Init()
+    {
+        _pool = new ObjectPool<Product>(CreateProduct, OnGetFromPool, OnReleaseToPool, OnDestroyFromPool, collectionCheck, defaultCapacity, maxSize);
     }
 
     private Product CreateProduct()

@@ -14,7 +14,7 @@ public class BatEnemy : Enemy
     protected bool attacked = false;
     private static bool hasCollided = false;
     protected bool isUpgraded = false;
-    [SerializeField] protected Transform projectile;
+    [SerializeField] protected ObjectsSpawner spawner;
     [SerializeField] private float spawnCooldown;
     [SerializeField] private float upgradedStateDuration;
     
@@ -61,7 +61,7 @@ public class BatEnemy : Enemy
 
     protected virtual void Shoot()
     {
-        Instantiate(projectile, gameObject.transform.position, projectile.rotation);
+        spawner._pool.Get().transform.position = gameObject.transform.position;
         StartCoroutine(Cooldown());
     }
 

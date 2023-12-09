@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             case ("BansheeDetection"): GameEventHandler.Instance.BansheeDetectPlayer(); break;
         }
 
-        if (other.CompareTag("Ingredient") || other.CompareTag("Recipe") || other.CompareTag("Projectile") || other.CompareTag("Loot"))
+        if (other.CompareTag("Ingredient") || other.CompareTag("Recipe")  || other.CompareTag("Loot"))
         {
             collision?.Invoke(other.gameObject.GetInstanceID());
             GameEventHandler.Instance.DestroyObject(other.gameObject);
