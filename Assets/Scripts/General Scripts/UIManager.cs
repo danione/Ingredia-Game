@@ -13,10 +13,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Transform inventoryMenu;
     [SerializeField] private int maxDisplayUpgrades;
-
-    [SerializeField] private UIUpgradeClass healthUI;
-    [SerializeField] private UIUpgradeClass movementSpeedUI;
-    [SerializeField] private UIUpgradeClass projectileUI;
+    [SerializeField] private TextMeshProUGUI goldField;
 
     [SerializeField] private List<UIUpgradeClass> rightSideUpgrades = new();
     [SerializeField] private List<UnityEngine.UI.Button> rightsideButtons = new();
@@ -92,6 +89,7 @@ public class UIManager : MonoBehaviour
 
         PlayerController.Instance.inventory.AddGold(-upgradesList[index].MinCost);
         upgradesList[index].BuyUpgrade();
+        UpdateScreen();
 
         if(upgradesList == randomChosenUpgrades)
             countChosenUpgrades--;
@@ -111,14 +109,21 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        foreach(var upgrade in rightSideUpgrades)
+        foreach (var upgrade in rightSideUpgrades)
         {
             upgrade?.Upgrade();
         }
 
-        foreach(var upgrade in randomChosenUpgrades)
+        foreach (var upgrade in randomChosenUpgrades)
         {
             upgrade?.Upgrade();
         }
+
+        UpdateGoldUI();
+    }
+
+    private void UpdateGoldUI()
+    {
+        goldField.text = PlayerController.Instance.inventory.gold.ToString();
     }
 }
