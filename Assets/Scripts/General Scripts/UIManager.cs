@@ -18,8 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIUpgradeClass movementSpeedUI;
     [SerializeField] private UIUpgradeClass projectileUI;
 
+    [SerializeField] private List<UIUpgradeClass> rightSideUpgrades = new();
+    [SerializeField] private List<UnityEngine.UI.Button> rightsideButtons = new();
+
     [SerializeField] private List<UIUpgradeClass> availableUpgrades = new();
-    [SerializeField] private List<UnityEngine.UI.Button> buttons = new();
+    [SerializeField] private List<UnityEngine.UI.Button> leftsideButtons = new();
 
     private List<UIUpgradeClass> randomChosenUpgrades = new();
     private int countChosenUpgrades;
@@ -37,6 +40,7 @@ public class UIManager : MonoBehaviour
 
         GameEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
         GameEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
+        HookUpgradesWithButtons(rightsideButtons, rightSideUpgrades, rightSideUpgrades.Count);
         countChosenUpgrades = 0;
     }
 
@@ -67,27 +71,30 @@ public class UIManager : MonoBehaviour
 
         randomChosenUpgrades.Sort((x, y) => x.MinCost.CompareTo(y.MinCost));
 
-        HookUpgradesWithButtons();
+        HookUpgradesWithButtons(leftsideButtons, randomChosenUpgrades, countChosenUpgrades);
     }
 
-    private void HookUpgradesWithButtons()
+    private void HookUpgradesWithButtons(List<UnityEngine.UI.Button> buttonList, List<UIUpgradeClass> upgradesList, int threshold)
     {
-        for (int i = 0; i < buttons.Count; i++)
+        for (int i = 0; i < buttonList.Count; i++)
         {
-            if (i >= countChosenUpgrades) return;
+            if (i >= threshold) return;
             int currentIndex = i;
-            buttons[i].onClick.RemoveAllListeners();
-            buttons[i].onClick.AddListener(() => OnBuyClicked(currentIndex));
-            randomChosenUpgrades[i].Reset(buttons[i].transform.parent.transform);
+            buttonList[i].onClick.RemoveAllListeners();
+            buttonList[i].onClick.AddListener(() => OnBuyClicked(currentIndex, upgradesList));
+            upgradesList[i].Reset(buttonList[i].transform.parent.transform);
         }
     }
 
-    private void OnBuyClicked(int index)
+    private void OnBuyClicked(int index, List<UIUpgradeClass> upgradesList)
     {
-        if(index >= countChosenUpgrades) return;
+        if(PlayerController.Instance.inventory.gold < upgradesList[index].MinCost) return;
 
-        randomChosenUpgrades[index].BuyUpgrade();
-        countChosenUpgrades--;
+        PlayerController.Instance.inventory.AddGold(-upgradesList[index].MinCost);
+        upgradesList[index].BuyUpgrade();
+
+        if(upgradesList == randomChosenUpgrades)
+            countChosenUpgrades--;
     }
 
     void ShuffleListOfUpgrades<T>(List<T> array)
@@ -104,18 +111,14 @@ public class UIManager : MonoBehaviour
 
     private void UpdateScreen()
     {
-        healthUI.Upgrade();
-        movementSpeedUI.Upgrade();
-        projectileUI.Upgrade();
+        foreach(var upgrade in rightSideUpgrades)
+        {
+            upgrade?.Upgrade();
+        }
 
         foreach(var upgrade in randomChosenUpgrades)
         {
-            if (upgrade != null)
-                upgrade.Upgrade();
+            upgrade?.Upgrade();
         }
     }
-
-    public void OnBuyHealth() { healthUI.BuyUpgrade();}
-    public void OnBuyMovement() { movementSpeedUI.BuyUpgrade();}
-    public void OnBuyProjectile() { projectileUI.BuyUpgrade();}
 }

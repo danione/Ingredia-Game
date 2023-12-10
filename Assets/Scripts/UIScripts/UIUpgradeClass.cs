@@ -6,7 +6,7 @@ using UnityEngine;
 public class UIUpgradeClass
 {
     [SerializeField] private string nameOfUpgrade;
-    [SerializeField] private Transform uIItem;
+    private Transform uIItem;
     [SerializeField] private List<UpgradeData> upgradesList = new();
     [SerializeField] private bool isRandomlyGenerated = false;
     [SerializeField] private GameObject upgradedObject;
@@ -39,7 +39,10 @@ public class UIUpgradeClass
         {
             upgradeName = upgradesList[0].upgradeName;
             cost = upgradesList[0].cost.ToString();
-            uIItem.GetChild(2).gameObject.SetActive(true);
+            if (upgradesList[0].cost < PlayerController.Instance.inventory.gold)
+                uIItem.GetChild(2).gameObject.SetActive(true);
+            else
+                uIItem.GetChild(2).gameObject.SetActive(false);
         }
         else
         {
