@@ -10,7 +10,7 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private int maxFlameBombAmmo;
     [SerializeField] private int maxKnifeAmmo;
 
-    [SerializeField] public int gold;
+    public int gold {  get; private set; }
 
     private Dictionary<string, int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
@@ -33,21 +33,15 @@ public class PlayerInventory: MonoBehaviour
 
     public void AddToCauldron(IIngredient ingredient)
     {
-        foreach (var ingr in cauldronContents)
+        if(cauldronContents.ContainsKey(ingredient.Data.ingredientName))
         {
-            if(cauldronContents.ContainsKey(ingredient.Data.ingredientName))
-            {
-                cauldronContents[ingredient.Data.ingredientName] += 1;
-                PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);
-                return;
-            }
-        }
-
-        if (cauldronContents.Count < size)
+            cauldronContents[ingredient.Data.ingredientName] += 1;
+        } else if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Data.ingredientName] = 1;
-            PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);
         }
+
+        PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);
     }
 
     private void OnEmptiedCauldron()
@@ -57,7 +51,6 @@ public class PlayerInventory: MonoBehaviour
 
     private void OnRitualCompleted(IRitual ritual)
     {
-        Debug.Log(ritual);
         possibleRitual = ritual;
     }
 
