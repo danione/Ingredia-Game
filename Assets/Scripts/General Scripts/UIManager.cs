@@ -59,7 +59,9 @@ public class UIManager : MonoBehaviour
 
         ShuffleListOfUpgrades(availableUpgrades);
 
-        for(int i = 0; i < maxDisplayUpgrades; i++)
+        randomChosenUpgrades.Clear();
+
+        for (int i = 0; i < maxDisplayUpgrades; i++)
         {
             if (i >= availableUpgrades.Count) break;
             randomChosenUpgrades.Add(availableUpgrades[i]);

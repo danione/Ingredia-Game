@@ -10,7 +10,7 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private int maxFlameBombAmmo;
     [SerializeField] private int maxKnifeAmmo;
 
-    public int gold {  get; private set; }
+    [SerializeField] public int gold;
 
     private Dictionary<string, int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
