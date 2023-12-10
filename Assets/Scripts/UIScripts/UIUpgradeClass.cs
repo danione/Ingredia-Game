@@ -28,7 +28,6 @@ public class UIUpgradeClass
             upgradesList.RemoveAt(0);
             justPurchased = isRandomlyGenerated;
         }
-        Upgrade();
     }
 
     public void Upgrade()
@@ -39,7 +38,7 @@ public class UIUpgradeClass
         {
             upgradeName = upgradesList[0].upgradeName;
             cost = upgradesList[0].cost.ToString();
-            if (upgradesList[0].cost < PlayerController.Instance.inventory.gold)
+            if (upgradesList[0].cost <= PlayerController.Instance.inventory.gold)
                 uIItem.GetChild(2).gameObject.SetActive(true);
             else
                 uIItem.GetChild(2).gameObject.SetActive(false);

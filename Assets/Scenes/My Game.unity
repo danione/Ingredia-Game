@@ -3992,30 +3992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryMenu: {fileID: 1652545835}
   maxDisplayUpgrades: 3
-  healthUI:
-    nameOfUpgrade: 
-    upgradesList:
-    - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
-    - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
-    - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 786194158}
-  movementSpeedUI:
-    nameOfUpgrade: 
-    upgradesList:
-    - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
-    - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
-    - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 786194158}
-  projectileUI:
-    nameOfUpgrade: 
-    upgradesList:
-    - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
-    - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
-    - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  goldField: {fileID: 1823788031}
   rightSideUpgrades:
   - nameOfUpgrade: Health Upgrade
     upgradesList:
@@ -4038,6 +4015,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
     isRandomlyGenerated: 0
     upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  rightsideButtons:
+  - {fileID: 1881338313}
+  - {fileID: 528856065}
+  - {fileID: 1929488291}
   availableUpgrades:
   - nameOfUpgrade: Max Ammo Slot
     upgradesList:
@@ -4071,10 +4052,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 786194158}
-  rightsideButtons:
-  - {fileID: 1881338313}
-  - {fileID: 528856065}
-  - {fileID: 1929488291}
   leftsideButtons:
   - {fileID: 1684429661}
   - {fileID: 1121840123}
