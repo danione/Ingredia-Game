@@ -26,6 +26,14 @@ public class BatEnemy : Enemy
         currentPositionDifferenceX = GetCurrentPositionDifferenceX();
     }
 
+    public override void ResetEnemy()
+    {
+        if(_state != null)
+            _state.Initialise(_state.MoveState);
+        attacked = false;
+        hasCollided = false;
+    }
+
     private void Update()
     {
         _state.Update();

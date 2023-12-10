@@ -87,4 +87,12 @@ public class RitualistEnemy : Enemy
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
         RitualistEnemyCount--;
     }
+
+    public override void ResetEnemy()
+    {
+        RitualistEnemyCount++;
+        stateMachine.Initialise(stateMachine.LookoutState);
+        stateMachine.LookoutState.FinishedChanneling += OnFinishedChanneling;
+        stateMachine.SelectIngredientState.SwapPositionReady += OnSwapPositionReady;
+    }
 }

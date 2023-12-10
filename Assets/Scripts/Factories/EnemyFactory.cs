@@ -54,7 +54,10 @@ public class EnemyFactory : MonoBehaviour
                 if (enemy == null) continue;
                 
                 Vector3 pos = enemy.GetRandomPosition();
-                spawner[index]._pool.Get().gameObject.transform.position = pos;
+                Product product = spawner[index]._pool.Get();
+                product.gameObject.transform.position = pos;
+                product.GetComponent<Enemy>().ResetEnemy();
+
                 currentAliveEnemies++;
                 break;
             }

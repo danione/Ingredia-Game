@@ -17,8 +17,16 @@ public class BansheeEnemy : Enemy
     private void Start()
     {
         _state = new BansheeStateMachine(this, fieldOfMovement);
-        _state.Initialise(_state.MoveState);
+        ResetEnemy();
         GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
+    }
+
+    public override void ResetEnemy()
+    {
+        _state.Initialise(_state.MoveState);
+        hasDetectedPlayer = false;
+        hasDetectedPlayer = false;
+        isColliding = true;
     }
 
     private void Update()

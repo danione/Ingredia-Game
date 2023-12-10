@@ -44,4 +44,6 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
     {
         Die();
     }
+
+    public abstract void ResetEnemy();
 }
