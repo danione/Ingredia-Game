@@ -22,7 +22,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<Vector3> GeneratedIngredientAtPos;
     public Action<GameObject> DestroyedObject;
     public Action UnlockedScrollSlip;
-    public Action ScrollSlipGenerated;
+    public Action<RitualScriptableObject> ScrollSlipGenerated;
 
     private void Awake()
     {
@@ -118,8 +118,8 @@ public class GameEventHandler : MonoBehaviour
         UnlockedScrollSlip?.Invoke();
     }
 
-    public void ScrollSlipGenerate()
+    public void ScrollSlipGenerate(RitualScriptableObject scroll)
     {
-        ScrollSlipGenerated?.Invoke();
+        ScrollSlipGenerated?.Invoke(scroll);
     }
 }

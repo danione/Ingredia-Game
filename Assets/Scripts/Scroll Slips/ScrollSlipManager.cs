@@ -18,9 +18,11 @@ public class ScrollSlipManager : MonoBehaviour
     {
         if(availableScrollSlips.Count == 0) return;
 
-        if (unlockedScrollSlips.Add(GetRandomScrollSlip()))
+        RitualScriptableObject randomSlip = GetRandomScrollSlip();
+
+        if (unlockedScrollSlips.Add(randomSlip))
         {
-            GameEventHandler.Instance.ScrollSlipGenerate();
+            GameEventHandler.Instance.ScrollSlipGenerate(randomSlip);
         }
 
     }

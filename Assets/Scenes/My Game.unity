@@ -4658,6 +4658,7 @@ GameObject:
   - component: {fileID: 1237524437}
   - component: {fileID: 1237524438}
   - component: {fileID: 1237524439}
+  - component: {fileID: 1237524440}
   m_Layer: 5
   m_Name: UI Display Canvas
   m_TagString: Untagged
@@ -4857,6 +4858,22 @@ MonoBehaviour:
   - {fileID: 1684429661}
   - {fileID: 1121840123}
   - {fileID: 557789382}
+--- !u!114 &1237524440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237524432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3765b074f55c9e3479e894ab48139f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popup:
+    scrollSlipPopupObject: {fileID: 1433073409}
+    ritualName: {fileID: 985503001}
+    ritualIngredients: {fileID: 669360607}
 --- !u!1 &1274621210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,7 +5137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1433073409
 RectTransform:
   m_ObjectHideFlags: 0
