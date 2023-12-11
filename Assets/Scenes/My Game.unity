@@ -5725,6 +5725,7 @@ GameObject:
   - component: {fileID: 1760316110}
   - component: {fileID: 1760316113}
   - component: {fileID: 1760316114}
+  - component: {fileID: 1760316115}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5822,6 +5823,20 @@ MonoBehaviour:
     countWeight: 0.75
     quantityWeight: 0.5
     timeWeight: 0.75
+--- !u!114 &1760316115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760316102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fecf9a4a267e04b9bfbca79d774b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableScrollSlips:
+  - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
 --- !u!1 &1811798670
 GameObject:
   m_ObjectHideFlags: 0

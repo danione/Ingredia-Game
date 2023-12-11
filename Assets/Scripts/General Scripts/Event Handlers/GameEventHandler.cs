@@ -21,6 +21,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<IngredientData> HighlightedIngredient;
     public Action<Vector3> GeneratedIngredientAtPos;
     public Action<GameObject> DestroyedObject;
+    public Action UnlockedScrollSlip;
 
     private void Awake()
     {
@@ -109,5 +110,10 @@ public class GameEventHandler : MonoBehaviour
     public void DestroyObject(GameObject obj)
     {
         DestroyedObject?.Invoke(obj);
+    }
+
+    public void UnlockScrollSlip()
+    {
+        UnlockedScrollSlip?.Invoke();
     }
 }

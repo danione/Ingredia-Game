@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             case ("Recipe"): PlayerEventHandler.Instance.CollidedWithRecipeObject();  break;
             case ("Loot"): inventory.AddGold(other.GetComponent<GoldenNuggets>().Amount); break;
             case ("BansheeDetection"): GameEventHandler.Instance.BansheeDetectPlayer(); break;
-            case ("Scroll Slip"): Debug.Log("Scroll Slip"); break;
+            case ("Scroll Slip"): GameEventHandler.Instance.UnlockScrollSlip(); break;
         }
 
         if (other.CompareTag("Ingredient") || other.CompareTag("Recipe")  || other.CompareTag("Loot") || other.CompareTag("Scroll Slip"))
