@@ -18,6 +18,7 @@ TagManager:
   - Slot 2
   - Slot 3
   - BansheeDetection
+  - Scroll Slip
   layers:
   - Default
   - TransparentFX
