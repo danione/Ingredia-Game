@@ -7,9 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class UIManager : MonoBehaviour
+public class UpgradesUIManager : MonoBehaviour
 {
-    public static UIManager Instance;
+    public static UpgradesUIManager Instance;
 
     [SerializeField] private Transform inventoryMenu;
     [SerializeField] private int maxDisplayUpgrades;

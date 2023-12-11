@@ -23,12 +23,12 @@ public class GameManager: MonoBehaviour
         GameEventHandler.Instance.DestroyedObject += OnDestroyObject;
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0.0f;
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1f;
     }
