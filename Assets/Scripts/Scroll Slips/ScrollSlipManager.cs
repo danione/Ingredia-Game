@@ -13,6 +13,12 @@ public class ScrollSlipManager : MonoBehaviour
         GameEventHandler.Instance.UnlockedScrollSlip += OnScrollSlipUnlock;
     }
 
+    // Get the unlocked scrolls and the total amount of scrolls available
+    public KeyValuePair<int, int> GetScrollSlipsCount()
+    {
+        return new KeyValuePair<int, int>(unlockedScrollSlips.Count, availableScrollSlips.Count + unlockedScrollSlips.Count);
+    }
+
 
     private void OnScrollSlipUnlock()
     {

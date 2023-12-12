@@ -6471,6 +6471,8 @@ MonoBehaviour:
     ritualName: {fileID: 985503001}
     ritualIngredients: {fileID: 669360607}
   scrollSlipMenu: {fileID: 73937871}
+  scrollSlipManager: {fileID: 1760316104}
+  countScrollsUI: {fileID: 1131658474}
 --- !u!1 &1252846439
 GameObject:
   m_ObjectHideFlags: 0

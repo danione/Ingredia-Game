@@ -8,11 +8,17 @@ public class ScrollSlipUIManager : MonoBehaviour
 {
     [SerializeField] private ScrollPopup popup;
     [SerializeField] private Transform scrollSlipMenu;
+    [SerializeField] private Transform scrollSlipManager;
+
+    [SerializeField] private Transform countScrollsUI;
+
+    private ScrollSlipManager slipManager;
 
     private void Start()
     {
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
+        slipManager = scrollSlipManager.GetComponent<ScrollSlipManager>();
     }
 
 
@@ -27,6 +33,16 @@ public class ScrollSlipUIManager : MonoBehaviour
     {
         scrollSlipMenu.gameObject.SetActive(true);
         GameManager.Instance.PauseGame();
+        PopulateMenus();
+    }
+
+
+    private void PopulateMenus()
+    {
+        KeyValuePair<int, int> scrollSlipsCount = slipManager.GetScrollSlipsCount();
+
+        countScrollsUI.GetChild(0).GetComponent<TextMeshProUGUI>().text = scrollSlipsCount.Key.ToString(); // current
+        countScrollsUI.GetChild(2).GetComponent<TextMeshProUGUI>().text = scrollSlipsCount.Value.ToString(); // available
     }
 }
 
