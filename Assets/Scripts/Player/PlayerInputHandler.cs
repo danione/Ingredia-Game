@@ -35,6 +35,15 @@ public class PlayerInputHandler : MonoBehaviour
         TurnIntoGhost();
         Cheats();
         UpgradeMenu();
+        ScrollMenu();
+    }
+
+    private void ScrollMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            PlayerEventHandler.Instance.OpenScrollMenu();
+        }
     }
 
     private void UsePotion()

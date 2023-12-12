@@ -7,10 +7,12 @@ using UnityEngine;
 public class ScrollSlipUIManager : MonoBehaviour
 {
     [SerializeField] private ScrollPopup popup;
+    [SerializeField] private Transform scrollSlipMenu;
 
     private void Start()
     {
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
+        PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
     }
 
 
@@ -19,6 +21,12 @@ public class ScrollSlipUIManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         popup.scrollSlipPopupObject.gameObject.SetActive(true);
         popup.PopulateRitualIngredients(scroll);
+    }
+
+    private void OnScrollSlipMenuOpen()
+    {
+        scrollSlipMenu.gameObject.SetActive(true);
+        GameManager.Instance.PauseGame();
     }
 }
 

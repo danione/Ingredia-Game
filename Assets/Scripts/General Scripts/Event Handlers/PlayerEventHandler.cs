@@ -17,6 +17,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<RitualScriptableObject> SetUpUIRitualInterface;
     public event Action CollidedWithRecipe;
     public event Action<string, int, int> UpdatedPotions;
+    public event Action OpenedScrollsMenu;
 
     private void Awake()
     {
@@ -83,5 +84,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void UpdateInventoryPotions(string potionName, int amount, int slotNumber)
     {
         UpdatedPotions?.Invoke(potionName, amount, slotNumber);
+    }
+
+    public void OpenScrollMenu()
+    {
+        OpenedScrollsMenu?.Invoke();
     }
 }
