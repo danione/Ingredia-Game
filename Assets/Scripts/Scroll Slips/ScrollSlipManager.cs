@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollSlipManager : MonoBehaviour
 {
-    private HashSet<RitualScriptableObject> unlockedScrollSlips = new();
+    private List<RitualScriptableObject> unlockedScrollSlips = new();
     [SerializeField] private List<RitualScriptableObject> availableScrollSlips = new();
 
 
@@ -26,11 +26,23 @@ public class ScrollSlipManager : MonoBehaviour
 
         RitualScriptableObject randomSlip = GetRandomScrollSlip();
 
-        if (unlockedScrollSlips.Add(randomSlip))
-        {
-            GameEventHandler.Instance.ScrollSlipGenerate(randomSlip);
-        }
+        unlockedScrollSlips.Add(randomSlip);
+        
+        GameEventHandler.Instance.ScrollSlipGenerate(randomSlip);
+        
 
+    }
+
+    public RitualScriptableObject GetSlipByIndex(int index)
+    {
+        if (index >= 0 && index < unlockedScrollSlips.Count)
+        {
+            return unlockedScrollSlips[index];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private RitualScriptableObject GetRandomScrollSlip()
