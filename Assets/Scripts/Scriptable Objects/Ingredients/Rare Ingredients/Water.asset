@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   ingredientName: water
-  sprite: {fileID: 21300000, guid: 339733e4f26c27542b834188a2a06905, type: 3}
+  sprite: {fileID: 21300000, guid: 7734c548131c3ae45bacaf65532d7e34, type: 3}
+  highlightedSprite: {fileID: 21300000, guid: 50165b60421974046b778a725974633c, type: 3}
   spawnChance: 0.2

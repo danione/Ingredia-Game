@@ -6672,6 +6672,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 786194158}
+  - nameOfUpgrade: Smart Ritual Helper
+    upgradesList:
+    - {fileID: 11400000, guid: 8b9a8adc9bffce54086160b6934fab35, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 786194158}
   leftsideButtons:
   - {fileID: 1684429661}
   - {fileID: 1121840123}

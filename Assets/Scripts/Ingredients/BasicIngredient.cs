@@ -5,12 +5,15 @@ public class BasicIngredient : FallableObject, IIngredient
     private IngredientData _data;
     public IngredientData Data { get { return _data; } set => Initialise(value); }
 
-    public bool isHighlighted;
+    private SpriteRenderer _spriteRenderer;
     
-    public void Initialise(IngredientData data)
+    public void Initialise(IngredientData data, bool isHighlighted = false)
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _data = data;
-        gameObject.GetComponent<SpriteRenderer>().sprite = _data.sprite;
+
+        _spriteRenderer.sprite = isHighlighted ? _data.highlightedSprite : _data.sprite;
+
         GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
     }
@@ -26,12 +29,12 @@ public class BasicIngredient : FallableObject, IIngredient
 
     public void Highlight()
     {
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        gameObject.GetComponent<SpriteRenderer>().sprite = _data.highlightedSprite;
     }
 
     private void OnCauldronEmptied()
     {
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.GetComponent<SpriteRenderer>().sprite = _data.sprite;
     }
 
     private void OnDestroy()
