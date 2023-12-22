@@ -51,6 +51,7 @@ public class IngredientsFactory: MonoBehaviour
 
     private void SpawnRandomRareIngredient()
     {
+        if (_rareIngredients.Count == 0) return;
         float randomChance = UnityEngine.Random.Range(0f, 1f);
         int randomIndex = UnityEngine.Random.Range(0, _rareIngredients.Count);
         if(randomChance < _rareIngredients[randomIndex].spawnChance)
@@ -115,5 +116,12 @@ public class IngredientsFactory: MonoBehaviour
     private void OnCollectExistingIngredient(Ritual ritual)
     {
         _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
+    }
+
+
+    // Should be used for tutorial only
+    public void AppendARegularIngredient(IngredientData ingredient)
+    {
+        _ingredients.Add(ingredient);
     }
 }
