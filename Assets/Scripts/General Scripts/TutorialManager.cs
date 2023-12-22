@@ -67,6 +67,7 @@ public class TutorialManager : MonoBehaviour
     private void FirstRitual()
     {
         ingredientsFactory.AppendARegularIngredient(eyeData);
+        PlayerInputHandler.permissions.canPerformRituals = true;
     }
 
     private void ExecuteCurrentStage()
