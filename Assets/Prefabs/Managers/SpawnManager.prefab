@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &873061175675691215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9074762068929310664}
+  - component: {fileID: 7136158874665668531}
+  - component: {fileID: 4699198157692283021}
+  - component: {fileID: 139695619008634371}
+  - component: {fileID: 8001124186574533078}
+  - component: {fileID: 5350667911276703195}
+  - component: {fileID: 9148559292740883961}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9074762068929310664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.19, y: 7.39, z: 1.9999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7136158874665668531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32aff27dc457c23479ca1a468c389339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 20
+    maxSize: 100
+    prefab: {fileID: 0}
+  _ingredients:
+  - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
+  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
+  - {fileID: 11400000, guid: d95c24a940e966f4badb6dbb27900099, type: 2}
+  - {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
+  - {fileID: 11400000, guid: 8a42ac0841366504b860510f8937d54d, type: 2}
+  - {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
+  - {fileID: 11400000, guid: 7df2079410562364c8198029a4721f4c, type: 2}
+  - {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
+  - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+  _rareIngredients:
+  - {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
+  - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
+  spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
+  spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
+  prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
+--- !u!114 &4699198157692283021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f29413da23f74b4691cb071f4133def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
+  spawnFrequency: 2
+  dangerousObject: {fileID: 2637975095154354181, guid: 8ee6f53932b7e7d4b8caf6fb2257e6a4, type: 3}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 5
+    maxSize: 15
+    prefab: {fileID: 0}
+--- !u!114 &139695619008634371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemy: {fileID: 759701358677561439, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
+    cost: 1
+  - enemy: {fileID: -1590132365824773583, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
+    cost: 2
+  - enemy: {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
+    cost: 5
+  currentCurrency: 1
+  spawnFrequencyInSeconds: 2
+  waveSpawnCooldownInSeconds: 3
+  currentWave: 0
+  upgradedBat: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
+--- !u!114 &8001124186574533078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFrequencyData: {fileID: 11400000, guid: 21a69ea06dfd0f34a95033bad9d49800, type: 2}
+  spawnLocationData: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 5
+    maxSize: 10
+    prefab: {fileID: -7481374443165452413, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
+--- !u!114 &5350667911276703195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03c4c19b173f534a811befcf9b5b5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 20
+    maxSize: 100
+    prefab: {fileID: 8399539123009634397, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
+--- !u!114 &9148559292740883961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ffa4cea91161f41b2aeb859c77fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSlipPrefab: {fileID: 5674750043186311452, guid: 8851aaeb83ce5e248940e9dafb9a3b2e, type: 3}
+  spawnChance: 1
+  scrollSlipManagerRef: {fileID: 0}

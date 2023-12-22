@@ -6,11 +6,9 @@ public class PlayerMovement : MonoBehaviour, IMovable
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
     private float moveDirectionExternalControl = 0f;
-    private bool isMovementEnabled = true;
 
     private void Start()
     {
-        InputEventHandler.instance.MovementInputTampering += SetEnabledMovement;
         InputEventHandler.instance.MoveRandomly += OnMoveRandomly;
         InputEventHandler.instance.PickDirection += OnPickRandomDirection;
         InputEventHandler.instance.MoveTowardsTarget += OnMoveTowards;
@@ -18,9 +16,11 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     public void Move()
     {
-        if (!isMovementEnabled) return;
-
         float goingLeft = Input.GetAxis("Horizontal");
+
+        if(goingLeft != 0f) { InputEventHandler.instance.PlayerMoving(goingLeft); }
+
+        if (!PlayerInputHandler.permissions.canMove) return;
 
         MovementValidation(goingLeft);
     }
@@ -44,11 +44,6 @@ public class PlayerMovement : MonoBehaviour, IMovable
     public void SetMovementSpeed(float newMovementSpeed)
     {
         movementSpeed = newMovementSpeed;
-    }
-
-    public void SetEnabledMovement(bool newValue)
-    {
-        isMovementEnabled = newValue;
     }
 
     public void OnMoveRandomly()

@@ -9,33 +9,47 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
-    private bool hasSpawnedABat = false;
 
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
-    [SerializeField] GameObject bat;
     [SerializeField] private List<ObjectsSpawner> projectileSpawners;
+    [SerializeField] public static InputPermissions permissions;
 
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
         inventory = GetComponent<PlayerInventory>();
+        permissions = new InputPermissions();
     }
 
     public void HandleInput()
     {
         movement.Move();
-        Shoot();
-        ShootLaser();
-        EmptyCauldron();
-        AttemptRitual();
-        UsePotion();
+
+        UseOrRemoveIngredients();
+
+        UseAPowerUp();
+
+        OpenMenuUI();
+    }
+
+    private void UseAPowerUp()
+    {
+        if(permissions.canUsePotions)
+            UsePotion();
         TurnIntoGhost();
-        Cheats();
-        UpgradeMenu();
-        ScrollMenu();
+        Shoot();
+    }
+
+    private void UseOrRemoveIngredients()
+    {
+        if(permissions.canEmptyCauldron)
+            EmptyCauldron();
+        
+        if(permissions.canPerformRituals)
+            AttemptRitual();
     }
 
     private void ScrollMenu()
@@ -69,7 +83,18 @@ public class PlayerInputHandler : MonoBehaviour
         isNotOnCooldown = true;
     }
 
-    private void Shoot()
+    private void OpenMenuUI()
+    {
+        if (permissions.canOpenMenus)
+        {
+            if (permissions.canOpenUpgrades)
+                UpgradeMenu();
+            if(permissions.canOpenScrollMenu)
+                ScrollMenu();
+        }
+    }
+
+    private void ShootProjectile()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
@@ -77,23 +102,30 @@ public class PlayerInputHandler : MonoBehaviour
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         int objectToShoot = -1;
 
-        if(hasAvailableKnifes && isNotOnCooldown)
+        if (hasAvailableKnifes && isNotOnCooldown)
         {
             isNotOnCooldown = false;
             objectToShoot = 1;
             PlayerController.Instance.inventory.SubtractKnifeAmmo();
-        } else if(hasAvailableAmmo && isNotOnCooldown)
+        }
+        else if (hasAvailableAmmo && isNotOnCooldown)
         {
             isNotOnCooldown = false;
             objectToShoot = 0;
             PlayerController.Instance.inventory.SubtractAmmo();
         }
-        
 
-        if(objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
+
+        if (objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
         {
             StartCoroutine(FireAProjectile(objectToShoot));
         }
+    }
+
+    private void Shoot()
+    {
+        ShootProjectile();
+        ShootLaser();
     }
 
     private IEnumerator FireAProjectile(int objectToShoot)
@@ -133,28 +165,6 @@ public class PlayerInputHandler : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) PlayerEventHandler.Instance.GhostTransform(true);
         else PlayerEventHandler.Instance.GhostTransform(false);
 
-    }
-
-    private void Cheats()
-    {
-        if (Input.GetKeyDown(KeyCode.B) && !hasSpawnedABat)
-        {
-            RitualistEnemy enemy = bat.gameObject.GetComponent<RitualistEnemy>();
-            Instantiate(enemy, enemy.GetRandomPosition(), Quaternion.identity);
-            hasSpawnedABat = true;
-            StartCoroutine(ResetSpawnedBatFlagAfterDelay());
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GetComponent<PlayerInventory>().AddKnifeAmmo(100);
-            GetComponent<PlayerInventory>().AddFlameBombAmmo(100);
-        }
-    }
-
-    IEnumerator ResetSpawnedBatFlagAfterDelay()
-    {
-        yield return new WaitForSeconds(1);
-        hasSpawnedABat = false;
     }
 
     private void UpgradeMenu()

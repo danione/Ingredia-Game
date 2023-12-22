@@ -10,6 +10,7 @@ public class InputEventHandler : MonoBehaviour
     public Action MoveRandomly;
     public Action PickDirection;
     public Action<float> MoveTowardsTarget;
+    public Action<float> PlayerMoved;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,6 +22,11 @@ public class InputEventHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void PlayerMoving(float direction)
+    {
+        PlayerMoved?.Invoke(direction);
     }
 
     public void SetMovement(bool isMoving)

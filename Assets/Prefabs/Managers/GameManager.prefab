@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6594054986871680392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1201161029502399086}
+  - component: {fileID: 4221621538252228622}
+  - component: {fileID: 4485545681000777643}
+  - component: {fileID: 1845047172615663189}
+  - component: {fileID: 8707694892932605174}
+  - component: {fileID: 1695945991005713638}
+  - component: {fileID: 3849607443733397155}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1201161029502399086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2, y: -6.05, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4221621538252228622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155fa7f0d6db55e4c86e63da27ac853c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver: 0
+--- !u!114 &4485545681000777643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb8d979c11826c43be59c31938d3682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1845047172615663189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7c4b58eb1c03e4d8ddcaa78058f943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicRitualsData:
+  - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
+  - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
+  - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
+  - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
+  hiddenRitualsData:
+  - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
+  - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+  - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
+--- !u!114 &8707694892932605174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d179d5f78c0b884cbfab6db5f3a30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1695945991005713638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83b4690de09f274aa95cdaf51ffabf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientsFactory: {fileID: 0}
+  DifficultyModifiers:
+    countWeight: 0.75
+    quantityWeight: 0.5
+    timeWeight: 0.75
+--- !u!114 &3849607443733397155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fecf9a4a267e04b9bfbca79d774b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableScrollSlips:
+  - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
+  - {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
+  - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
+  - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
+  - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
+  - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+  - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}

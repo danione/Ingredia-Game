@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public PlayerStats stats;
     private PlayerInputHandler input;
     public Action<int> collision;
-    public float cooldown;
 
     private void Awake()
     {
