@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameEventHandler : MonoBehaviour
 {
     public static GameEventHandler Instance;
-    public Action DestroyedEnemy;
+    public Action<Vector3> DestroyedEnemy;
     public Action<Vector3> FuseBats;
     public Action BansheeDetectedPlayer;
     public Action UpgradesMenuOpen;
@@ -30,9 +30,9 @@ public class GameEventHandler : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void DestroyEnemy()
+    public void DestroyEnemy(Vector3 pos)
     {
-        DestroyedEnemy?.Invoke();
+        DestroyedEnemy?.Invoke(pos);
     }
 
     public void FuseTwoBats(Vector3 upgradedBatPosition)

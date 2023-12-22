@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     public virtual void Die()
     {
-        GameEventHandler.Instance.DestroyEnemy();
+        GameEventHandler.Instance.DestroyEnemy(gameObject.transform.position);
         GameEventHandler.Instance.SpawnsGoldenNuggets(goldRewardOnDeath, gameObject.transform.position);
         GameEventHandler.Instance.DestroyObject(gameObject);
     }

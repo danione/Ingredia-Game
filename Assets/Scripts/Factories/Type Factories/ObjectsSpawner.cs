@@ -56,4 +56,11 @@ public class ObjectsSpawner
         return product;
     }
 
+    public Product GetProduct(Vector3 pos)
+    {
+        Product product = _pool.Get();
+        product.gameObject.transform.position = pos;
+        return product;
+    }
+
 }

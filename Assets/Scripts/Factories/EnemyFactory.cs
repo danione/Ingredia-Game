@@ -31,7 +31,7 @@ public class EnemyFactory : MonoBehaviour
         currentWave = 1;
     }
 
-    private void OnEnemyDestroyed()
+    private void OnEnemyDestroyed(Vector3 pos)
     {
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
