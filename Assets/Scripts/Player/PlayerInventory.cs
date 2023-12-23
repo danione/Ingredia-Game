@@ -98,5 +98,6 @@ public class PlayerInventory: MonoBehaviour
     public void UsePotion(int slot)
     {
         powerupManager.UsePotion(slot);
+        InputEventHandler.instance.UsePotion();
     }
 }

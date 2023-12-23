@@ -11,6 +11,7 @@ public class InputEventHandler : MonoBehaviour
     public Action PickDirection;
     public Action<float> MoveTowardsTarget;
     public Action<float> PlayerMoved;
+    public Action UsedPotion;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,5 +48,10 @@ public class InputEventHandler : MonoBehaviour
     public void MoveTowards(float direction)
     {
         MoveTowardsTarget?.Invoke(direction);
+    }
+
+    public void UsePotion()
+    {
+        UsedPotion?.Invoke();
     }
 }
