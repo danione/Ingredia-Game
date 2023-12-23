@@ -93,6 +93,11 @@ public class EnemyFactory : MonoBehaviour
         product.GetComponent<BatEnemy>().Upgrade();
         currentAliveEnemies++;
     }
+
+    public void SetTutorialCurrency(int i)
+    {
+        currentCurrency = i;
+    }
 }
 
 [System.Serializable]

@@ -15,15 +15,18 @@ public class TutorialManager : MonoBehaviour
     private List<Action> sections = new();
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
+    private GoldenNuggetsFactory goldenNuggets;
 
     private void Start()
     {
         InputEventHandler.instance.PlayerMoved += OnPlayerMoved;
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         InputEventHandler.instance.UsedPotion += OnPotionUse;
+        GameEventHandler.Instance.DestroyedEnemy = OnEnemyDestroyed;
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
+        goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
         sections.Add(MovementStage);
         sections.Add(IngredientStage);
@@ -109,8 +112,15 @@ public class TutorialManager : MonoBehaviour
     private void SpawnBat()
     {
         enemyFactory.enabled = true;
+        goldenNuggets.enabled = true;
     }
-    
+
+    private void OnEnemyDestroyed(Vector3 pos)
+    {
+        enemyFactory.SetTutorialCurrency(-100);
+        
+    }
+
 
     private void ExecuteCurrentStage()
     {
