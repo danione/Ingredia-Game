@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   ingredientName: fire
-  sprite: {fileID: 21300000, guid: faa8f075cc8a7094f8336ecd6cca0299, type: 3}
+  sprite: {fileID: 21300000, guid: 61763ff753e695d429137c04366d4d76, type: 3}
+  highlightedSprite: {fileID: 21300000, guid: e6ac4ef13caaf5148a378bc58cefd137, type: 3}
   spawnChance: 0.3
