@@ -6,36 +6,38 @@ public class BasicIngredient : FallableObject, IIngredient
     public IngredientData Data { get { return _data; } set => Initialise(value); }
 
     private SpriteRenderer _spriteRenderer;
-    private Transform _highlightRenderer;
+    private SpriteRenderer _highlightRenderer;
 
     private void Start()
     {
-        _highlightRenderer = transform.GetChild(1);
+        _spriteRenderer = transform.GetChild(2).GetComponent<SpriteRenderer>();
+        _highlightRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
+        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
     }
 
     public void Initialise(IngredientData data, bool isHighlighted = false)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
         _data = data;
 
-        _spriteRenderer.sprite = _data.sprite;
-
-        if(_data.highlightedSprite != null && _highlightRenderer != null)
+        if (_spriteRenderer != null)
         {
-            _highlightRenderer.gameObject.GetComponent<SpriteRenderer>().sprite = _data.highlightedSprite;
-            _highlightRenderer.gameObject.SetActive(isHighlighted);
+            _spriteRenderer.sprite = _data.sprite;
         }
+        if(_highlightRenderer != null)
+        {
+            _highlightRenderer.gameObject.SetActive(false);
 
-
-
-        GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
-        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
+        }
     }
 
     private void OnHighlight(IngredientData data)
     {
         if (data == _data)
         {
+            Debug.Log("Highlighting " + data.ingredientName);
+
             Highlight();
         }
 
@@ -43,7 +45,13 @@ public class BasicIngredient : FallableObject, IIngredient
 
     public void Highlight()
     {
-        _highlightRenderer.gameObject.SetActive(true);
+        
+        if(_data.highlightedSprite != null && _highlightRenderer != null && !_highlightRenderer.gameObject.activeSelf)
+        {
+            _highlightRenderer.gameObject.SetActive(true);
+            _highlightRenderer.sprite = _data.highlightedSprite;
+        }
+            
     }
 
     private void OnCauldronEmptied()
