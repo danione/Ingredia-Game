@@ -22,7 +22,6 @@ public class PlayerInputHandler : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         inventory = GetComponent<PlayerInventory>();
         permissions = new InputPermissions();
-        permissions.UnlockAll();
     }
 
     public void HandleInput()

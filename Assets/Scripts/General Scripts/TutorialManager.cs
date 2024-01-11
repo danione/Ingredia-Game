@@ -23,6 +23,7 @@ public class TutorialManager : MonoBehaviour
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         InputEventHandler.instance.UsedPotion += OnPotionUse;
         GameEventHandler.Instance.DestroyedEnemy = OnEnemyDestroyed;
+        PlayerInputHandler.permissions.LockAll();
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
