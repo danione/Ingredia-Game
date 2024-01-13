@@ -23,6 +23,7 @@ public class LaserBeam
     private Vector3 direction;
     private Ray ray;
     private RaycastHit rayData;
+    private float laserStrength = 0.3f;
 
     public LaserBeam(Transform entity, Vector3 direction)
     {
@@ -60,7 +61,16 @@ public class LaserBeam
         {
             Vector3 positionToRender = new Vector3(laserOrigin.position.x, rayData.point.y, attachedEntity.position.z);
             laserLine.SetPosition(1, rayData.point);
-            UnityEngine.Object.Destroy(rayData.collider.gameObject);
+            Enemy enemy = rayData.collider.gameObject.GetComponent<Enemy>();
+            if(enemy != null)
+            {
+                enemy.TakeDamage(laserStrength);
+            }
+            else if (rayData.collider.gameObject.CompareTag("Ingredient"))
+            {
+                UnityEngine.Object.Destroy(rayData.collider.gameObject);
+
+            }
         }
         else
         {

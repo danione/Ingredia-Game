@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ScrollSlipFactory : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ScrollSlipFactory : MonoBehaviour
         spawner = new ObjectsSpawner(scrollSlipPrefab);
         scrollSlipManager = scrollSlipManagerRef.GetComponent<ScrollSlipManager>();
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyKilled;
+        GameEventHandler.Instance.SpawnAScrollSlip += SpawnAScrollSlipAtLocation;
     }
 
     private void OnEnemyKilled(Vector3 position)
@@ -23,6 +25,12 @@ public class ScrollSlipFactory : MonoBehaviour
         if (Random.Range(0.0f, 1.0f) > spawnChance || scrollSlipManager.GetAvailableSlipsCount() == 0) return;
 
         spawner.GetProduct(position);
+    }
+
+    private void SpawnAScrollSlipAtLocation(Vector3 location)
+    {
+        spawner.GetProduct(location);
+
     }
 
 }

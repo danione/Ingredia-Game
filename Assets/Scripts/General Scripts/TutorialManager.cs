@@ -6,7 +6,6 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private int currentStage = 0;
-    [SerializeField] private int stageJump = 0;
     [SerializeField] private float playerMovementThreshold;
     [SerializeField] private float cooldownBetweenStages;
     [SerializeField] private GameObject spawnManager;
@@ -14,10 +13,14 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject uiManager;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
     [SerializeField] private TutorialManagerUI tutorialUiManager;
+    [SerializeField] private OverloadElixirData overloadElixirData;
+    [SerializeField] private GameObject conjuredWall;
+    [SerializeField] private GameObject laserStarterPosition;
    
     public static TutorialManager instance;
     private bool emptied = false;
-    private bool initialised = false;
+    private bool hasNotUsed = false;
+    private bool performed = false;
 
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
@@ -33,13 +36,7 @@ public class TutorialManager : MonoBehaviour
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
-        InitialiseNextStage();
-
-        for (int i = 0; i < stageJump; i++)
-        {
-            ExecuteCurrentStage();
-        }
-        
+        InitialiseNextStage();       
     }
 
     public void OnPlayerMoved(float direction)
@@ -66,7 +63,7 @@ public class TutorialManager : MonoBehaviour
     public void OnEmptiedCauldron()
     {
         if (emptied) return;
-        
+
         emptied = true;
         ExecuteCurrentStage();
 
@@ -80,11 +77,17 @@ public class TutorialManager : MonoBehaviour
 
     public void OnPerformedFirstRitual()
     {
+        if(performed) return;
+
+        performed = true;
         ExecuteCurrentStage();
     }
 
     public void OnPotionUse()
     {
+        if (hasNotUsed) return;
+
+        hasNotUsed = true;
         ExecuteCurrentStage();
     }
 
@@ -99,11 +102,52 @@ public class TutorialManager : MonoBehaviour
         ExecuteCurrentStage();
     }
 
+    public void OnWallDestroyed(Vector3 pos)
+    {
+        if(conjuredWall.transform.childCount == 1)
+        {
+            ExecuteCurrentStage();
+        }
+
+    }
+
+    public void AddLaserBeam()
+    {
+        PlayerController.Instance.inventory.AddPotion(overloadElixirData);
+        goldenNuggets.enabled = true;
+        conjuredWall.SetActive(true);
+    }
+
+    public void Collided()
+    {
+        ExecuteCurrentStage();
+    }
+
+    public void LaserPreparation()
+    {
+        laserStarterPosition.SetActive(true);
+    }
+
+    public void OnUpgraded()
+    {
+        ExecuteCurrentStage();
+    }
+
+    public void UnlockSlips()
+    {
+        GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
+        ingredientsFactory.gameObject.GetComponent<ScrollSlipFactory>().enabled = true;
+
+
+    }
+
     public void ExecuteCurrentStage()
     {
-        if (currentStage >= tutorialStages.Count && initialised) return;
+        if (currentStage >= tutorialStages.Count) return;
         tutorialStages[currentStage++].NextStage();
         tutorialUiManager.DisplayCongrats();
+
+        Debug.Log(currentStage);
         StartCoroutine(CooldownBetweenStages());
     }
 

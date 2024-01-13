@@ -23,6 +23,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<GameObject> DestroyedObject;
     public Action UnlockedScrollSlip;
     public Action<RitualScriptableObject> ScrollSlipGenerated;
+    public Action<Vector3> SpawnAScrollSlip;
 
     private void Awake()
     {
@@ -121,5 +122,10 @@ public class GameEventHandler : MonoBehaviour
     public void ScrollSlipGenerate(RitualScriptableObject scroll)
     {
         ScrollSlipGenerated?.Invoke(scroll);
+    }
+
+    public void CallToSpawnASlip(Vector3 position)
+    {
+        SpawnAScrollSlip?.Invoke(position);
     }
 }

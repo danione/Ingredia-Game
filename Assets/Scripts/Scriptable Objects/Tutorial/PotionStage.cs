@@ -9,6 +9,7 @@ public class PotionStage : TutorialStage
     {
         InputEventHandler.instance.UsedPotion += TutorialManager.instance.OnPotionUse;
         PlayerInputHandler.permissions.canUsePotions = true;
+
     }
 
     public override void NextStage()
