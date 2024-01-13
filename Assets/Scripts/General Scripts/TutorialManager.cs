@@ -62,21 +62,12 @@ public class TutorialManager : MonoBehaviour
     IEnumerator CooldownBetweenStages()
     {
         yield return new WaitForSeconds(cooldownBetweenStages);
-        ExecuteCurrentStage();
+        InitialiseNextStage();
     }
 
-    // Stage 0
-    private void MovementStage()
-    {
-        PlayerInputHandler.permissions.canMove = true;
-        InputEventHandler.instance.PlayerMoved -= OnPlayerMoved;
-    }
-
-    // Stage 1
-    private void IngredientStage()
+    public void EnableIngredientsFactory()
     {
         ingredientsFactory.enabled = true;
-        StartCoroutine(CooldownBetweenStages());
     }
 
     // Stage 2
@@ -130,13 +121,12 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-    private void ExecuteCurrentStage()
+    public void ExecuteCurrentStage()
     {
         if (currentStage >= tutorialStages.Count) return;
 
         tutorialStages[currentStage++].NextStage();
-        // sections[currentStage]?.Invoke();
-        InitialiseNextStage();
+        StartCoroutine(CooldownBetweenStages());
     }
 
     private void InitialiseNextStage()

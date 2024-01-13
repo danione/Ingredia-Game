@@ -3461,6 +3461,7 @@ MonoBehaviour:
   uiManager: {fileID: 1135961848}
   tutorialStages:
   - {fileID: 11400000, guid: 70eb6164c7b36814293e86c17acca27d, type: 2}
+  - {fileID: 11400000, guid: 0c18f8d8d0a2b7d479ae609edadbbdfc, type: 2}
 --- !u!1 &616575324
 GameObject:
   m_ObjectHideFlags: 0
