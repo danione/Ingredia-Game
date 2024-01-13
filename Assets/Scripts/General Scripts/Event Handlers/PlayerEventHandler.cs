@@ -18,6 +18,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action CollidedWithRecipe;
     public event Action<string, int, int> UpdatedPotions;
     public event Action OpenedScrollsMenu;
+    public event Action PerformedRitual;
 
     private void Awake()
     {
@@ -89,5 +90,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void OpenScrollMenu()
     {
         OpenedScrollsMenu?.Invoke();
+    }
+
+    public void RitualHasBeenPerformed()
+    {
+        PerformedRitual?.Invoke();
     }
 }

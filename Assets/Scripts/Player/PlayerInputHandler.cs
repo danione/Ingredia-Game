@@ -145,6 +145,7 @@ public class PlayerInputHandler : MonoBehaviour
                 return;
             }
             inventory.AddPotion(inventory.possibleRitual.RitualData.potionRewardData[Constants.Instance.currentRitualRewards]);
+            PlayerEventHandler.Instance.RitualHasBeenPerformed();
             PlayerEventHandler.Instance.EmptyCauldron();
         }
     }

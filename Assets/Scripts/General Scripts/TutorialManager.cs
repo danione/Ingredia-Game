@@ -6,15 +6,18 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private int currentStage = 0;
+    [SerializeField] private int stageJump = 0;
     [SerializeField] private float playerMovementThreshold;
     [SerializeField] private float cooldownBetweenStages;
     [SerializeField] private GameObject spawnManager;
     [SerializeField] private IngredientData eyeData;
     [SerializeField] private GameObject uiManager;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
+    [SerializeField] private TutorialManagerUI tutorialUiManager;
+   
     public static TutorialManager instance;
+    private bool emptied = false;
 
-    private List<Action> sections = new();
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
     private GoldenNuggetsFactory goldenNuggets;
@@ -23,10 +26,6 @@ public class TutorialManager : MonoBehaviour
     {
         if(instance == null) {  instance = this; } else { Destroy(this); }
 
-        InputEventHandler.instance.PlayerMoved += OnPlayerMoved;
-        PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
-        InputEventHandler.instance.UsedPotion += OnPotionUse;
-        GameEventHandler.Instance.DestroyedEnemy = OnEnemyDestroyed;
         PlayerInputHandler.permissions.LockAll();
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
@@ -35,18 +34,11 @@ public class TutorialManager : MonoBehaviour
 
         InitialiseNextStage();
 
-        /*
-        sections.Add(MovementStage);
-        sections.Add(IngredientStage);
-        sections.Add(EmptyCauldron);
-        sections.Add(FirstRitual);
-        sections.Add(FirstPotion);
-        sections.Add(SpawnBat);
-
-        for(int i = 0; i < currentStage; i++)
+        for (int i = 0; i < stageJump; i++)
         {
-            sections[i].Invoke();
-        }*/
+            ExecuteCurrentStage();
+        }
+        
     }
 
     public void OnPlayerMoved(float direction)
@@ -70,41 +62,28 @@ public class TutorialManager : MonoBehaviour
         ingredientsFactory.enabled = true;
     }
 
-    // Stage 2
-    private void EmptyCauldron()
+    public void OnEmptiedCauldron()
     {
-        PlayerInputHandler.permissions.canEmptyCauldron = true;
-
+        if (emptied) return;
+        
+        emptied = true;
+        ExecuteCurrentStage();
     }
 
-    // Move from stage 2 to next
-    private void OnEmptiedCauldron()
-    {
-        StartCoroutine(CooldownBetweenStages());
-        PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
-
-    }
-
-    // Stage 3
-    private void FirstRitual()
+    public void FirstRitual()
     {
         ingredientsFactory.AppendARegularIngredient(eyeData);
-        PlayerInputHandler.permissions.canPerformRituals = true;
-        GameManager.Instance.gameObject.GetComponent<RitualManager>().enabled = true;
-        uiManager.gameObject.SetActive(true);
-        StartCoroutine(CooldownBetweenStages());
+        uiManager.SetActive(true);
     }
 
-    // Stage 4
-    private void FirstPotion()
+    public void OnPerformedFirstRitual()
     {
-        PlayerInputHandler.permissions.canUsePotions = true;
+        ExecuteCurrentStage();
     }
 
-    private void OnPotionUse()
+    public void OnPotionUse()
     {
-        StartCoroutine(CooldownBetweenStages());
-        InputEventHandler.instance.UsedPotion -= OnPotionUse;
+        ExecuteCurrentStage();
     }
 
     // Stage 5
@@ -126,6 +105,7 @@ public class TutorialManager : MonoBehaviour
         if (currentStage >= tutorialStages.Count) return;
 
         tutorialStages[currentStage++].NextStage();
+        tutorialUiManager.DisplayCongrats();
         StartCoroutine(CooldownBetweenStages());
     }
 
@@ -134,6 +114,7 @@ public class TutorialManager : MonoBehaviour
         if(currentStage >= tutorialStages.Count) return;
 
         tutorialStages[currentStage].InitiateStage();
+        tutorialUiManager.DisplayFromTutorialStage(tutorialStages[currentStage]);
     }
 
 

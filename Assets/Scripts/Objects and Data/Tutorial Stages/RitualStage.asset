@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209daa93938dbb8419e4d3ab3b7b459e, type: 3}
-  m_Name: MovementStage
+  m_Script: {fileID: 11500000, guid: bd97908e8267a2549acdad3405439cee, type: 3}
+  m_Name: RitualStage
   m_EditorClassIdentifier: 
-  title: Movement Stage
-  description: Press and hold A/D to break the spell (to move).
+  title: First Ritual
+  description: Complete your first ritual. Collect one human eye and one athame and
+    press R.
