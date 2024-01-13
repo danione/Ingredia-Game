@@ -11,6 +11,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject spawnManager;
     [SerializeField] private IngredientData eyeData;
     [SerializeField] private GameObject uiManager;
+    [SerializeField] private List<TutorialStage> tutorialStages = new();
+    public static TutorialManager instance;
 
     private List<Action> sections = new();
     private IngredientsFactory ingredientsFactory;
@@ -19,6 +21,8 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        if(instance == null) {  instance = this; } else { Destroy(this); }
+
         InputEventHandler.instance.PlayerMoved += OnPlayerMoved;
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         InputEventHandler.instance.UsedPotion += OnPotionUse;
@@ -29,6 +33,9 @@ public class TutorialManager : MonoBehaviour
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
+        InitialiseNextStage();
+
+        /*
         sections.Add(MovementStage);
         sections.Add(IngredientStage);
         sections.Add(EmptyCauldron);
@@ -39,10 +46,10 @@ public class TutorialManager : MonoBehaviour
         for(int i = 0; i < currentStage; i++)
         {
             sections[i].Invoke();
-        }
+        }*/
     }
 
-    private void OnPlayerMoved(float direction)
+    public void OnPlayerMoved(float direction)
     {
         playerMovementThreshold -= Time.deltaTime;
         if(playerMovementThreshold < 0)
@@ -125,10 +132,18 @@ public class TutorialManager : MonoBehaviour
 
     private void ExecuteCurrentStage()
     {
-        if (currentStage >= sections.Count) return;
+        if (currentStage >= tutorialStages.Count) return;
 
-        sections[currentStage]?.Invoke();
-        currentStage++;
+        tutorialStages[currentStage++].NextStage();
+        // sections[currentStage]?.Invoke();
+        InitialiseNextStage();
+    }
+
+    private void InitialiseNextStage()
+    {
+        if(currentStage >= tutorialStages.Count) return;
+
+        tutorialStages[currentStage].InitiateStage();
     }
 
 
