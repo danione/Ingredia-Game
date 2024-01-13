@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour
    
     public static TutorialManager instance;
     private bool emptied = false;
+    private bool initialised = false;
 
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
@@ -68,6 +69,7 @@ public class TutorialManager : MonoBehaviour
         
         emptied = true;
         ExecuteCurrentStage();
+
     }
 
     public void FirstRitual()
@@ -86,24 +88,20 @@ public class TutorialManager : MonoBehaviour
         ExecuteCurrentStage();
     }
 
-    // Stage 5
-    private void SpawnBat()
+    public void SpawnBat()
     {
         enemyFactory.enabled = true;
-        goldenNuggets.enabled = true;
     }
 
-    private void OnEnemyDestroyed(Vector3 pos)
+    public void OnEnemyDestroyed(Vector3 pos)
     {
         enemyFactory.SetTutorialCurrency(-100);
-        
+        ExecuteCurrentStage();
     }
-
 
     public void ExecuteCurrentStage()
     {
-        if (currentStage >= tutorialStages.Count) return;
-
+        if (currentStage >= tutorialStages.Count && initialised) return;
         tutorialStages[currentStage++].NextStage();
         tutorialUiManager.DisplayCongrats();
         StartCoroutine(CooldownBetweenStages());
@@ -112,10 +110,7 @@ public class TutorialManager : MonoBehaviour
     private void InitialiseNextStage()
     {
         if(currentStage >= tutorialStages.Count) return;
-
         tutorialStages[currentStage].InitiateStage();
         tutorialUiManager.DisplayFromTutorialStage(tutorialStages[currentStage]);
     }
-
-
 }

@@ -3588,7 +3588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStage: 0
-  stageJump: 3
+  stageJump: 0
   playerMovementThreshold: 3
   cooldownBetweenStages: 3
   spawnManager: {fileID: 596683714}
@@ -3599,7 +3599,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c18f8d8d0a2b7d479ae609edadbbdfc, type: 2}
   - {fileID: 11400000, guid: 8fdff6545bce8de42894afc71bc51e93, type: 2}
   - {fileID: 11400000, guid: a74109e078d22c54598200f11bb6bb03, type: 2}
-  - {fileID: 11400000, guid: a74109e078d22c54598200f11bb6bb03, type: 2}
+  - {fileID: 11400000, guid: ff9e51e093a294046bd4e62f65c80c6c, type: 2}
+  - {fileID: 11400000, guid: 938e1b55668795e408cd9d957995299a, type: 2}
   tutorialUiManager: {fileID: 1237524441}
 --- !u!1 &616575324
 GameObject:
