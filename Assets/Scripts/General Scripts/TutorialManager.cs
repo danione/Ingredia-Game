@@ -16,12 +16,14 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private OverloadElixirData overloadElixirData;
     [SerializeField] private GameObject conjuredWall;
     [SerializeField] private GameObject laserStarterPosition;
+    [SerializeField] private GameObject scrollSlip;
    
     public static TutorialManager instance;
     private bool emptied = false;
     private bool hasNotUsed = false;
     private bool performed = false;
     private bool swapped = false;
+    private bool openedScroll = false;
 
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
@@ -146,6 +148,20 @@ public class TutorialManager : MonoBehaviour
 
         swapped = true;
         ExecuteCurrentStage();
+    }
+
+    public void ScrollGenerate()
+    {
+        scrollSlip.gameObject.SetActive(true);
+        GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
+    }
+
+    public void OnScrollMenuOpened()
+    {
+        if (openedScroll) return;
+
+        openedScroll = true;
+        ExecuteCurrentStage() ;
     }
 
     public void ExecuteCurrentStage()
