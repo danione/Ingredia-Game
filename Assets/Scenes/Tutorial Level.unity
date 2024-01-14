@@ -3608,6 +3608,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 894e2ac31f12e8c4ab11d93a3763551e, type: 2}
   - {fileID: 11400000, guid: 89e947ae88375ce41bc7e4f70566cb27, type: 2}
   - {fileID: 11400000, guid: 246e79c83c5e09a46bd9dcb5b52abd8d, type: 2}
+  - {fileID: 11400000, guid: a22c7efa94a946f4ab5667a13e80bc94, type: 2}
   tutorialUiManager: {fileID: 1237524441}
   overloadElixirData: {fileID: 11400000, guid: 37dffa3bb515e3e4795fd6c4502f5b3d, type: 2}
   conjuredWall: {fileID: 1863297461}
@@ -12784,6 +12785,14 @@ PrefabInstance:
       propertyPath: m_slotsContainer
       value: 
       objectReference: {fileID: 1135961848}
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: maxHealth
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: startingHealth
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: gold
       value: 0

@@ -9,6 +9,8 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
+    private bool firingKnives = true;
+
 
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireRate;
@@ -96,13 +98,20 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void ShootProjectile()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            firingKnives = !firingKnives;
+            GameEventHandler.Instance.SwappedProjectilesPressed();
+        }
+
+
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
         bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
         bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
         int objectToShoot = -1;
 
-        if (hasAvailableKnifes && isNotOnCooldown)
+        if (firingKnives && hasAvailableKnifes && isNotOnCooldown)
         {
             isNotOnCooldown = false;
             objectToShoot = 1;

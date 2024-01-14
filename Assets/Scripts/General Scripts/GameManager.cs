@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -56,7 +57,14 @@ public class GameManager: MonoBehaviour
         Product product = obj.GetComponent<Product>();
         if (product != null)
         {
-            product.ObjectPool.Release(product);
+            try
+            {
+                product.ObjectPool.Release(product);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            }
         }
         else
         {

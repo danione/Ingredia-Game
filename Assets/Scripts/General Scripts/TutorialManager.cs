@@ -21,6 +21,7 @@ public class TutorialManager : MonoBehaviour
     private bool emptied = false;
     private bool hasNotUsed = false;
     private bool performed = false;
+    private bool swapped = false;
 
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
@@ -137,8 +138,14 @@ public class TutorialManager : MonoBehaviour
     {
         GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
         ingredientsFactory.gameObject.GetComponent<ScrollSlipFactory>().enabled = true;
+    }
 
+    public void OnSwappedProjectiles()
+    {
+        if (swapped) return;
 
+        swapped = true;
+        ExecuteCurrentStage();
     }
 
     public void ExecuteCurrentStage()

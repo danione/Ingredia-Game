@@ -13,6 +13,6 @@ public class UpgradeStage : TutorialStage
 
     public override void NextStage()
     {
-        
+        GameEventHandler.Instance.UpgradesMenuClose();
     }
 }

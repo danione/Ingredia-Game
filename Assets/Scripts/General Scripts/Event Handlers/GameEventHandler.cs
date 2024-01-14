@@ -24,6 +24,7 @@ public class GameEventHandler : MonoBehaviour
     public Action UnlockedScrollSlip;
     public Action<RitualScriptableObject> ScrollSlipGenerated;
     public Action<Vector3> SpawnAScrollSlip;
+    public Action SwappedProjectiles;
 
     private void Awake()
     {
@@ -127,5 +128,10 @@ public class GameEventHandler : MonoBehaviour
     public void CallToSpawnASlip(Vector3 position)
     {
         SpawnAScrollSlip?.Invoke(position);
+    }
+
+    public void SwappedProjectilesPressed()
+    {
+        SwappedProjectiles?.Invoke();
     }
 }
