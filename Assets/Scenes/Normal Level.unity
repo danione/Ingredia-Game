@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &373739548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 500697998526820165, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+  m_PrefabInstance: {fileID: 3278442347076411136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &596683717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
@@ -565,6 +576,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1760316113}
+    - target: {fileID: 5803262840793804631, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -646,6 +661,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightsideButtons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightsideButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 373739548}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].nameOfUpgrade
+      value: Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: availableUpgrades.Array.data[0].upgradedObject
       value: 
       objectReference: {fileID: 786194158}
@@ -665,6 +696,26 @@ PrefabInstance:
       propertyPath: rightSideUpgrades.Array.data[1].upgradedObject
       value: 
       objectReference: {fileID: 786194158}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].upgradedObject
+      value: 
+      objectReference: {fileID: 786194158}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].upgradesList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].upgradesList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 267d45bb5219f0e479d3a34a7147eee8, type: 2}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].upgradesList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
+    - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: rightSideUpgrades.Array.data[3].upgradesList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
