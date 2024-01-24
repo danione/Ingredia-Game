@@ -6817,10 +6817,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 492c60e84963f6d46983fe8b433d889a, type: 2}
     isRandomlyGenerated: 0
     upgradedObject: {fileID: 0}
+  - nameOfUpgrade: Heal
+    upgradesList:
+    - {fileID: 11400000, guid: 267d45bb5219f0e479d3a34a7147eee8, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
   rightsideButtons:
   - {fileID: 1881338313}
   - {fileID: 528856065}
   - {fileID: 1929488291}
+  - {fileID: 827833344}
   availableUpgrades:
   - nameOfUpgrade: Fireball Unlock
     upgradesList:
