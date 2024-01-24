@@ -69,6 +69,7 @@ public class IngredientsFactory: MonoBehaviour
         Vector3 newRandomLocation = new Vector3(randomXPos, spawnLocation.yLocation, spawnZLocation);
 
         Product product = spawner.GetProduct(newRandomLocation, list[randomIndex]);
+
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();

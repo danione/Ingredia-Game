@@ -3609,6 +3609,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89e947ae88375ce41bc7e4f70566cb27, type: 2}
   - {fileID: 11400000, guid: 246e79c83c5e09a46bd9dcb5b52abd8d, type: 2}
   - {fileID: 11400000, guid: a22c7efa94a946f4ab5667a13e80bc94, type: 2}
+  - {fileID: 11400000, guid: 1a1b501386fa97b49a49535053c9e11c, type: 2}
   tutorialUiManager: {fileID: 1237524441}
   overloadElixirData: {fileID: 11400000, guid: 37dffa3bb515e3e4795fd6c4502f5b3d, type: 2}
   conjuredWall: {fileID: 1863297461}
@@ -6417,7 +6418,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5674750043186311452, guid: 8851aaeb83ce5e248940e9dafb9a3b2e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10054,7 +10056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableScrollSlips:
-  - {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
+  - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
 --- !u!1 &1811798670
 GameObject:
   m_ObjectHideFlags: 0

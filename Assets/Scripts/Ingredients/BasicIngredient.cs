@@ -8,10 +8,14 @@ public class BasicIngredient : FallableObject, IIngredient
     private SpriteRenderer _spriteRenderer;
     private SpriteRenderer _highlightRenderer;
 
-    private void Start()
+    private void Awake()
     {
         _spriteRenderer = transform.GetChild(2).GetComponent<SpriteRenderer>();
         _highlightRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
         GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
     }
@@ -20,15 +24,10 @@ public class BasicIngredient : FallableObject, IIngredient
     {
         
         _data = data;
-
-        if (_spriteRenderer != null)
-        {
-            _spriteRenderer.sprite = _data.sprite;
-        }
+        _spriteRenderer.sprite = _data.sprite;
         if(_highlightRenderer != null)
         {
             _highlightRenderer.gameObject.SetActive(false);
-
         }
     }
 
