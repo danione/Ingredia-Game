@@ -19,6 +19,13 @@ public class ScrollSlipManager : MonoBehaviour
         return new KeyValuePair<int, int>(unlockedScrollSlips.Count, availableScrollSlips.Count + unlockedScrollSlips.Count);
     }
 
+    public void AddRitual(RitualScriptableObject newUnlockedRitual)
+    {
+        if(newUnlockedRitual == null) { return; }
+
+        availableScrollSlips.Add(newUnlockedRitual);
+    }
+
 
     private void OnScrollSlipUnlock()
     {

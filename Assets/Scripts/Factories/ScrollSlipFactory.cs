@@ -30,7 +30,6 @@ public class ScrollSlipFactory : MonoBehaviour
     private void SpawnAScrollSlipAtLocation(Vector3 location)
     {
         spawner.GetProduct(location);
-
     }
 
 }

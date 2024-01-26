@@ -7,6 +7,7 @@ public class HiddenRitualsFactory : MonoBehaviour
     [SerializeField] private SpawnFrequencyData spawnFrequencyData;
     [SerializeField] private SpawnLocationData spawnLocationData;
     [SerializeField] private ObjectsSpawner spawner;
+    private ScrollSlipManager scrollSlipManager;
 
     private RitualManager manager;
     private string randomRitual;
@@ -21,6 +22,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         PlayerEventHandler.Instance.UnlockedRitual += OnUnlockedRitual;
         PlayerEventHandler.Instance.CollidedWithRecipe += OnCollidedWithARecipeObject;
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
+        scrollSlipManager = GameManager.Instance.GetComponent<ScrollSlipManager>();
         StartCoroutine(SpawnHiddenRitual());
     }
 
@@ -73,7 +75,8 @@ public class HiddenRitualsFactory : MonoBehaviour
     {
         if (randomRitual != null && ritual == randomRitual)
         {
-            manager.AddRitualToUnlocked(randomRitual);
+            RitualScriptableObject ritualScriptableObject = manager.AddRitualToUnlocked(randomRitual);
+            scrollSlipManager.AddRitual(ritualScriptableObject);
             randomRitual = null;
             PlayerEventHandler.Instance.EmptyCauldron();
         } 

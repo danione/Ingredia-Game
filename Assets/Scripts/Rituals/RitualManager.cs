@@ -38,25 +38,17 @@ public class RitualManager : MonoBehaviour
 
     // The ritual won't be selected, this is considered permanent
     // unlocking
-    public void AddRitualToUnlocked(string newRitual)
+    public RitualScriptableObject AddRitualToUnlocked(string newRitual)
     {
-        if (IsValidRitual(newRitual) && !hiddenRituals[newRitual].isEnabled)
+        RitualScriptableObject ritualObject = null;
+        if (IsValidRitual(newRitual))
         {
+            ritualObject = hiddenRituals[newRitual].RitualData;
+            Debug.Log(hiddenRituals[newRitual].RitualData == null);
             hiddenRituals[newRitual].EnableRitual();
             lockedHiddenRituals.Remove(newRitual);
         }
-    }
-
-    // The ritual won't be selected, this is considered permanent
-    // locking
-    // Would not work, will have to be modified !!!!!!
-    public void RemoveRitualFromUnlocked(string newRitual)
-    {
-        if (IsValidRitual(newRitual) && hiddenRituals[newRitual].isEnabled)
-        {
-            hiddenRituals[newRitual].DisableRitual();
-            lockedHiddenRituals.Add(newRitual);
-        }
+        return ritualObject;
     }
 
     // Temporary Unlocking

@@ -570,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2863234737730908270, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 1760316113}
     - target: {fileID: 5803262840793804631, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: ingredientsFactory
       value: 
       objectReference: {fileID: 596683717}
+    - target: {fileID: 3849607443733397155, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: availableScrollSlips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -837,6 +841,10 @@ PrefabInstance:
     - target: {fileID: 9074762068929310664, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148559292740883961, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: spawnChance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9148559292740883961, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: scrollSlipManagerRef

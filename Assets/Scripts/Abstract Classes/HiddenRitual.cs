@@ -15,7 +15,6 @@ public class HiddenRitual
     public void Disable()
     {
         isEnabled = false;
-        Lock();
     }
 
     public void TemporaryEnable()
@@ -27,10 +26,5 @@ public class HiddenRitual
     public void Unlock()
     {
         GameManager.Instance.GetComponent<RitualManager>().AddRitualToUnlocked(ritual);
-    }
-
-    private void Lock()
-    {
-        GameManager.Instance.GetComponent<RitualManager>().RemoveRitualFromUnlocked(ritual);
     }
 }
