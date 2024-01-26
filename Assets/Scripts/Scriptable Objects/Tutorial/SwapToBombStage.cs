@@ -7,6 +7,7 @@ public class SwapToBombStage : TutorialStage
     public override void InitiateStage()
     {
         GameEventHandler.Instance.SwappedProjectiles += TutorialManager.instance.OnSwappedProjectiles;
+        TutorialManager.instance.EnableSwapUI();
         PlayerController.Instance.inventory.AddAmmo("Bomb", 5);
     }
 

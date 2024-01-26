@@ -20,6 +20,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject scrollSlip;
     [SerializeField] private string postTutorialSceneName;
     [SerializeField] private float tickUntilNextScene;
+    [SerializeField] private GameObject SwapUI;
    
     public static TutorialManager instance;
     private bool emptied = false;
@@ -143,6 +144,11 @@ public class TutorialManager : MonoBehaviour
     {
         GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
         ingredientsFactory.gameObject.GetComponent<ScrollSlipFactory>().enabled = true;
+    }
+
+    public void EnableSwapUI()
+    {
+        SwapUI.SetActive(true);
     }
 
     public void OnSwappedProjectiles()
