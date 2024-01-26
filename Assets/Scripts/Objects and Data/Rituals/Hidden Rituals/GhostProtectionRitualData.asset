@@ -17,7 +17,7 @@ MonoBehaviour:
     button], becoming untargetable.
   ritualRecipes:
   - item: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
-    amount: 4
+    amount: 1
   potionRewardData:
   - {fileID: 11400000, guid: f6c58856130eb604586715290d9116ac, type: 2}
   - {fileID: 11400000, guid: 3579c7d45c058404094a0bcae11c86c1, type: 2}

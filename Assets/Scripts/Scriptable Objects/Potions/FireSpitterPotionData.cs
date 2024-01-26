@@ -9,6 +9,6 @@ public class FireSpitterPotionData : PotionsData
 
     public override void UsePotion()
     {
-        PlayerController.Instance.inventory.AddFlameBombAmmo(ammoAmount);
+        PlayerController.Instance.inventory.AddAmmo("Bomb",ammoAmount);
     }
 }

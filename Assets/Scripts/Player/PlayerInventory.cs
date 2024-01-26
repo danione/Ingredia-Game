@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class PlayerInventory: MonoBehaviour
@@ -10,9 +11,12 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private int maxFlameBombAmmo;
     [SerializeField] private int maxKnifeAmmo;
 
+    [SerializeField] private List<Weapon> weapons;
+    private int currentlyEquippedWeapon = 0;
+
     [SerializeField] public int gold;
 
-    private Dictionary<string, int> cauldronContents = new();
+    private Dictionary<string,int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
 
     public IRitual possibleRitual;
@@ -26,9 +30,46 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
     }
 
+    public Weapon GetCurrentlyEquippedWeapon()
+    {
+       return weapons[currentlyEquippedWeapon];
+    }
+
+    public void SwitchEquippedWeapon()
+    {
+        currentlyEquippedWeapon = (currentlyEquippedWeapon + 1) % weapons.Count;
+        Debug.Log(currentlyEquippedWeapon);
+
+    }
+
+    public void SubtractCurrentWeaponAmmo(int amount)
+    {
+        if (weapons[currentlyEquippedWeapon].ammo - amount > 0)
+        {
+            weapons[currentlyEquippedWeapon].ammo -= amount;
+        }
+        else { weapons[currentlyEquippedWeapon].ammo = 0; }
+    }
+
+    public void AddAmmo(string weaponName, int amount)
+    {
+        foreach (var weapon in weapons)
+        {
+            if (weaponName == weapon.weaponName) { weapon.ammo += amount; break; }
+        }
+    }
+
     public void AddPotion(PotionsData potion)
     {
         powerupManager.AddPotion(potion);
+    }
+
+    public void SetMaxAmmo(string weaponName, int newMaxAmmo)
+    {
+        foreach (var weapon in weapons)
+        {
+            if (weaponName == weapon.weaponName) { weapon.maxAmmo = newMaxAmmo; break; }
+        }
     }
 
     public void AddToCauldron(IIngredient ingredient)
@@ -60,44 +101,27 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.CollectGold(gold);
     }
 
-    public void AddFlameBombAmmo(int amount)
-    {
-        if (maxFlameBombAmmo >= flameBombAmmo + amount)
-            flameBombAmmo += amount;
-        else
-            flameBombAmmo = maxFlameBombAmmo;
-    }
-
-    public void AddKnifeAmmo(int ammo)
-    {
-        if (maxKnifeAmmo >= knifeAmmo + ammo)
-            knifeAmmo += ammo;
-        else
-            knifeAmmo = maxKnifeAmmo;
-    }
-
-    public int GetFlameBombAmmo() { return flameBombAmmo; }
-    public int GetKnifeAmmo() {  return knifeAmmo; }
-
-    public void SetMaxAmmo(int newMaxBombAmmo, int newMaxKnifeAmmo)
-    {
-        maxFlameBombAmmo = newMaxBombAmmo > 0 ? newMaxBombAmmo : maxFlameBombAmmo;
-        maxKnifeAmmo = newMaxKnifeAmmo > 0 ? newMaxKnifeAmmo : maxKnifeAmmo;
-    }
-
-    public void SubtractAmmo()
-    {
-        if(flameBombAmmo > 0) flameBombAmmo--;
-    }
-
-    public void SubtractKnifeAmmo()
-    {
-        if (knifeAmmo > 0) knifeAmmo--;
-    }
-
     public void UsePotion(int slot)
     {
         powerupManager.UsePotion(slot);
         InputEventHandler.instance.UsePotion();
+    }
+}
+[System.Serializable]
+public class Weapon
+{
+    [SerializeField] public string weaponName;
+    [SerializeField] public int ammo;
+    [SerializeField] public int maxAmmo;
+    [SerializeField] private int objectPosition; // unique
+
+    public int GetObjectPosition()
+    {
+        return objectPosition;
+    }
+
+    public bool HasAvailableAmmo()
+    {
+        return ammo > 0;
     }
 }

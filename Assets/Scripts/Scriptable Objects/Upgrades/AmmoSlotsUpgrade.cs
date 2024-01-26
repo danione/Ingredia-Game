@@ -10,6 +10,7 @@ public class AmmoSlotsUpgrade : UpgradeData
     public override void ApplyUpgrade(GameObject obj)
     {
         PlayerInventory inventory = obj.GetComponent<PlayerInventory>();
-        inventory.SetMaxAmmo(fireMaxBombAmmo, knifeMaxAmmo);
+        inventory.SetMaxAmmo("Knife", knifeMaxAmmo);
+        inventory.SetMaxAmmo("Bomb", fireMaxBombAmmo);
     }
 }

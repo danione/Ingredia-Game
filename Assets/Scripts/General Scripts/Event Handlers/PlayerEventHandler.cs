@@ -19,6 +19,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<string, int, int> UpdatedPotions;
     public event Action OpenedScrollsMenu;
     public event Action PerformedRitual;
+    public event Action FiredWeapon;
 
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class PlayerEventHandler : MonoBehaviour
         {
             Destroy(Instance);
         }
+    }
+
+    public void FiresWeapon()
+    {
+        FiredWeapon?.Invoke();
     }
 
     public void CollectIngredient(IIngredient ingredient, int amount)

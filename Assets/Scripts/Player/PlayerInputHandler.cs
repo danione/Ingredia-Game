@@ -100,34 +100,21 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            firingKnives = !firingKnives;
+            PlayerController.Instance.inventory.SwitchEquippedWeapon();
             GameEventHandler.Instance.SwappedProjectilesPressed();
         }
 
 
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
-        bool hasAvailableAmmo = PlayerController.Instance.inventory.GetFlameBombAmmo() > 0;
-        bool hasAvailableKnifes = PlayerController.Instance.inventory.GetKnifeAmmo() > 0;
-        int objectToShoot = -1;
+        Weapon equippedWeapon = PlayerController.Instance.inventory.GetCurrentlyEquippedWeapon();
+        bool hasAvailableAmmo = equippedWeapon.HasAvailableAmmo();
 
-        if (firingKnives && hasAvailableKnifes && isNotOnCooldown)
+        if (hasAvailableAmmo && isNotOnCooldown)
         {
-            isNotOnCooldown = false;
-            objectToShoot = 1;
-            PlayerController.Instance.inventory.SubtractKnifeAmmo();
-        }
-        else if (hasAvailableAmmo && isNotOnCooldown)
-        {
-            isNotOnCooldown = false;
-            objectToShoot = 0;
-            PlayerController.Instance.inventory.SubtractAmmo();
-        }
-
-
-        if (objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
-        {
-            StartCoroutine(FireAProjectile(objectToShoot));
+            PlayerController.Instance.inventory.SubtractCurrentWeaponAmmo(1);
+            StartCoroutine(FireAProjectile(equippedWeapon.GetObjectPosition()));
+            PlayerEventHandler.Instance.FiresWeapon();
         }
     }
 
@@ -139,9 +126,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     private IEnumerator FireAProjectile(int objectToShoot)
     {
-        projectileSpawners[objectToShoot]._pool.Get().transform.position = spawnPoint.position;
-        yield return new WaitForSeconds(fireRate);
-        isNotOnCooldown = true;
+        if (objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
+        {
+            projectileSpawners[objectToShoot]._pool.Get().transform.position = spawnPoint.position;
+            yield return new WaitForSeconds(fireRate);
+            isNotOnCooldown = true;
+        }
     }
 
     private void AttemptRitual()
