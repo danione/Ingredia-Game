@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HumanSkull
   m_EditorClassIdentifier: 
   ingredientName: humanSkull
-  sprite: {fileID: 21300000, guid: d6cd858f03c5be445a33824e7f869df4, type: 3}
-  highlightedSprite: {fileID: 21300000, guid: 45aaabe5d502624438fc6038a708e553, type: 3}
+  sprite: {fileID: 21300000, guid: 2b91413f5d0dec44ebdf52efc7ac8590, type: 3}
+  highlightedSprite: {fileID: 21300000, guid: 1f8f5ecc588cf464cb1e01bd9d95c775, type: 3}
   spawnChance: 0

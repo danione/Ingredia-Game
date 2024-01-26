@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Helmet
   m_EditorClassIdentifier: 
   ingredientName: helmet
-  sprite: {fileID: 21300000, guid: 955a458ebfcf3c9469f46a5e10e96c90, type: 3}
+  sprite: {fileID: 21300000, guid: 9605967388b9b7a44afc4025ab0b973d, type: 3}
+  highlightedSprite: {fileID: 21300000, guid: 5752626757417c84aa6d7a0aa667a257, type: 3}
   spawnChance: 0
