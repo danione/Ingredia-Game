@@ -20,6 +20,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action OpenedScrollsMenu;
     public event Action PerformedRitual;
     public event Action FiredWeapon;
+    public event Action HealthAdjusted;
 
     private void Awake()
     {
@@ -101,5 +102,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void RitualHasBeenPerformed()
     {
         PerformedRitual?.Invoke();
+    }
+
+    public void AdjustHealth()
+    {
+        HealthAdjusted?.Invoke();
     }
 }

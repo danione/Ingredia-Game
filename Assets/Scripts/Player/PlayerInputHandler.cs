@@ -9,7 +9,6 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerMovement movement;
     private PlayerInventory inventory;
     private bool isNotOnCooldown = true;
-    private bool firingKnives = true;
 
 
     [SerializeField] private Transform spawnPoint;

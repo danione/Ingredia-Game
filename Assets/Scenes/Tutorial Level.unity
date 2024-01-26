@@ -6839,6 +6839,7 @@ GameObject:
   - component: {fileID: 1237524439}
   - component: {fileID: 1237524440}
   - component: {fileID: 1237524441}
+  - component: {fileID: 1237524442}
   m_Layer: 5
   m_Name: UI Display Canvas
   m_TagString: Untagged
@@ -7066,6 +7067,20 @@ MonoBehaviour:
   - You are rocking it!
   - The witches will get what they deserve!
   - I can't wait until everyone sees your moves!
+--- !u!114 &1237524442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237524432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31349cca1bcf3ef4ea3b460c5190b4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WeaponName: {fileID: 293777197}
+  m_Ammo: {fileID: 2087317219}
 --- !u!1 &1252846439
 GameObject:
   m_ObjectHideFlags: 0

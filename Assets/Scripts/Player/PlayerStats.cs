@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     private void Start()
     {
         health = startingHealth;
+        PlayerEventHandler.Instance.AdjustHealth();
     }
 
     public void Die()
@@ -20,12 +21,12 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     }
 
     public void Heal()
-    {
+    { 
         if (Health < maxHealth)
         {
             health++;
         }
-
+        PlayerEventHandler.Instance.AdjustHealth();
     }
 
     public void UpgradeHealth(int newMaxHealth)
@@ -37,22 +38,20 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     public void Heal(int _health)
     {
         health = Mathf.Min(health + _health, maxHealth);
-        Debug.Log("Health is " + health);
+        PlayerEventHandler.Instance.AdjustHealth();
     }
 
     public void TakeDamage()
     {
         health--;
-
-        Debug.Log("Ugh, taken damage " + Health);
+        PlayerEventHandler.Instance.AdjustHealth();
         if (Health < 1) { Die(); }
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-
-        Debug.Log("Ugh, taken damage " + Health);
+        PlayerEventHandler.Instance.AdjustHealth();
         if (Health < 1) { Die(); }
     }
 }
