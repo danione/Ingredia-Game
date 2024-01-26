@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject conjuredWall;
     [SerializeField] private GameObject laserStarterPosition;
     [SerializeField] private GameObject scrollSlip;
+    [SerializeField] private string postTutorialSceneName;
+    [SerializeField] private float tickUntilNextScene;
    
     public static TutorialManager instance;
     private bool emptied = false;
@@ -39,7 +42,7 @@ public class TutorialManager : MonoBehaviour
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
-        InitialiseNextStage();       
+        InitialiseNextStage(); 
     }
 
     public void OnPlayerMoved(float direction)
@@ -162,6 +165,30 @@ public class TutorialManager : MonoBehaviour
 
         openedScroll = true;
         ExecuteCurrentStage() ;
+    }
+
+    public void StartTransition()
+    {
+        StartCoroutine(ChangeTutorial());
+    }
+
+    IEnumerator ChangeTutorial()
+    {
+        yield return new WaitForSeconds(tickUntilNextScene);
+        ExecuteCurrentStage();
+    }
+
+    public void ExitTutorial()
+    {
+        try
+        {
+            SceneManager.LoadScene(postTutorialSceneName);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.ToString());
+        }
+       
     }
 
     public void ExecuteCurrentStage()

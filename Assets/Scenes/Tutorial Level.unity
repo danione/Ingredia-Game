@@ -3610,11 +3610,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 246e79c83c5e09a46bd9dcb5b52abd8d, type: 2}
   - {fileID: 11400000, guid: a22c7efa94a946f4ab5667a13e80bc94, type: 2}
   - {fileID: 11400000, guid: 1a1b501386fa97b49a49535053c9e11c, type: 2}
+  - {fileID: 11400000, guid: 544e31556d49ff145bb9dceec8b4882e, type: 2}
   tutorialUiManager: {fileID: 1237524441}
   overloadElixirData: {fileID: 11400000, guid: 37dffa3bb515e3e4795fd6c4502f5b3d, type: 2}
   conjuredWall: {fileID: 1863297461}
   laserStarterPosition: {fileID: 1964610578}
   scrollSlip: {fileID: 1179749413}
+  postTutorialSceneName: Normal Level
+  tickUntilNextScene: 3
 --- !u!1 &616575324
 GameObject:
   m_ObjectHideFlags: 0
