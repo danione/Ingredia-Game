@@ -21,6 +21,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action PerformedRitual;
     public event Action FiredWeapon;
     public event Action HealthAdjusted;
+    public event Action EscapeMenuOpened;
 
     private void Awake()
     {
@@ -107,5 +108,10 @@ public class PlayerEventHandler : MonoBehaviour
     public void AdjustHealth()
     {
         HealthAdjusted?.Invoke();
+    }
+
+    public void EscapeMenuOpen()
+    {
+        EscapeMenuOpened?.Invoke(); 
     }
 }

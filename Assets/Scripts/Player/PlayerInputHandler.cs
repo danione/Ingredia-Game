@@ -93,6 +93,16 @@ public class PlayerInputHandler : MonoBehaviour
             if(permissions.canOpenScrollMenu)
                 ScrollMenu();
         }
+
+        EscapeMenu();
+    }
+
+    private void EscapeMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerEventHandler.Instance.EscapeMenuOpen();
+        }
     }
 
     private void ShootProjectile()
