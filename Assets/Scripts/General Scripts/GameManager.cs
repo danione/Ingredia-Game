@@ -34,6 +34,20 @@ public class GameManager: MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+          UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+
+        Application.Quit();
+    }
+
+    public void ExitSession()
+    {
+        Debug.Log("Main Menu");
+    }
+
     private void Update()
     {
         if (gameOver)
