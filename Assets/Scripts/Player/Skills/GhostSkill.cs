@@ -29,7 +29,6 @@ public class GhostSkill
             countdownTimer -= Time.deltaTime;
             if (isTransforming)
             {
-                Debug.Log(powerPool);
                 powerPool -= Time.deltaTime;
                 Physics.IgnoreLayerCollision(0, 7, true);
                 // ChangeAlpha(0.5f);

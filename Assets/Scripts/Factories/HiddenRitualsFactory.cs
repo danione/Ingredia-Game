@@ -77,6 +77,7 @@ public class HiddenRitualsFactory : MonoBehaviour
         {
             RitualScriptableObject ritualScriptableObject = manager.AddRitualToUnlocked(randomRitual);
             scrollSlipManager.AddRitual(ritualScriptableObject);
+            PlayerController.Instance.inventory.AddPotion(ritualScriptableObject.potionRewardData[0]);
             randomRitual = null;
             PlayerEventHandler.Instance.EmptyCauldron();
         } 
