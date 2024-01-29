@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager: MonoBehaviour
@@ -22,6 +23,7 @@ public class GameManager: MonoBehaviour
         GameEventHandler.Instance.UpgradesMenuOpen += OnUpdatesMenuOpened;
         GameEventHandler.Instance.UpgradesMenuClose += OnUpdatesMenuClosed;
         GameEventHandler.Instance.DestroyedObject += OnDestroyObject;
+        ResumeGame();
     }
 
     public void PauseGame()
@@ -45,7 +47,7 @@ public class GameManager: MonoBehaviour
 
     public void ExitSession()
     {
-        Debug.Log("Main Menu");
+        SceneManager.LoadScene("Main Menu");
     }
 
     private void Update()

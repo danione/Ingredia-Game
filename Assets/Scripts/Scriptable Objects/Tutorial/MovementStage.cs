@@ -7,6 +7,7 @@ public class MovementStage : TutorialStage
 {
     public override void InitiateStage()
     {
+        PlayerInputHandler.permissions.LockAll();
         InputEventHandler.instance.PlayerMoved += TutorialManager.instance.OnPlayerMoved;
     }
 

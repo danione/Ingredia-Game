@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    private void Start()
+    {
+        GameObject gameManager = FindObjectOfType<GameManager>().gameObject;
+        
+        if( gameManager != null)
+        {
+            Destroy(gameManager);
+        }
+
+    }
+
     public void GoToTutorialStage()
     {
         SceneManager.LoadScene("Tutorial Level");

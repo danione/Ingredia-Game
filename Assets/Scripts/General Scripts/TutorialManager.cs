@@ -37,11 +37,11 @@ public class TutorialManager : MonoBehaviour
     {
         if(instance == null) {  instance = this; } else { Destroy(this); }
 
-        PlayerInputHandler.permissions.LockAll();
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
+
 
         InitialiseNextStage(); 
     }
@@ -203,7 +203,6 @@ public class TutorialManager : MonoBehaviour
         tutorialStages[currentStage++].NextStage();
         tutorialUiManager.DisplayCongrats();
 
-        Debug.Log(currentStage);
         StartCoroutine(CooldownBetweenStages());
     }
 
