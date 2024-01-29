@@ -17,9 +17,9 @@ MonoBehaviour:
     its path.
   ritualRecipes:
   - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
-    amount: 1
+    amount: 3
   - item: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
-    amount: 1
+    amount: 3
   potionRewardData:
   - {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}
   - {fileID: 11400000, guid: cee5586500ec10c48b58d2ca7f856041, type: 2}

@@ -48,12 +48,18 @@ public abstract class UIObjectsAbstract : MonoBehaviour
     public void OnAdjustInventoryUIRitual(IIngredient ingredient, int count)
     {
         string itemName = ingredient.Data.ingredientName;
-        if (transforms.ContainsKey(itemName))
+        if (!transforms.ContainsKey(itemName) || count == 0) return;
+        
+        int itemCount = int.Parse(transforms[itemName].text.Split('x')[1]);
+
+        itemCount--;
+
+        transforms[itemName].text = itemName + " x" + itemCount;
+        
+        if (itemCount == 0)
         {
-            int itemCount = int.Parse(transforms[itemName].text.Split('x')[1]);
-            if (count > 1) count--;
-            transforms[itemName].text = itemName + " x" + (itemCount - count);
-        }        
+            transforms[itemName].fontStyle = FontStyles.Strikethrough;
+        }
     }
 
     public void RemoveInventoryUI(string itemName)

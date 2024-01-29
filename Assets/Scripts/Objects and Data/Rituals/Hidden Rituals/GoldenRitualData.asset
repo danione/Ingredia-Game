@@ -17,7 +17,7 @@ MonoBehaviour:
     nuggets.
   ritualRecipes:
   - item: {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
-    amount: 2
+    amount: 4
   potionRewardData:
   - {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
   - {fileID: 11400000, guid: 4674b776ac37bfa4090c11b3d93a6902, type: 2}
