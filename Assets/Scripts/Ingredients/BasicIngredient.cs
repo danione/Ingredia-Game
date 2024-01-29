@@ -57,10 +57,4 @@ public class BasicIngredient : FallableObject, IIngredient
     {
         _highlightRenderer.gameObject.SetActive(false);
     }
-
-    private void OnDestroy()
-    {
-        GameEventHandler.Instance.HighlightedIngredient -= OnHighlight;
-        PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
-    }
 }

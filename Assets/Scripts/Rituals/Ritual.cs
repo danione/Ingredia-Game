@@ -40,12 +40,16 @@ public class Ritual : IRitual
 
     public void EnableRitual()
     {
+        if (isEnabled) return;
+
         isEnabled = true;
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
     }
 
-    public void DisableRitual() { 
+    public void DisableRitual() {
+        if (!isEnabled) return;
+
         isEnabled = false;
         PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;

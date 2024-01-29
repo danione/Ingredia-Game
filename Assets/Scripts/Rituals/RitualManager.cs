@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -44,7 +45,6 @@ public class RitualManager : MonoBehaviour
         if (IsValidRitual(newRitual))
         {
             ritualObject = hiddenRituals[newRitual].RitualData;
-            Debug.Log(hiddenRituals[newRitual].RitualData == null);
             hiddenRituals[newRitual].EnableRitual();
             lockedHiddenRituals.Remove(newRitual);
         }
@@ -63,6 +63,7 @@ public class RitualManager : MonoBehaviour
     // Temporary Locking
     public void LockRitual(string ritual)
     {
+        Debug.Log(ritual);
         if (IsValidRitual(ritual) && hiddenRituals[ritual].isEnabled)
         {
             hiddenRituals[ritual].DisableRitual();
@@ -79,7 +80,7 @@ public class RitualManager : MonoBehaviour
         if (!HasLockedHiddenRituals()) return null;
    
         string[] asArray = lockedHiddenRituals.ToArray();
-        int randomIndex = Random.Range(0, asArray.Length);
+        int randomIndex = UnityEngine.Random.Range(0, asArray.Length);
         string randomElement = asArray[randomIndex];
         return randomElement;
     } 
