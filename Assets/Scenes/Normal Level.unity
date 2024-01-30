@@ -684,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerTemplateObject: {fileID: 563864069}
   testObject: {fileID: 11400000, guid: c14fe51da1b18e7408e1f858ed329b4f, type: 2}
+  offsetY: 300
 --- !u!114 &596683717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
