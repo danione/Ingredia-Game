@@ -5,30 +5,25 @@ using UnityEngine.UI;
 
 public class TimerUIManager : MonoBehaviour
 {
-
-    [SerializeField] private Transform timerTemplateObject;
-    
     [SerializeField] private float offsetY;
     private List<Transform> activeTimers;
     // Start is called before the first frame update
 
     [SerializeField] private TimerDataObject testObject;
     [SerializeField] private PotionsData testPotion;
-    private bool currentGhostState = false;
-    private bool active;
-
 
     [SerializeField] private Vector3 minScale = new Vector3(1.05f, 1.05f, 1.05f);
     [SerializeField] private Vector3 maxScale = new Vector3(0.95f, 0.95f, 0.95f);
     [SerializeField] private float scalingSpeed = 2.5f;
     [SerializeField] private float scalingDuration = 2;
 
+    [SerializeField] private List<TimerNotificationObject> availableObjects;
+
     void Start()
     {
         activeTimers = new List<Transform>();
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
-
     }
 
     private void Update()
@@ -40,7 +35,7 @@ public class TimerUIManager : MonoBehaviour
         
     }
 
-
+    /*
     private IEnumerator Pulse()
     {
         while (active)
@@ -64,68 +59,30 @@ public class TimerUIManager : MonoBehaviour
             activeTimers[0].localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
-    }
+    }*/
+
 
     private void OnGhostActivated()
     {
-        activeTimers.Add(CreateANewTimer());
-        PlayerEventHandler.Instance.TransformIntoGhost += OnTransformIntoGhost;
-        active = true;
-        StartCoroutine(Pulse());
+        AssignANewTimer();
     }
 
     private void OnGhostDeactivated()
     {
-        PlayerEventHandler.Instance.TransformIntoGhost -= OnTransformIntoGhost;
-        active = false;
         Destroy(activeTimers[0].gameObject);
+        availableObjects[0].ForgetObject();
         activeTimers.Clear();
     }
 
-    private void OnTransformIntoGhost(bool isTransforming)
+    private void AssignANewTimer()
     {
-        if (currentGhostState != isTransforming) 
-        {
-            ChangeImages(isTransforming);
-            currentGhostState = isTransforming;  
-        }
+        var newObject = availableObjects[0].CreateANewTimer();
+        var positionEstablish = new Vector3(newObject.position.x,
+        newObject.position.y - activeTimers.Count * (newObject.GetComponent<RectTransform>().rect.height + offsetY),
+        newObject.position.z);
+
+        newObject.position = positionEstablish;
+
+        activeTimers.Add(newObject);
     }
-
-    private void ChangeImages(bool isTransforming)
-    {
-        if (activeTimers.Count == 0) return;
-
-        if (isTransforming)
-        {
-            activeTimers[0].GetChild(0).GetComponent<Image>().sprite = testObject.BorderSpriteEngaged;
-            activeTimers[0].GetChild(1).GetComponent<Image>().sprite = testObject.IconSpriteEngaged;
-        }
-        else
-        {
-            activeTimers[0].GetChild(0).GetComponent<Image>().sprite = testObject.BorderSpriteIdle;
-            activeTimers[0].GetChild(1).GetComponent<Image>().sprite = testObject.IconSpriteIdle;
-        }
-    }
-
-
-    private Transform CreateANewTimer()
-    {
-        var positionEstablish = new Vector3(timerTemplateObject.position.x, 
-            timerTemplateObject.position.y - activeTimers.Count * (timerTemplateObject.GetComponent<RectTransform>().rect.height + offsetY), 
-            timerTemplateObject.position.z);
-
-        var newObject = Instantiate(timerTemplateObject, timerTemplateObject.parent);
-        newObject.transform.position = positionEstablish;
-        newObject.GetChild(0).GetComponent<Image>().sprite = testObject.BorderSpriteIdle;
-        newObject.GetChild(1).GetComponent<Image>().sprite = testObject.IconSpriteIdle;
-        newObject.gameObject.SetActive(true);
-
-        return newObject;
-    }
-}
-
-public class PulseEffect
-{
-    // Grow parameters
-
 }
