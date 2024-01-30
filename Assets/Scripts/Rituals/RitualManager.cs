@@ -63,7 +63,6 @@ public class RitualManager : MonoBehaviour
     // Temporary Locking
     public void LockRitual(string ritual)
     {
-        Debug.Log(ritual);
         if (IsValidRitual(ritual) && hiddenRituals[ritual].isEnabled)
         {
             hiddenRituals[ritual].DisableRitual();
