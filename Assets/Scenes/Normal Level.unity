@@ -682,14 +682,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31110fdab6595a548afe026d00155a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerTemplateObject: {fileID: 563864069}
   offsetY: 15
   testObject: {fileID: 11400000, guid: c14fe51da1b18e7408e1f858ed329b4f, type: 2}
   testPotion: {fileID: 11400000, guid: f6c58856130eb604586715290d9116ac, type: 2}
-  minScale: {x: 1.05, y: 1.05, z: 1.05}
-  maxScale: {x: 0.95, y: 0.95, z: 0.95}
-  scalingSpeed: 2
-  scalingDuration: 3
+  availableObjects:
+  - timerTemplateObject: {fileID: 563864069}
+    timerDataObject: {fileID: 11400000, guid: c14fe51da1b18e7408e1f858ed329b4f, type: 2}
+    minScale: {x: 0.95, y: 0.95, z: 0.95}
+    maxScale: {x: 1.05, y: 1.05, z: 1.05}
+    scalingSpeed: 2.5
+    scalingDuration: 2
 --- !u!114 &596683717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}

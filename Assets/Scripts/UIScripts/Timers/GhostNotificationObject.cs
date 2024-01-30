@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class GhostNotificationObject : TimerNotificationObject
 {
     private bool currentGhostState = false;
-    private bool active;
 
     protected override void FurtherSetupInstructions()
     {
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
-        active = true;
     }
 
     private void ChangeImages(bool isTransforming)
@@ -34,14 +32,11 @@ public class GhostNotificationObject : TimerNotificationObject
     private void OnGhostActivated()
     {
         PlayerEventHandler.Instance.TransformIntoGhost += OnTransformIntoGhost;
-        active = true;
-        // StartCoroutine(Pulse());
     }
 
     private void OnGhostDeactivated()
     {
         PlayerEventHandler.Instance.TransformIntoGhost -= OnTransformIntoGhost;
-        active = false;
     }
 
     private void OnTransformIntoGhost(bool isTransforming)
