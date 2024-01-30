@@ -7,15 +7,32 @@ public class TimerUIManager : MonoBehaviour
 {
 
     [SerializeField] private Transform timerTemplateObject;
-    [SerializeField] private TimerDataObject testObject;
+    
     [SerializeField] private float offsetY;
     private List<Transform> activeTimers;
     // Start is called before the first frame update
 
+    [SerializeField] private TimerDataObject testObject;
+    [SerializeField] private PotionsData testPotion;
+
     void Start()
     {
         activeTimers = new List<Transform>();
-        activeTimers.Add(CreateANewTimer());
+        GameEventHandler.Instance.GhostActivated += OnGhostActivated;
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerController.Instance.inventory.AddPotion(testPotion);
+        }
+        
+    }
+
+    private void OnGhostActivated()
+    {
         activeTimers.Add(CreateANewTimer());
     }
 
@@ -32,11 +49,5 @@ public class TimerUIManager : MonoBehaviour
         newObject.gameObject.SetActive(true);
 
         return newObject;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

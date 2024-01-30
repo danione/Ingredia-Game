@@ -25,6 +25,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<RitualScriptableObject> ScrollSlipGenerated;
     public Action<Vector3> SpawnAScrollSlip;
     public Action SwappedProjectiles;
+    public Action GhostActivated;
 
     private void Awake()
     {
@@ -55,6 +56,11 @@ public class GameEventHandler : MonoBehaviour
     public void ClosingDownUpgradesMenu()
     {
         UpgradesMenuClose?.Invoke();
+    }
+
+    public void GhostActivate()
+    {
+        GhostActivated?.Invoke();
     }
 
     public void SpawnsGoldenNuggets(int amount, Vector3 position)

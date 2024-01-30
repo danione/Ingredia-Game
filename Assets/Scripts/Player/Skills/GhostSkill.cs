@@ -53,6 +53,6 @@ public class GhostSkill
         countdownTimer = data.countDownTimer;
         powerPool = data.powerPoolValue;
         isActive = true;
-        Debug.Log("Activated");
+        GameEventHandler.Instance.GhostActivate();
     }
 }
