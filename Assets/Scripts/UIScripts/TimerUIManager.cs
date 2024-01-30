@@ -20,6 +20,7 @@ public class TimerUIManager : MonoBehaviour
     {
         activeTimers = new List<Transform>();
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
+        GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
     }
 
     private void Update()
@@ -37,6 +38,13 @@ public class TimerUIManager : MonoBehaviour
         PlayerEventHandler.Instance.TransformIntoGhost += OnTransformIntoGhost;
     }
 
+    private void OnGhostDeactivated()
+    {
+        PlayerEventHandler.Instance.TransformIntoGhost -= OnTransformIntoGhost;
+        Destroy(activeTimers[0].gameObject);
+        activeTimers.Clear();
+    }
+
     private void OnTransformIntoGhost(bool isTransforming)
     {
         if (currentGhostState != isTransforming) 
@@ -48,6 +56,8 @@ public class TimerUIManager : MonoBehaviour
 
     private void ChangeImages(bool isTransforming)
     {
+        if (activeTimers.Count == 0) return;
+
         if (isTransforming)
         {
             activeTimers[0].GetChild(0).GetComponent<Image>().sprite = testObject.BorderSpriteEngaged;

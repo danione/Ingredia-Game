@@ -43,6 +43,7 @@ public class GhostSkill
         {
             Physics.IgnoreLayerCollision(0, 7, false);
             isActive = false;
+            GameEventHandler.Instance.GhostDeactivated();
         }
     }
 

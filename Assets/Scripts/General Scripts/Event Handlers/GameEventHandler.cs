@@ -26,6 +26,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<Vector3> SpawnAScrollSlip;
     public Action SwappedProjectiles;
     public Action GhostActivated;
+    public Action GhostDeactivated;
 
     private void Awake()
     {
@@ -61,6 +62,11 @@ public class GameEventHandler : MonoBehaviour
     public void GhostActivate()
     {
         GhostActivated?.Invoke();
+    }
+
+    public void GhostDeactivate()
+    {
+        GhostDeactivated?.Invoke();
     }
 
     public void SpawnsGoldenNuggets(int amount, Vector3 position)
