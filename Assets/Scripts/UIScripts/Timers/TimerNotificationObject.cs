@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +31,6 @@ public class TimerNotificationObject
 
     protected virtual void FurtherSetupInstructions() { isPulsing = true; }
 
-
     private IEnumerator Pulse()
     {
         while (isPulsing)
@@ -43,8 +39,6 @@ public class TimerNotificationObject
             yield return RepeatLerping(maxScale, minScale, scalingDuration);
         }
     }
-
-
 
     private IEnumerator RepeatLerping(Vector3 startScale, Vector3 endScale, float time)
     {
@@ -65,6 +59,4 @@ public class TimerNotificationObject
         isPulsing = false;
         currentObject = null;
     }
-
-
 }

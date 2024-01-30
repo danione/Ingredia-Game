@@ -7,7 +7,6 @@ public class TimerUIManager : MonoBehaviour
 {
     [SerializeField] private float offsetY;
     private List<Transform> activeTimers;
-    // Start is called before the first frame update
 
     [SerializeField] private TimerDataObject testObject;
     [SerializeField] private PotionsData testPotion;
