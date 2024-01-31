@@ -10,10 +10,12 @@ public class TimerUIManager : MonoBehaviour
 
     [SerializeField] private PotionsData testPotion;
     [SerializeField] private PotionsData testPotion1;
+    [SerializeField] private PotionsData testPotion2;
 
 
     [SerializeField] private GhostNotificationObject ghostObject;
     [SerializeField] private LaserNotificationObject laserObject;
+    [SerializeField] private ProtectionNotificationObject shieldObject;
 
     private int activeTimersCount;
 
@@ -23,10 +25,14 @@ public class TimerUIManager : MonoBehaviour
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
         GameEventHandler.Instance.LaserActivated += OnLaserActivated;
         GameEventHandler.Instance.LaserDeactivated += OnLaserDeactivated;
+        GameEventHandler.Instance.ShieldDisabled += OnShieldDisabled;
+        GameEventHandler.Instance.ShieldEnabled += OnShieldEnabled;
+
         activeTimersCount = 0;
 
         ghostObject.Setup();
         laserObject.Setup();
+        shieldObject.Setup();
     }
 
     private void Update()
@@ -39,6 +45,20 @@ public class TimerUIManager : MonoBehaviour
         {
             PlayerController.Instance.inventory.AddPotion(testPotion1);
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            PlayerController.Instance.inventory.AddPotion(testPotion2);
+        }
+    }
+
+    private void OnShieldEnabled()
+    {
+        AssignNewBarrierTimer();
+    }
+
+    private void OnShieldDisabled()
+    {
+        activeTimersCount--;
     }
 
     private void OnGhostActivated()
@@ -70,6 +90,12 @@ public class TimerUIManager : MonoBehaviour
     public void AssignNewLaserTimer()
     {
         Transform newObject = laserObject.GenerateANewTimer(this);
+        AssignTimer(newObject);
+    }
+
+    public void AssignNewBarrierTimer()
+    {
+        Transform newObject = shieldObject.GenerateANewTimer(this);
         AssignTimer(newObject);
     }
 

@@ -31,10 +31,28 @@ public class GameEventHandler : MonoBehaviour
     public Action LaserDeactivated;
     public Action<float, float> SentLaserStats;
     public Action<float, float> SentGhostCurrentTimers;
+    public Action ShieldDisabled;
+    public Action<float> SentShieldStats;
+    public Action ShieldEnabled;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void ShieldEnable()
+    {
+        ShieldEnabled?.Invoke();
+    }
+
+    public void ShieldDisable()
+    {
+        ShieldDisabled?.Invoke();
+    }
+
+    public void SendShieldStats(float duration)
+    {
+        SentShieldStats?.Invoke(duration);
     }
 
     public void SendLaserStats(float timer, float strength)

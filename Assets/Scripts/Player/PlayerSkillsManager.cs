@@ -8,6 +8,7 @@ public class PlayerSkillsManager : MonoBehaviour
     private OverloadSkill overload;
     [SerializeField] private Transform shieldObject;
     private bool isShielding = false;
+    private float shieldDuration = 0;
 
     private void Start()
     {
@@ -23,6 +24,25 @@ public class PlayerSkillsManager : MonoBehaviour
     {
         ghost.Tick();
         overload.Tick();
+        ShieldActive();
+    }
+
+    private void ShieldActive()
+    {
+        if (!isShielding) return;
+
+        shieldDuration -= Time.deltaTime;
+
+        if(shieldDuration < 0)
+        {
+            isShielding = false;
+            shieldObject.gameObject.SetActive(false);
+            GameEventHandler.Instance.ShieldDisable();
+            return;
+
+        }
+
+        GameEventHandler.Instance.SendShieldStats(shieldDuration);
     }
 
     private void OnActivateGhost(GhostPotionData data)
@@ -37,17 +57,15 @@ public class PlayerSkillsManager : MonoBehaviour
 
     private void OnActivateBarrier(float duration)
     {
-        if (isShielding) return;
-
+        if (isShielding)
+        {
+            shieldDuration += duration;
+            GameEventHandler.Instance.SendShieldStats(shieldDuration);
+            return;
+        }
+        shieldDuration = duration;
         isShielding = true;
-        StartCoroutine(ShieldActivation(duration));
-    }
-
-    private IEnumerator ShieldActivation(float duration)
-    {
         shieldObject.gameObject.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        shieldObject.gameObject.SetActive(false);
-        isShielding = false;
+        GameEventHandler.Instance.ShieldEnable();
     }
 }
