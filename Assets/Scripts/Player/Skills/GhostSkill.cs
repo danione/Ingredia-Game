@@ -55,6 +55,7 @@ public class GhostSkill
         {
             countdownTimer += data.countDownTimer;
             powerPool += data.powerPoolValue;
+            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer, powerPool);
             return;
         }
 

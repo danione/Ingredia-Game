@@ -54,6 +54,7 @@ public class OverloadSkill
         {
             timer += data.durationInSeconds;
             strength += data.durationInSeconds;
+            GameEventHandler.Instance.SendLaserStats(timer, strength);
             return;
         }
 

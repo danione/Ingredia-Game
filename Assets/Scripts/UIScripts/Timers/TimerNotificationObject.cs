@@ -63,6 +63,10 @@ public class TimerNotificationObject
        {
             scalingDuration = pulsingData.scalingDurationLastCheckpoint;
        }
+        else if(pulseAmount > pulsingData.firstCheckpoint)
+        {
+            scalingDuration = pulsingData.scalingDurationStart;
+        }
     }
 
     public void ForgetObject()
