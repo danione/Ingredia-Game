@@ -8,13 +8,13 @@ public class TimerNotificationObject
     // Setup
     public Transform timerTemplateObject;
     public TimerDataObject timerDataObject;
-    protected static Transform currentObject;
+    public TimerPulsingObject pulsingData;
 
-    public Vector3 minScale = new Vector3(0.95f, 0.95f, 0.95f);
-    public Vector3 maxScale = new Vector3(1.05f, 1.05f, 1.05f);
-    public float scalingSpeed = 2.5f;
-    public float scalingDuration = 2;
+    [System.NonSerialized] public Transform currentObject;
+   
     private bool isPulsing;
+    private float scalingDuration;
+
 
     public Transform CreateANewTimer(TimerUIManager manager)
     {
@@ -35,15 +35,15 @@ public class TimerNotificationObject
     {
         while (isPulsing)
         {
-            yield return RepeatLerping(minScale, maxScale, scalingDuration);
-            yield return RepeatLerping(maxScale, minScale, scalingDuration);
+            yield return RepeatLerping(pulsingData.minScale, pulsingData.maxScale, scalingDuration);
+            yield return RepeatLerping(pulsingData.maxScale, pulsingData.minScale, scalingDuration);
         }
     }
 
     private IEnumerator RepeatLerping(Vector3 startScale, Vector3 endScale, float time)
     {
         float t = 0.0f;
-        float rate = (1f / time) * scalingSpeed;
+        float rate = (1f / time) * pulsingData.scalingSpeed;
 
         while (t < 1f)
         {
@@ -57,6 +57,6 @@ public class TimerNotificationObject
     public void ForgetObject()
     {
         isPulsing = false;
-        currentObject = null;
+        GameObject.Destroy(currentObject.gameObject);
     }
 }

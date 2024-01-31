@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class GhostNotificationObject : TimerNotificationObject
+[System.Serializable]
+public class GhostNotificationObject
 {
+    [SerializeField] private TimerNotificationObject timerNotification;
     private bool currentGhostState = false;
-
-    protected override void FurtherSetupInstructions()
+    public void Setup()
     {
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
@@ -15,17 +15,17 @@ public class GhostNotificationObject : TimerNotificationObject
 
     private void ChangeImages(bool isTransforming)
     {
-        if (currentObject == null) return;
+        if (timerNotification.currentObject == null) return;
 
         if (isTransforming)
         {
-            currentObject.GetChild(0).GetComponent<Image>().sprite = timerDataObject.BorderSpriteEngaged;
-            currentObject.GetChild(1).GetComponent<Image>().sprite = timerDataObject.IconSpriteEngaged;
+            timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteEngaged;
+            timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteEngaged;
         }
         else
         {
-            currentObject.GetChild(0).GetComponent<Image>().sprite = timerDataObject.BorderSpriteIdle;
-            currentObject.GetChild(1).GetComponent<Image>().sprite = timerDataObject.IconSpriteIdle;
+            timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteIdle;
+            timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteIdle;
         }
     }
 
@@ -37,6 +37,7 @@ public class GhostNotificationObject : TimerNotificationObject
     private void OnGhostDeactivated()
     {
         PlayerEventHandler.Instance.TransformIntoGhost -= OnTransformIntoGhost;
+        timerNotification.ForgetObject();
     }
 
     private void OnTransformIntoGhost(bool isTransforming)
@@ -46,5 +47,10 @@ public class GhostNotificationObject : TimerNotificationObject
             ChangeImages(isTransforming);
             currentGhostState = isTransforming;
         }
+    }
+
+    public Transform GenerateANewTimer(TimerUIManager manager)
+    {
+        return timerNotification.CreateANewTimer(manager);
     }
 }

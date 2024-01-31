@@ -8,16 +8,16 @@ public class TimerUIManager : MonoBehaviour
     [SerializeField] private float offsetY;
     private List<Transform> activeTimers;
 
-    [SerializeField] private TimerDataObject testObject;
     [SerializeField] private PotionsData testPotion;
 
-    [SerializeField] private List<TimerNotificationObject> availableObjects;
+    [SerializeField] private GhostNotificationObject ghostObject;
 
     void Start()
     {
         activeTimers = new List<Transform>();
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
+        ghostObject.Setup();
     }
 
     private void Update()
@@ -28,7 +28,6 @@ public class TimerUIManager : MonoBehaviour
         }
     }
 
-
     private void OnGhostActivated()
     {
         AssignANewTimer();
@@ -36,14 +35,12 @@ public class TimerUIManager : MonoBehaviour
 
     private void OnGhostDeactivated()
     {
-        Destroy(activeTimers[0].gameObject);
-        availableObjects[0].ForgetObject();
         activeTimers.Clear();
     }
 
     private void AssignANewTimer()
     {
-        var newObject = availableObjects[0].CreateANewTimer(this);
+        var newObject = ghostObject.GenerateANewTimer(this);
         var positionEstablish = new Vector3(newObject.position.x,
         newObject.position.y - activeTimers.Count * (newObject.GetComponent<RectTransform>().rect.height + offsetY),
         newObject.position.z);
