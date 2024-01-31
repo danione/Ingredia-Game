@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OverloadSkill
@@ -32,6 +33,7 @@ public class OverloadSkill
         {
             laser.Refresh();
             isActive = false;
+            GameEventHandler.Instance.LaserDeactivate();
             return;
         }
         else if (isFiringLaser)
@@ -43,14 +45,23 @@ public class OverloadSkill
         {
             laser.Refresh();
         }
+        GameEventHandler.Instance.SendLaserStats(timer, strength);
     }
 
     public void CreateOrRefresh(OverloadElixirData data)
     {
+        if (isActive)
+        {
+            timer += data.durationInSeconds;
+            strength += data.durationInSeconds;
+            return;
+        }
+
         this.data = data;
         timer = data.durationInSeconds;
         strength = data.usageStrengthInSeconds;
         isActive = true;
+        GameEventHandler.Instance.LaserActivate();
         // Some basic animation
     }
 }

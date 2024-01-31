@@ -685,10 +685,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetY: 15
   testPotion: {fileID: 11400000, guid: f6c58856130eb604586715290d9116ac, type: 2}
+  testPotion1: {fileID: 11400000, guid: f41d2d8cab0e4bf48bdc9f8e861037b0, type: 2}
   ghostObject:
     timerNotification:
       timerTemplateObject: {fileID: 563864069}
       timerDataObject: {fileID: 11400000, guid: c14fe51da1b18e7408e1f858ed329b4f, type: 2}
+      pulsingData: {fileID: 11400000, guid: f0a9459fe09e74b4397611f4a8d2d333, type: 2}
+  laserObject:
+    timerNotification:
+      timerTemplateObject: {fileID: 563864069}
+      timerDataObject: {fileID: 11400000, guid: 8f50026cc381f52478d83c0c1087975a, type: 2}
       pulsingData: {fileID: 11400000, guid: f0a9459fe09e74b4397611f4a8d2d333, type: 2}
 --- !u!114 &596683717 stripped
 MonoBehaviour:

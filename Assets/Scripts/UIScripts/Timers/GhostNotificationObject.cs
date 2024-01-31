@@ -9,6 +9,7 @@ public class GhostNotificationObject
     [SerializeField] private TimerNotificationObject timerNotification;
     private bool currentGhostState = false;
     private float ghostPowerPool;
+    private StateSwapper swapper = new();
 
     public void Setup()
     {
@@ -21,25 +22,7 @@ public class GhostNotificationObject
     {
         ghostPowerPool = pool;
         timerNotification.ChangePulse(timer);
-        timerNotification.currentObject.GetChild(2).GetComponent<TextMeshProUGUI>().text = System.Math.Round(ghostPowerPool, 1).ToString();
-    }
-
-    private void ChangeImages(bool isTransforming)
-    {
-        if (timerNotification.currentObject == null) return;
-
-        if (isTransforming)
-        {
-            timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteEngaged;
-            timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteEngaged;
-            timerNotification.currentObject.GetChild(2).gameObject.SetActive(true);
-        }
-        else
-        {
-            timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteIdle;
-            timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteIdle;
-            timerNotification.currentObject.GetChild(2).gameObject.SetActive(false);
-        }
+        swapper.SetValue(timerNotification, System.Math.Round(ghostPowerPool, 1).ToString());
     }
 
     private void OnGhostActivated()
@@ -57,7 +40,7 @@ public class GhostNotificationObject
     {
         if (currentGhostState != isTransforming)
         {
-            ChangeImages(isTransforming);
+            swapper.ChangeImages(timerNotification, isTransforming);
             currentGhostState = isTransforming;
         }
     }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed16e83fa947b234f84c6f6bc0e3b316, type: 3}
-  m_Name: GhostPulsingData
+  m_Name: PulsingDataGeneric
   m_EditorClassIdentifier: 
   minScale: {x: 1.05, y: 1.05, z: 1.05}
   maxScale: {x: 0.95, y: 0.95, z: 0.95}

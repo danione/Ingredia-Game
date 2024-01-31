@@ -27,11 +27,29 @@ public class GameEventHandler : MonoBehaviour
     public Action SwappedProjectiles;
     public Action GhostActivated;
     public Action GhostDeactivated;
+    public Action LaserActivated;
+    public Action LaserDeactivated;
+    public Action<float, float> SentLaserStats;
     public Action<float, float> SentGhostCurrentTimers;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void SendLaserStats(float timer, float strength)
+    {
+        SentLaserStats?.Invoke(timer, strength);
+    }
+
+    public void LaserActivate()
+    {
+        LaserActivated?.Invoke();
+    }
+
+    public void LaserDeactivate()
+    {
+        LaserDeactivated?.Invoke();
     }
 
     public void SendGhostCurrentTimers(float timer, float powerPool)

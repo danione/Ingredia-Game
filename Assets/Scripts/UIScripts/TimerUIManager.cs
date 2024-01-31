@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TimerUIManager : MonoBehaviour
 {
     [SerializeField] private float offsetY;
-    private List<Transform> activeTimers;
 
     [SerializeField] private PotionsData testPotion;
+    [SerializeField] private PotionsData testPotion1;
+
 
     [SerializeField] private GhostNotificationObject ghostObject;
+    [SerializeField] private LaserNotificationObject laserObject;
+
+    private int activeTimersCount;
 
     void Start()
     {
-        activeTimers = new List<Transform>();
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
+        GameEventHandler.Instance.LaserActivated += OnLaserActivated;
+        GameEventHandler.Instance.LaserDeactivated += OnLaserDeactivated;
+        activeTimersCount = 0;
+
         ghostObject.Setup();
+        laserObject.Setup();
     }
 
     private void Update()
@@ -26,27 +35,52 @@ public class TimerUIManager : MonoBehaviour
         {
             PlayerController.Instance.inventory.AddPotion(testPotion);
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerController.Instance.inventory.AddPotion(testPotion1);
+        }
     }
 
     private void OnGhostActivated()
     {
-        AssignANewTimer();
+        AssignNewGhostTimer();
     }
 
     private void OnGhostDeactivated()
     {
-        activeTimers.Clear();
+        activeTimersCount--;
     }
 
-    private void AssignANewTimer()
+    private void OnLaserActivated()
     {
-        var newObject = ghostObject.GenerateANewTimer(this);
-        var positionEstablish = new Vector3(newObject.position.x,
-        newObject.position.y - activeTimers.Count * (newObject.GetComponent<RectTransform>().rect.height + offsetY),
-        newObject.position.z);
+        AssignNewLaserTimer();
+    }
 
-        newObject.position = positionEstablish;
+    private void OnLaserDeactivated()
+    {
+        activeTimersCount--;
+    }
 
-        activeTimers.Add(newObject);
+    public void AssignNewGhostTimer()
+    {
+        Transform newObject = ghostObject.GenerateANewTimer(this);
+        AssignTimer(newObject);
+    }
+
+    public void AssignNewLaserTimer()
+    {
+        Transform newObject = laserObject.GenerateANewTimer(this);
+        AssignTimer(newObject);
+    }
+
+    private void AssignTimer(Transform obj)
+    {
+        var positionEstablish = new Vector3(obj.position.x,
+        obj.position.y - activeTimersCount * (obj.GetComponent<RectTransform>().rect.height + offsetY),
+        obj.position.z);
+
+        obj.position = positionEstablish;
+
+        activeTimersCount++;
     }
 }

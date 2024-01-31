@@ -38,7 +38,6 @@ public class GhostSkill
                 Physics.IgnoreLayerCollision(0, 7, false);
                 // ChangeAlpha(1f);
             }
-            Debug.Log(powerPool);
             GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer, powerPool);
         }
         else
@@ -52,6 +51,13 @@ public class GhostSkill
     public void CreateOrReset(GhostPotionData data)
     {
         // Visual transparency
+        if (isActive)
+        {
+            countdownTimer += data.countDownTimer;
+            powerPool += data.powerPoolValue;
+            return;
+        }
+
         this.data = data;
         countdownTimer = data.countDownTimer;
         powerPool = data.powerPoolValue;
