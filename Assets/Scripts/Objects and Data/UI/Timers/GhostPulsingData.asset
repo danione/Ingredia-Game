@@ -16,5 +16,7 @@ MonoBehaviour:
   maxScale: {x: 0.95, y: 0.95, z: 0.95}
   scalingSpeed: 2
   scalingDurationStart: 2.5
-  scalinDurationFirstCheckpoint: 1
-  scalingDurtationLastCheckpoint: 0.5
+  scalingDurationFirstCheckpoint: 1
+  scalingDurationLastCheckpoint: 0.25
+  firstCheckpoint: 5
+  lastCheckpoint: 3

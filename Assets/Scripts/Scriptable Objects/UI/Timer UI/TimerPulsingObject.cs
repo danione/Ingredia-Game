@@ -9,6 +9,8 @@ public class TimerPulsingObject : ScriptableObject
     public Vector3 maxScale;
     public float scalingSpeed;
     public float scalingDurationStart;
-    public float scalinDurationFirstCheckpoint;
-    public float scalingDurtationLastCheckpoint;
+    public float scalingDurationFirstCheckpoint;
+    public float scalingDurationLastCheckpoint;
+    public float firstCheckpoint;
+    public float lastCheckpoint;
 }

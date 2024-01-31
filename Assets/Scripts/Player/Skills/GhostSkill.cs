@@ -38,6 +38,8 @@ public class GhostSkill
                 Physics.IgnoreLayerCollision(0, 7, false);
                 // ChangeAlpha(1f);
             }
+            Debug.Log(powerPool);
+            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer, powerPool);
         }
         else
         {

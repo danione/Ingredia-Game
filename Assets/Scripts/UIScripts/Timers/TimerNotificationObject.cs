@@ -22,15 +22,13 @@ public class TimerNotificationObject
         newObject.GetChild(0).GetComponent<Image>().sprite = timerDataObject.BorderSpriteIdle;
         newObject.GetChild(1).GetComponent<Image>().sprite = timerDataObject.IconSpriteIdle;
         newObject.gameObject.SetActive(true);
+        scalingDuration = pulsingData.scalingDurationStart;
         currentObject = newObject;
-        FurtherSetupInstructions();
+        isPulsing = true;
         manager.StartCoroutine(Pulse());
 
         return newObject;
     }
-
-    protected virtual void FurtherSetupInstructions() { isPulsing = true; }
-
     private IEnumerator Pulse()
     {
         while (isPulsing)
@@ -52,6 +50,19 @@ public class TimerNotificationObject
             currentObject.localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
+    }
+
+    public void ChangePulse(float pulseAmount)
+    {
+
+       if (pulsingData.lastCheckpoint < pulseAmount && pulseAmount < pulsingData.firstCheckpoint)
+       {
+            scalingDuration = pulsingData.scalingDurationFirstCheckpoint;
+       }
+       else if(pulseAmount < pulsingData.lastCheckpoint)
+       {
+            scalingDuration = pulsingData.scalingDurationLastCheckpoint;
+       }
     }
 
     public void ForgetObject()

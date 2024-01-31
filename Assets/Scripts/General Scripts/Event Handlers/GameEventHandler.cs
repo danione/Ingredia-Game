@@ -27,11 +27,16 @@ public class GameEventHandler : MonoBehaviour
     public Action SwappedProjectiles;
     public Action GhostActivated;
     public Action GhostDeactivated;
-
+    public Action<float, float> SentGhostCurrentTimers;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void SendGhostCurrentTimers(float timer, float powerPool)
+    {
+        SentGhostCurrentTimers?.Invoke(timer, powerPool);
     }
 
     public void DestroyEnemy(Vector3 pos)
