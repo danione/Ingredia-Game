@@ -8,7 +8,15 @@ public class StateSwapper
 {
     public void SetValue(TimerNotificationObject timerNotification, string value)
     {
-        timerNotification.currentObject.GetChild(2).GetComponent<TextMeshProUGUI>().text = value;
+        Transform strengthLeft;
+        try
+        {
+            strengthLeft = timerNotification.currentObject.GetChild(2);
+        } catch {
+            return;
+        }
+
+        strengthLeft.GetComponent<TextMeshProUGUI>().text = value;
     }
 
     public void ChangeImages(TimerNotificationObject timerNotification, bool isTransforming)

@@ -69,10 +69,16 @@ public class TimerNotificationObject
         }
     }
 
-    public void ForgetObject(bool shouldDestroy = true)
+    public void ForgetObject()
     {
         isPulsing = false;
-        if(shouldDestroy)
+        try
+        {
             GameObject.Destroy(currentObject.gameObject);
+        }
+        catch
+        {
+            return;
+        }
     }
 }

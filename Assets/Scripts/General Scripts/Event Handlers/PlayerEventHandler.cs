@@ -10,8 +10,8 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action<int> CollectedGold;
     public event Action EmptiedCauldron;
     public event Action<IRitual> BenevolentRitualCompleted;
-    public event Action<bool> LaserFired;
-    public event Action<bool> TransformIntoGhost;
+    public Action<bool> LaserFired;
+    public Action<bool> TransformIntoGhost;
     public event Action<string> CollectedInvalidIngredient;
     public event Action<string> UnlockedRitual;
     public event Action<RitualScriptableObject> SetUpUIRitualInterface;

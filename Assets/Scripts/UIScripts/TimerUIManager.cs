@@ -13,26 +13,29 @@ public class TimerUIManager : MonoBehaviour
     [SerializeField] private PotionsData testPotion2;
 
 
-    [SerializeField] private GhostNotificationObject ghostObject;
-    [SerializeField] private LaserNotificationObject laserObject;
-    [SerializeField] private ProtectionNotificationObject shieldObject;
+    [SerializeField] private NotificationObject ghostObject;
+    [SerializeField] private NotificationObject laserObject;
+    [SerializeField] private NotificationObject shieldObject;
 
     private int activeTimersCount;
 
     void Start()
     {
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
-        GameEventHandler.Instance.GhostDeactivated += OnGhostDeactivated;
-        GameEventHandler.Instance.LaserActivated += OnLaserActivated;
-        GameEventHandler.Instance.LaserDeactivated += OnLaserDeactivated;
-        GameEventHandler.Instance.ShieldDisabled += OnShieldDisabled;
-        GameEventHandler.Instance.ShieldEnabled += OnShieldEnabled;
+        GameEventHandler.Instance.GhostDeactivated += OnAnyDisabled;
+        GameEventHandler.Instance.LaserActivated += OnLaserEnabled;
+        GameEventHandler.Instance.LaserDeactivated += OnAnyDisabled;
+        GameEventHandler.Instance.ShieldDisabled += OnAnyDisabled;
+        GameEventHandler.Instance.ShieldEnabled += OnShieldActivated;
+        
 
         activeTimersCount = 0;
 
-        ghostObject.Setup();
-        laserObject.Setup();
-        shieldObject.Setup();
+        GhostSetup();
+
+        LaserSetup();
+
+        ShieldSetup();
     }
 
     private void Update()
@@ -51,53 +54,51 @@ public class TimerUIManager : MonoBehaviour
         }
     }
 
-    private void OnShieldEnabled()
+    private void OnLaserEnabled()
     {
-        AssignNewBarrierTimer();
+        AssignNewTimer(laserObject);
     }
-
-    private void OnShieldDisabled()
-    {
-        activeTimersCount--;
-    }
-
     private void OnGhostActivated()
     {
-        AssignNewGhostTimer();
+        AssignNewTimer(ghostObject);
     }
 
-    private void OnGhostDeactivated()
+    private void OnShieldActivated()
+    {
+        AssignNewTimer(shieldObject);
+    }
+
+    private void OnAnyDisabled()
     {
         activeTimersCount--;
     }
 
-    private void OnLaserActivated()
+    private void GhostSetup()
     {
-        AssignNewLaserTimer();
+        GameEventHandler.Instance.GhostDeactivated += ghostObject.OnDeactivated;
+        GameEventHandler.Instance.SentGhostCurrentTimers += ghostObject.OnSendCurrentTimers;
+        PlayerEventHandler.Instance.TransformIntoGhost += ghostObject.OnTransform;
     }
 
-    private void OnLaserDeactivated()
+    private void LaserSetup()
     {
-        activeTimersCount--;
+        GameEventHandler.Instance.LaserDeactivated += laserObject.OnDeactivated;
+        GameEventHandler.Instance.SentLaserStats += laserObject.OnSendCurrentTimers;
+        PlayerEventHandler.Instance.LaserFired += laserObject.OnTransform;
     }
 
-    public void AssignNewGhostTimer()
+    private void ShieldSetup()
     {
-        Transform newObject = ghostObject.GenerateANewTimer(this);
+        GameEventHandler.Instance.ShieldDisabled += shieldObject.OnDeactivated;
+        GameEventHandler.Instance.SentShieldStats += shieldObject.OnSendCurrentTimers;
+    }
+
+    public void AssignNewTimer(NotificationObject notObject)
+    {
+        Transform newObject = notObject.GenerateANewTimer(this, activeTimersCount);
         AssignTimer(newObject);
     }
 
-    public void AssignNewLaserTimer()
-    {
-        Transform newObject = laserObject.GenerateANewTimer(this);
-        AssignTimer(newObject);
-    }
-
-    public void AssignNewBarrierTimer()
-    {
-        Transform newObject = shieldObject.GenerateANewTimer(this);
-        AssignTimer(newObject);
-    }
 
     private void AssignTimer(Transform obj)
     {

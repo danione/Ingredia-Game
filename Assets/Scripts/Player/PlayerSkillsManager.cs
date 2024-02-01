@@ -15,9 +15,9 @@ public class PlayerSkillsManager : MonoBehaviour
         ghost = new GhostSkill();
         overload = new OverloadSkill();
 
-        GameEventHandler.Instance.ActivatedGhost = OnActivateGhost;
-        GameEventHandler.Instance.ActivatedLaser = OnActivateLaser;
-        GameEventHandler.Instance.ActivatedBarrier = OnActivateBarrier;
+        GameEventHandler.Instance.ActivatedGhost += OnActivateGhost;
+        GameEventHandler.Instance.ActivatedLaser += OnActivateLaser;
+        GameEventHandler.Instance.ActivatedBarrier += OnActivateBarrier;
     }
 
     private void Update()

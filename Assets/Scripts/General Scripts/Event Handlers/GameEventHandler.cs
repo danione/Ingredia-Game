@@ -32,7 +32,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<float, float> SentLaserStats;
     public Action<float, float> SentGhostCurrentTimers;
     public Action ShieldDisabled;
-    public Action<float> SentShieldStats;
+    public Action<float, float> SentShieldStats;
     public Action ShieldEnabled;
     private void Awake()
     {
@@ -50,9 +50,9 @@ public class GameEventHandler : MonoBehaviour
         ShieldDisabled?.Invoke();
     }
 
-    public void SendShieldStats(float duration)
+    public void SendShieldStats(float duration, float strength = 0)
     {
-        SentShieldStats?.Invoke(duration);
+        SentShieldStats?.Invoke(duration, strength);
     }
 
     public void SendLaserStats(float timer, float strength)
