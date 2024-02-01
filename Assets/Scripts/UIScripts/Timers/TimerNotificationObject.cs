@@ -15,6 +15,17 @@ public class TimerNotificationObject
     private bool isPulsing;
     private float scalingDuration;
 
+    public void ChangePos(float offsetY)
+    {
+        if (currentObject == null) return;
+        
+        var positionEstablish = new Vector3(currentObject.position.x,
+        currentObject.position.y + currentObject.GetComponent<RectTransform>().rect.height + offsetY,
+        currentObject.position.z);
+
+        currentObject.position = positionEstablish;
+    }
+
 
     public Transform CreateANewTimer(TimerUIManager manager)
     {

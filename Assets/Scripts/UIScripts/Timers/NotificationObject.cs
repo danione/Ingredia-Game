@@ -8,6 +8,18 @@ public class NotificationObject
     [SerializeField] private TimerNotificationObject timerNotification;
     private StateSwapper swapper = new();
     private bool currentState = false;
+    private int currentPos;
+    private static TimerUIManager manager;
+
+    public static void SetupManager(TimerUIManager assignedManager)
+    {
+        manager = assignedManager;
+    }
+
+    public int GetCurrentPos()
+    {
+        return currentPos;
+    }
 
     public void OnSendCurrentTimers(float timer, float pool)
     {
@@ -19,6 +31,7 @@ public class NotificationObject
     public void OnDeactivated()
     {
         timerNotification.ForgetObject();
+        manager.OnAnyDisabled(currentPos);
     }
 
     public void OnTransform(bool isTransforming)
@@ -32,6 +45,13 @@ public class NotificationObject
 
     public Transform GenerateANewTimer(TimerUIManager manager, int currentId)
     {
+        currentPos = currentId;
         return timerNotification.CreateANewTimer(manager);
+    }
+
+    public void ChangePos(int newPos, float offsetY)
+    {
+        currentPos = newPos;
+        timerNotification.ChangePos(offsetY);
     }
 }

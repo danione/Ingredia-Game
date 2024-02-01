@@ -17,24 +17,22 @@ public class TimerUIManager : MonoBehaviour
     [SerializeField] private NotificationObject laserObject;
     [SerializeField] private NotificationObject shieldObject;
 
+    private List<NotificationObject> listObjects = new();
+
     private int activeTimersCount;
 
     void Start()
     {
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
-        GameEventHandler.Instance.GhostDeactivated += OnAnyDisabled;
         GameEventHandler.Instance.LaserActivated += OnLaserEnabled;
-        GameEventHandler.Instance.LaserDeactivated += OnAnyDisabled;
-        GameEventHandler.Instance.ShieldDisabled += OnAnyDisabled;
         GameEventHandler.Instance.ShieldEnabled += OnShieldActivated;
-        
+
+        NotificationObject.SetupManager(this);
 
         activeTimersCount = 0;
 
         GhostSetup();
-
         LaserSetup();
-
         ShieldSetup();
     }
 
@@ -68,8 +66,14 @@ public class TimerUIManager : MonoBehaviour
         AssignNewTimer(shieldObject);
     }
 
-    private void OnAnyDisabled()
+    public void OnAnyDisabled(int disabledAtPos)
     {
+        foreach(var obj in listObjects)
+        {
+            int objPos = obj.GetCurrentPos();
+            if (objPos > disabledAtPos)
+                obj.ChangePos(objPos-1, offsetY);
+        }
         activeTimersCount--;
     }
 
@@ -78,6 +82,7 @@ public class TimerUIManager : MonoBehaviour
         GameEventHandler.Instance.GhostDeactivated += ghostObject.OnDeactivated;
         GameEventHandler.Instance.SentGhostCurrentTimers += ghostObject.OnSendCurrentTimers;
         PlayerEventHandler.Instance.TransformIntoGhost += ghostObject.OnTransform;
+        listObjects.Add(ghostObject);
     }
 
     private void LaserSetup()
@@ -85,12 +90,14 @@ public class TimerUIManager : MonoBehaviour
         GameEventHandler.Instance.LaserDeactivated += laserObject.OnDeactivated;
         GameEventHandler.Instance.SentLaserStats += laserObject.OnSendCurrentTimers;
         PlayerEventHandler.Instance.LaserFired += laserObject.OnTransform;
+        listObjects.Add(laserObject);
     }
 
     private void ShieldSetup()
     {
         GameEventHandler.Instance.ShieldDisabled += shieldObject.OnDeactivated;
         GameEventHandler.Instance.SentShieldStats += shieldObject.OnSendCurrentTimers;
+        listObjects.Add(shieldObject);
     }
 
     public void AssignNewTimer(NotificationObject notObject)
