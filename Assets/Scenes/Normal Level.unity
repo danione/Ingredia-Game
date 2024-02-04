@@ -3886,6 +3886,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
+    - target: {fileID: 4265363870874850829, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5286809407506961395, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3973,6 +3977,10 @@ PrefabInstance:
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646041244972166430, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_text
+      value: All
       objectReference: {fileID: 0}
     - target: {fileID: 8789405416396805734, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: rightsideButtons.Array.size
