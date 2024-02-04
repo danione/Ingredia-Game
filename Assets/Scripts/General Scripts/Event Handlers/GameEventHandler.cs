@@ -10,8 +10,6 @@ public class GameEventHandler : MonoBehaviour
     public Action<Vector3> DestroyedEnemy;
     public Action<Vector3> FuseBats;
     public Action BansheeDetectedPlayer;
-    public Action UpgradesMenuOpen;
-    public Action UpgradesMenuClose;
     public Action<int, Vector3> SpawnGoldenNugget;
     public Action<GhostPotionData> ActivatedGhost;
     public Action<OverloadElixirData> ActivatedLaser;
@@ -88,16 +86,6 @@ public class GameEventHandler : MonoBehaviour
     public void BansheeDetectPlayer()
     {
         BansheeDetectedPlayer?.Invoke();
-    }
-
-    public void BringUpUpgradesMenu()
-    {
-        UpgradesMenuOpen?.Invoke();
-    }
-
-    public void ClosingDownUpgradesMenu()
-    {
-        UpgradesMenuClose?.Invoke();
     }
 
     public void GhostActivate()

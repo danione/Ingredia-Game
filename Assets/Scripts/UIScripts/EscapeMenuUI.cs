@@ -10,6 +10,12 @@ public class EscapeMenuUI : MonoBehaviour
     void Start()
     {
         PlayerEventHandler.Instance.EscapeMenuOpened += OnEscapeMenuOpened;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
+    }
+
+    private void OnCloseMenu()
+    {
+        escapeMenu.SetActive(false);
     }
 
     private void OnEscapeMenuOpened()
@@ -20,6 +26,7 @@ public class EscapeMenuUI : MonoBehaviour
         }
         else
         {
+            PlayerEventHandler.Instance.CloseAMenu();
             GameManager.Instance.ResumeGame();
         }
 

@@ -20,8 +20,6 @@ public class GameManager: MonoBehaviour
 
     private void Start()
     {
-        GameEventHandler.Instance.UpgradesMenuOpen += OnUpdatesMenuOpened;
-        GameEventHandler.Instance.UpgradesMenuClose += OnUpdatesMenuClosed;
         GameEventHandler.Instance.DestroyedObject += OnDestroyObject;
         ResumeGame();
     }
@@ -56,16 +54,6 @@ public class GameManager: MonoBehaviour
         {
             Time.timeScale = 0;
         }
-    }
-
-    private void OnUpdatesMenuOpened()
-    {
-        PauseGame();
-    }
-
-    private void OnUpdatesMenuClosed()
-    {
-        ResumeGame();
     }
 
     private void OnDestroyObject(GameObject obj)

@@ -180,7 +180,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            GameEventHandler.Instance.BringUpUpgradesMenu();
+            PlayerEventHandler.Instance.BringUpUpgradesMenu();
         }
     }
 

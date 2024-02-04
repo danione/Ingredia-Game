@@ -22,6 +22,12 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action FiredWeapon;
     public event Action HealthAdjusted;
     public event Action EscapeMenuOpened;
+    public event Action ClosedAllOpenMenus;
+    public Action UpgradesMenuOpen;
+    public Action UpgradesMenuClose;
+
+    private int openMenus = 0;
+    private int idOfLastMenu = -1;
 
     private void Awake()
     {
@@ -32,6 +38,14 @@ public class PlayerEventHandler : MonoBehaviour
         else
         {
             Destroy(Instance);
+        }
+    }
+
+    public void CloseAllOpenMenus()
+    {
+        if(openMenus > 0)
+        {
+            ClosedAllOpenMenus?.Invoke();
         }
     }
 
@@ -97,7 +111,20 @@ public class PlayerEventHandler : MonoBehaviour
 
     public void OpenScrollMenu()
     {
-        OpenedScrollsMenu?.Invoke();
+        bool open = IsStillOpenOrOtherOpen(2);
+
+        if (open)
+        {
+            OpenedScrollsMenu?.Invoke();
+        }
+        else
+        {
+            CloseAllOpenMenus();
+            idOfLastMenu = 2;
+            openMenus++;
+            OpenedScrollsMenu?.Invoke();
+        }
+
     }
 
     public void RitualHasBeenPerformed()
@@ -112,6 +139,53 @@ public class PlayerEventHandler : MonoBehaviour
 
     public void EscapeMenuOpen()
     {
-        EscapeMenuOpened?.Invoke(); 
+        bool open = IsStillOpenOrOtherOpen(0);
+
+        if (open)
+        {
+            EscapeMenuOpened?.Invoke();
+        }
+        else
+        {
+            CloseAllOpenMenus();
+            idOfLastMenu = 0;
+            openMenus++;
+            EscapeMenuOpened?.Invoke();
+        }
+        
+    }
+
+    private bool IsStillOpenOrOtherOpen(int id)
+    {
+        return id == idOfLastMenu && openMenus > 0;
+    }
+
+    public void BringUpUpgradesMenu()
+    {
+        bool open = IsStillOpenOrOtherOpen(1);
+
+        if (open)
+        {
+            UpgradesMenuOpen?.Invoke();
+        }
+        else
+        {
+            CloseAllOpenMenus();
+            idOfLastMenu = 1;
+            openMenus++;
+            UpgradesMenuOpen?.Invoke();
+        }
+        
+    }
+
+    public void ClosingDownUpgradesMenu()
+    {
+        if(openMenus > 0) { openMenus--; }
+        UpgradesMenuClose?.Invoke();
+    }
+
+    public void CloseAMenu()
+    {
+        if (openMenus > 0) { openMenus--; }
     }
 }

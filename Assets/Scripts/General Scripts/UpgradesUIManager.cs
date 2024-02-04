@@ -35,17 +35,26 @@ public class UpgradesUIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        GameEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
-        GameEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
+        PlayerEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
+        PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         HookUpgradesWithButtons(rightsideButtons, rightSideUpgrades, rightSideUpgrades.Count);
         countChosenUpgrades = 0;
     }
 
     private void OnUpgradesMenuOpened()
     {
-        ChooseRandomUpgrades();
-        UpdateScreen();
-        inventoryMenu.gameObject.SetActive(true);
+        if(inventoryMenu.gameObject.activeSelf == true)
+        {
+            GameManager.Instance.ResumeGame();
+        }
+        else
+        {
+            GameManager.Instance.PauseGame();
+            ChooseRandomUpgrades();
+            UpdateScreen();
+        }
+        inventoryMenu.gameObject.SetActive(!inventoryMenu.gameObject.activeSelf);
     }
 
     private void OnUpgradesMenuClosed()

@@ -22,10 +22,15 @@ public class ScrollSlipUIManager : MonoBehaviour
     {
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
         slipManager = scrollSlipManager.GetComponent<ScrollSlipManager>();
         slipCellsPerRow = normalSlipsContainerUI.GetChild(0).childCount;
     }
 
+    private void OnCloseMenu()
+    {
+        scrollSlipMenu.gameObject.SetActive(false);
+    }
 
     private void OnScrollSlipGenerated(RitualScriptableObject scroll)
     {
@@ -36,8 +41,18 @@ public class ScrollSlipUIManager : MonoBehaviour
 
     private void OnScrollSlipMenuOpen()
     {
-        scrollSlipMenu.gameObject.SetActive(true);
-        GameManager.Instance.PauseGame();
+        if (scrollSlipMenu.gameObject.activeSelf == false)
+        {
+            GameManager.Instance.PauseGame();
+        }
+        else
+        {
+            PlayerEventHandler.Instance.CloseAMenu();
+            GameManager.Instance.ResumeGame();
+        }
+
+        scrollSlipMenu.gameObject.SetActive(!scrollSlipMenu.gameObject.activeSelf);
+
         PopulateMenus();
     }
 
