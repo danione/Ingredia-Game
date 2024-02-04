@@ -3866,14 +3866,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 259975058759199719, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1489217451948782898, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
+    - target: {fileID: 1512688369828768202, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512688369828768202, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512688369828768202, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1742972566544080203, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: scrollSlipManager
       value: 
       objectReference: {fileID: 1760316104}
+    - target: {fileID: 1798720877747693829, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Name
       value: UI Display Canvas
@@ -3886,9 +3906,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
+    - target: {fileID: 2958372854977208216, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958372854977208216, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4265363870874850829, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5286809407506961395, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3976,6 +4004,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436525701670762692, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7646041244972166430, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
