@@ -23,7 +23,7 @@ public class LaserBeam
     private Vector3 direction;
     private Ray ray;
     private RaycastHit rayData;
-    private float laserStrength = 0.3f;
+    private float laserStrength = 45f;
 
     public LaserBeam(Transform entity, Vector3 direction)
     {
@@ -64,7 +64,7 @@ public class LaserBeam
             Enemy enemy = rayData.collider.gameObject.GetComponent<Enemy>();
             if(enemy != null)
             {
-                enemy.TakeDamage(laserStrength);
+                enemy.TakeDamage(laserStrength * Time.deltaTime);
             }
             else if (rayData.collider.gameObject.CompareTag("Ingredient"))
             {

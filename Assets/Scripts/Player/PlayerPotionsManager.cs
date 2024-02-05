@@ -7,7 +7,6 @@ public class PlayerPotionsManager: MonoBehaviour
     private int sizeOfPotionsInventory = 3;
     private List<int> potionsQuantity = new();
     private List<PotionsData> potionsInInventory = new();
-    [SerializeField] private Transform goldenNuggets;
 
     private void Awake()
     {

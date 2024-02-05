@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSkillsManager : MonoBehaviour
 {
     private GhostSkill ghost;
-    private OverloadSkill overload;
+    [SerializeField] private OverloadSkill overload;
     [SerializeField] private Transform shieldObject;
     private bool isShielding = false;
     private float shieldDuration = 0;
