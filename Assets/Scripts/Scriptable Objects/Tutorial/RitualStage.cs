@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ritual Tutorial Stage", menuName = "Scriptable Objects/Tutorials/Ritual Stage")]
 public class RitualStage : TutorialStage
 {
+    public PotionsData knifeThrowPotion;
+
     public override void InitiateStage()
     {
         PlayerEventHandler.Instance.PerformedRitual += TutorialManager.instance.OnPerformedFirstRitual;
@@ -18,4 +20,11 @@ public class RitualStage : TutorialStage
 
     }
 
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canPerformRituals = true;
+        GameManager.Instance.gameObject.GetComponent<RitualManager>().enabled = true;
+        TutorialManager.instance.FirstRitual();
+        PlayerController.Instance.inventory.AddPotion(knifeThrowPotion);
+    }
 }

@@ -9,7 +9,7 @@ public class ScrollSlipUIManager : MonoBehaviour
 {
     [SerializeField] private ScrollPopup popup;
     [SerializeField] private Transform scrollSlipMenu;
-    [SerializeField] private Transform scrollSlipManager;
+    private Transform scrollSlipManager;
 
     [SerializeField] private Transform countScrollsUI;
     [SerializeField] private Transform normalSlipsContainerUI;

@@ -15,4 +15,12 @@ public class UpgradeStage : TutorialStage
     {
         PlayerEventHandler.Instance.UpgradesMenuClose();
     }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canOpenUpgrades = true;
+        PlayerInputHandler.permissions.canOpenMenus = true;
+        PlayerInputHandler.permissions.canMove = false;
+        UpgradesUIManager.Instance.TutorialClick();
+    }
 }

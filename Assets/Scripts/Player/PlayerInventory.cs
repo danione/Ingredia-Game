@@ -38,8 +38,6 @@ public class PlayerInventory: MonoBehaviour
     public void SwitchEquippedWeapon()
     {
         currentlyEquippedWeapon = (currentlyEquippedWeapon + 1) % weapons.Count;
-        Debug.Log(currentlyEquippedWeapon);
-
     }
 
     public void SubtractCurrentWeaponAmmo(int amount)

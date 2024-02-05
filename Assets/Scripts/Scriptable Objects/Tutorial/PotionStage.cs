@@ -17,4 +17,10 @@ public class PotionStage : TutorialStage
         TutorialManager.instance.EnableAmmoUI();
         InputEventHandler.instance.UsedPotion -= TutorialManager.instance.OnPotionUse;
     }
+
+    public override void Reward()
+    {
+        TutorialManager.instance.EnableAmmoUI();
+        PlayerInputHandler.permissions.canUsePotions = true;
+    }
 }

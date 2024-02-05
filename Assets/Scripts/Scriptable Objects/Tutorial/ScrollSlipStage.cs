@@ -15,4 +15,10 @@ public class ScrollSlipStage : TutorialStage
     {
         PlayerEventHandler.Instance.OpenedScrollsMenu -= TutorialManager.instance.OnScrollMenuOpened;
     }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canOpenScrollMenu = true;
+        TutorialManager.instance.ScrollGenerate();
+    }
 }

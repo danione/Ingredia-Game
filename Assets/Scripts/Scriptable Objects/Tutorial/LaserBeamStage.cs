@@ -15,4 +15,9 @@ public class LaserBeamStage : TutorialStage
     {
         GameEventHandler.Instance.DestroyedEnemy -= TutorialManager.instance.OnWallDestroyed;
     }
+
+    public override void Reward()
+    {
+        PlayerController.Instance.inventory.AddGold(30);
+    }
 }

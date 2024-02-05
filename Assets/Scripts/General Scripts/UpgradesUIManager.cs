@@ -106,6 +106,11 @@ public class UpgradesUIManager : MonoBehaviour
             countChosenUpgrades--;
     }
 
+    public void TutorialClick()
+    {
+        OnBuyClicked(0, availableUpgrades);
+    }
+
     void ShuffleListOfUpgrades<T>(List<T> array)
     {
         int numItems = array.Count;

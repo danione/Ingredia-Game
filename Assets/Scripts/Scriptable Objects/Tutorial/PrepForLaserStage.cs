@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PrepForLaserStage : TutorialStage
 {
+    public RectTransform LaserPos;
     public override void InitiateStage()
     {
         TutorialManager.instance.LaserPreparation();
@@ -13,5 +14,11 @@ public class PrepForLaserStage : TutorialStage
     public override void NextStage()
     {
        PlayerInputHandler.permissions.canMove = false;
+    }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canMove = false;
+        PlayerController.Instance.gameObject.transform.position = LaserPos.position;
     }
 }

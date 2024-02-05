@@ -8,29 +8,18 @@ public class MovementStage : TutorialStage
 {
     public override void InitiateStage()
     {
-        try
-        {
-            Debug.Log("Locking permissions...");
-            PlayerInputHandler.permissions.LockAll();
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-        }
-        try
-        {
-            Debug.Log("Moving permissions subscribing...");
-            InputEventHandler.instance.PlayerMoved += TutorialManager.instance.OnPlayerMoved;
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-        }
+        PlayerInputHandler.permissions.LockAll();
+        InputEventHandler.instance.PlayerMoved += TutorialManager.instance.OnPlayerMoved;
     }
 
     public override void NextStage()
     {
         PlayerInputHandler.permissions.canMove = true;
         InputEventHandler.instance.PlayerMoved -= TutorialManager.instance.OnPlayerMoved;
+    }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canMove = true;
     }
 }

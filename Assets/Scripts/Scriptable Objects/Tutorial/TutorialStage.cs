@@ -7,4 +7,5 @@ public abstract class TutorialStage : ScriptableObject
     public string description;
     public abstract void InitiateStage();
     public abstract void NextStage();
+    public abstract void Reward();
 }

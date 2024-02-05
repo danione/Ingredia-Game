@@ -15,4 +15,9 @@ public class EnemyStage : TutorialStage
         GameEventHandler.Instance.DestroyedEnemy -= TutorialManager.instance.OnEnemyDestroyed;
 
     }
+
+    public override void Reward()
+    {
+
+    }
 }

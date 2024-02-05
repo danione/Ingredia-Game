@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Hold Still
   description: Let me show you something cool. Go to the location.
+  LaserPos: {fileID: 4801744699995341749, guid: ae7f58ea25acfb54d864988a3b0489ba, type: 3}

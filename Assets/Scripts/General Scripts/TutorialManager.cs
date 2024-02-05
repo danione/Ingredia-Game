@@ -21,7 +21,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private string postTutorialSceneName;
     [SerializeField] private float tickUntilNextScene;
     [SerializeField] private GameObject SwapUI;
-   
+    [SerializeField] private int forwardToStage = 0;
+
+
     public static TutorialManager instance;
     private bool emptied = false;
     private bool hasNotUsed = false;
@@ -33,17 +35,31 @@ public class TutorialManager : MonoBehaviour
     private EnemyFactory enemyFactory;
     private GoldenNuggetsFactory goldenNuggets;
 
+
     private void Start()
     {
-        if(instance == null) {  instance = this; } else { Destroy(this); }
+        if (instance == null) { instance = this; } else { Destroy(this); }
 
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
+        StartCoroutine(WaitForInitialisationOfObjects());
+    }
 
-        InitialiseNextStage(); 
+    private IEnumerator WaitForInitialisationOfObjects()
+    {
+        yield return new WaitForEndOfFrame();
+
+        for (int i = 0; i < forwardToStage; i++)
+        {
+            tutorialStages[i].Reward();
+        }
+
+        currentStage = forwardToStage;
+
+        InitialiseNextStage();
     }
 
     public void OnPlayerMoved(float direction)
@@ -166,8 +182,11 @@ public class TutorialManager : MonoBehaviour
 
     public void ScrollGenerate()
     {
-        scrollSlip.gameObject.SetActive(true);
-        GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
+        if(scrollSlip != null)
+        {
+            scrollSlip.gameObject.SetActive(true);
+            GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
+        }
     }
 
     public void OnScrollMenuOpened()
@@ -178,12 +197,12 @@ public class TutorialManager : MonoBehaviour
         ExecuteCurrentStage() ;
     }
 
-    public void StartTransition()
+    public void TransitionOnly()
     {
-        StartCoroutine(ChangeTutorial());
+        StartCoroutine(TransitionFunction());
     }
 
-    IEnumerator ChangeTutorial()
+    IEnumerator TransitionFunction()
     {
         yield return new WaitForSeconds(tickUntilNextScene);
         ExecuteCurrentStage();

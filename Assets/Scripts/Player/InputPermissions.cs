@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable]
 public class InputPermissions
 {
@@ -35,5 +37,18 @@ public class InputPermissions
         canPerformRituals = false;
         canShoot = false;
         canUsePotions = false;
+    }
+
+    public void PrintAll()
+    {
+        Debug.Log("canMove: " + canMove);
+        Debug.Log("canEmptyCauldron: " + canEmptyCauldron);
+        Debug.Log("canControlCharacter: " + canControlCharacter);
+        Debug.Log("canOpenMenus: " + canOpenMenus);
+        Debug.Log("canOpenUpgrades: " + canOpenUpgrades);
+        Debug.Log("canOpenScrollMenu: " + canOpenScrollMenu);
+        Debug.Log("canPerformRituals: " + canPerformRituals);
+        Debug.Log("canShoot: " + canShoot);
+        Debug.Log("canUsePotions: " + canUsePotions);
     }
 }

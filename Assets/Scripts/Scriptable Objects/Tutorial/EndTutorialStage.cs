@@ -6,11 +6,18 @@ public class EndTutorialStage : TutorialStage
 {
     public override void InitiateStage()
     {
-        TutorialManager.instance.StartTransition();
+        TutorialManager.instance.TransitionOnly();
     }
 
     public override void NextStage()
     {
+        PlayerInputHandler.permissions.canMove = true;
+        TutorialManager.instance.ExitTutorial();
+    }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canMove = true;
         TutorialManager.instance.ExitTutorial();
     }
 }

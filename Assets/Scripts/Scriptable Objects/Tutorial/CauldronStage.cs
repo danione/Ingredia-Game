@@ -14,4 +14,9 @@ public class CauldronStage : TutorialStage
     {
         PlayerEventHandler.Instance.EmptiedCauldron -= TutorialManager.instance.OnEmptiedCauldron;
     }
+
+    public override void Reward()
+    {
+        PlayerInputHandler.permissions.canEmptyCauldron = true;
+    }
 }

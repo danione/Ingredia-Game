@@ -6,10 +6,15 @@ public class IngredientStage : TutorialStage
 {
     public override void InitiateStage()
     {
-        TutorialManager.instance.ExecuteCurrentStage();
+        TutorialManager.instance.TransitionOnly();
     }
 
     public override void NextStage()
+    {
+        TutorialManager.instance.EnableIngredientsFactory();
+    }
+
+    public override void Reward()
     {
         TutorialManager.instance.EnableIngredientsFactory();
     }
