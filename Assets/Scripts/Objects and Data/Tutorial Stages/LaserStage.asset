@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: LaserStage
   m_EditorClassIdentifier: 
   title: Fire Laser Beam
-  description: Destroy the conjured walls with the laserbeam potion. Hold Q to cast
-    your fiery flame on them.
+  description: 'Destroy the conjured walls with the laserbeam potion. Remember -
+    Press 1 to use the potion.
+
+
+    Hold Q to cast your fiery flame on them.'

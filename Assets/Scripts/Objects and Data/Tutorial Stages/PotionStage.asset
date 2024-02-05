@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: First Potion
   description: You manifactured your first potion! Press 1 and receive 10 projectiles.
-    Use E to shoot them at the enemy.
