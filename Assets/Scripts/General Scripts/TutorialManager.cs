@@ -148,6 +148,11 @@ public class TutorialManager : MonoBehaviour
 
     public void EnableSwapUI()
     {
+        SwapUI.transform.GetChild(2).gameObject.SetActive(true);
+    }
+
+    public void EnableAmmoUI()
+    {
         SwapUI.SetActive(true);
     }
 

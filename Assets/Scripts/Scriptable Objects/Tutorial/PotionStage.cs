@@ -14,6 +14,7 @@ public class PotionStage : TutorialStage
 
     public override void NextStage()
     {
+        TutorialManager.instance.EnableAmmoUI();
         InputEventHandler.instance.UsedPotion -= TutorialManager.instance.OnPotionUse;
     }
 }
