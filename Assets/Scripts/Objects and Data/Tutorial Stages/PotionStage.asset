@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PotionStage
   m_EditorClassIdentifier: 
   title: First Potion
-  description: You manifactured your first potion! Press 1 and receive 10 projectiles.
+  description: You manifactured your first potion! Press 1 and receive projectiles.
