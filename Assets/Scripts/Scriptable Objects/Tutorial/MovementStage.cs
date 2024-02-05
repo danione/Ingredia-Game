@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,24 @@ public class MovementStage : TutorialStage
 {
     public override void InitiateStage()
     {
-        PlayerInputHandler.permissions.LockAll();
-        InputEventHandler.instance.PlayerMoved += TutorialManager.instance.OnPlayerMoved;
+        try
+        {
+            Debug.Log("Locking permissions...");
+            PlayerInputHandler.permissions.LockAll();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+        try
+        {
+            Debug.Log("Moving permissions subscribing...");
+            InputEventHandler.instance.PlayerMoved += TutorialManager.instance.OnPlayerMoved;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     public override void NextStage()

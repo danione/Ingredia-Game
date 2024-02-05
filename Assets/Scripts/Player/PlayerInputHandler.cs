@@ -15,14 +15,13 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private float fireRate;
     [SerializeField] private float emptyCauldronCooldown = 1.0f;
     [SerializeField] private List<ObjectsSpawner> projectileSpawners;
-    [SerializeField] public static InputPermissions permissions;
+    public static InputPermissions permissions = new();
 
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
         inventory = GetComponent<PlayerInventory>();
-        permissions = new InputPermissions();
     }
 
     public void HandleInput()
