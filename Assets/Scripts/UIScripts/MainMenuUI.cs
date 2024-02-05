@@ -7,13 +7,16 @@ public class MainMenuUI : MonoBehaviour
 {
     private void Start()
     {
-        GameObject gameManager = FindObjectOfType<GameManager>().gameObject;
-        
-        if( gameManager != null)
+        try
         {
-            Destroy(gameManager);
+            GameObject gameManager;
+            gameManager = FindObjectOfType<GameManager>().gameObject;
+            if (gameManager != null)
+            {
+                Destroy(gameManager);
+            }
         }
-
+        catch { }
     }
 
     public void GoToTutorialStage()
