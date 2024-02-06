@@ -55,6 +55,7 @@ public class BasicIngredient : FallableObject, IIngredient
 
     private void OnCauldronEmptied()
     {
-        _highlightRenderer.gameObject.SetActive(false);
+        if(_highlightRenderer != null)
+            _highlightRenderer.gameObject.SetActive(false);
     }
 }

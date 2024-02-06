@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
   m_PrefabInstance: {fileID: 3808894078042525723}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453721366}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32aff27dc457c23479ca1a468c389339, type: 3}
@@ -489,11 +489,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1453721366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
-  m_PrefabInstance: {fileID: 3808894078042525723}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1760316102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
@@ -548,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 1742972566544080203, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: scrollSlipManagerObject
       value: 
-      objectReference: {fileID: 1453721366}
+      objectReference: {fileID: 1760316102}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Name
       value: UI Display Canvas
@@ -557,6 +552,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1760316103}
+    - target: {fileID: 4076885038162073176, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1760316103}
+    - target: {fileID: 4076885038162073176, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: availableUpgrades.Array.size
       value: 5
@@ -629,6 +632,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1760316113}
+    - target: {fileID: 5818508547396244324, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1760316103}
+    - target: {fileID: 5818508547396244324, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 5933462607741576317, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
