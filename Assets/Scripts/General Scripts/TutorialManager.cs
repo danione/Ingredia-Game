@@ -47,8 +47,6 @@ public class TutorialManager : MonoBehaviour
 
         GameEventHandler.Instance.SetsTutorialMode();
 
-        PlayerInputHandler.permissions.LockAll();
-
         StartCoroutine(WaitForInitialisationOfObjects());
     }
 

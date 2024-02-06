@@ -13,6 +13,11 @@ public class TutorialManagerUI : MonoBehaviour
 
     private void Start()
     {
+        GameEventHandler.Instance.SetTutorialMode += OnSetsTutorialMode;
+    }
+
+    private void OnSetsTutorialMode()
+    {
         tutorialUI.SetActive(true);
     }
 

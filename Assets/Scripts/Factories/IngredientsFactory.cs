@@ -12,10 +12,8 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
     private HashSet<IngredientData> _highlight = new();
-    
 
     // Private Variables
-
     private float spawnZLocation = 2.0f;
 
     private void Awake()

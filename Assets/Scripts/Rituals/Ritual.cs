@@ -34,8 +34,9 @@ public class Ritual : IRitual
     {
         float countOfItems = currentRitualValues.Values.Count * Constants.Instance.DifficultyModifiers.CountWeight;
         float quantityOfItems = currentRitualValues.Values.Sum() * Constants.Instance.DifficultyModifiers.QuantityWeight;
-        float spawnTimeOfItems = currentRitualValues.Keys.Sum(key => key.spawnChance == 0 ? (1.0f / Constants.Instance.IngredientsCount) : key.spawnChance);
-        return countOfItems + quantityOfItems + spawnTimeOfItems;
+        //  float spawnTimeOfItems = currentRitualValues.Keys.Sum(key => key.spawnChance == 0 ? (1.0f / IngredientsFactory.IngredientsCount) : key.spawnChance);
+        // return countOfItems + quantityOfItems + spawnTimeOfItems;
+        return countOfItems + quantityOfItems;
     }
 
     public void EnableRitual()

@@ -22,6 +22,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         inventory = GetComponent<PlayerInventory>();
+        permissions.UnlockAll();
+        GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+    }
+
+    private void OnSetTutorialMode()
+    {
+        permissions.LockAll();
     }
 
     public void HandleInput()

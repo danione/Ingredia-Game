@@ -5,9 +5,7 @@ using UnityEngine;
 public class Constants : MonoBehaviour
 {
     public static Constants Instance;
-    [SerializeField] private IngredientsFactory ingredientsFactory;
     [SerializeField] public DifficultyModifiers DifficultyModifiers = new();
-    public int IngredientsCount { get { return ingredientsFactory.GetCountOfIngredients(); } }
     [SerializeField] public int currentRitualRewards { get; private set; }
 
     private void Awake()
