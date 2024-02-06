@@ -9,6 +9,12 @@ public class TutorialManagerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private List<string> congratulatoryHeadlines;
     [SerializeField] private List<string> congratulatoryDescriptions;
+    [SerializeField] private GameObject tutorialUI;
+
+    private void Start()
+    {
+        tutorialUI.SetActive(true);
+    }
 
     public void DisplayFromTutorialStage(TutorialStage stage)
     {

@@ -9,7 +9,7 @@ public class ScrollSlipUIManager : MonoBehaviour
 {
     [SerializeField] private ScrollPopup popup;
     [SerializeField] private Transform scrollSlipMenu;
-    private Transform scrollSlipManager;
+    [SerializeField] private GameObject scrollSlipManagerObject;
 
     [SerializeField] private Transform countScrollsUI;
     [SerializeField] private Transform normalSlipsContainerUI;
@@ -23,7 +23,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
-        slipManager = scrollSlipManager.GetComponent<ScrollSlipManager>();
+        slipManager = scrollSlipManagerObject.GetComponent<ScrollSlipManager>();
         slipCellsPerRow = normalSlipsContainerUI.GetChild(0).childCount;
     }
 

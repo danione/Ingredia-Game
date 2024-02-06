@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private float cooldownBetweenStages;
     [SerializeField] private GameObject spawnManager;
     [SerializeField] private IngredientData eyeData;
-    [SerializeField] private GameObject uiManager;
+    [SerializeField] private GameObject inventorySlotsUI;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
     [SerializeField] private TutorialManagerUI tutorialUiManager;
     [SerializeField] private OverloadElixirData overloadElixirData;
@@ -45,6 +45,10 @@ public class TutorialManager : MonoBehaviour
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
 
+        GameEventHandler.Instance.SetsTutorialMode();
+
+        PlayerInputHandler.permissions.LockAll();
+
         StartCoroutine(WaitForInitialisationOfObjects());
     }
 
@@ -56,7 +60,6 @@ public class TutorialManager : MonoBehaviour
         {
             tutorialStages[i].Reward();
         }
-
         currentStage = forwardToStage;
 
         InitialiseNextStage();
@@ -68,7 +71,6 @@ public class TutorialManager : MonoBehaviour
         if(playerMovementThreshold < 0)
         {
             ExecuteCurrentStage();
-            StartCoroutine(CooldownBetweenStages());
         }
     }
 
@@ -95,7 +97,7 @@ public class TutorialManager : MonoBehaviour
     public void FirstRitual()
     {
         ingredientsFactory.AppendARegularIngredient(eyeData);
-        uiManager.SetActive(true);
+        inventorySlotsUI.SetActive(true);
     }
 
     public void OnPerformedFirstRitual()

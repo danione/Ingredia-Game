@@ -32,10 +32,22 @@ public class GameEventHandler : MonoBehaviour
     public Action ShieldDisabled;
     public Action<float, float> SentShieldStats;
     public Action ShieldEnabled;
+    public Action TutorialClicked;
+    public Action SetTutorialMode;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void SetsTutorialMode()
+    {
+        SetTutorialMode?.Invoke();
+    }
+
+    public void TutorialClick()
+    {
+        TutorialClicked?.Invoke();
     }
 
     public void ShieldEnable()

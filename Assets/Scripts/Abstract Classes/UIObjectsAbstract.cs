@@ -16,8 +16,8 @@ public abstract class UIObjectsAbstract : MonoBehaviour
 
     public virtual void Init()
     {
-        templateObject.gameObject.SetActive(false);
-        templateObject.transform.parent.gameObject.SetActive(false);
+       templateObject.gameObject.SetActive(false);
+       templateObject.transform.parent.gameObject.SetActive(false);
     }
 
     public void OnAdjustInventoryUI(IIngredient itemName, int count)

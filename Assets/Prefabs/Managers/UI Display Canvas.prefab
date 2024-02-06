@@ -4166,7 +4166,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyMovement
         m_Mode: 1
@@ -4784,7 +4784,6 @@ GameObject:
   - component: {fileID: 2362809440886165699}
   - component: {fileID: 1703217488481425444}
   - component: {fileID: 7386250268388204043}
-  - component: {fileID: 8789405416396805734}
   - component: {fileID: 1742972566544080203}
   - component: {fileID: 1081827962702134586}
   - component: {fileID: 5233120767619702308}
@@ -4810,12 +4809,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1401826761310581661}
-  - {fileID: 165390825383399773}
   - {fileID: 959206226722064537}
   - {fileID: 5140154348306515993}
-  - {fileID: 548473070069611246}
+  - {fileID: 1401826761310581661}
+  - {fileID: 165390825383399773}
   - {fileID: 7316378479977335897}
+  - {fileID: 548473070069611246}
   - {fileID: 4531225016020907036}
   - {fileID: 3036060771415207466}
   - {fileID: 3350779570866405516}
@@ -4901,7 +4900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cbaacd5ee664b45983cf7941af90d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateObject: {fileID: 5140154348306515993}
+  templateObject: {fileID: 5434435867434265539}
 --- !u!114 &7386250268388204043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4915,95 +4914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templateObject: {fileID: 2231553689478734672}
---- !u!114 &8789405416396805734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419922651679631055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7625f3f181205d4184f7b941033ad5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryMenu: {fileID: 8091359032369592476}
-  maxDisplayUpgrades: 3
-  goldField: {fileID: 1986824107398502017}
-  rightSideUpgrades:
-  - nameOfUpgrade: Health Upgrade
-    upgradesList:
-    - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
-    - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
-    - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
-  - nameOfUpgrade: Movement Upgrade
-    upgradesList:
-    - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
-    - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
-    - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
-  - nameOfUpgrade: Projectile Damage
-    upgradesList:
-    - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
-    - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
-    - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-  - nameOfUpgrade: Heal
-    upgradesList:
-    - {fileID: 11400000, guid: 267d45bb5219f0e479d3a34a7147eee8, type: 2}
-    isRandomlyGenerated: 0
-    upgradedObject: {fileID: 0}
-  rightsideButtons:
-  - {fileID: 2327506521289947838}
-  - {fileID: 7824043146461971842}
-  - {fileID: 1293309381823955706}
-  - {fileID: 500697998526820165}
-  availableUpgrades:
-  - nameOfUpgrade: Max Ammo Slot
-    upgradesList:
-    - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
-    - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
-    - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 0}
-  - nameOfUpgrade: Fireball Area
-    upgradesList:
-    - {fileID: 11400000, guid: 492c60e84963f6d46983fe8b433d889a, type: 2}
-    - {fileID: 11400000, guid: 11c902e709966ce49907920b563082c3, type: 2}
-    - {fileID: 11400000, guid: 529b782d32e5f164cbacdca5ca2cdf64, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-  - nameOfUpgrade: Bomb Immunity
-    upgradesList:
-    - {fileID: 11400000, guid: bfbd365f92db39848bf56494c8d219b0, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-  - nameOfUpgrade: Ritual Yield
-    upgradesList:
-    - {fileID: 11400000, guid: 1d121ec74cb2ca849bc1b74ad005ac92, type: 2}
-    - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-  - nameOfUpgrade: Fire Rate
-    upgradesList:
-    - {fileID: 11400000, guid: bcaae0ff4fea3d041bc45a533536054c, type: 2}
-    - {fileID: 11400000, guid: d073ca78f0a91d745b9e7867aded1b1e, type: 2}
-    - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 0}
-  - nameOfUpgrade: Smart Ritual Helper
-    upgradesList:
-    - {fileID: 11400000, guid: 8b9a8adc9bffce54086160b6934fab35, type: 2}
-    isRandomlyGenerated: 1
-    upgradedObject: {fileID: 0}
-  leftsideButtons:
-  - {fileID: 8947594135123757046}
-  - {fileID: 946763212906156843}
-  - {fileID: 1081364768798571603}
 --- !u!114 &1742972566544080203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5017,10 +4927,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup:
-    scrollSlipPopupObject: {fileID: 4094533079381317264, guid: 8851aaeb83ce5e248940e9dafb9a3b2e, type: 3}
-    ritualName: {fileID: 0}
-    ritualIngredients: {fileID: 0}
+    scrollSlipPopupObject: {fileID: 7316378479977335897}
+    ritualName: {fileID: 1786426753528520306}
+    ritualIngredients: {fileID: 7071200206212070151}
   scrollSlipMenu: {fileID: 548473070069611246}
+  scrollSlipManagerObject: {fileID: 0}
   countScrollsUI: {fileID: 6109099183278928691}
   normalSlipsContainerUI: {fileID: 2151281654261313244}
 --- !u!114 &1081827962702134586
@@ -5035,8 +4946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31349cca1bcf3ef4ea3b460c5190b4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WeaponName: {fileID: 0}
-  m_Ammo: {fileID: 0}
+  m_WeaponName: {fileID: 7726439989535995068}
+  m_Ammo: {fileID: 4119755776093691229}
 --- !u!114 &5233120767619702308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5120,6 +5031,7 @@ MonoBehaviour:
   - Keep up the good work!
   - The witches stand no chance!
   - Simply the greatest!
+  tutorialUI: {fileID: 5794376102825807610}
 --- !u!1 &2452638001683805019
 GameObject:
   m_ObjectHideFlags: 0
@@ -7084,6 +6996,104 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!1 &3206347151483734271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6681755965665863828}
+  - component: {fileID: 2337284208117741619}
+  m_Layer: 5
+  m_Name: Upgrade Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6681755965665863828
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206347151483734271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8091359032369592476}
+  m_Father: {fileID: 1401826761310581661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2337284208117741619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206347151483734271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7625f3f181205d4184f7b941033ad5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesMenu: {fileID: 8091359032369592476}
+  maxDisplayUpgrades: 3
+  goldField: {fileID: 1986824107398502017}
+  rightSideUpgrades:
+  - nameOfUpgrade: Health
+    upgradesList:
+    - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Movement Speed
+    upgradesList:
+    - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Projectile Damage
+    upgradesList:
+    - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Heal
+    upgradesList:
+    - {fileID: 11400000, guid: 267d45bb5219f0e479d3a34a7147eee8, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  rightsideButtons:
+  - {fileID: 2327506521289947838}
+  - {fileID: 7824043146461971842}
+  - {fileID: 1293309381823955706}
+  - {fileID: 500697998526820165}
+  availableUpgrades:
+  - nameOfUpgrade: Smart Ritual Helper
+    upgradesList:
+    - {fileID: 11400000, guid: 8b9a8adc9bffce54086160b6934fab35, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Ammo Slots
+    upgradesList:
+    - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Fireball Equip
+    upgradesList:
+    - {fileID: 11400000, guid: b1adc882776673940a51920cee55d25b, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  leftsideButtons:
+  - {fileID: 1081364768798571603}
+  - {fileID: 946763212906156843}
+  - {fileID: 8947594135123757046}
 --- !u!1 &3239838480796635002
 GameObject:
   m_ObjectHideFlags: 0
@@ -8058,7 +8068,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyMovement
         m_Mode: 1
@@ -9353,7 +9363,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyHealth
         m_Mode: 1
@@ -9486,7 +9496,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyProjectile
         m_Mode: 1
@@ -11575,9 +11585,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5803262840793804631}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameEventHandler, Assembly-CSharp
-        m_MethodName: ClosingDownUpgradesMenu
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12936,7 +12958,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 189515667956042073}
-  - {fileID: 8091359032369592476}
+  - {fileID: 6681755965665863828}
   - {fileID: 2867565811462196411}
   m_Father: {fileID: 6289351775266753092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12955,7 +12977,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8091359032369592476}
   m_Layer: 5
-  m_Name: Upgrades Screen
+  m_Name: Upgrade Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12978,7 +13000,7 @@ RectTransform:
   - {fileID: 3255887050546995260}
   - {fileID: 681019759850874340}
   - {fileID: 6609783743161826335}
-  m_Father: {fileID: 1401826761310581661}
+  m_Father: {fileID: 6681755965665863828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17895,7 +17917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyProjectile
         m_Mode: 1
@@ -20396,7 +20418,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8789405416396805734}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnBuyHealth
         m_Mode: 1

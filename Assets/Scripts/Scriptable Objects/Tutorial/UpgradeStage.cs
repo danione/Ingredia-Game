@@ -8,11 +8,11 @@ public class UpgradeStage : TutorialStage
     {
         PlayerInputHandler.permissions.canOpenUpgrades = true;
         PlayerInputHandler.permissions.canOpenMenus = true;
-        
     }
 
     public override void NextStage()
     {
+        GameManager.Instance.ResumeGame();
         PlayerEventHandler.Instance.UpgradesMenuClose();
     }
 
@@ -21,6 +21,6 @@ public class UpgradeStage : TutorialStage
         PlayerInputHandler.permissions.canOpenUpgrades = true;
         PlayerInputHandler.permissions.canOpenMenus = true;
         PlayerInputHandler.permissions.canMove = false;
-        UpgradesUIManager.Instance.TutorialClick();
+        GameEventHandler.Instance.TutorialClick();
     }
 }

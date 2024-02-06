@@ -9,9 +9,8 @@ using UnityEngine.UIElements;
 
 public class UpgradesUIManager : MonoBehaviour
 {
-    public static UpgradesUIManager Instance;
 
-    [SerializeField] private Transform inventoryMenu;
+    [SerializeField] private Transform upgradesMenu;
     [SerializeField] private int maxDisplayUpgrades;
     [SerializeField] private TextMeshProUGUI goldField;
 
@@ -26,25 +25,17 @@ public class UpgradesUIManager : MonoBehaviour
 
     private void Start()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         PlayerEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
+        GameEventHandler.Instance.TutorialClicked += TutorialClick;
         HookUpgradesWithButtons(rightsideButtons, rightSideUpgrades, rightSideUpgrades.Count);
         countChosenUpgrades = 0;
     }
 
     private void OnUpgradesMenuOpened()
     {
-        if(inventoryMenu.gameObject.activeSelf == true)
+        if (upgradesMenu.gameObject.activeSelf == true)
         {
             GameManager.Instance.ResumeGame();
         }
@@ -54,12 +45,12 @@ public class UpgradesUIManager : MonoBehaviour
             ChooseRandomUpgrades();
             UpdateScreen();
         }
-        inventoryMenu.gameObject.SetActive(!inventoryMenu.gameObject.activeSelf);
+        upgradesMenu.gameObject.SetActive(!upgradesMenu.gameObject.activeSelf);
     }
 
     private void OnUpgradesMenuClosed()
     {
-        inventoryMenu.gameObject.SetActive(false);
+        upgradesMenu.gameObject.SetActive(false);
     }
 
     private void ChooseRandomUpgrades()

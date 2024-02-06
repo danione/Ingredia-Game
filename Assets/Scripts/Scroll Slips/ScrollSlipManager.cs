@@ -6,11 +6,18 @@ public class ScrollSlipManager : MonoBehaviour
 {
     private List<RitualScriptableObject> unlockedScrollSlips = new();
     [SerializeField] private List<RitualScriptableObject> availableScrollSlips = new();
+    private bool isTutorial = false;
 
 
     private void Start()
     {
         GameEventHandler.Instance.UnlockedScrollSlip += OnScrollSlipUnlock;
+        GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+    }
+
+    public void OnSetTutorialMode()
+    {
+        isTutorial = true;
     }
 
     // Get the unlocked scrolls and the total amount of scrolls available
@@ -31,7 +38,16 @@ public class ScrollSlipManager : MonoBehaviour
     {
         if(availableScrollSlips.Count == 0) return;
 
-        RitualScriptableObject randomSlip = GetRandomScrollSlip();
+        RitualScriptableObject randomSlip;
+
+        if (isTutorial)
+        {
+            randomSlip = GetSlipForTutorial();
+        }
+        else
+        {
+            randomSlip = GetRandomScrollSlip();
+        }
 
         unlockedScrollSlips.Add(randomSlip);
         
@@ -53,6 +69,13 @@ public class ScrollSlipManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    private RitualScriptableObject GetSlipForTutorial()
+    {
+        RitualScriptableObject scroll = availableScrollSlips[0];
+        availableScrollSlips.RemoveAt(0);
+        return scroll;
     }
 
     private RitualScriptableObject GetRandomScrollSlip()
