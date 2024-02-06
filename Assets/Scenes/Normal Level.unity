@@ -516,11 +516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d179d5f78c0b884cbfab6db5f3a30e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1864988985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5164809470490039580, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-  m_PrefabInstance: {fileID: 3278442347076411136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2031736205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7683372003464667157, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
@@ -556,78 +551,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
-    - target: {fileID: 4076885038162073176, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ResumeGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[2].nameOfUpgrade
-      value: Bomb Immunity
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].nameOfUpgrade
-      value: Ritual Yield
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].nameOfUpgrade
-      value: Fire Rate
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[2].upgradedObject
-      value: 
-      objectReference: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].upgradedObject
-      value: 
-      objectReference: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].upgradedObject
-      value: 
-      objectReference: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].isRandomlyGenerated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].isRandomlyGenerated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].upgradesList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].upgradesList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[2].upgradesList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: bfbd365f92db39848bf56494c8d219b0, type: 2}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].upgradesList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1d121ec74cb2ca849bc1b74ad005ac92, type: 2}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[3].upgradesList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].upgradesList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: bcaae0ff4fea3d041bc45a533536054c, type: 2}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].upgradesList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: d073ca78f0a91d745b9e7867aded1b1e, type: 2}
-    - target: {fileID: 4444070106565969832, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: availableUpgrades.Array.data[4].upgradesList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
     - target: {fileID: 5286809407506961395, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -636,10 +559,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
-    - target: {fileID: 5818508547396244324, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ResumeGame
-      objectReference: {fileID: 0}
     - target: {fileID: 5933462607741576317, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -725,21 +644,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7835949111415802333, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1864988985}
-    - target: {fileID: 7835949111415802333, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1760316103}
-    - target: {fileID: 7835949111415802333, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835949111415802333, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ResumeGame
-      objectReference: {fileID: 0}
     - target: {fileID: 8727254501754164820, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

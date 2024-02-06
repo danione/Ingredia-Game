@@ -34,6 +34,7 @@ public class GameEventHandler : MonoBehaviour
     public Action ShieldEnabled;
     public Action TutorialClicked;
     public Action SetTutorialMode;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;

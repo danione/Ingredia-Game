@@ -5,21 +5,14 @@ using UnityEngine;
 
 public class TutorialManagerUI : MonoBehaviour
 {
+    private static TutorialManagerUI instance;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private List<string> congratulatoryHeadlines;
     [SerializeField] private List<string> congratulatoryDescriptions;
-    [SerializeField] private GameObject tutorialUI;
+    
+    [SerializeField] private List<GameObject> disableObjects;
 
-    private void Start()
-    {
-        GameEventHandler.Instance.SetTutorialMode += OnSetsTutorialMode;
-    }
-
-    private void OnSetsTutorialMode()
-    {
-        tutorialUI.SetActive(true);
-    }
 
     public void DisplayFromTutorialStage(TutorialStage stage)
     {

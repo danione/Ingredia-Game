@@ -40,12 +40,9 @@ public class TutorialManager : MonoBehaviour
     {
         if (instance == null) { instance = this; } else { Destroy(this); }
 
-
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
-
-        GameEventHandler.Instance.SetsTutorialMode();
 
         StartCoroutine(WaitForInitialisationOfObjects());
     }
@@ -53,6 +50,9 @@ public class TutorialManager : MonoBehaviour
     private IEnumerator WaitForInitialisationOfObjects()
     {
         yield return new WaitForEndOfFrame();
+
+        GameEventHandler.Instance.SetsTutorialMode();
+
 
         for (int i = 0; i < forwardToStage; i++)
         {

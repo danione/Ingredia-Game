@@ -5414,6 +5414,7 @@ MonoBehaviour:
   - The witches stand no chance!
   - Simply the greatest!
   tutorialUI: {fileID: 5794376102825807610}
+  disableObjects: []
 --- !u!1 &2454102220886514947
 GameObject:
   m_ObjectHideFlags: 0
@@ -7524,9 +7525,22 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-  - nameOfUpgrade: Fireball Equip
+  - nameOfUpgrade: Bomb Immunity
     upgradesList:
-    - {fileID: 11400000, guid: b1adc882776673940a51920cee55d25b, type: 2}
+    - {fileID: 11400000, guid: bfbd365f92db39848bf56494c8d219b0, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Ritual Yield
+    upgradesList:
+    - {fileID: 11400000, guid: 1d121ec74cb2ca849bc1b74ad005ac92, type: 2}
+    - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Fire Rate
+    upgradesList:
+    - {fileID: 11400000, guid: bcaae0ff4fea3d041bc45a533536054c, type: 2}
+    - {fileID: 11400000, guid: d073ca78f0a91d745b9e7867aded1b1e, type: 2}
+    - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
   leftsideButtons:
@@ -15011,7 +15025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5164809470490039580}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
