@@ -23,21 +23,25 @@ public class TimerUIManager : MonoBehaviour
 
     void Start()
     {
+        
         GameEventHandler.Instance.GhostActivated += OnGhostActivated;
         GameEventHandler.Instance.LaserActivated += OnLaserEnabled;
         GameEventHandler.Instance.ShieldEnabled += OnShieldActivated;
 
-        NotificationObject.SetupManager(this);
+        ghostObject.SetupManager(this);
+        laserObject.SetupManager(this);
+        shieldObject.SetupManager(this);
 
-        activeTimersCount = 0;
 
         GhostSetup();
         LaserSetup();
         ShieldSetup();
     }
 
+
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerController.Instance.inventory.AddPotion(testPotion);
@@ -103,6 +107,7 @@ public class TimerUIManager : MonoBehaviour
     public void AssignNewTimer(NotificationObject notObject)
     {
         Transform newObject = notObject.GenerateANewTimer(this, activeTimersCount);
+        if (newObject == null) { return; }
         AssignTimer(newObject);
     }
 

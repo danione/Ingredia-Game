@@ -31,6 +31,7 @@ public class ScrollSlipUIManager : MonoBehaviour
 
     private void OnScrollSlipGenerated(RitualScriptableObject scroll)
     {
+        if(popup.scrollSlipPopupObject == null) { return; }
         GameManager.Instance.PauseGame();
         popup.scrollSlipPopupObject.gameObject.SetActive(true);
         popup.PopulateRitualIngredients(scroll);

@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 [System.Serializable]
 public class NotificationObject
@@ -9,9 +8,9 @@ public class NotificationObject
     private StateSwapper swapper = new();
     private bool currentState = false;
     private int currentPos;
-    private static TimerUIManager manager;
+    private TimerUIManager manager;
 
-    public static void SetupManager(TimerUIManager assignedManager)
+    public void SetupManager(TimerUIManager assignedManager)
     {
         manager = assignedManager;
     }
@@ -45,6 +44,8 @@ public class NotificationObject
 
     public Transform GenerateANewTimer(TimerUIManager manager, int currentId)
     {
+        if (timerNotification.currentObject != null) return null;
+
         currentPos = currentId;
         return timerNotification.CreateANewTimer(manager);
     }
