@@ -1,23 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-
 public class UpgradesUIManager : MonoBehaviour
 {
 
     [SerializeField] private Transform upgradesMenu;
     [SerializeField] private int maxDisplayUpgrades;
     [SerializeField] private TextMeshProUGUI goldField;
+    [SerializeField] private UIUpgradeClass tutorialClass;
 
-    [SerializeField] private List<UIUpgradeClass> rightSideUpgrades = new();
+    private List<UIUpgradeClass> rightSideUpgrades = new();
     [SerializeField] private List<UnityEngine.UI.Button> rightsideButtons = new();
 
-    [SerializeField] private List<UIUpgradeClass> availableUpgrades = new();
+    private List<UIUpgradeClass> availableUpgrades = new();
     [SerializeField] private List<UnityEngine.UI.Button> leftsideButtons = new();
 
     private List<UIUpgradeClass> randomChosenUpgrades = new();
@@ -28,9 +23,16 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
-        GameEventHandler.Instance.TutorialClicked += TutorialClick;
-        HookUpgradesWithButtons(rightsideButtons, rightSideUpgrades, rightSideUpgrades.Count);
+        GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        HookUpgradesWithButtons(rightsideButtons, GameManager.Instance.UpgradesManager.rightSideUpgrades, GameManager.Instance.UpgradesManager.rightSideUpgrades.Count);
         countChosenUpgrades = 0;
+    }
+
+    private void OnSetTutorialMode()
+    {
+        randomChosenUpgrades.Add(tutorialClass);
+        countChosenUpgrades++;
+        HookUpgradesWithButtons(leftsideButtons, randomChosenUpgrades, countChosenUpgrades);
     }
 
     private void OnUpgradesMenuOpened()
@@ -45,6 +47,7 @@ public class UpgradesUIManager : MonoBehaviour
             ChooseRandomUpgrades();
             UpdateScreen();
         }
+
         upgradesMenu.gameObject.SetActive(!upgradesMenu.gameObject.activeSelf);
     }
 
@@ -55,6 +58,9 @@ public class UpgradesUIManager : MonoBehaviour
 
     private void ChooseRandomUpgrades()
     {
+        rightSideUpgrades = GameManager.Instance.UpgradesManager.rightSideUpgrades;
+        availableUpgrades = GameManager.Instance.UpgradesManager.availableUpgrades;
+
         if (countChosenUpgrades > 0 || availableUpgrades.Count == 0) return;
 
         ShuffleListOfUpgrades(availableUpgrades);
@@ -95,11 +101,6 @@ public class UpgradesUIManager : MonoBehaviour
 
         if(upgradesList == randomChosenUpgrades)
             countChosenUpgrades--;
-    }
-
-    public void TutorialClick()
-    {
-        OnBuyClicked(0, availableUpgrades);
     }
 
     void ShuffleListOfUpgrades<T>(List<T> array)

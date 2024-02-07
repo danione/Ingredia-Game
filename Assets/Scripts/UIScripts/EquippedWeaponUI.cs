@@ -17,6 +17,7 @@ public class EquippedWeaponUI : MonoBehaviour
         GameEventHandler.Instance.SwappedProjectiles += OnSwapWeapon;
         PlayerEventHandler.Instance.FiredWeapon += OnChangeWeapon;
         InputEventHandler.instance.UsedPotion += OnChangeWeapon;
+        GameEventHandler.Instance.UpdatedUI += OnUpdateUI;
     }
 
     private void OnChangeWeapon()
@@ -33,4 +34,8 @@ public class EquippedWeaponUI : MonoBehaviour
         OnChangeWeapon();
     }
 
+    private void OnUpdateUI()
+    {
+        OnSwapWeapon();
+    }
 }

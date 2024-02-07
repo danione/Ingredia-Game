@@ -34,11 +34,23 @@ public class GameEventHandler : MonoBehaviour
     public Action ShieldEnabled;
     public Action TutorialClicked;
     public Action SetTutorialMode;
+    public Action SetNormalMode;
+    public Action UpdatedUI;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void UpdateUI()
+    {
+        UpdatedUI?.Invoke();
+    }
+
+    public void SetsNormalMode()
+    {
+        SetNormalMode?.Invoke();
     }
 
     public void SetsTutorialMode()

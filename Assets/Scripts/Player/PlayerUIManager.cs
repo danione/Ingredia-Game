@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInventory))]
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_GoldCounter;

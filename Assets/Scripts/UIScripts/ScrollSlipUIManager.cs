@@ -9,12 +9,10 @@ public class ScrollSlipUIManager : MonoBehaviour
 {
     [SerializeField] private ScrollPopup popup;
     [SerializeField] private Transform scrollSlipMenu;
-    [SerializeField] private GameObject scrollSlipManagerObject;
 
     [SerializeField] private Transform countScrollsUI;
     [SerializeField] private Transform normalSlipsContainerUI;
 
-    private ScrollSlipManager slipManager;
     private int latestActivatedNumber = 0;
     private int slipCellsPerRow;
 
@@ -23,7 +21,6 @@ public class ScrollSlipUIManager : MonoBehaviour
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
-        slipManager = scrollSlipManagerObject.GetComponent<ScrollSlipManager>();
         slipCellsPerRow = normalSlipsContainerUI.GetChild(0).childCount;
     }
 
@@ -59,7 +56,7 @@ public class ScrollSlipUIManager : MonoBehaviour
 
     private void PopulateMenus()
     {
-        KeyValuePair<int, int> scrollSlipsCount = slipManager.GetScrollSlipsCount();
+        KeyValuePair<int, int> scrollSlipsCount = GameManager.Instance.SlipManager.GetScrollSlipsCount();
 
         countScrollsUI.GetChild(0).GetComponent<TextMeshProUGUI>().text = scrollSlipsCount.Key.ToString(); // current
         countScrollsUI.GetChild(2).GetComponent<TextMeshProUGUI>().text = scrollSlipsCount.Value.ToString(); // available
@@ -108,7 +105,7 @@ public class ScrollSlipUIManager : MonoBehaviour
     private void PopulateCellObject(Transform slipObject, int index)
     {
         // fetch ritual info and populate the cell
-        RitualScriptableObject data = slipManager.GetSlipByIndex(index);
+        RitualScriptableObject data = GameManager.Instance.SlipManager.GetSlipByIndex(index);
         if (slipObject == null || data == null) return;
 
         slipObject.gameObject.SetActive(true);

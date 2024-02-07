@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         stats = GetComponent<PlayerStats>();
         input = GetComponent<PlayerInputHandler>();
 
-        if(input == null)
+        if (input == null)
         {
             gameObject.AddComponent<PlayerInputHandler>();
         }

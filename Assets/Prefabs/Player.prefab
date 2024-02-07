@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 5262753251196657516}
   - component: {fileID: 7919030058201532917}
   - component: {fileID: 1721426842820912189}
-  - component: {fileID: 453012806714794115}
   - component: {fileID: 7759249205259069879}
   - component: {fileID: 8574045374956826587}
   - component: {fileID: 7652357504156553977}
@@ -525,6 +524,16 @@ MonoBehaviour:
   knifeAmmo: 0
   maxFlameBombAmmo: 2
   maxKnifeAmmo: 10
+  weapons:
+  - weaponName: Knife
+    ammo: 0
+    maxAmmo: 10
+    objectPosition: 1
+  - weaponName: Bomb
+    ammo: 0
+    maxAmmo: 5
+    objectPosition: 0
+  gold: 0
 --- !u!114 &7919030058201532917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
-  cooldown: 0
 --- !u!114 &1721426842820912189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,24 +559,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b314a4d9abd9c4c8f49250f0c4a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
-  maxHealth: 5
+  startingHealth: 999
+  maxHealth: 999
   health: 0
---- !u!114 &453012806714794115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735097968459126054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46133b6e552355946bb97d12d2a8717e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GoldCounter: {fileID: 0}
-  m_slotsContainer: {fileID: 0}
-  m_maxSlots: 3
 --- !u!114 &7759249205259069879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c753b38efd4994e94393d7252cf7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldenNuggets: {fileID: 4715440248548740651, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!114 &8574045374956826587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,12 +586,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1709d67b774e28041adc76f928945e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileObject: {fileID: 8033629693610461425, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
-  knifeObject: {fileID: 8033629693610461425, guid: 811d5304b5e68a4449c90be59dc21ac5, type: 3}
   spawnPoint: {fileID: 1945744635020908731}
   fireRate: 2
   emptyCauldronCooldown: 1
-  bat: {fileID: 29723077154993869, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
+  projectileSpawners:
+  - collectionCheck: 1
+    defaultCapacity: 2
+    maxSize: 10
+    prefab: {fileID: 6965932045675515799, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - collectionCheck: 1
+    defaultCapacity: 10
+    maxSize: 25
+    prefab: {fileID: 4078039904021345733, guid: 811d5304b5e68a4449c90be59dc21ac5, type: 3}
 --- !u!114 &7652357504156553977
 MonoBehaviour:
   m_ObjectHideFlags: 0

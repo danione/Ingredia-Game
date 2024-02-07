@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8707694892932605174}
   - component: {fileID: 1695945991005713638}
   - component: {fileID: 3849607443733397155}
+  - component: {fileID: 1339438777771859833}
+  - component: {fileID: 545321089583305452}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155fa7f0d6db55e4c86e63da27ac853c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: 0
 --- !u!114 &4485545681000777643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,3 +132,92 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
   - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
+--- !u!114 &1339438777771859833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a17c7d6f07cd1f46bb5c6735b90f780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &545321089583305452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13e65db02dc5014298a53885fb9d929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightSideUpgrades:
+  - nameOfUpgrade: Plating
+    upgradesList:
+    - {fileID: 11400000, guid: bc5f93a4ac6399b4b969d599e3defc73, type: 2}
+    - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
+    - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Movement
+    upgradesList:
+    - {fileID: 11400000, guid: 762555354e1478e47ab8df37bfd3593c, type: 2}
+    - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
+    - {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Projectile Damage
+    upgradesList:
+    - {fileID: 11400000, guid: 131f388e13f16094ba51196a15925984, type: 2}
+    - {fileID: 11400000, guid: 66826a95ea7ee424283ae833caab0996, type: 2}
+    - {fileID: 11400000, guid: 03f7a51c209467a47ace16344325d8cb, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Repair
+    upgradesList:
+    - {fileID: 11400000, guid: 267d45bb5219f0e479d3a34a7147eee8, type: 2}
+    isRandomlyGenerated: 0
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  availableUpgrades:
+  - nameOfUpgrade: Ammo Slots
+    upgradesList:
+    - {fileID: 11400000, guid: 92c875fd9e949dc458992201c58cfaa9, type: 2}
+    - {fileID: 11400000, guid: 6f648713753fbfd44848c0c6432ee7d9, type: 2}
+    - {fileID: 11400000, guid: b12eea7cbd42e824689c5f7390e88d69, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Fire Rate
+    upgradesList:
+    - {fileID: 11400000, guid: bcaae0ff4fea3d041bc45a533536054c, type: 2}
+    - {fileID: 11400000, guid: d073ca78f0a91d745b9e7867aded1b1e, type: 2}
+    - {fileID: 11400000, guid: 6f9bf6d564cdb774fa6b2e264d27411d, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Fireball Area
+    upgradesList:
+    - {fileID: 11400000, guid: 492c60e84963f6d46983fe8b433d889a, type: 2}
+    - {fileID: 11400000, guid: 11c902e709966ce49907920b563082c3, type: 2}
+    - {fileID: 11400000, guid: 529b782d32e5f164cbacdca5ca2cdf64, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 8697621482606319194, guid: c4e1cdc3b7d93c94bade968a64e51dfb, type: 3}
+  - nameOfUpgrade: Smart Ritual Helper
+    upgradesList:
+    - {fileID: 11400000, guid: 8b9a8adc9bffce54086160b6934fab35, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Bomb Immunity
+    upgradesList:
+    - {fileID: 11400000, guid: bfbd365f92db39848bf56494c8d219b0, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+  - nameOfUpgrade: Ritual Yield
+    upgradesList:
+    - {fileID: 11400000, guid: 1d121ec74cb2ca849bc1b74ad005ac92, type: 2}
+    - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
+    isRandomlyGenerated: 1
+    upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
