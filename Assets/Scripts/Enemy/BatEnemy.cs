@@ -69,7 +69,10 @@ public class BatEnemy : Enemy
 
     protected virtual void Shoot()
     {
-        spawner._pool.Get().transform.position = gameObject.transform.position;
+        var creature = spawner._pool.Get();
+        if (creature == null) return;
+
+        creature.transform.position = gameObject.transform.position;
         StartCoroutine(Cooldown());
     }
 

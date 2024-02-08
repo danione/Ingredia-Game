@@ -822,11 +822,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: knifeAmmo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: flameBombAmmo
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[1].ammo
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[0].maxAmmo

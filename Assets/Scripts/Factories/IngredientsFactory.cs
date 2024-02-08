@@ -65,6 +65,8 @@ public class IngredientsFactory: MonoBehaviour
 
         Product product = spawner.GetProduct(newRandomLocation, list[randomIndex]);
 
+        if(product == null) return;
+
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();

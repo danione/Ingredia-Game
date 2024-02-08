@@ -53,6 +53,8 @@ public class ObjectsSpawner
     public Product GetProduct(Vector3 pos, IngredientData data)
     {
         Product product = _pool.Get();
+        if(product == null) return null;
+
         product.GetComponent<IIngredient>().Initialise(data);
         product.gameObject.transform.position = pos;
         return product;

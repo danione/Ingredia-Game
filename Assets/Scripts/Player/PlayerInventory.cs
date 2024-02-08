@@ -5,11 +5,6 @@ using UnityEngine;
 public class PlayerInventory: MonoBehaviour
 {
     [SerializeField] public int size = 0;
-    [SerializeField] private int flameBombAmmo;
-    [SerializeField] private int knifeAmmo;
-
-    [SerializeField] private int maxFlameBombAmmo;
-    [SerializeField] private int maxKnifeAmmo;
 
     [SerializeField] private List<Weapon> weapons;
     private int currentlyEquippedWeapon = 0;

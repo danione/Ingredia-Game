@@ -79,7 +79,7 @@ public class GameManager: MonoBehaviour
     private void OnDestroyObject(GameObject obj)
     {
         Product product = obj.GetComponent<Product>();
-        if (product != null)
+        if (product != null && product.isActiveAndEnabled)
         {
             try
             {
