@@ -36,11 +36,17 @@ public class GameEventHandler : MonoBehaviour
     public Action SetTutorialMode;
     public Action SetNormalMode;
     public Action UpdatedUI;
+    public Action TriggeredGameOver;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void TriggerGameOver()
+    {
+        TriggeredGameOver?.Invoke();
     }
 
     public void UpdateUI()

@@ -19,4 +19,9 @@ public class MenuManagerUI : MonoBehaviour
     {
         GameManager.Instance.ExitGame();
     }
+
+    public void RestartScene()
+    {
+        GameManager.Instance.RestartScene();
+    }
 }

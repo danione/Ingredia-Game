@@ -30,6 +30,13 @@ public class GameManager: MonoBehaviour
         ResumeGame();
     }
 
+    public void RestartScene()
+    {
+        gameOver = false;
+        ResumeGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0.0f;
@@ -58,8 +65,15 @@ public class GameManager: MonoBehaviour
     {
         if (gameOver)
         {
-            Time.timeScale = 0;
+            GameOverStateTrigger();
+            return;
         }
+    }
+
+    private void GameOverStateTrigger()
+    {
+        Time.timeScale = 0;
+        GameEventHandler.Instance.TriggerGameOver();
     }
 
     private void OnDestroyObject(GameObject obj)

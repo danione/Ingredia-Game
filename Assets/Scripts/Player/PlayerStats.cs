@@ -17,7 +17,6 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     public void Die()
     {
         GameManager.Instance.gameOver = true;
-        Debug.Log("Dead.");
     }
 
     public void Heal()
