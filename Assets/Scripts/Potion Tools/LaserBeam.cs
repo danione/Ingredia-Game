@@ -62,14 +62,14 @@ public class LaserBeam
             Vector3 positionToRender = new Vector3(laserOrigin.position.x, rayData.point.y, attachedEntity.position.z);
             laserLine.SetPosition(1, rayData.point);
             Enemy enemy = rayData.collider.gameObject.GetComponent<Enemy>();
-            if(enemy != null)
+            GameObject otherObject = rayData.collider.gameObject;
+            if (enemy != null)
             {
                 enemy.TakeDamage(laserStrength * Time.deltaTime);
             }
-            else if (rayData.collider.gameObject.CompareTag("Ingredient"))
+            else if (otherObject.CompareTag("Ingredient") || otherObject.CompareTag("Dangerous Object") || otherObject.CompareTag("Recipe") || otherObject.CompareTag("Projectile"))
             {
-                UnityEngine.Object.Destroy(rayData.collider.gameObject);
-
+                GameEventHandler.Instance.DestroyObject(otherObject);
             }
         }
         else

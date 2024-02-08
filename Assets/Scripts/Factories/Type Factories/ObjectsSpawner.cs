@@ -34,6 +34,8 @@ public class ObjectsSpawner
 
     private void OnGetFromPool(Product pooledObject)
     {
+        if(pooledObject == null) return; 
+
         pooledObject.gameObject.SetActive(true);
     }
 
