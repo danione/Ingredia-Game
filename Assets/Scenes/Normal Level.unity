@@ -561,10 +561,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6285135779216891294, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_text
-      value: Restart
-      objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -643,10 +639,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7635803162451660899, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

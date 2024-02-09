@@ -204,7 +204,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 9
+  forwardToStage: 10
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0

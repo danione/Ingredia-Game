@@ -120,11 +120,14 @@ public class ScrollPopup
 {
     public Transform scrollSlipPopupObject;
     public TextMeshProUGUI ritualName;
+    public TextMeshProUGUI ritualDescription;
     public TextMeshProUGUI ritualIngredients;
 
     public void PopulateRitualIngredients(RitualScriptableObject data)
     {
         ritualName.text = data.name;
+
+        ritualDescription.text = data.description;
 
         ritualIngredients.text = string.Empty;
 
