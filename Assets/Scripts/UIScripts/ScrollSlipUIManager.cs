@@ -111,7 +111,8 @@ public class ScrollSlipUIManager : MonoBehaviour
 
         slipObject.gameObject.SetActive(true);
         slipObject.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name; // name of ritual
-        slipObject.GetChild(2).GetComponent<TextMeshProUGUI>().text = ScrollPopup.RitualIngredientsToString(data); // ingredients of ritual
+        slipObject.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.description; // name of ritual
+        slipObject.GetChild(5).GetComponent<TextMeshProUGUI>().text = ScrollPopup.RitualIngredientsToString(data); // ingredients of ritual
     }
 }
 
