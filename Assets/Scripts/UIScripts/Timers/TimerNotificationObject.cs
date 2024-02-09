@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,9 +56,9 @@ public class TimerNotificationObject
     {
         managerRef = manager;
         Transform newObject = GameObject.Instantiate(timerTemplateObject, timerTemplateObject.parent);
-        newObject.GetChild(0).GetComponent<Image>().sprite = timerDataObject.BorderSpriteIdle;
-        newObject.GetChild(1).GetComponent<Image>().sprite = timerDataObject.IconSpriteIdle;
-        newObject.gameObject.SetActive(true);
+        
+        SetupTimerObject( newObject );
+
         scalingDuration = pulsingData.scalingDurationStart;
         currentObject = newObject;
         isPulsing = true;
@@ -65,6 +66,22 @@ public class TimerNotificationObject
 
         return newObject;
     }
+
+    private void SetupTimerObject(Transform newObject)
+    {
+        newObject.GetChild(0).GetComponent<Image>().sprite = timerDataObject.BorderSpriteIdle;
+        newObject.GetChild(1).GetComponent<Image>().sprite = timerDataObject.IconSpriteIdle;
+
+        if(timerDataObject.ButtonInfo != null)
+        {
+            GameObject buttonInfo = newObject.GetChild(3).gameObject;
+            buttonInfo.GetComponent<TextMeshProUGUI>().text = timerDataObject.ButtonInfo;
+            buttonInfo.SetActive(true);
+        }
+
+        newObject.gameObject.SetActive(true);
+    }
+
     private IEnumerator Pulse()
     {
         while (isPulsing)

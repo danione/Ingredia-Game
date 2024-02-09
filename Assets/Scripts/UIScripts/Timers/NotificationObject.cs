@@ -3,7 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class NotificationObject
 {
-    private float powerPool;
     [SerializeField] private TimerNotificationObject timerNotification;
     private StateSwapper swapper = new();
     private bool currentState = false;
@@ -20,11 +19,10 @@ public class NotificationObject
         return currentPos;
     }
 
-    public void OnSendCurrentTimers(float timer, float pool)
+    public void OnSendCurrentTimers(float timer)
     {
-        powerPool = pool;
         timerNotification.ChangePulse(timer);
-        swapper.SetValue(timerNotification, Math.Round(powerPool, 1).ToString());
+        swapper.SetValue(timerNotification, Math.Round(timer, 1).ToString());
     }
 
     public void OnDeactivated()

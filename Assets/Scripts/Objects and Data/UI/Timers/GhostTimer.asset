@@ -17,3 +17,4 @@ MonoBehaviour:
   BorderSpriteEngaged: {fileID: 21300000, guid: 2cb6816c41b729d45b08e352f9bc728f, type: 3}
   IconSpriteIdle: {fileID: 21300000, guid: 048e3a25254b93746b79a9afd228065b, type: 3}
   IconSpriteEngaged: {fileID: 21300000, guid: 3188939c770436d4da418bb4e9801f6c, type: 3}
+  ButtonInfo: Press Space

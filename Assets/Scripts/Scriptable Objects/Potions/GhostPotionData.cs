@@ -5,7 +5,6 @@ using UnityEngine;
 public class GhostPotionData : PotionsData
 {
     public float countDownTimer;
-    public float powerPoolValue;
     public Transform target;
 
     public override void UsePotion()

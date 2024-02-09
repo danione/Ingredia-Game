@@ -27,10 +27,10 @@ public class GameEventHandler : MonoBehaviour
     public Action GhostDeactivated;
     public Action LaserActivated;
     public Action LaserDeactivated;
-    public Action<float, float> SentLaserStats;
-    public Action<float, float> SentGhostCurrentTimers;
+    public Action<float> SentLaserStats;
+    public Action<float> SentGhostCurrentTimers;
     public Action ShieldDisabled;
-    public Action<float, float> SentShieldStats;
+    public Action<float> SentShieldStats;
     public Action ShieldEnabled;
     public Action TutorialClicked;
     public Action SetTutorialMode;
@@ -81,12 +81,12 @@ public class GameEventHandler : MonoBehaviour
 
     public void SendShieldStats(float duration, float strength = 0)
     {
-        SentShieldStats?.Invoke(duration, strength);
+        SentShieldStats?.Invoke(duration);
     }
 
-    public void SendLaserStats(float timer, float strength)
+    public void SendLaserStats(float timer)
     {
-        SentLaserStats?.Invoke(timer, strength);
+        SentLaserStats?.Invoke(timer);
     }
 
     public void LaserActivate()
@@ -99,9 +99,9 @@ public class GameEventHandler : MonoBehaviour
         LaserDeactivated?.Invoke();
     }
 
-    public void SendGhostCurrentTimers(float timer, float powerPool)
+    public void SendGhostCurrentTimers(float timer)
     {
-        SentGhostCurrentTimers?.Invoke(timer, powerPool);
+        SentGhostCurrentTimers?.Invoke(timer);
     }
 
     public void DestroyEnemy(Vector3 pos)

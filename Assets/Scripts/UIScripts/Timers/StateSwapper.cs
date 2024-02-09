@@ -27,13 +27,11 @@ public class StateSwapper
         {
             timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteEngaged;
             timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteEngaged;
-            timerNotification.currentObject.GetChild(2).gameObject.SetActive(true);
         }
         else
         {
             timerNotification.currentObject.GetChild(0).GetComponent<Image>().sprite = timerNotification.timerDataObject.BorderSpriteIdle;
             timerNotification.currentObject.GetChild(1).GetComponent<Image>().sprite = timerNotification.timerDataObject.IconSpriteIdle;
-            timerNotification.currentObject.GetChild(2).gameObject.SetActive(false);
         }
     }
 }

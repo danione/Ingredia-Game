@@ -7,7 +7,6 @@ public class OverloadSkill
 {
     private OverloadElixirData data;
     private float timer;
-    private float strength;
 
     private LaserBeam laser;
     private bool isFiringLaser = false;
@@ -29,7 +28,7 @@ public class OverloadSkill
         if (!isActive) return;
 
         timer -= Time.deltaTime;
-        if (timer <= 0 || strength <= 0)
+        if (timer <= 0)
         {
             laser.Refresh();
             isActive = false;
@@ -38,14 +37,13 @@ public class OverloadSkill
         }
         else if (isFiringLaser)
         {
-            strength -= Time.deltaTime;
             laser.Execute();
         }
         else
         {
             laser.Refresh();
         }
-        GameEventHandler.Instance.SendLaserStats(timer, strength);
+        GameEventHandler.Instance.SendLaserStats(timer);
     }
 
     public void CreateOrRefresh(OverloadElixirData data)
@@ -53,14 +51,12 @@ public class OverloadSkill
         if (isActive)
         {
             timer += data.durationInSeconds;
-            strength += data.durationInSeconds;
-            GameEventHandler.Instance.SendLaserStats(timer, strength);
+            GameEventHandler.Instance.SendLaserStats(timer);
             return;
         }
 
         this.data = data;
         timer = data.durationInSeconds;
-        strength = data.usageStrengthInSeconds;
         isActive = true;
         GameEventHandler.Instance.LaserActivate();
         // Some basic animation

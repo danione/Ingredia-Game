@@ -6,7 +6,6 @@ public class GhostSkill
 {
     private GhostPotionData data;
     private float countdownTimer; // How long until the potion is destroyed
-    private float powerPool; // How much the entity can be untargetable for
     private bool isTransforming = false;
     private bool isActive = false;
 
@@ -24,12 +23,11 @@ public class GhostSkill
     {
         if (!isActive) return;
 
-        if (countdownTimer > 0 && powerPool > 0)
+        if (countdownTimer > 0)
         {
             countdownTimer -= Time.deltaTime;
             if (isTransforming)
             {
-                powerPool -= Time.deltaTime;
                 Physics.IgnoreLayerCollision(0, 7, true);
                 // ChangeAlpha(0.5f);
             }
@@ -38,7 +36,7 @@ public class GhostSkill
                 Physics.IgnoreLayerCollision(0, 7, false);
                 // ChangeAlpha(1f);
             }
-            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer, powerPool);
+            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer);
         }
         else
         {
@@ -54,14 +52,12 @@ public class GhostSkill
         if (isActive)
         {
             countdownTimer += data.countDownTimer;
-            powerPool += data.powerPoolValue;
-            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer, powerPool);
+            GameEventHandler.Instance.SendGhostCurrentTimers(countdownTimer);
             return;
         }
 
         this.data = data;
         countdownTimer = data.countDownTimer;
-        powerPool = data.powerPoolValue;
         isActive = true;
         GameEventHandler.Instance.GhostActivate();
     }

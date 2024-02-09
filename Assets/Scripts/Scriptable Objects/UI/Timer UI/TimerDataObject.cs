@@ -9,4 +9,5 @@ public class TimerDataObject : ScriptableObject
     public Sprite BorderSpriteEngaged;
     public Sprite IconSpriteIdle;
     public Sprite IconSpriteEngaged;
+    public string ButtonInfo;
 }
