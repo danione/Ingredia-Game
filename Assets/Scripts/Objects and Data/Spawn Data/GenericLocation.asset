@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b3ac8fecac69469ad3b3f2ac9b204, type: 3}
   m_Name: GenericLocation
   m_EditorClassIdentifier: 
-  xLeftMax: 13
-  xRightMax: -13
+  xLeftMax: -13
+  xRightMax: 13
   yLocation: 11

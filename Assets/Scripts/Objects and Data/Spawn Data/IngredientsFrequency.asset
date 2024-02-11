@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f582a41489f904b87d00812441cd76, type: 3}
   m_Name: IngredientsFrequency
   m_EditorClassIdentifier: 
-  minFrequency: 0.01
-  maxFrequency: 1
+  minFrequency: 0.2
+  maxFrequency: 1.2
   spawnChance: 0
   spawnChanceIncrease: 0
   spawnFrequency: 0
