@@ -6,16 +6,18 @@ public class IngredientStage : TutorialStage
 {
     public override void InitiateStage()
     {
-        TutorialManager.instance.TransitionOnly();
+        PlayerEventHandler.Instance.CollectedIngredient += TutorialManager.instance.OnCollectedIngredient;
+        TutorialManager.instance.EnableIngredientsFactory();
     }
 
     public override void NextStage()
     {
-        TutorialManager.instance.EnableIngredientsFactory();
+        PlayerEventHandler.Instance.CollectedIngredient -= TutorialManager.instance.OnCollectedIngredient;
+        TutorialManager.instance.DisableIngredientsFactory();
     }
 
     public override void Reward()
     {
-        TutorialManager.instance.EnableIngredientsFactory();
+        TutorialManager.instance.DisableIngredientsFactory();
     }
 }

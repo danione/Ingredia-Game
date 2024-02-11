@@ -13,10 +13,13 @@ public class CauldronStage : TutorialStage
     public override void NextStage()
     {
         PlayerEventHandler.Instance.EmptiedCauldron -= TutorialManager.instance.OnEmptiedCauldron;
+        TutorialManager.instance.RemoveOneSpawnIngredient();
+        TutorialManager.instance.EnableIngredientsFactory();
     }
 
     public override void Reward()
     {
         PlayerInputHandler.permissions.canEmptyCauldron = true;
+        TutorialManager.instance.EnableIngredientsFactory();
     }
 }

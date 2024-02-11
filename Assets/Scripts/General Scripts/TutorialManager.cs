@@ -10,8 +10,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private float playerMovementThreshold;
     [SerializeField] private float cooldownBetweenStages;
     [SerializeField] private GameObject spawnManager;
+    [SerializeField] private IngredientData athameData;
     [SerializeField] private IngredientData eyeData;
     [SerializeField] private GameObject inventorySlotsUI;
+    [SerializeField] private GameObject hiddenRitualsUI;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
     [SerializeField] private TutorialManagerUI tutorialUiManager;
     [SerializeField] private OverloadElixirData overloadElixirData;
@@ -34,7 +36,7 @@ public class TutorialManager : MonoBehaviour
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
     private GoldenNuggetsFactory goldenNuggets;
-
+    private HiddenRitualsFactory hiddenRituals;
 
     private void Start()
     {
@@ -43,6 +45,7 @@ public class TutorialManager : MonoBehaviour
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
+        hiddenRituals = spawnManager.GetComponent<HiddenRitualsFactory>();
 
         StartCoroutine(WaitForInitialisationOfObjects());
     }
@@ -81,6 +84,7 @@ public class TutorialManager : MonoBehaviour
     public void EnableIngredientsFactory()
     {
         ingredientsFactory.enabled = true;
+        ingredientsFactory.SetSpawning(true);
     }
 
     public void OnEmptiedCauldron()
@@ -89,12 +93,30 @@ public class TutorialManager : MonoBehaviour
 
         emptied = true;
         ExecuteCurrentStage();
+    }
 
+    public void RemoveOneSpawnIngredient()
+    {
+        ingredientsFactory.RemoveRegularIngredient();
+    }
+
+    public void OnCollectedIngredient(IIngredient ingredient, int count)
+    {
+        if(count > 2)
+        {
+            ExecuteCurrentStage();
+        }
+    }
+
+    public void DisableIngredientsFactory()
+    {
+        ingredientsFactory.SetSpawning(false);
     }
 
     public void FirstRitual()
     {
         ingredientsFactory.AppendARegularIngredient(eyeData);
+        ingredientsFactory.AppendARegularIngredient(athameData);
         inventorySlotsUI.SetActive(true);
     }
 
@@ -132,6 +154,12 @@ public class TutorialManager : MonoBehaviour
             ExecuteCurrentStage();
         }
 
+    }
+
+    public void EnableRecipeFactory()
+    {
+        hiddenRituals.enabled = true;
+        hiddenRitualsUI.gameObject.SetActive(true);
     }
 
     public void AddLaserBeam()

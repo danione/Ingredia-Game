@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RitualStage
   m_EditorClassIdentifier: 
   title: First Ritual
-  description: Complete your first ritual. Collect one human eye and one athame and
-    press R.
+  description: Well, ignore that... Let's proceed. Collect athame x1 and eye x1 and
+    press R. That's rituals for you.
   knifeThrowPotion: {fileID: 11400000, guid: 905163cba4777744e843715e75c4aacb, type: 2}

@@ -181,8 +181,10 @@ MonoBehaviour:
   playerMovementThreshold: 3
   cooldownBetweenStages: 3
   spawnManager: {fileID: 1200828991}
+  athameData: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
   eyeData: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
   inventorySlotsUI: {fileID: 305430310}
+  hiddenRitualsUI: {fileID: 1727081470}
   tutorialStages:
   - {fileID: 11400000, guid: 70eb6164c7b36814293e86c17acca27d, type: 2}
   - {fileID: 11400000, guid: 0c18f8d8d0a2b7d479ae609edadbbdfc, type: 2}
@@ -190,6 +192,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a74109e078d22c54598200f11bb6bb03, type: 2}
   - {fileID: 11400000, guid: ff9e51e093a294046bd4e62f65c80c6c, type: 2}
   - {fileID: 11400000, guid: 938e1b55668795e408cd9d957995299a, type: 2}
+  - {fileID: 11400000, guid: 85bdfbc68fb917647adfdd4931bbae39, type: 2}
   - {fileID: 11400000, guid: 894e2ac31f12e8c4ab11d93a3763551e, type: 2}
   - {fileID: 11400000, guid: 89e947ae88375ce41bc7e4f70566cb27, type: 2}
   - {fileID: 11400000, guid: 246e79c83c5e09a46bd9dcb5b52abd8d, type: 2}
@@ -204,7 +207,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 10
+  forwardToStage: 5
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +765,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4019436570665686248, guid: 324972de8fa53e740b83cb4b4e86df62, type: 3}
   m_PrefabInstance: {fileID: 1698322154}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1727081470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1977586242034741603, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+  m_PrefabInstance: {fileID: 2020322517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1863297461
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +896,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 828228017969561031, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977586242034741603, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1029,9 +1041,17 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 4902811685655743840, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
+      propertyPath: offsetX
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902811685655743840, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4902811685655743840, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
+      propertyPath: _ingredients.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
     - target: {fileID: 4902811685655743840, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
       propertyPath: _rareIngredients.Array.size
       value: 0

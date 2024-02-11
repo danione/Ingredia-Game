@@ -14,6 +14,7 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
+    private bool isSpawning;
 
     private HashSet<IngredientData> _highlight = new();
 
@@ -35,6 +36,7 @@ public class IngredientsFactory: MonoBehaviour
     {
         int numberOfPoints = CountXPointsBetween(spawnLocation.xLeftMax, spawnLocation.xRightMax, offsetX);
         xPoints = Enumerable.Range((int) spawnLocation.xLeftMax, numberOfPoints - 1).Select(x => new SpawnPoint(x + offsetX)).ToList();
+        isSpawning = true;
 
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
         StartCoroutine(SpawnIngredients(() => SpawnRandomRareIngredient()));
@@ -44,11 +46,15 @@ public class IngredientsFactory: MonoBehaviour
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
 
+    public void SetSpawning(bool isSpawning)
+    {
+        this.isSpawning = isSpawning;
+    }
+
     private IEnumerator ResetNextPoint()
     {
         while (!GameManager.Instance.gameOver)
         {
-            Debug.Log(spawnPointsOnCooldown.Count);
             if(spawnPointsOnCooldown.Count > 0)
             {
                 SpawnPoint point = spawnPointsOnCooldown.Dequeue();
@@ -97,7 +103,7 @@ public class IngredientsFactory: MonoBehaviour
         // Select a random location at the top of the screen
         SpawnPoint newXPoint = PickNewRandomPointX();
 
-        if (newXPoint == null) return;
+        if (newXPoint == null || list.Count == 0) return;
 
         Vector3 newRandomLocation = new Vector3(newXPoint.xPos, spawnLocation.yLocation, spawnZLocation);
 
@@ -138,7 +144,7 @@ public class IngredientsFactory: MonoBehaviour
         while (!GameManager.Instance.gameOver)
         {
             // Select a random object to spawn
-            spawnMethod();
+            if(isSpawning) spawnMethod();
             yield return new WaitForSeconds(UnityEngine.Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
 
         }
@@ -171,5 +177,14 @@ public class IngredientsFactory: MonoBehaviour
     public void AppendARegularIngredient(IngredientData ingredient)
     {
         _ingredients.Add(ingredient);
+    }
+
+    public void RemoveRegularIngredient()
+    {
+        if(_ingredients.Count == 0) return;
+
+        _ingredients.RemoveAt(_ingredients.Count - 1);
+
+        if(_ingredients.Count == 0) isSpawning = false;
     }
 }

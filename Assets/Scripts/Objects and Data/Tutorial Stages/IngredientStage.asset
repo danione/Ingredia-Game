@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IngredientStage
   m_EditorClassIdentifier: 
   title: Ingredient Spawn Stage
-  description: Ingredients are now spawned from the witches. You need them to complete
-    rituals and defeat enemies.
+  description: Look, ingredients are falling in the sky. Collect some. You can have
+    up to 4 different types in your cauldron.

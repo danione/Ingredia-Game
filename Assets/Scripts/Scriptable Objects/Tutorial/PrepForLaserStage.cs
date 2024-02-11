@@ -9,6 +9,7 @@ public class PrepForLaserStage : TutorialStage
     public override void InitiateStage()
     {
         TutorialManager.instance.LaserPreparation();
+        TutorialManager.instance.DisableIngredientsFactory();
     }
 
     public override void NextStage()
