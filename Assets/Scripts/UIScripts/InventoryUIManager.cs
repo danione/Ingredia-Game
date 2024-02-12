@@ -10,4 +10,14 @@ public class InventoryUIManager : UIObjectsAbstract
         PlayerEventHandler.Instance.CollectedIngredient += OnAdjustInventoryUI;
         PlayerEventHandler.Instance.EmptiedCauldron += RemoveAllInventoryItems;
     }
+
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.CollectedIngredient -= OnAdjustInventoryUI;
+            PlayerEventHandler.Instance.EmptiedCauldron -= RemoveAllInventoryItems;
+        }
+        catch { }
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HiddenRitualsFactory : MonoBehaviour
@@ -25,6 +26,18 @@ public class HiddenRitualsFactory : MonoBehaviour
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         scrollSlipManager = GameManager.Instance.GetComponent<ScrollSlipManager>();
         StartCoroutine(SpawnHiddenRitual());
+    }
+
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.CollectedInvalidIngredient -= OnCollectedWrongIngredient;
+            PlayerEventHandler.Instance.UnlockedRitual -= OnUnlockedRitual;
+            PlayerEventHandler.Instance.CollidedWithRecipe -= OnCollidedWithARecipeObject;
+            PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
+        }
+        catch { }
     }
 
     IEnumerator SpawnHiddenRitual()

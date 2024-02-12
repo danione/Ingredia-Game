@@ -151,8 +151,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void AttemptRitual()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log(inventory.possibleRitual != null);
+            Debug.Log(inventory.possibleRitual.IsAvailable);
+        }
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
+
             if(Constants.Instance.currentRitualRewards >= inventory.possibleRitual.RitualData.potionRewardData.Count)
             {
                 Debug.Log("Current requested ritual reward does not correspond to the actual data");

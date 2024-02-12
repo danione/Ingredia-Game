@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3849607443733397155}
   - component: {fileID: 1339438777771859833}
   - component: {fileID: 545321089583305452}
+  - component: {fileID: 9116866905271593709}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -81,9 +82,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
   - {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
   hiddenRitualsData:
+  - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
   - {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
   - {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
-  - {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
 --- !u!114 &8707694892932605174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +222,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5f198675e49a59d4d8e654d01a3461e4, type: 2}
     isRandomlyGenerated: 1
     upgradedObject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+--- !u!114 &9116866905271593709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594054986871680392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeaa232dd8e9c945b376108aeb9b1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

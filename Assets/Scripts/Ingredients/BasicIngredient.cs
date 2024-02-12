@@ -20,6 +20,16 @@ public class BasicIngredient : FallableObject, IIngredient
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.HighlightedIngredient -= OnHighlight;
+            PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
+        }
+        catch { }
+    }
+
     public void Initialise(IngredientData data, bool isHighlighted = false)
     {
         

@@ -12,6 +12,17 @@ public class HiddenRitualUIManager : UIObjectsAbstract
         PlayerEventHandler.Instance.SetUpUIRitualInterface += OnSetupHiddenRitual;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.CollectedIngredient -= OnAdjustInventoryUIRitual;
+            PlayerEventHandler.Instance.EmptiedCauldron -= RemoveAllInventoryItems;
+            PlayerEventHandler.Instance.SetUpUIRitualInterface -= OnSetupHiddenRitual;
+        }
+        catch { }
+    }
+
 
     public void OnSetupHiddenRitual(RitualScriptableObject ritualData)
     {

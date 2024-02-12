@@ -52,8 +52,12 @@ public class Ritual : IRitual
         if (!isEnabled) return;
 
         isEnabled = false;
-        PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
-        PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;
+        try
+        {
+            PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
+            PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;
+        }
+        catch { }
         OnCauldronEmptied();
     }
 
@@ -99,6 +103,7 @@ public class Ritual : IRitual
         if(currentRitualValues.Count == 0) 
         { 
             isAvailable = true;
+            Debug.Log("Hello");
             CompleteAnEvent();
             PlayerEventHandler.Instance.UnlockARitual(ritualData.name);
         }

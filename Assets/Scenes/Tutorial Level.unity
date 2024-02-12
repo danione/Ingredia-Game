@@ -209,7 +209,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 0
+  forwardToStage: 12
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,18 +696,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: hiddenRitualsData.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: hiddenRitualsData.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: hiddenRitualsData.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1240,18 +1228,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: flameBombAmmo
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: weapons.Array.data[0].weaponName
-      value: Athame
-      objectReference: {fileID: 0}
-    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
-      propertyPath: weapons.Array.data[1].weaponName
-      value: Fireball
-      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player

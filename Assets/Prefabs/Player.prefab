@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 8573449581943901330}
   - component: {fileID: 2654946742434032554}
   - component: {fileID: 2009872931520316262}
-  - component: {fileID: 3162510492656050142}
   - component: {fileID: 5262753251196657516}
   - component: {fileID: 7919030058201532917}
   - component: {fileID: 1721426842820912189}
@@ -495,18 +494,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3162510492656050142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735097968459126054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebeaa232dd8e9c945b376108aeb9b1df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5262753251196657516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,16 +507,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 4
-  flameBombAmmo: 0
-  knifeAmmo: 0
-  maxFlameBombAmmo: 2
-  maxKnifeAmmo: 10
   weapons:
-  - weaponName: Knife
+  - weaponName: Athame
     ammo: 0
     maxAmmo: 10
     objectPosition: 1
-  - weaponName: Bomb
+  - weaponName: Fireball
     ammo: 0
     maxAmmo: 5
     objectPosition: 0

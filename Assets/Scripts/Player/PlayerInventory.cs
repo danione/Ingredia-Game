@@ -25,6 +25,16 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
+            PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
+        }
+        catch { }
+    }
+
     public Weapon GetCurrentlyEquippedWeapon()
     {
        return weapons[currentlyEquippedWeapon];
@@ -76,7 +86,6 @@ public class PlayerInventory: MonoBehaviour
         {
             cauldronContents[ingredient.Data.ingredientName] = 1;
         }
-
         PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);
     }
 
