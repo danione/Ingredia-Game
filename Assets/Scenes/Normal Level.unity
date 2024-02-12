@@ -557,13 +557,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10199534148843310, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_text
+      value: 'Elixirs Division
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 10199534148843310, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5164809470490039580, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180123365464000866, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_Name
+      value: Elixirs Division
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
