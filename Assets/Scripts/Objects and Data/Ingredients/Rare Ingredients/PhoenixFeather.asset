@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PhoenixFeather
   m_EditorClassIdentifier: 
   ingredientName: phoenixFeather
-  sprite: {fileID: 21300000, guid: c831e76b43695fa45bec7acf8e74a2ad, type: 3}
+  sprite: {fileID: 21300000, guid: 9dc88b29b9316e34d83e2408a406ffea, type: 3}
+  highlightedSprite: {fileID: 0}
   spawnChance: 0.1

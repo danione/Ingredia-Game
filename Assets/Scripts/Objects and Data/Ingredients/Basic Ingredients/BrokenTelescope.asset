@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BrokenTelescope
   m_EditorClassIdentifier: 
   ingredientName: brokenTelescope
-  sprite: {fileID: 21300000, guid: 741fb65ca62a5c14d8731252cd812593, type: 3}
+  sprite: {fileID: 21300000, guid: 847d756eaaef0974ea101afa03700a20, type: 3}
   highlightedSprite: {fileID: 21300000, guid: ab6368c8f9d7d7e4eb12d360002437d9, type: 3}
   spawnChance: 0

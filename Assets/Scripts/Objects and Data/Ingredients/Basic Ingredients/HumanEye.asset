@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: HumanEye
   m_EditorClassIdentifier: 
   ingredientName: humanEye
-  sprite: {fileID: 21300000, guid: fda4e780e5a17834c85e326da9fd2ad8, type: 3}
+  sprite: {fileID: 21300000, guid: 04db6954f50f7bd44a2aa30e42032cdf, type: 3}
+  highlightedSprite: {fileID: 0}
   spawnChance: 0

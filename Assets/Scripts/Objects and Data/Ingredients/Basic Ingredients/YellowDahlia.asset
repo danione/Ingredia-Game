@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: YellowDahlia
   m_EditorClassIdentifier: 
   ingredientName: yellowDahlia
-  sprite: {fileID: 21300000, guid: 6312dbc330dda1b4b8f5fb66e4880e47, type: 3}
+  sprite: {fileID: 21300000, guid: 4441e0489f9c82d47a19be395256d9da, type: 3}
+  highlightedSprite: {fileID: 0}
   spawnChance: 0

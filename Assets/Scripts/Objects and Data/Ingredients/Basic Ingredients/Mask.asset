@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Mask
   m_EditorClassIdentifier: 
   ingredientName: mask
-  sprite: {fileID: 21300000, guid: cc980f88d72d81948b08296d138ed19b, type: 3}
+  sprite: {fileID: 21300000, guid: e715bd258d11d8941bb0f45ca7647a32, type: 3}
+  highlightedSprite: {fileID: 0}
   spawnChance: 0

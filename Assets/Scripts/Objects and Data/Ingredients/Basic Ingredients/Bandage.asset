@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bandage
   m_EditorClassIdentifier: 
   ingredientName: bandage
-  sprite: {fileID: 21300000, guid: 60c9f61c4529bb346b6a2c6c4036effd, type: 3}
+  sprite: {fileID: 21300000, guid: 578b2feb26efa4b4ea1f014720556c7c, type: 3}
   highlightedSprite: {fileID: 21300000, guid: 0cab69ca3787fb8468f5043956e686f3, type: 3}
   spawnChance: 0
