@@ -6,6 +6,7 @@ public class RecipeStage : TutorialStage
 {
     public override void InitiateStage()
     {
+        TutorialManager.instance.EnableIngredientsFactory();
         GameEventHandler.Instance.CompletedRecipe += TutorialManager.instance.OnCompletedRecipe;
     }
 

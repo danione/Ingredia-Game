@@ -296,6 +296,6 @@ MonoBehaviour:
   - Enemy
   - Recipe
   - Dangerous Object
-  direction: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   strength: 0
   areaOfEffect: 8

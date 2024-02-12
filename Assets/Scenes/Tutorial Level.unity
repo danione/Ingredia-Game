@@ -209,7 +209,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 6
+  forwardToStage: 0
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3316917049433713983, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3516864821815350334, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
