@@ -9,6 +9,6 @@ public class FireballAreaUpgrade : UpgradeData
 
     public override void ApplyUpgrade(GameObject obj)
     {
-        obj.GetComponent<FireBombProjectile>().SetAreaOfEffect(areaIncreaseAmount);
+        obj.GetComponent<FireballProjectile>().SetAreaOfEffect(areaIncreaseAmount);
     }
 }

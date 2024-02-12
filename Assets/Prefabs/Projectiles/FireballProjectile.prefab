@@ -198,11 +198,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8033629693610461425}
   - component: {fileID: 6965932045675515799}
-  - component: {fileID: 5401592238721276568}
   - component: {fileID: 3609126885629832171}
   - component: {fileID: 7908962474782771065}
+  - component: {fileID: 5324218901782306886}
   m_Layer: 0
-  m_Name: FireBombProjectile
+  m_Name: FireballProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,29 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5401592238721276568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697621482606319194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f96c5d4c64cd5418aff57d5dc018ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallSpeed: 10
-  target:
-  - Ingredient
-  - Enemy
-  - Dangerous Object
-  - Recipe
-  - Projectile
-  - Player
-  direction: {x: 0, y: 1, z: 0}
-  strength: 1
-  areaOfEffect: 4
 --- !u!114 &3609126885629832171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +276,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &5324218901782306886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697621482606319194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f78bdacd7440947938fe8d4160b3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 10
+  target:
+  - Player
+  - Projectile
+  - Ingredient
+  - Enemy
+  - Recipe
+  - Dangerous Object
+  direction: {x: 0, y: 0, z: 0}
+  strength: 0
+  areaOfEffect: 8
