@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4078039904021345733}
   - component: {fileID: 2587364956084926774}
   m_Layer: 0
-  m_Name: KnifeProjectile
+  m_Name: AthameProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

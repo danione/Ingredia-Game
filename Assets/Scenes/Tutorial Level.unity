@@ -1244,6 +1244,14 @@ PrefabInstance:
       propertyPath: flameBombAmmo
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[0].weaponName
+      value: Athame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[1].weaponName
+      value: Fireball
+      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player

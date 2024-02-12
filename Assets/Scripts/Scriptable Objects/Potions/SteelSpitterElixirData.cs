@@ -8,6 +8,6 @@ public class SteelSpitterElixirData : PotionsData
 
     public override void UsePotion()
     {
-        PlayerController.Instance.inventory.AddAmmo("Knife", amount);
+        PlayerController.Instance.inventory.AddAmmo("Athame", amount);
     }
 }

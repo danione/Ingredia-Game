@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KnifeProjectile : SimpleProjectile
+public class AthameProjectile : SimpleProjectile
 {
     public override void HandleCollision(Collider other)
     {
