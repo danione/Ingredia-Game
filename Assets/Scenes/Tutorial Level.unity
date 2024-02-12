@@ -183,6 +183,7 @@ MonoBehaviour:
   spawnManager: {fileID: 1200828991}
   athameData: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
   eyeData: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+  fireData: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
   inventorySlotsUI: {fileID: 305430310}
   hiddenRitualsUI: {fileID: 1727081470}
   tutorialStages:
@@ -193,6 +194,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff9e51e093a294046bd4e62f65c80c6c, type: 2}
   - {fileID: 11400000, guid: 938e1b55668795e408cd9d957995299a, type: 2}
   - {fileID: 11400000, guid: 85bdfbc68fb917647adfdd4931bbae39, type: 2}
+  - {fileID: 11400000, guid: 26def7141b77cba4cb9b71057c8e2993, type: 2}
   - {fileID: 11400000, guid: 894e2ac31f12e8c4ab11d93a3763551e, type: 2}
   - {fileID: 11400000, guid: 89e947ae88375ce41bc7e4f70566cb27, type: 2}
   - {fileID: 11400000, guid: 246e79c83c5e09a46bd9dcb5b52abd8d, type: 2}
@@ -207,7 +209,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 5
+  forwardToStage: 6
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +696,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: hiddenRitualsData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: hiddenRitualsData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: hiddenRitualsData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager

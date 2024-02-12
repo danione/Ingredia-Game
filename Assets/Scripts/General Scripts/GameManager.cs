@@ -9,6 +9,7 @@ public class GameManager: MonoBehaviour
     [NonSerialized] public ScrollSlipManager SlipManager;
     [NonSerialized] public UpgradesManager UpgradesManager;
     [NonSerialized] public bool gameOver = false;
+    [NonSerialized] public bool tutorialMode = false;
 
     private void Awake()
     {

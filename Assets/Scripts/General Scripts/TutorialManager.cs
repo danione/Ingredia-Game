@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject spawnManager;
     [SerializeField] private IngredientData athameData;
     [SerializeField] private IngredientData eyeData;
+    [SerializeField] private IngredientData fireData;
     [SerializeField] private GameObject inventorySlotsUI;
     [SerializeField] private GameObject hiddenRitualsUI;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
@@ -46,8 +47,16 @@ public class TutorialManager : MonoBehaviour
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
         hiddenRituals = spawnManager.GetComponent<HiddenRitualsFactory>();
-
         StartCoroutine(WaitForInitialisationOfObjects());
+        GameManager.Instance.tutorialMode = true;
+        
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.SetsNormalMode();
+        GameManager.Instance.tutorialMode = false;
+
     }
 
     private IEnumerator WaitForInitialisationOfObjects()
@@ -64,6 +73,21 @@ public class TutorialManager : MonoBehaviour
         currentStage = forwardToStage;
 
         InitialiseNextStage();
+    }
+
+    public void OnCompletedRecipe()
+    {
+        ExecuteCurrentStage();
+    }
+
+    public void EnableFire()
+    {
+        ingredientsFactory.AppendARegularIngredient(fireData);
+    }
+
+    public void OnCollidedWithRecipe()
+    {
+        ExecuteCurrentStage();
     }
 
     public void OnPlayerMoved(float direction)
@@ -153,13 +177,17 @@ public class TutorialManager : MonoBehaviour
         {
             ExecuteCurrentStage();
         }
-
     }
 
     public void EnableRecipeFactory()
     {
         hiddenRituals.enabled = true;
         hiddenRitualsUI.gameObject.SetActive(true);
+    }
+
+    public void DisableRecipeFactory()
+    {
+        hiddenRituals.SetShouldGenerate(false);
     }
 
     public void AddLaserBeam()

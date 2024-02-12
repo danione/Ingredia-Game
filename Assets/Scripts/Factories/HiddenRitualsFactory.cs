@@ -12,6 +12,7 @@ public class HiddenRitualsFactory : MonoBehaviour
     private RitualManager manager;
     private string randomRitual;
     private float currentSpawnChance;
+    private bool shouldGenerate = true;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +40,14 @@ public class HiddenRitualsFactory : MonoBehaviour
         }
     }
 
+    public void SetShouldGenerate(bool newCommand)
+    {
+        shouldGenerate = newCommand;
+    }
+
     private void GenerateNewRitual()
     {
-        if (!manager.HasLockedHiddenRituals() || randomRitual != null) { return; } 
+        if (!manager.HasLockedHiddenRituals() || randomRitual != null || shouldGenerate == false) { return; } 
         
         if(Random.Range(0f, 1f) < currentSpawnChance)
         {
@@ -58,7 +64,14 @@ public class HiddenRitualsFactory : MonoBehaviour
     private void OnCollidedWithARecipeObject()
     {
         PlayerEventHandler.Instance.EmptyCauldron();
-        randomRitual = manager.GetRandomLockedRitual();
+        if (GameManager.Instance.tutorialMode)
+        {
+            randomRitual = manager.GetFirstLockedRitual();
+        }
+        else
+        {
+            randomRitual = manager.GetRandomLockedRitual();
+        }
         manager.UnlockRitual(randomRitual);
         PlayerEventHandler.Instance.SetUpHiddenRitual(manager.GetRitualScriptableObject(randomRitual));
     }
@@ -78,9 +91,11 @@ public class HiddenRitualsFactory : MonoBehaviour
         {
             RitualScriptableObject ritualScriptableObject = manager.AddRitualToUnlocked(randomRitual);
             scrollSlipManager.AddRitual(ritualScriptableObject);
-            PlayerController.Instance.inventory.AddPotion(ritualScriptableObject.potionRewardData[0]);
+            if(!GameManager.Instance.tutorialMode)
+                PlayerController.Instance.inventory.AddPotion(ritualScriptableObject.potionRewardData[0]);
             randomRitual = null;
             PlayerEventHandler.Instance.EmptyCauldron();
+            GameEventHandler.Instance.CompleteRecipe();
         } 
         else OnCollectedWrongIngredient(ritual);
     }

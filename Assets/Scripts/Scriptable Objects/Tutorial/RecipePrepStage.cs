@@ -8,15 +8,18 @@ public class RecipePrepStage : TutorialStage
     {
         TutorialManager.instance.DisableIngredientsFactory();
         TutorialManager.instance.EnableRecipeFactory();
+        PlayerEventHandler.Instance.CollidedWithRecipe += TutorialManager.instance.OnCollidedWithRecipe;
     }
 
     public override void NextStage()
     {
-
+        PlayerEventHandler.Instance.CollidedWithRecipe -= TutorialManager.instance.OnCollidedWithRecipe;
+        TutorialManager.instance.EnableFire();
     }
 
     public override void Reward()
     {
         TutorialManager.instance.EnableRecipeFactory();
+        TutorialManager.instance.EnableFire();
     }
 }

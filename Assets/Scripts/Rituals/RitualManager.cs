@@ -37,6 +37,15 @@ public class RitualManager : MonoBehaviour
         return isInHiddenRitualsArray && isInLockedRitualsSet;
     }
 
+    public string GetFirstLockedRitual()
+    {
+        if (!HasLockedHiddenRituals()) return null;
+
+        string[] asArray = lockedHiddenRituals.ToArray();
+        string firstElement = asArray[0];
+        return firstElement;
+    }
+
     // The ritual won't be selected, this is considered permanent
     // unlocking
     public RitualScriptableObject AddRitualToUnlocked(string newRitual)

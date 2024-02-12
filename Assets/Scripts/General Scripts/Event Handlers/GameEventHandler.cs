@@ -37,11 +37,17 @@ public class GameEventHandler : MonoBehaviour
     public Action SetNormalMode;
     public Action UpdatedUI;
     public Action TriggeredGameOver;
+    public Action CompletedRecipe;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void CompleteRecipe()
+    {
+        CompletedRecipe?.Invoke();
     }
 
     public void TriggerGameOver()
