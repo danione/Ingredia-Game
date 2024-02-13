@@ -9,7 +9,8 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] private List<Weapon> weapons;
     private int currentlyEquippedWeapon = 0;
 
-    [SerializeField] public int gold;
+    [SerializeField] public int gold = 0;
+    [SerializeField] public int sophistication = 0;
 
     private Dictionary<string,int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
@@ -109,6 +110,22 @@ public class PlayerInventory: MonoBehaviour
     {
         powerupManager.UsePotion(slot);
         InputEventHandler.instance.UsePotion();
+    }
+
+    public bool AddSophistication(int amount)
+    {
+        if(amount + sophistication > 0)
+        {
+            sophistication += amount;
+            return true;
+        }
+
+        return false;
+    }
+
+    public int GetSophistication()
+    {
+        return sophistication;
     }
 }
 [System.Serializable]

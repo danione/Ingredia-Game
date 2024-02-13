@@ -56,20 +56,12 @@ MonoBehaviour:
     prefab: {fileID: 0}
   _ingredients:
   - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
-  - {fileID: 11400000, guid: d95c24a940e966f4badb6dbb27900099, type: 2}
-  - {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
-  - {fileID: 11400000, guid: 8a42ac0841366504b860510f8937d54d, type: 2}
-  - {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
-  - {fileID: 11400000, guid: 7df2079410562364c8198029a4721f4c, type: 2}
-  - {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
   - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
-  _rareIngredients:
-  - {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
   spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
   prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
+  offsetX: 1
 --- !u!114 &4699198157692283021
 MonoBehaviour:
   m_ObjectHideFlags: 0

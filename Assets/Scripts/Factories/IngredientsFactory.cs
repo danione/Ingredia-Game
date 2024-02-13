@@ -10,7 +10,6 @@ public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private ObjectsSpawner spawner;
     [SerializeField] private List<IngredientData> _ingredients;
-    [SerializeField] private List<IngredientData> _rareIngredients;
     [SerializeField] private SpawnLocationData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
@@ -39,7 +38,6 @@ public class IngredientsFactory: MonoBehaviour
         isSpawning = true;
 
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
-        StartCoroutine(SpawnIngredients(() => SpawnRandomRareIngredient()));
         StartCoroutine(ResetNextPoint());
 
         GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
@@ -85,17 +83,6 @@ public class IngredientsFactory: MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
         // Select a random location at the top of the screen
         HandleIngredientSpawn(_ingredients, randomIndex, pos);
-    }
-
-    private void SpawnRandomRareIngredient()
-    {
-        if (_rareIngredients.Count == 0) return;
-        float randomChance = UnityEngine.Random.Range(0f, 1f);
-        int randomIndex = UnityEngine.Random.Range(0, _rareIngredients.Count);
-        if(randomChance < _rareIngredients[randomIndex].spawnChance)
-        {
-            HandleIngredientSpawn(_rareIngredients,randomIndex);
-        }
     }
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
