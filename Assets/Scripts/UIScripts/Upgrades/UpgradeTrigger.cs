@@ -46,7 +46,7 @@ public class UpgradeTrigger : MonoBehaviour
             }
             else
             {
-                Debug.Log("Requires: + " + string.Join(", ", requirements.Select(obj => obj.upgradeName).ToArray()));
+                Debug.Log("Requires: " + string.Join(", ", requirements.Select(obj => obj.upgradeName).ToArray()));
             }
         }
     }
@@ -61,5 +61,10 @@ public class UpgradeTrigger : MonoBehaviour
         {
             requirements.Remove(upgrade);
         }
+    }
+
+    public string GetUpgradeName()
+    {
+        return upgradeInformation.upgradeName;
     }
 }

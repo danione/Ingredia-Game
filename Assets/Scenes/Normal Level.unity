@@ -123,32 +123,66 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &306820137 stripped
+--- !u!1 &510638254
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6554699446411929873, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-  m_PrefabInstance: {fileID: 3278442347076411136}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &306820142
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510638257}
+  - component: {fileID: 510638256}
+  - component: {fileID: 510638255}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &510638255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306820137}
+  m_GameObject: {fileID: 510638254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverBehaviourType: 0
-  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
-  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
-  hoverBehaviour_Image: {fileID: 0}
-  hoverBehaviour_Sprite_Exit: {fileID: 0}
-  hoverBehaviour_Sprite_Enter: {fileID: 0}
-  hoverBehaviour_Move: 0
-  hoverBehaviour_Move_Amount: {x: 0, y: 0}
-  triggerMouseOutFuncOnClick: 0
+--- !u!114 &510638256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510638254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &510638257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510638254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541188250
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,17 +225,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc19cc2aa7a4b6d42819d03c683ed886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &596683717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
-  m_PrefabInstance: {fileID: 3808894078042525723}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32aff27dc457c23479ca1a468c389339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &672665152
@@ -583,43 +606,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 10199534148843310, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_text
-      value: 'Elixirs Division
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 10199534148843310, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 521646427760795176, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1234690677025959441, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -200
-      objectReference: {fileID: 0}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2495007593292908398, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2778767059483523560, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164809470490039580, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - target: {fileID: 4095549615632604084, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6180123365464000866, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_Name
-      value: Elixirs Division
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
@@ -701,14 +694,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4257018402903894129, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - target: {fileID: 7035736489650725174, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6554699446411929873, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 306820142}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
 --- !u!1001 &3323295984940229352
 PrefabInstance:
@@ -758,20 +751,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1695945991005713638, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: ingredientsFactory
-      value: 
-      objectReference: {fileID: 596683717}
-    - target: {fileID: 3849607443733397155, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: availableScrollSlips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 545321089583305452, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1019,3 +1003,4 @@ SceneRoots:
   - {fileID: 672665155}
   - {fileID: 541188251}
   - {fileID: 3278442347076411136}
+  - {fileID: 510638257}

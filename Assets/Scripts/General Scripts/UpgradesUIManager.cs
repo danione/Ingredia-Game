@@ -1,9 +1,8 @@
 using CodeMonkey.Utils;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 public class UpgradesUIManager : MonoBehaviour
 {
-
     [SerializeField] private Transform upgradesMenu;
     [SerializeField] private Transform departmentContainer;
 
@@ -13,10 +12,19 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
-
         Initialise();
-        
+    }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.UpgradesMenuOpen += OnUpgradesMenuOpened;
+            PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
+            PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
+            GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        }
+        catch { }
     }
 
     /*
@@ -26,14 +34,16 @@ public class UpgradesUIManager : MonoBehaviour
      */
     private void Initialise()
     {
-        Button_UI[] buttons = departmentContainer.GetComponentsInChildren<Button_UI>();
+        Button_UI[] buttons = departmentContainer.GetComponentsInChildren<Button_UI>(includeInactive: true);
 
         // Iterate through each button and add an onClick event listener
         foreach (Button_UI button in buttons)
         {
+            UpgradeTrigger trigger = button.GetComponent<UpgradeTrigger>();
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = trigger.GetUpgradeName();
             button.ClickFunc = () => {
                 // Code to execute when the button is clicked
-                button.GetComponent<UpgradeTrigger>().Upgrade(button);
+                trigger.Upgrade(button);
             };
         }
     }
@@ -45,6 +55,8 @@ public class UpgradesUIManager : MonoBehaviour
 
     private void OnUpgradesMenuOpened()
     {
+        if (upgradesMenu == null) return;
+
         if (upgradesMenu.gameObject.activeSelf == true)
         {
             GameManager.Instance.ResumeGame();
