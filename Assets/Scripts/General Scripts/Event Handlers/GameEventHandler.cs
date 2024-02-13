@@ -38,11 +38,17 @@ public class GameEventHandler : MonoBehaviour
     public Action UpdatedUI;
     public Action TriggeredGameOver;
     public Action CompletedRecipe;
+    public Action<UpgradeData> UpgradeTriggered;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void UpgradeTrigger(UpgradeData data)
+    {
+        UpgradeTriggered?.Invoke(data);
     }
 
     public void CompleteRecipe()

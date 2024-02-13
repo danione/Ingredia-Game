@@ -1,22 +1,11 @@
-using System.Collections.Generic;
-using TMPro;
+using CodeMonkey.Utils;
 using UnityEngine;
+using UnityEngine.UIElements;
 public class UpgradesUIManager : MonoBehaviour
 {
 
     [SerializeField] private Transform upgradesMenu;
-    [SerializeField] private int maxDisplayUpgrades;
-    [SerializeField] private TextMeshProUGUI goldField;
-    [SerializeField] private UIUpgradeClass tutorialClass;
-
-    private List<UIUpgradeClass> rightSideUpgrades = new();
-    [SerializeField] private List<UnityEngine.UI.Button> rightsideButtons = new();
-
-    private List<UIUpgradeClass> availableUpgrades = new();
-    [SerializeField] private List<UnityEngine.UI.Button> leftsideButtons = new();
-
-    private List<UIUpgradeClass> randomChosenUpgrades = new();
-    private int countChosenUpgrades;
+    [SerializeField] private Transform departmentContainer;
 
     private void Start()
     {
@@ -24,15 +13,34 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
-        HookUpgradesWithButtons(rightsideButtons, GameManager.Instance.UpgradesManager.rightSideUpgrades, GameManager.Instance.UpgradesManager.rightSideUpgrades.Count);
-        countChosenUpgrades = 0;
+
+        Initialise();
+        
+
+    }
+
+    /*
+     * Sets up buttons
+     * Foreach button within every department container, hook up the click function
+     * to the ApplyUpgrade function of every UpgradeData object
+     */
+    private void Initialise()
+    {
+        Button_UI[] buttons = departmentContainer.GetComponentsInChildren<Button_UI>();
+
+        // Iterate through each button and add an onClick event listener
+        foreach (Button_UI button in buttons)
+        {
+            button.ClickFunc = () => {
+                // Code to execute when the button is clicked
+                button.GetComponent<UpgradeTrigger>().Upgrade(button);
+            };
+        }
     }
 
     private void OnSetTutorialMode()
     {
-        randomChosenUpgrades.Add(tutorialClass);
-        countChosenUpgrades++;
-        HookUpgradesWithButtons(leftsideButtons, randomChosenUpgrades, countChosenUpgrades);
+        // Tutorial Mode
     }
 
     private void OnUpgradesMenuOpened()
@@ -44,8 +52,6 @@ public class UpgradesUIManager : MonoBehaviour
         else
         {
             GameManager.Instance.PauseGame();
-            ChooseRandomUpgrades();
-            UpdateScreen();
         }
 
         upgradesMenu.gameObject.SetActive(!upgradesMenu.gameObject.activeSelf);
@@ -54,84 +60,5 @@ public class UpgradesUIManager : MonoBehaviour
     private void OnUpgradesMenuClosed()
     {
         upgradesMenu.gameObject.SetActive(false);
-    }
-
-    private void ChooseRandomUpgrades()
-    {
-        rightSideUpgrades = GameManager.Instance.UpgradesManager.rightSideUpgrades;
-        availableUpgrades = GameManager.Instance.UpgradesManager.availableUpgrades;
-
-        if (countChosenUpgrades > 0 || availableUpgrades.Count == 0) return;
-
-        ShuffleListOfUpgrades(availableUpgrades);
-
-        randomChosenUpgrades.Clear();
-
-        for (int i = 0; i < maxDisplayUpgrades; i++)
-        {
-            if (i >= availableUpgrades.Count) break;
-            randomChosenUpgrades.Add(availableUpgrades[i]);
-            countChosenUpgrades++;
-        }
-
-        randomChosenUpgrades.Sort((x, y) => x.MinCost.CompareTo(y.MinCost));
-
-        HookUpgradesWithButtons(leftsideButtons, randomChosenUpgrades, countChosenUpgrades);
-    }
-
-    private void HookUpgradesWithButtons(List<UnityEngine.UI.Button> buttonList, List<UIUpgradeClass> upgradesList, int threshold)
-    {
-        for (int i = 0; i < buttonList.Count; i++)
-        {
-            if (i >= threshold) return;
-            int currentIndex = i;
-            buttonList[i].onClick.RemoveAllListeners();
-            buttonList[i].onClick.AddListener(() => OnBuyClicked(currentIndex, upgradesList));
-            upgradesList[i].Reset(buttonList[i].transform.parent.transform);
-        }
-    }
-
-    private void OnBuyClicked(int index, List<UIUpgradeClass> upgradesList)
-    {
-        if(PlayerController.Instance.inventory.gold < upgradesList[index].MinCost) return;
-
-        PlayerController.Instance.inventory.AddGold(-upgradesList[index].MinCost);
-        upgradesList[index].BuyUpgrade();
-        UpdateScreen();
-
-        if(upgradesList == randomChosenUpgrades)
-            countChosenUpgrades--;
-    }
-
-    void ShuffleListOfUpgrades<T>(List<T> array)
-    {
-        int numItems = array.Count;
-        for (int i = numItems - 1; i > 0; i--)
-        {
-            int j = UnityEngine.Random.Range(0, i + 1);
-            T temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-    }
-
-    private void UpdateScreen()
-    {
-        foreach (var upgrade in rightSideUpgrades)
-        {
-            upgrade?.Upgrade();
-        }
-
-        foreach (var upgrade in randomChosenUpgrades)
-        {
-            upgrade?.Upgrade();
-        }
-
-        UpdateGoldUI();
-    }
-
-    private void UpdateGoldUI()
-    {
-        goldField.text = PlayerController.Instance.inventory.gold.ToString();
     }
 }

@@ -7,7 +7,6 @@ public class GameManager: MonoBehaviour
 {
     public static GameManager Instance;
     [NonSerialized] public ScrollSlipManager SlipManager;
-    [NonSerialized] public UpgradesManager UpgradesManager;
     [NonSerialized] public bool gameOver = false;
     [NonSerialized] public bool tutorialMode = false;
 
@@ -19,7 +18,6 @@ public class GameManager: MonoBehaviour
             Destroy(gameObject);
 
         SlipManager = GetComponent<ScrollSlipManager>();
-        UpgradesManager = GetComponent<UpgradesManager>();
 
 
         DontDestroyOnLoad(gameObject);
