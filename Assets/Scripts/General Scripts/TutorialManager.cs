@@ -144,7 +144,7 @@ public class TutorialManager : MonoBehaviour
         inventorySlotsUI.SetActive(true);
     }
 
-    public void OnPerformedFirstRitual()
+    public void OnPerformedFirstRitual(IRitual ritual)
     {
         if(performed) return;
 

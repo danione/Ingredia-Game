@@ -18,7 +18,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action CollidedWithRecipe;
     public event Action<string, int, int> UpdatedPotions;
     public event Action OpenedScrollsMenu;
-    public event Action PerformedRitual;
+    public event Action<IRitual> PerformedRitual;
     public event Action FiredWeapon;
     public event Action HealthAdjusted;
     public event Action EscapeMenuOpened;
@@ -127,9 +127,9 @@ public class PlayerEventHandler : MonoBehaviour
 
     }
 
-    public void RitualHasBeenPerformed()
+    public void RitualHasBeenPerformed(IRitual ritual)
     {
-        PerformedRitual?.Invoke();
+        PerformedRitual?.Invoke(ritual);
     }
 
     public void AdjustHealth()

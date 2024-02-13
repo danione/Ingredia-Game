@@ -24,6 +24,8 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
+        PlayerEventHandler.Instance.PerformedRitual += OnPerformedRitual;
+
     }
 
     private void OnDestroy()
@@ -44,6 +46,12 @@ public class PlayerInventory: MonoBehaviour
     public void SwitchEquippedWeapon()
     {
         currentlyEquippedWeapon = (currentlyEquippedWeapon + 1) % weapons.Count;
+    }
+
+    private void OnPerformedRitual(IRitual ritual)
+    {
+        AddSophistication(ritual.RitualData.sophisticationReward);
+        Debug.Log(sophistication);
     }
 
     public void SubtractCurrentWeaponAmmo(int amount)
