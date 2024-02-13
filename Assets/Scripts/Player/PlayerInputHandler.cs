@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent( typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
@@ -151,11 +149,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void AttemptRitual()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log(inventory.possibleRitual != null);
-            Debug.Log(inventory.possibleRitual.IsAvailable);
-        }
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
 

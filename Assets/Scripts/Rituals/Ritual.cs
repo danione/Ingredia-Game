@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 public class Ritual : IRitual
 {
@@ -14,29 +13,16 @@ public class Ritual : IRitual
     public RitualScriptableObject RitualData { get => ritualData; set { ritualData = value; } }
 
     protected Dictionary<IngredientData, int> currentRitualValues;
-    protected readonly Dictionary<IngredientData, int> defaultRitualValues;
-
-    public float Difficulty { get; private set; }
-
+    protected Dictionary<IngredientData, int> defaultRitualValues;
 
     public Ritual(RitualScriptableObject data)
     {
         currentRitualValues = new();
         defaultRitualValues = new();
         ritualData = data;
-        currentRitualValues.AddRange(GetRitualStages());
-        defaultRitualValues.AddRange(GetRitualStages());
+        AddRange(GetRitualStages(), currentRitualValues);
+        AddRange(GetRitualStages(), defaultRitualValues);
         isEnabled = false;
-        Difficulty = CalculateDifficulty();
-    }
-
-    private float CalculateDifficulty()
-    {
-        float countOfItems = currentRitualValues.Values.Count * Constants.Instance.DifficultyModifiers.CountWeight;
-        float quantityOfItems = currentRitualValues.Values.Sum() * Constants.Instance.DifficultyModifiers.QuantityWeight;
-        //  float spawnTimeOfItems = currentRitualValues.Keys.Sum(key => key.spawnChance == 0 ? (1.0f / IngredientsFactory.IngredientsCount) : key.spawnChance);
-        // return countOfItems + quantityOfItems + spawnTimeOfItems;
-        return countOfItems + quantityOfItems;
     }
 
     public void EnableRitual()
@@ -72,12 +58,23 @@ public class Ritual : IRitual
         PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
     }
 
+    private void AddRange(Dictionary<IngredientData, int> source, Dictionary<IngredientData, int> destination)
+    {
+        foreach (var kvp in source)
+        {
+            if (!destination.ContainsKey(kvp.Key))
+            {
+                // Add the key-value pair to the destination dictionary
+                destination.Add(kvp.Key, kvp.Value);
+            }
+        }
+    }
+
     public void OnCauldronEmptied()
     {
         isAvailable = false;
         currentRitualValues.Clear();
-        currentRitualValues.AddRange(defaultRitualValues);
-        Difficulty = CalculateDifficulty();
+        AddRange(defaultRitualValues, currentRitualValues);
     }
 
     public void OnIngredientCollected(IIngredient ingredient, int amount)
@@ -89,21 +86,18 @@ public class Ritual : IRitual
             isAvailable = false;
             currentRitualValues.Clear();
             PlayerEventHandler.Instance.CollectedWrongIngredient(ritualData.name);
-            Difficulty = float.PositiveInfinity;
             return;
         }
 
         if (currentRitualValues[ingredient.Data] - amount == 0)
         {
             currentRitualValues.Remove(ingredient.Data);
-            Difficulty = CalculateDifficulty();
             GameEventHandler.Instance.CollectExistingIngredient(this);
         }
 
         if(currentRitualValues.Count == 0) 
         { 
             isAvailable = true;
-            Debug.Log("Hello");
             CompleteAnEvent();
             PlayerEventHandler.Instance.UnlockARitual(ritualData.name);
         }

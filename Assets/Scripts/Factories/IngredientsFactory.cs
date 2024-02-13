@@ -15,8 +15,6 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private Product prefab;
     private bool isSpawning;
 
-    private HashSet<IngredientData> _highlight = new();
-
     private List<SpawnPoint> xPoints = new();
     private Queue<SpawnPoint> spawnPointsOnCooldown = new ();
     [SerializeField] private float offsetX;
@@ -40,7 +38,6 @@ public class IngredientsFactory: MonoBehaviour
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
         StartCoroutine(ResetNextPoint());
 
-       // GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
 
@@ -82,9 +79,8 @@ public class IngredientsFactory: MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
         // Select a random location at the top of the screen
-        Product product = spawner.GetProduct(pos, _ingredients[randomIndex]);
+        spawner.GetProduct(pos, _ingredients[randomIndex]);
 
-        //HandleIngredientSpawn(_ingredients, randomIndex, pos);
     }
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
@@ -96,15 +92,7 @@ public class IngredientsFactory: MonoBehaviour
 
         Vector3 newRandomLocation = new Vector3(newXPoint.xPos, spawnLocation.yLocation, spawnZLocation);
 
-        Product product = spawner.GetProduct(newRandomLocation, list[randomIndex]);
-
-        if (product == null) return;
-        /*
-
-        if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
-        {
-            product.GetComponent<BasicIngredient>().Highlight();
-        */
+        spawner.GetProduct(newRandomLocation, list[randomIndex]);
     }
 
     private SpawnPoint PickNewRandomPointX()
@@ -117,17 +105,6 @@ public class IngredientsFactory: MonoBehaviour
         spawnPointsOnCooldown.Enqueue(newXPoint);
         newXPoint.isInQueue = true;
         return newXPoint;
-    }
-
-    private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex, Vector3 pos)
-    {
-
-        /*
-        if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
-        {
-            product.GetComponent<BasicIngredient>().Highlight();
-        }
-        */
     }
 
     // Spawns ingredients at random times
@@ -147,25 +124,7 @@ public class IngredientsFactory: MonoBehaviour
     {
         return _ingredients.Count;
     }
-    /*
-private void OnActivateHelper()
-{
-    PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmpty;
-    GameEventHandler.Instance.CollectedExistingIngredient += OnCollectExistingIngredient;
-}
-
-
-private void OnCauldronEmpty()
-{
-    _highlight.Clear();
-}
-
-private void OnCollectExistingIngredient(Ritual ritual)
-{
-    _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
-}*/
-
-
+    
     // Should be used for tutorial only
     public void AppendARegularIngredient(IngredientData ingredient)
     {
