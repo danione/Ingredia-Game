@@ -71,6 +71,8 @@ public class UpgradesUIManager : MonoBehaviour
 
     private void OnUpgradesMenuClosed()
     {
+        if (upgradesMenu == null) return;
+
         upgradesMenu.gameObject.SetActive(false);
     }
 }

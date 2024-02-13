@@ -10710,7 +10710,7 @@ MonoBehaviour:
   upgradeInformation: {fileID: 11400000, guid: b143d1cc528dc4f48bf214d9d571478b, type: 2}
   upgradeSubject: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
   requirements:
-  - {fileID: 11400000, guid: 61c7f5195466f17408cef962a87237c4, type: 2}
+  - {fileID: 11400000, guid: 14486a79f99f793438e66c586a7cc449, type: 2}
   - {fileID: 11400000, guid: ee173c7c9bb547d4f9462e170f5e7e43, type: 2}
 --- !u!1 &4065701082889164001
 GameObject:

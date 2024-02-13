@@ -2,6 +2,7 @@ using CodeMonkey.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Upgrade Buttons class connecting UI with upgrade scriptable objects
@@ -21,7 +22,7 @@ public class UpgradeTrigger : MonoBehaviour
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradeUnlocked;
         if (HasExistingRequirements)
         {
-            
+            GetComponent<Image>().color = Color.gray;
         }
     }
 
@@ -43,6 +44,8 @@ public class UpgradeTrigger : MonoBehaviour
                     GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
                 }
                 catch { Debug.Log("Tried to unsubscribe"); }
+                GetComponent<Image>().color = Color.green;
+
             }
             else
             {
@@ -60,6 +63,11 @@ public class UpgradeTrigger : MonoBehaviour
         if (requirements.Contains(upgrade))
         {
             requirements.Remove(upgrade);
+        }
+
+        if (!HasExistingRequirements)
+        {
+            GetComponent<Image>().color = Color.white;
         }
     }
 

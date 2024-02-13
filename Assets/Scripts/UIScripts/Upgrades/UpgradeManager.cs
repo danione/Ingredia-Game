@@ -18,7 +18,6 @@ public class UpgradeManager : MonoBehaviour
     {
         if(!newScene && !upgradesPurchased.Contains(upgrade))
         {
-            Debug.Log(upgrade.upgradeName);
             upgradesPurchased.Add(upgrade);
         }
     }
