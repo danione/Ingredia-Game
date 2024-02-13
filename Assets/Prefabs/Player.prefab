@@ -542,9 +542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b314a4d9abd9c4c8f49250f0c4a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 999
-  maxHealth: 999
-  health: 0
+  startingHealth: 3
+  maxHealth: 3
+  health: 5
 --- !u!114 &7759249205259069879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626ddf2c61ef51945b0560593c748424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 12
   leftBorder: 12
   rightBorder: -12
 --- !u!114 &4956312618412421421

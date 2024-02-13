@@ -12,6 +12,11 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        
+    }
+
+    private void Awake()
+    {
         Initialise();
     }
 

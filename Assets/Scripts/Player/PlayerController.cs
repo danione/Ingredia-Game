@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public PlayerInventory inventory { get; private set; }
-    public PlayerStats stats;
+    [HideInInspector] public PlayerStats stats;
     private PlayerInputHandler input;
     public Action<int> collision;
 
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
 
         SetUp();
     }

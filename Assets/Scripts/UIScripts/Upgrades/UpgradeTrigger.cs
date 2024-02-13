@@ -26,6 +26,16 @@ public class UpgradeTrigger : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
+
+        }
+        catch { }
+    }
+
     /*
      * Check if the upgrade is still available and has requirements
      * then broadcast the information to others to remove requirements
@@ -63,11 +73,10 @@ public class UpgradeTrigger : MonoBehaviour
         if (requirements.Contains(upgrade))
         {
             requirements.Remove(upgrade);
-        }
-
-        if (!HasExistingRequirements)
-        {
-            GetComponent<Image>().color = Color.white;
+            if (!HasExistingRequirements)
+            {
+                GetComponent<Image>().color = Color.white;
+            }
         }
     }
 
