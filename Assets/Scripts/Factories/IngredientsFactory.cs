@@ -40,7 +40,7 @@ public class IngredientsFactory: MonoBehaviour
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
         StartCoroutine(ResetNextPoint());
 
-        GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
+       // GameEventHandler.Instance.ActivatedSmartRitualHelper += OnActivateHelper;
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
 
@@ -82,7 +82,9 @@ public class IngredientsFactory: MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
         // Select a random location at the top of the screen
-        HandleIngredientSpawn(_ingredients, randomIndex, pos);
+        Product product = spawner.GetProduct(pos, _ingredients[randomIndex]);
+
+        //HandleIngredientSpawn(_ingredients, randomIndex, pos);
     }
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
@@ -97,11 +99,12 @@ public class IngredientsFactory: MonoBehaviour
         Product product = spawner.GetProduct(newRandomLocation, list[randomIndex]);
 
         if (product == null) return;
+        /*
 
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();
-        }
+        */
     }
 
     private SpawnPoint PickNewRandomPointX()
@@ -118,11 +121,13 @@ public class IngredientsFactory: MonoBehaviour
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex, Vector3 pos)
     {
-        Product product = spawner.GetProduct(pos, list[randomIndex]);
+
+        /*
         if (_highlight.Contains(product.gameObject.GetComponent<IIngredient>().Data))
         {
             product.GetComponent<BasicIngredient>().Highlight();
         }
+        */
     }
 
     // Spawns ingredients at random times
@@ -142,22 +147,23 @@ public class IngredientsFactory: MonoBehaviour
     {
         return _ingredients.Count;
     }
+    /*
+private void OnActivateHelper()
+{
+    PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmpty;
+    GameEventHandler.Instance.CollectedExistingIngredient += OnCollectExistingIngredient;
+}
 
-    private void OnActivateHelper()
-    {
-        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmpty;
-        GameEventHandler.Instance.CollectedExistingIngredient += OnCollectExistingIngredient;
-    }
 
-    private void OnCauldronEmpty()
-    {
-        _highlight.Clear();
-    }
+private void OnCauldronEmpty()
+{
+    _highlight.Clear();
+}
 
-    private void OnCollectExistingIngredient(Ritual ritual)
-    {
-        _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
-    }
+private void OnCollectExistingIngredient(Ritual ritual)
+{
+    _highlight = new HashSet<IngredientData>(ritual.GetCurrentLeftIngredients());
+}*/
 
 
     // Should be used for tutorial only

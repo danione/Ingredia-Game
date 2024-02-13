@@ -16,31 +16,35 @@ public class BasicIngredient : FallableObject, IIngredient
 
     private void Start()
     {
+        /*
         GameEventHandler.Instance.HighlightedIngredient += OnHighlight;
-        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
+        PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;*/
     }
 
     private void OnDestroy()
     {
+        /*
         try
         {
             GameEventHandler.Instance.HighlightedIngredient -= OnHighlight;
             PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
         }
         catch { }
+        */
     }
 
     public void Initialise(IngredientData data, bool isHighlighted = false)
     {
         
+        
         _data = data;
         _spriteRenderer.sprite = _data.sprite;
-        if(_highlightRenderer != null)
+        /*if(_highlightRenderer != null)
         {
             _highlightRenderer.gameObject.SetActive(false);
-        }
+        }*/
     }
-
+    /*
     private void OnHighlight(IngredientData data)
     {
         if (data == _data)
@@ -68,4 +72,5 @@ public class BasicIngredient : FallableObject, IIngredient
         if(_highlightRenderer != null)
             _highlightRenderer.gameObject.SetActive(false);
     }
+    */
 }
