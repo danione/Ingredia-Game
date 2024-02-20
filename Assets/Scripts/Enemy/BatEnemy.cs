@@ -5,8 +5,6 @@ public class BatEnemy : Enemy
 {
     protected BatRitualistStateMachine _state;
 
-    [SerializeField] private float movementSpeed = 1.0f;
-    [SerializeField] private float boundaryMovement = 2f;
     private float currentPositionDifferenceX;
 
     protected bool attacked = false;
@@ -15,11 +13,12 @@ public class BatEnemy : Enemy
     [SerializeField] protected ObjectsSpawner spawner;
     [SerializeField] private float spawnCooldown;
     [SerializeField] private float upgradedStateDuration;
+    [SerializeField] private float boundaryMovement;
     
 
     private void Start()
     {
-        _state = new BatRitualistStateMachine(PlayerController.Instance, this, movementSpeed);
+        _state = new BatRitualistStateMachine(PlayerController.Instance, this, enemyData.movementSpeed);
         _state.Initialise(_state.MoveState);
         currentPositionDifferenceX = GetCurrentPositionDifferenceX();
     }

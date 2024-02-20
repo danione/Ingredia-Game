@@ -2,42 +2,47 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IUnitStats
 {
-    [SerializeField] private float health;
-    [SerializeField] private int goldRewardOnDeath;
-    public float Health => health;
-    [SerializeField] protected BoundariesData spawnBoundaries;
+
+    [SerializeField] protected EnemyData enemyData;
+    public float Health => currentHealth;
+    private float currentHealth;
+
+    private void Start()
+    {
+        currentHealth = enemyData.health;
+    }
 
     public virtual void Die()
     {
         GameEventHandler.Instance.DestroyEnemy(gameObject.transform.position);
-        GameEventHandler.Instance.SpawnsGoldenNuggets(goldRewardOnDeath, gameObject.transform.position);
+        GameEventHandler.Instance.SpawnsGoldenNuggets(enemyData.goldDrop, gameObject.transform.position);
         GameEventHandler.Instance.DestroyObject(gameObject);
     }
 
-    public BoundariesData Boundaries => spawnBoundaries;
+    public BoundariesData Boundaries => enemyData.spawnBoundaries;
 
     public virtual Vector3 GetRandomPosition()
     {
-        float xRandomPos = Random.Range(spawnBoundaries.xLeftMax, spawnBoundaries.xRightMax);
-        float yRandomPos = Random.Range(spawnBoundaries.yTopMax, spawnBoundaries.yBottomMax);
+        float xRandomPos = Random.Range(enemyData.spawnBoundaries.xLeftMax, enemyData.spawnBoundaries.xRightMax);
+        float yRandomPos = Random.Range(enemyData.spawnBoundaries.yTopMax, enemyData.spawnBoundaries.yBottomMax);
         Vector3 randomPos = new Vector3(xRandomPos, yRandomPos, 2);
         return randomPos;
     }
 
     public virtual void Heal()
     {
-        health++;
+        currentHealth++;
     }
 
     public virtual void Heal(float amount)
     {
-        health += amount;
+        currentHealth += amount;
     }
 
     public virtual void TakeDamage(float amount)
     {
-        health -= amount;
-        if(health <= 0) { Die(); }
+        currentHealth -= amount;
+        if(currentHealth <= 0) { Die(); }
     }
 
     protected virtual void DestroyEnemy()
@@ -45,5 +50,8 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
         Die();
     }
 
-    public abstract void ResetEnemy();
+    public virtual void ResetEnemy()
+    {
+        currentHealth = enemyData.health;
+    }
 }
