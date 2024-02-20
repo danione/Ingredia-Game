@@ -708,6 +708,74 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ba7497a93a99dd48b64acfa5380e7a9, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6206322afc876e7479810aaceca1d712, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 457173931daf5b842bccde58fb603c73, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dc70387bfeebe842933a50bec64685d, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbebf293bcf17be46833061f2f22a82d, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: cbb02b5d54be96545a90b3490d3a0fbf, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: ade047a6a5826ff419a79f990063477e, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9faea02831037114a88c3d82ef1007b4, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: cc9fb0e201e98d74097491ca58dd4918, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a9ecb3b67bc8ea418c87aa3cd2a240c, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bcedb6df1dc1f240b22ddd6ad1208b0, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 759701358677561439, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.data[1]
+      value: 
+      objectReference: {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.data[2]
+      value: 
+      objectReference: {fileID: -1590132365824773583, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.data[3]
+      value: 
+      objectReference: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
     - target: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_Name
       value: SpawnManager

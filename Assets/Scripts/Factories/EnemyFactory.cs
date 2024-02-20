@@ -1,67 +1,92 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    [SerializeField] private List<WaveEnemy> enemies;
-    [SerializeField] private float currentCurrency = 0;
+    [SerializeField] private List<Product> uniqueEnemies;
+
+    [SerializeField] private List<SpawnStage> stage;
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
     [SerializeField] private float waveSpawnCooldownInSeconds = 3.0f;
-    [SerializeField] private float currentWave;
     [SerializeField] private Product upgradedBat;
 
-    private List<ObjectsSpawner> spawner = new();
+    private Dictionary<Product, ObjectsSpawner> spawner = new();
     private ObjectsSpawner upgradedSpawner;
 
     private int currentAliveEnemies = 0;
+    private List<int> currentStage = new();
+    private int currentStageIndex = 0;
 
     void Start()
     {
-        foreach (var enemy in enemies)
+        foreach (var enemy in uniqueEnemies)
         {
-            spawner.Add(new ObjectsSpawner(enemy.enemy));
+            spawner[enemy] = new ObjectsSpawner(enemy);
         }
-        upgradedSpawner = new ObjectsSpawner(upgradedBat);
 
-        StartCoroutine(SpawnEnemies());
+        SetNextStage();
+
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
-        currentWave = 1;
+
+        StartCoroutine(SpawnEnemies());
+    }
+
+    private void SetNextStage()
+    {
+        if (currentStageIndex >= stage.Count) return;
+
+        currentStage.Clear();
+        
+        try
+        {
+            foreach (var enemy in stage[currentStageIndex].enemyList)
+            {
+                currentStage.Add(enemy.amount);
+            }
+        }
+        catch (Exception ex) { Debug.LogError(ex); }
+
     }
 
     private void OnEnemyDestroyed(Vector3 pos)
     {
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
-        if (currentAliveEnemies == 0 && currentCurrency == 0)
-            StartCoroutine(IncrementWave());
+        
+        if (currentAliveEnemies == 0)
+            StartCoroutine(NextStage());
     }
 
     private void SpawnEnemy()
     {
-        if (enemies.Count == 0) return;
+        if (uniqueEnemies.Count == 0) return;
 
-        while (!GameManager.Instance.gameOver)
+        if (stage[currentStageIndex].isRandom)
         {
-            int index = UnityEngine.Random.Range(0, enemies.Count);
-            if (currentCurrency - enemies[index].cost >= 0)
-            {
-                currentCurrency -= enemies[index].cost;
-                Enemy enemy = enemies[index].enemy.GetComponent<Enemy>();
-
-                if (enemy == null) continue;
-                
-                Vector3 pos = enemy.GetRandomPosition();
-                Product product = spawner[index]._pool.Get();
-                product.gameObject.transform.position = pos;
-                product.GetComponent<Enemy>().ResetEnemy();
-
-                currentAliveEnemies++;
-                break;
-            }
+            int randomEnemyIndex = UnityEngine.Random.Range(0, currentStage.Count);
+            SpawnEnemyAt(randomEnemyIndex);
         }
+        else
+        {
+            SpawnEnemyAt();
+        }
+    }
+
+    private void SpawnEnemyAt(int index = 0)
+    {
+        Product enemy = stage[currentStageIndex].enemyList[index].enemy;
+        Vector3 position = enemy.GetComponent<Enemy>().GetRandomPosition();
+        spawner[enemy].GetProduct(position);
+        currentAliveEnemies++;
+        currentStage[index]--;
+
+        if (currentStage[index] <= 0)
+            currentStage.Remove(index);
     }
 
         // Spawns ingredients at random times
@@ -69,7 +94,7 @@ public class EnemyFactory : MonoBehaviour
     {
         while (!GameManager.Instance.gameOver)
         {
-            if(currentCurrency > 0)
+            if(currentStage.Count > 0)
             {
                 SpawnEnemy();
             }
@@ -79,11 +104,11 @@ public class EnemyFactory : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator IncrementWave()
+    private IEnumerator NextStage()
     {
         yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
-        currentWave++;
-        currentCurrency += currentWave;
+        currentStageIndex++;
+        SetNextStage();
     }
 
     private void OnFusedTwoBats(Vector3 position)
@@ -96,13 +121,7 @@ public class EnemyFactory : MonoBehaviour
 
     public void SetTutorialCurrency(int i)
     {
-        currentCurrency = i;
+        //currentCurrency = i;
     }
 }
 
-[System.Serializable]
-public class WaveEnemy
-{
-    public Product enemy;
-    public int cost;
-}
