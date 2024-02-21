@@ -14,22 +14,21 @@ public class SpawnPointManager
 
     private float dequeueCooldown;
 
-
-    public SpawnPointManager(BoundariesData spawnLocation, float offsetX, float offsetY, float dequeueCooldown)
+    public SpawnPointManager(BoundariesData spawnLocation, float dequeueCooldown)
     {
         // Initialise the spawn points
-        int numberOfXPoints = CountPointsBetween(spawnLocation.xLeftMax, spawnLocation.xRightMax, offsetX);
-        int numberOfYPoints = CountPointsBetween(spawnLocation.yTopMax, spawnLocation.yBottomMax, offsetY);
+        int numberOfXPoints = CountPointsBetween(spawnLocation.xLeftMax, spawnLocation.xRightMax, spawnLocation.offsetX);
+        int numberOfYPoints = CountPointsBetween(spawnLocation.yBottomMax, spawnLocation.yTopMax, spawnLocation.offsetY);
 
         // Fill them in
-        xPoints = Enumerable.Range((int)spawnLocation.xLeftMax, numberOfXPoints - 1).Select(x => new SpawnPoint(x + offsetX)).ToList();
-        if(offsetY == 0)
+        xPoints = Enumerable.Range((int)spawnLocation.xLeftMax, numberOfXPoints - 1).Select(x => new SpawnPoint(x + spawnLocation.offsetX)).ToList();
+        if(spawnLocation.offsetY == 0)
         {
             yPoints.Add(new SpawnPoint(spawnLocation.yTopMax));
         }
         else
         {
-            yPoints = Enumerable.Range((int)spawnLocation.yTopMax, numberOfYPoints - 1).Select(y => new SpawnPoint(y + offsetY)).ToList();
+            yPoints = Enumerable.Range((int)spawnLocation.yTopMax, numberOfYPoints - 1).Select(y => new SpawnPoint(y - spawnLocation.offsetY)).ToList();
         }
 
         // How quick the points reset

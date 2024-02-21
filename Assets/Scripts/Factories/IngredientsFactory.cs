@@ -10,14 +10,12 @@ public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private ObjectsSpawner spawner;
     [SerializeField] private List<IngredientData> _ingredients;
-    [SerializeField] private BoundariesData spawnLocation;
+    [SerializeField] private BoundariesData boundariesData;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
     private bool isSpawning;
 
     private SpawnPointManager spawnPointManager;
-
-    [SerializeField] private float offsetX;
     
     // Private Variables
     private float spawnZLocation = 2.0f;
@@ -30,7 +28,7 @@ public class IngredientsFactory: MonoBehaviour
 
     void Start()
     {
-        spawnPointManager = new SpawnPointManager(spawnLocation, offsetX, 0, (spawnFrequency.maxFrequency - spawnFrequency.minFrequency) / 2);
+        spawnPointManager = new SpawnPointManager(boundariesData, (spawnFrequency.maxFrequency - spawnFrequency.minFrequency) / 2);
         
         isSpawning = true;
 

@@ -9,5 +9,6 @@ public class BoundariesData : ScriptableObject
     public float xRightMax;
     public float yTopMax;
     public float yBottomMax;
+    public float offsetX;
     public float offsetY;
 }

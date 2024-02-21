@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1b68edb5809b441be205c7c3699c00, type: 3}
-  m_Name: GenericLocationBound
+  m_Name: EnemyLocationBounds
   m_EditorClassIdentifier: 
   xLeftMax: -13
   xRightMax: 13
-  yTopMax: 11
-  yBottomMax: 11
+  yTopMax: 5.5
+  yBottomMax: -1.5
   offsetX: 1
-  offsetY: 0
+  offsetY: 1.5

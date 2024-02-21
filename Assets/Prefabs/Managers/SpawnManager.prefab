@@ -59,10 +59,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
   - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
-  spawnLocation: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
+  boundariesData: {fileID: 0}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
   prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
-  offsetX: 1
 --- !u!114 &4699198157692283021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +116,8 @@ MonoBehaviour:
   upgradedBat: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
   currentAliveEnemies: 0
   currentStage: 
+  boundariesData: {fileID: 11400000, guid: db5db13a96cb37149bb750da88eb2811, type: 2}
+  dequeueTime: 3
 --- !u!114 &8001124186574533078
 MonoBehaviour:
   m_ObjectHideFlags: 0

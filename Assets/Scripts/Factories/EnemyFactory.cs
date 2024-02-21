@@ -17,11 +17,14 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private int currentAliveEnemies = 0;
     [SerializeField] private List<int> currentStage = new();
     [SerializeField] private SpawnPointManager spawnPointManager;
+    [SerializeField] private BoundariesData boundariesData;
+    [SerializeField] private float dequeueTime;
     private int currentStageIndex = 0;
 
     void Start()
     {
-       // spawnPointManager = new SpawnPointManager();
+        if (boundariesData == null) Debug.Log("Bad Bad");
+        spawnPointManager = new SpawnPointManager(boundariesData,dequeueTime);
         foreach (var enemy in uniqueEnemies)
         {
             spawner[enemy] = new ObjectsSpawner(enemy);
@@ -85,7 +88,10 @@ public class EnemyFactory : MonoBehaviour
         }
 
         Product enemy = stage[currentStageIndex].enemyList[index].enemy;
-        Vector3 position = GetRandomPosition(enemy.GetComponent<Enemy>().Boundaries);
+        Vector3 position = GetRandomPosition();
+
+        if (position == Vector3.zero) return;
+
         spawner[enemy].GetProduct(position);
         currentAliveEnemies++;
         currentStage[index]--;
@@ -94,15 +100,14 @@ public class EnemyFactory : MonoBehaviour
             currentStage.Remove(index);
     }
 
-    private Vector3 GetRandomPosition(BoundariesData spawnBoundaries)
+    private Vector3 GetRandomPosition()
     {
-        /*int numYPoints = IngredientsFactory.CountXPointsBetween(spawnBoundaries.yTopMax, spawnBoundaries.yBottomMax, spawnBoundaries.offsetY);
-        float xRandomPos = UnityEngine.Random.Range(spawnBoundaries.xLeftMax, spawnBoundaries.xRightMax);
+        SpawnPoint xPoint = spawnPointManager.PickNewRandomPoint(isXPoint: true);
+        SpawnPoint yPoint = spawnPointManager.PickNewRandomPoint(isXPoint: false);
 
-        float yRandomPos = UnityEngine.Random.Range(0, numYPoints);
-        Vector3 randomPos = new (xRandomPos, spawnBoundaries.yTopMax - yRandomPos, 2);
-        */
-        return new Vector3();
+        if (xPoint == null || yPoint == null) return Vector3.zero;
+
+        return new(xPoint.pos, yPoint.pos, 2);
     }
 
         // Spawns ingredients at random times
