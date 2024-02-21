@@ -9,13 +9,12 @@ public class BansheeEnemy : Enemy
 
     public BansheeStateMachine _state;
 
-
-    [SerializeField] private BoundariesData fieldOfMovement;
     [SerializeField] private float cooldownWaitingSeconds;
     [SerializeField] private float cooldownDetectionOfPlayer;
+
     private void Start()
     {
-        _state = new BansheeStateMachine(this, fieldOfMovement);
+        _state = new BansheeStateMachine(this, enemyData);
         GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
     }
 

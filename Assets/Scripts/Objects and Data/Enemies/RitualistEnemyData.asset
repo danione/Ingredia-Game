@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db088f57aca773a4b921bf20e1e68026, type: 3}
-  m_Name: UpgradedBatEnemy
+  m_Name: RitualistEnemyData
   m_EditorClassIdentifier: 
   health: 3
-  movementSpeed: 1
-  goldDrop: 25
-  spawnBoundaries: {fileID: 11400000, guid: b92b28a4fb371494180f74dc40dd2ccc, type: 2}
+  movementSpeed: 0
+  goldDrop: 35
+  spawnBoundaries: {fileID: 0}
