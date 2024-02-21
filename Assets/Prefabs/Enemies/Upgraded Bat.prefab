@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5716682220463666429}
   - component: {fileID: -6506927491223567469}
   - component: {fileID: -1062922097895098718}
+  - component: {fileID: 1998285048026982068}
   m_Layer: 0
   m_Name: Upgraded Bat
   m_TagString: Enemy
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 3.5924218, y: 1.5073917, z: 1.5073917}
+  m_LocalScale: {x: 1.61, y: 0.57, z: 1.5073917}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,9 +108,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.824562
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.00000007404304, y: 0, z: -0.00000007908315}
 --- !u!114 &5716682220463666429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,11 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eff703c19b4dc1458ba5e18550f5d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  goldRewardOnDeath: 25
-  spawnBoundaries: {fileID: 11400000, guid: b92b28a4fb371494180f74dc40dd2ccc, type: 2}
-  movementSpeed: 0.5
-  boundaryMovement: 2
+  enemyData: {fileID: 11400000, guid: d56a90c911f6aff4ea2a21c47738f02b, type: 2}
+  hasCollided: 0
+  isUpgraded: 1
   spawner:
     collectionCheck: 1
     defaultCapacity: 40
@@ -134,7 +133,10 @@ MonoBehaviour:
     prefab: {fileID: -147688969018236340, guid: a6b5ef0f29d6ad242931788cc1ea504e, type: 3}
   spawnCooldown: 0.8
   upgradedStateDuration: 10
+  boundaryMovement: 2
+  SpawnManager: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
   rapidShootRateCooldown: 0.3
+  fusingStateAttackDuration: 2
 --- !u!54 &-6506927491223567469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,5 +174,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1998285048026982068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147655413801567454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38d7b6af5122fc4c8976e84a3dd152d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

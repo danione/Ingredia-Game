@@ -80,7 +80,7 @@ public class RitualistEnemy : Enemy
         GameEventHandler.Instance.GenerateIngredientAtPos(currentPos);
     }
 
-    protected override void DestroyEnemy()
+    public override void DestroyEnemy()
     {
         base.DestroyEnemy();
         stateMachine.LookoutState.FinishedChanneling -= OnFinishedChanneling;

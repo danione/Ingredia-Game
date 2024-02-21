@@ -4,6 +4,8 @@ using UnityEngine;
 public class UpgradedBatEnemy : BatEnemy
 {
     [SerializeField] private float rapidShootRateCooldown = 2f;
+    [SerializeField] private float fusingStateAttackDuration  = 2f;
+
     protected override void Shoot()
     {
         if(_state.CurrentState == _state.FusionAttackState)
@@ -17,15 +19,57 @@ public class UpgradedBatEnemy : BatEnemy
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!hasCollided && other.CompareTag("Enemy"))
+        {
+            hasCollided = true;
+            UpgradedBatEnemy uBat = other.GetComponent<UpgradedBatEnemy>();
+
+            if (uBat != null)
+            {
+                Debug.Log("Other uBat");
+                
+            }
+            else
+            {
+                BatEnemy bat = other.GetComponent<BatEnemy>();
+                
+                if (bat == null) return;
+                
+                Debug.Log("Bat fused");
+                bat.DestroyEnemy();
+
+                FusingState();
+            }
+
+            hasCollided = false;
+        }
+    }
+
     IEnumerator RapidShootCooldown()
     {
         yield return new WaitForSeconds(rapidShootRateCooldown);
         attacked = false;
     }
 
-    protected override void DestroyEnemy()
+
+    public void FusingState()
     {
-        base.DestroyEnemy();
-        attacked = false;
+        if (_state.CurrentState != _state.FusionAttackState)
+        {
+            _state.TransitiontTo(_state.FusionAttackState);
+            StartCoroutine(TransitionBackToNormalState());
+        }
+    }
+
+    IEnumerator TransitionBackToNormalState()
+    {
+        if (gameObject.activeSelf)
+        {
+            yield return new WaitForSeconds(fusingStateAttackDuration);
+            _state.TransitiontTo(_state.MoveState);
+            attacked = false;
+        }
     }
 }

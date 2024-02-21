@@ -7,9 +7,10 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
     public float Health => currentHealth;
     private float currentHealth;
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = enemyData.health;
+        GetComponent<Resettable>().SetResetFunction(ResetEnemy);
     }
 
     public virtual void Die()
@@ -42,10 +43,10 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
     public virtual void TakeDamage(float amount)
     {
         currentHealth -= amount;
-        if(currentHealth <= 0) { Die(); }
+        if(currentHealth <= 0) { DestroyEnemy(); }
     }
 
-    protected virtual void DestroyEnemy()
+    public virtual void DestroyEnemy()
     {
         Die();
     }

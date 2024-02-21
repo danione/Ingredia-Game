@@ -15,10 +15,9 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private Product upgradedBat;
 
     private Dictionary<Product, ObjectsSpawner> spawner = new();
-    private ObjectsSpawner upgradedSpawner;
 
-    private int currentAliveEnemies = 0;
-    private List<int> currentStage = new();
+    [SerializeField] private int currentAliveEnemies = 0;
+    [SerializeField] private List<int> currentStage = new();
     private int currentStageIndex = 0;
 
     void Start()
@@ -64,7 +63,7 @@ public class EnemyFactory : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (uniqueEnemies.Count == 0) return;
+        if (uniqueEnemies.Count == 0 || currentStage.Count == 0) return;
 
         if (stage[currentStageIndex].isRandom)
         {
@@ -79,6 +78,12 @@ public class EnemyFactory : MonoBehaviour
 
     private void SpawnEnemyAt(int index = 0)
     {
+        if (currentStage[index] <= 0)
+        {
+            currentStage.Remove(index);
+            return;
+        }
+
         Product enemy = stage[currentStageIndex].enemyList[index].enemy;
         Vector3 position = enemy.GetComponent<Enemy>().GetRandomPosition();
         spawner[enemy].GetProduct(position);
@@ -113,9 +118,8 @@ public class EnemyFactory : MonoBehaviour
 
     private void OnFusedTwoBats(Vector3 position)
     {
-        Product product = upgradedSpawner._pool.Get();
+        Product product = spawner[upgradedBat]._pool.Get();
         product.gameObject.transform.position = position;
-        product.GetComponent<BatEnemy>().Upgrade();
         currentAliveEnemies++;
     }
 

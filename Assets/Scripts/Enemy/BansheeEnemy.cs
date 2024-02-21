@@ -16,7 +16,6 @@ public class BansheeEnemy : Enemy
     private void Start()
     {
         _state = new BansheeStateMachine(this, fieldOfMovement);
-        ResetEnemy();
         GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
     }
 
@@ -80,7 +79,7 @@ public class BansheeEnemy : Enemy
         }
     }
 
-    protected override void DestroyEnemy()
+    public override void DestroyEnemy()
     {
         base.DestroyEnemy();
         InputEventHandler.instance.SetMovement(isMoving: true);

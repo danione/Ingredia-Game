@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8001124186574533078}
   - component: {fileID: 5350667911276703195}
   - component: {fileID: 9148559292740883961}
+  - component: {fileID: 5445750503755775760}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -94,18 +95,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - enemy: {fileID: 759701358677561439, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
-    cost: 1
-  - enemy: {fileID: -1590132365824773583, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
-    cost: 2
-  - enemy: {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
-    cost: 5
-  currentCurrency: 1
+  uniqueEnemies:
+  - {fileID: 759701358677561439, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
+  - {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
+  - {fileID: -1590132365824773583, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
+  - {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
+  stage:
+  - {fileID: 11400000, guid: 3ba7497a93a99dd48b64acfa5380e7a9, type: 2}
+  - {fileID: 11400000, guid: 6206322afc876e7479810aaceca1d712, type: 2}
+  - {fileID: 11400000, guid: 457173931daf5b842bccde58fb603c73, type: 2}
+  - {fileID: 11400000, guid: 8dc70387bfeebe842933a50bec64685d, type: 2}
+  - {fileID: 11400000, guid: bbebf293bcf17be46833061f2f22a82d, type: 2}
+  - {fileID: 11400000, guid: cbb02b5d54be96545a90b3490d3a0fbf, type: 2}
+  - {fileID: 11400000, guid: ade047a6a5826ff419a79f990063477e, type: 2}
+  - {fileID: 11400000, guid: 9faea02831037114a88c3d82ef1007b4, type: 2}
+  - {fileID: 11400000, guid: cc9fb0e201e98d74097491ca58dd4918, type: 2}
+  - {fileID: 11400000, guid: 8a9ecb3b67bc8ea418c87aa3cd2a240c, type: 2}
+  - {fileID: 11400000, guid: 4bcedb6df1dc1f240b22ddd6ad1208b0, type: 2}
   spawnFrequencyInSeconds: 2
   waveSpawnCooldownInSeconds: 3
-  currentWave: 0
   upgradedBat: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
+  currentAliveEnemies: 0
+  currentStage: 
 --- !u!114 &8001124186574533078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +168,15 @@ MonoBehaviour:
   scrollSlipPrefab: {fileID: 5674750043186311452, guid: 8851aaeb83ce5e248940e9dafb9a3b2e, type: 3}
   spawnChance: 1
   scrollSlipManagerRef: {fileID: 0}
+--- !u!114 &5445750503755775760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e8d57900a318440a37c1fb929fbc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
