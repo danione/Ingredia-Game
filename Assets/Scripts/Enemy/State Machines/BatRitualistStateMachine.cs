@@ -8,6 +8,7 @@ public class BatRitualistStateMachine : EntityStateMachine
     public IdleState IdleState;
     public BatEnhancedMovementState FusionAttackState;
     public SuperBatAttackState SuperBatAttackState;
+    public RevultedState RevultedState;
 
     public BatRitualistStateMachine(PlayerController controller, Enemy currentUnit, float movementSpeed)
     {
@@ -15,5 +16,6 @@ public class BatRitualistStateMachine : EntityStateMachine
         this.IdleState = new IdleState();
         this.FusionAttackState = new BatEnhancedMovementState(currentUnit);
         this.SuperBatAttackState = new SuperBatAttackState(currentUnit.GetComponent<BatEnemy>());
+        this.RevultedState = new RevultedState();
     }
 }

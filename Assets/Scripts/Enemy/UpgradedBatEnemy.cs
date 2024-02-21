@@ -5,6 +5,8 @@ public class UpgradedBatEnemy : BatEnemy
 {
     [SerializeField] private float rapidShootRateCooldown = 2f;
     [SerializeField] private float fusingStateAttackDuration  = 2f;
+    [SerializeField] private float revulsionCooldown = 2f;
+    private bool isRevulted = false;
 
     protected override void Shoot()
     {
@@ -21,15 +23,16 @@ public class UpgradedBatEnemy : BatEnemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasCollided && other.CompareTag("Enemy"))
+        if (!hasCollided && other.CompareTag("Enemy") && !isRevulted)
         {
             hasCollided = true;
             UpgradedBatEnemy uBat = other.GetComponent<UpgradedBatEnemy>();
 
-            if (uBat != null)
+            if (uBat != null && !uBat.hasCollided)
             {
-                Debug.Log("Other uBat");
-                
+                uBat.SelfRevultion(isGoingLeft: false);
+                SelfRevultion(isGoingLeft: true);
+                isRevulted = true;
             }
             else
             {
@@ -37,7 +40,6 @@ public class UpgradedBatEnemy : BatEnemy
                 
                 if (bat == null) return;
                 
-                Debug.Log("Bat fused");
                 bat.DestroyEnemy();
 
                 FusingState();
@@ -70,6 +72,32 @@ public class UpgradedBatEnemy : BatEnemy
             yield return new WaitForSeconds(fusingStateAttackDuration);
             _state.TransitiontTo(_state.MoveState);
             attacked = false;
+        }
+    }
+
+    public void SelfRevultion(bool isGoingLeft)
+    {
+        _state.TransitiontTo(_state.RevultedState);
+        StartCoroutine(Revulsion(isGoingLeft));
+        StartCoroutine(RevertToNormalState());
+
+    }
+
+    IEnumerator RevertToNormalState()
+    {
+        yield return new WaitForSeconds(revulsionCooldown);
+        _state.TransitiontTo(_state.MoveState);
+        attacked = false;
+        isRevulted = false;
+    }
+
+    IEnumerator Revulsion(bool isGoingLeft)
+    {
+        Vector3 direction = isGoingLeft ? Vector3.left : Vector3.right;
+        while (_state.CurrentState == _state.RevultedState)
+        {
+            transform.Translate(enemyData.movementSpeed * 2 * Time.deltaTime * direction);
+            yield return new WaitForEndOfFrame();
         }
     }
 }
