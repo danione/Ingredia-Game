@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1b68edb5809b441be205c7c3699c00, type: 3}
   m_Name: BansheeSpawn
   m_EditorClassIdentifier: 
-  xLeftMax: 13
-  xRightMax: -13
+  xLeftMax: -13
+  xRightMax: 13
   yTopMax: 7
   yBottomMax: 4
+  offsetY: 0

@@ -10,16 +10,15 @@ public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private ObjectsSpawner spawner;
     [SerializeField] private List<IngredientData> _ingredients;
-    [SerializeField] private SpawnLocationData spawnLocation;
+    [SerializeField] private BoundariesData spawnLocation;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
     private bool isSpawning;
 
-    private List<SpawnPoint> xPoints = new();
-    private Queue<SpawnPoint> spawnPointsOnCooldown = new ();
+    private SpawnPointManager spawnPointManager;
+
     [SerializeField] private float offsetX;
     
-
     // Private Variables
     private float spawnZLocation = 2.0f;
 
@@ -31,12 +30,12 @@ public class IngredientsFactory: MonoBehaviour
 
     void Start()
     {
-        int numberOfPoints = CountXPointsBetween(spawnLocation.xLeftMax, spawnLocation.xRightMax, offsetX);
-        xPoints = Enumerable.Range((int) spawnLocation.xLeftMax, numberOfPoints - 1).Select(x => new SpawnPoint(x + offsetX)).ToList();
+        spawnPointManager = new SpawnPointManager(spawnLocation, offsetX, 0, (spawnFrequency.maxFrequency - spawnFrequency.minFrequency) / 2);
+        
         isSpawning = true;
 
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));
-        StartCoroutine(ResetNextPoint());
+        StartCoroutine(spawnPointManager.ResetNextPoint());
 
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
@@ -44,28 +43,6 @@ public class IngredientsFactory: MonoBehaviour
     public void SetSpawning(bool isSpawning)
     {
         this.isSpawning = isSpawning;
-    }
-
-    private IEnumerator ResetNextPoint()
-    {
-        while (!GameManager.Instance.gameOver)
-        {
-            if(spawnPointsOnCooldown.Count > 0)
-            {
-                SpawnPoint point = spawnPointsOnCooldown.Dequeue();
-                point.isInQueue = false;
-            }
-            yield return new WaitForSeconds((spawnFrequency.maxFrequency - spawnFrequency.minFrequency)/2);
-        }
-    }
-
-    private int CountXPointsBetween(float startX, float endX, float offsetX)
-    {
-        // Calculate the distance between the x-coordinates of the start and end points
-        float distanceX = Mathf.Abs(endX - startX);
-        // Calculate the number of points that can fit along the x-axis between the two points
-        int numberOfPoints = Mathf.FloorToInt(distanceX / offsetX);
-        return numberOfPoints;
     }
 
     private void SpawnRandomIngredient()
@@ -86,25 +63,14 @@ public class IngredientsFactory: MonoBehaviour
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
     {
         // Select a random location at the top of the screen
-        SpawnPoint newXPoint = PickNewRandomPointX();
+        SpawnPoint newXPoint = spawnPointManager.PickNewRandomPoint(isXPoint: true);
+        SpawnPoint newYPoint = spawnPointManager.PickNewRandomPoint(isXPoint: false);
 
         if (newXPoint == null || list.Count == 0) return;
 
-        Vector3 newRandomLocation = new Vector3(newXPoint.xPos, spawnLocation.yLocation, spawnZLocation);
+        Vector3 newRandomLocation = new Vector3(newXPoint.pos, newYPoint.pos, spawnZLocation);
 
         spawner.GetProduct(newRandomLocation, list[randomIndex]);
-    }
-
-    private SpawnPoint PickNewRandomPointX()
-    {
-        SpawnPoint newXPoint = null;
-        newXPoint = xPoints.Where(p => !p.isInQueue).OrderBy(p => Guid.NewGuid()).FirstOrDefault();
-
-        if (newXPoint == null) return null;
-
-        spawnPointsOnCooldown.Enqueue(newXPoint);
-        newXPoint.isInQueue = true;
-        return newXPoint;
     }
 
     // Spawns ingredients at random times

@@ -1,10 +1,10 @@
 public class SpawnPoint
 {
-    public float xPos;
+    public float pos;
     public bool isInQueue = false;
 
-    public SpawnPoint(float xPos)
+    public SpawnPoint(float pos)
     {
-        this.xPos = xPos;
+        this.pos = pos;
     }
 }

@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
@@ -18,10 +16,12 @@ public class EnemyFactory : MonoBehaviour
 
     [SerializeField] private int currentAliveEnemies = 0;
     [SerializeField] private List<int> currentStage = new();
+    [SerializeField] private SpawnPointManager spawnPointManager;
     private int currentStageIndex = 0;
 
     void Start()
     {
+       // spawnPointManager = new SpawnPointManager();
         foreach (var enemy in uniqueEnemies)
         {
             spawner[enemy] = new ObjectsSpawner(enemy);
@@ -85,13 +85,24 @@ public class EnemyFactory : MonoBehaviour
         }
 
         Product enemy = stage[currentStageIndex].enemyList[index].enemy;
-        Vector3 position = enemy.GetComponent<Enemy>().GetRandomPosition();
+        Vector3 position = GetRandomPosition(enemy.GetComponent<Enemy>().Boundaries);
         spawner[enemy].GetProduct(position);
         currentAliveEnemies++;
         currentStage[index]--;
 
         if (currentStage[index] <= 0)
             currentStage.Remove(index);
+    }
+
+    private Vector3 GetRandomPosition(BoundariesData spawnBoundaries)
+    {
+        /*int numYPoints = IngredientsFactory.CountXPointsBetween(spawnBoundaries.yTopMax, spawnBoundaries.yBottomMax, spawnBoundaries.offsetY);
+        float xRandomPos = UnityEngine.Random.Range(spawnBoundaries.xLeftMax, spawnBoundaries.xRightMax);
+
+        float yRandomPos = UnityEngine.Random.Range(0, numYPoints);
+        Vector3 randomPos = new (xRandomPos, spawnBoundaries.yTopMax - yRandomPos, 2);
+        */
+        return new Vector3();
     }
 
         // Spawns ingredients at random times

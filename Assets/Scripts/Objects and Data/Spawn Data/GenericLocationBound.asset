@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf1b68edb5809b441be205c7c3699c00, type: 3}
-  m_Name: BansheeMovement
+  m_Name: GenericLocationBound
   m_EditorClassIdentifier: 
   xLeftMax: -13
   xRightMax: 13
-  yTopMax: 6
-  yBottomMax: -6.3
+  yTopMax: 11
+  yBottomMax: 11
   offsetY: 0
