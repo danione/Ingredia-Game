@@ -23,7 +23,6 @@ public class EnemyFactory : MonoBehaviour
 
     void Start()
     {
-        if (boundariesData == null) Debug.Log("Bad Bad");
         spawnPointManager = new SpawnPointManager(boundariesData,dequeueTime);
         foreach (var enemy in uniqueEnemies)
         {
@@ -36,6 +35,7 @@ public class EnemyFactory : MonoBehaviour
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
 
         StartCoroutine(SpawnEnemies());
+        StartCoroutine(spawnPointManager.ResetNextPoint());
     }
 
     private void SetNextStage()

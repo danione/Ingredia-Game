@@ -18,7 +18,7 @@ public class SpawnPointManager
     {
         // Initialise the spawn points
         int numberOfXPoints = CountPointsBetween(spawnLocation.xLeftMax, spawnLocation.xRightMax, spawnLocation.offsetX);
-        int numberOfYPoints = CountPointsBetween(spawnLocation.yBottomMax, spawnLocation.yTopMax, spawnLocation.offsetY);
+        int numberOfYPoints = CountPointsBetween(spawnLocation.yTopMax, spawnLocation.yBottomMax, spawnLocation.offsetY);
 
         // Fill them in
         xPoints = Enumerable.Range((int)spawnLocation.xLeftMax, numberOfXPoints - 1).Select(x => new SpawnPoint(x + spawnLocation.offsetX)).ToList();
@@ -28,7 +28,7 @@ public class SpawnPointManager
         }
         else
         {
-            yPoints = Enumerable.Range((int)spawnLocation.yTopMax, numberOfYPoints - 1).Select(y => new SpawnPoint(y - spawnLocation.offsetY)).ToList();
+            yPoints = Enumerable.Range((int)spawnLocation.yBottomMax, numberOfYPoints - 1).Select(y => new SpawnPoint(y + spawnLocation.offsetY)).ToList();
         }
 
         // How quick the points reset
@@ -67,6 +67,7 @@ public class SpawnPointManager
     {
         while (!GameManager.Instance.gameOver)
         {
+            yield return new WaitForSeconds(dequeueCooldown);
             if (spawnPointsXOnCooldown.Count > 0)
             {
                 SpawnPoint point = spawnPointsXOnCooldown.Dequeue();
@@ -74,10 +75,9 @@ public class SpawnPointManager
             }
             if(spawnPointsYOnCooldown.Count > 0)
             {
-                SpawnPoint point = spawnPointsXOnCooldown.Dequeue();
+                SpawnPoint point = spawnPointsYOnCooldown.Dequeue();
                 point.isInQueue = false;
             }
-            yield return new WaitForSeconds(dequeueCooldown);
         }
     }
 }
