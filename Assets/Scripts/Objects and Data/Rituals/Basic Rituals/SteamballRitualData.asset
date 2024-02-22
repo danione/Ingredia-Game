@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3d9c334a9053ce478205269ecd0fb7d, type: 3}
-  m_Name: FireballRitualData
+  m_Name: SteamballRitualData
   m_EditorClassIdentifier: 
-  name: Fireball Ritual
-  description: Ignites the cauldron providing ammo for ranged attacks.
+  name: Steamball Ritual
+  description: Ignites the cauldron providing ammo for explosive ranged attacks.
+  sophisticationReward: 4.73
   ritualRecipes:
   - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
     amount: 2

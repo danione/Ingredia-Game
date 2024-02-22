@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SteelSpitterRitualData
   m_EditorClassIdentifier: 
   name: Steel Spitter Ritual
-  description: Adds a knife projectile to the player's arsenal.
+  description: Adds an athame projectile to the player's arsenal.
   sophisticationReward: 2
   ritualRecipes:
   - item: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}

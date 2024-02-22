@@ -10,7 +10,7 @@ public class PlayerInventory: MonoBehaviour
     private int currentlyEquippedWeapon = 0;
 
     [SerializeField] public int gold = 0;
-    [SerializeField] public int sophistication = 0;
+    [SerializeField] public float sophistication = 0;
 
     private Dictionary<string,int> cauldronContents = new();
     private PlayerPotionsManager powerupManager;
@@ -24,8 +24,6 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
-        PlayerEventHandler.Instance.PerformedRitual += OnPerformedRitual;
-
     }
 
     private void OnDestroy()
@@ -46,12 +44,6 @@ public class PlayerInventory: MonoBehaviour
     public void SwitchEquippedWeapon()
     {
         currentlyEquippedWeapon = (currentlyEquippedWeapon + 1) % weapons.Count;
-    }
-
-    private void OnPerformedRitual(IRitual ritual)
-    {
-        AddSophistication(ritual.RitualData.sophisticationReward);
-        Debug.Log(sophistication);
     }
 
     public void SubtractCurrentWeaponAmmo(int amount)
@@ -120,7 +112,7 @@ public class PlayerInventory: MonoBehaviour
         InputEventHandler.instance.UsePotion();
     }
 
-    public bool AddSophistication(int amount)
+    public bool AdjustSophistication(float amount)
     {
         if(amount + sophistication > 0)
         {
@@ -131,7 +123,7 @@ public class PlayerInventory: MonoBehaviour
         return false;
     }
 
-    public int GetSophistication()
+    public float GetSophistication()
     {
         return sophistication;
     }

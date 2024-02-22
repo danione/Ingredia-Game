@@ -8,6 +8,8 @@ public class Constants : MonoBehaviour
     [SerializeField] public DifficultyModifiers DifficultyModifiers = new();
     [SerializeField] public int currentRitualRewards { get; private set; }
 
+    [SerializeField] public float sophisticationDecayConstant;
+
     private void Awake()
     {
         if (Instance == null) { Instance = this; }

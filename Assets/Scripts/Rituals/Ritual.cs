@@ -15,14 +15,22 @@ public class Ritual : IRitual
     protected Dictionary<IngredientData, int> currentRitualValues;
     protected Dictionary<IngredientData, int> defaultRitualValues;
 
+    private int countCompleted;
+
     public Ritual(RitualScriptableObject data)
     {
+        countCompleted = 0;
         currentRitualValues = new();
         defaultRitualValues = new();
         ritualData = data;
         AddRange(GetRitualStages(), currentRitualValues);
         AddRange(GetRitualStages(), defaultRitualValues);
         isEnabled = false;
+    }
+
+    private float GetSophistication()
+    {
+        return ritualData.sophisticationReward * Mathf.Exp(-(countCompleted * Constants.Instance.sophisticationDecayConstant));
     }
 
     public void EnableRitual()
@@ -32,19 +40,7 @@ public class Ritual : IRitual
         isEnabled = true;
         PlayerEventHandler.Instance.EmptiedCauldron += OnCauldronEmptied;
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
-    }
-
-    public void DisableRitual() {
-        if (!isEnabled) return;
-
-        isEnabled = false;
-        try
-        {
-            PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
-            PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;
-        }
-        catch { }
-        OnCauldronEmptied();
+        PlayerEventHandler.Instance.PerformedRitual += AwardSophistication;
     }
 
     protected Dictionary<IngredientData, int> GetRitualStages()
@@ -103,16 +99,11 @@ public class Ritual : IRitual
         }
     }
 
-    public void HighlightIngredients()
+    private void AwardSophistication(IRitual rit)
     {
-        foreach(var item in currentRitualValues)
-        {
-            GameEventHandler.Instance.HighlightIngredient(item.Key);
-        }
-    }
+        if (rit != this) return;
 
-    public List<IngredientData> GetCurrentLeftIngredients()
-    {
-        return currentRitualValues.Keys.ToList();
+        PlayerController.Instance.inventory.AdjustSophistication(GetSophistication());
+        countCompleted++;
     }
 }

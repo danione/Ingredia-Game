@@ -691,6 +691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1695945991005713638, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: sophisticationDecayConstant
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -708,13 +712,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: boundariesData

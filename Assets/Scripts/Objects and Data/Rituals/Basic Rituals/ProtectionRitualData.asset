@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Protection Ritual
   description: Summons a powerful shield that destroys projectiles and dangerous
     objects
+  sophisticationReward: 3
   ritualRecipes:
   - item: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
     amount: 2

@@ -6,7 +6,7 @@ public class RitualScriptableObject : ScriptableObject
 {
     public new string name;
     public string description;
-    public int sophisticationReward;
+    public float sophisticationReward;
     public List<RitualRecipe> ritualRecipes = new();
     public List<PotionsData> potionRewardData;
 }

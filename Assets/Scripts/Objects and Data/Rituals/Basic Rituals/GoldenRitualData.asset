@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Golden Ritual
   description: Convert all ingredients, projectiles, and dangerous objects into golden
     nuggets.
+  sophisticationReward: 7.7
   ritualRecipes:
   - item: {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
     amount: 4
