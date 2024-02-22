@@ -6,97 +6,47 @@ using UnityEngine;
 
 public class RitualManager : MonoBehaviour
 {
-    [SerializeField] private List<RitualScriptableObject> basicRitualsData = new();
-    [SerializeField] private List<RitualScriptableObject> hiddenRitualsData = new();
+    [SerializeField] private List<RitualScriptableObject> unlockedRituals = new();
+    [SerializeField] private List<RitualScriptableObject> lockedRituals = new();
 
-    private List<Ritual> basicRituals = new();
-    private Dictionary<string, Ritual> hiddenRituals = new ();
-    private HashSet<string> lockedHiddenRituals = new ();
+    private List<Ritual> unlockedRitualsList = new();
+    private Dictionary<string, Ritual> lockedRitualsDict = new ();
 
     private void Start()
     {
-        foreach(var ritual in basicRitualsData)
+        foreach(var ritual in unlockedRituals)
         {
-            basicRituals.Add(new Ritual(ritual));
-            basicRituals[basicRituals.Count - 1].EnableRitual();
+            unlockedRitualsList.Add(new Ritual(ritual));
+            unlockedRitualsList[unlockedRitualsList.Count - 1].EnableRitual();
         }
-
-        
-        foreach(var hidden in hiddenRitualsData)
+               
+        foreach(var hidden in lockedRituals)
         {
-             hiddenRituals[hidden.name] = new Ritual(hidden);
+             lockedRitualsDict[hidden.name] = new Ritual(hidden);
         }
-
-        lockedHiddenRituals = hiddenRituals.Keys.ToHashSet();
     }
 
+
+    // Valid rituals are if they are still present in the locked dict
+    // and if the ritual within it is not null
     private bool IsValidRitual(string ritual)
     {
-        bool isInHiddenRitualsArray = hiddenRituals.ContainsKey(ritual) && hiddenRituals[ritual] != null;
-        bool isInLockedRitualsSet = lockedHiddenRituals.Contains(ritual);
-        return isInHiddenRitualsArray && isInLockedRitualsSet;
+        bool isInHiddenRitualsArray = lockedRitualsDict.ContainsKey(ritual) && lockedRitualsDict[ritual] != null;
+        return isInHiddenRitualsArray;
     }
 
-    public string GetFirstLockedRitual()
-    {
-        if (!HasLockedHiddenRituals()) return null;
-
-        string[] asArray = lockedHiddenRituals.ToArray();
-        string firstElement = asArray[0];
-        return firstElement;
-    }
-
-    // The ritual won't be selected, this is considered permanent
-    // unlocking
+    // Unlocks a ritual with the following identifier
+    // if its valid
+    // -- Uses enable ritual, which triggers the flag
+    // inside the ritual to start working
     public RitualScriptableObject AddRitualToUnlocked(string newRitual)
     {
         RitualScriptableObject ritualObject = null;
         if (IsValidRitual(newRitual))
         {
-            ritualObject = hiddenRituals[newRitual].RitualData;
-            hiddenRituals[newRitual].EnableRitual();
-            lockedHiddenRituals.Remove(newRitual);
+            ritualObject = lockedRitualsDict[newRitual].RitualData;
+            lockedRitualsDict[newRitual].EnableRitual();
         }
         return ritualObject;
-    }
-
-    // Temporary Unlocking
-    public void UnlockRitual(string ritual)
-    {
-        if (IsValidRitual(ritual) && !hiddenRituals[ritual].isEnabled)
-        {
-            hiddenRituals[ritual].EnableRitual();
-        }
-    }
-
-    // Temporary Locking
-    public void LockRitual(string ritual)
-    {
-        if (IsValidRitual(ritual) && hiddenRituals[ritual].isEnabled)
-        {
-            hiddenRituals[ritual].DisableRitual();
-        }
-    }
-
-    public bool HasLockedHiddenRituals()
-    {
-        return lockedHiddenRituals.Count > 0;
-    }
-
-    public string GetRandomLockedRitual()
-    {
-        if (!HasLockedHiddenRituals()) return null;
-   
-        string[] asArray = lockedHiddenRituals.ToArray();
-        int randomIndex = UnityEngine.Random.Range(0, asArray.Length);
-        string randomElement = asArray[randomIndex];
-        return randomElement;
-    } 
-
-    public RitualScriptableObject GetRitualScriptableObject(string ritual)
-    {
-        if (!IsValidRitual(ritual)) return null;
-
-        return hiddenRituals[ritual].RitualData;
     }
 }

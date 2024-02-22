@@ -14,13 +14,11 @@ public class RecipeStage : TutorialStage
     {
         GameEventHandler.Instance.CompletedRecipe -= TutorialManager.instance.OnCompletedRecipe;
         TutorialManager.instance.DisableIngredientsFactory();
-        TutorialManager.instance.DisableRecipeFactory();
     }
 
     public override void Reward()
     {
         TutorialManager.instance.DisableIngredientsFactory();
-        TutorialManager.instance.DisableRecipeFactory();
 
     }
 }
