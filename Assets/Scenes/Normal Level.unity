@@ -550,9 +550,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4095549615632604084, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - target: {fileID: 4301355466731736924, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164809470490039580, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
@@ -634,12 +638,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7035736489650725174, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - target: {fileID: 6554699446411929873, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575862923752291342, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: testPotion
+      value: 
+      objectReference: {fileID: 11400000, guid: 65feea49f9684e443ba7850efc8af7ef, type: 2}
+    - target: {fileID: 8623202692586997233, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4301355466731736924, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
@@ -690,10 +703,6 @@ PrefabInstance:
     - target: {fileID: 1201161029502399086, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695945991005713638, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: sophisticationDecayConstant
-      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
@@ -799,6 +808,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: startingHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: healthRegenTime
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

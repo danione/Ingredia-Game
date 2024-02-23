@@ -1,12 +1,17 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IUnitStats
 {
-    [SerializeField] private int startingHealth;
-    [SerializeField] private int maxHealth;
-
+    [SerializeField] private float startingHealth;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float health;
+    [SerializeField] private float healthRegenTime;
+    [SerializeField] private int healthRegenRate = 1;
     public float Health => health;
+
+    private bool isHealing = false;
 
     private void Start()
     {
@@ -19,13 +24,21 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         GameManager.Instance.gameOver = true;
     }
 
-    public void Heal()
-    { 
-        if (Health < maxHealth)
-        {
-            health++;
-        }
+    public void HealInstantly(float healAmount)
+    {
+        health = Mathf.Min(health + healAmount, maxHealth);
         PlayerEventHandler.Instance.AdjustHealth();
+    }
+
+    private IEnumerator HealOverTime(float healthIncrease)
+    {
+        while(health < healthIncrease)
+        {
+            health = Math.Min(health + healthRegenRate, healthIncrease);
+            PlayerEventHandler.Instance.AdjustHealth();
+            yield return new WaitForSeconds(healthRegenTime);
+        }
+        isHealing = false;
     }
 
     public void UpgradeHealth(int newMaxHealth)
@@ -34,10 +47,13 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         Heal(newMaxHealth);
     }
 
-    public void Heal(int _health)
+    public void Heal(float amount)
     {
-        health = Mathf.Min(health + _health, maxHealth);
-        PlayerEventHandler.Instance.AdjustHealth();
+        if (amount < 0 || isHealing) return;
+
+        isHealing = true;
+        float healIncrease = Mathf.Min(health + amount, maxHealth);
+        StartCoroutine(HealOverTime(healIncrease));
     }
 
     public void TakeDamage()

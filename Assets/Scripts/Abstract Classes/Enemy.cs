@@ -22,11 +22,6 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     public BoundariesData Boundaries => enemyData.spawnBoundaries;
 
-    public virtual void Heal()
-    {
-        currentHealth++;
-    }
-
     public virtual void Heal(float amount)
     {
         currentHealth += amount;
