@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1df109eb822f2448f9eee6467c8973, type: 3}
+  m_Name: GhostRitualUnlock
+  m_EditorClassIdentifier: 
+  upgradeName: Ghost Ritual
+  description: Leave your corporeal body, avoiding collisions with all objects.
+  cost: 0
+  ritualToUnlock: {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
