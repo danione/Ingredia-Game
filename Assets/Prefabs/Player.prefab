@@ -508,12 +508,12 @@ MonoBehaviour:
   size: 4
   weapons:
   - weaponName: Athame
-    ammo: 0
+    ammo: 1100
     maxAmmo: 10
     objectPosition: 1
   - weaponName: Fireball
-    ammo: 0
-    maxAmmo: 5
+    ammo: 1000
+    maxAmmo: 2
     objectPosition: 0
   gold: 0
   sophistication: 0
@@ -543,8 +543,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  maxHealth: 3
+  maxHealth: 5
+  maxArmour: 3
   health: 5
+  healthRegenTime: 3
+  healthRegenRate: 1
 --- !u!114 &7759249205259069879
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,9 +57,10 @@ MonoBehaviour:
     prefab: {fileID: 0}
   _ingredients:
   - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-  - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
-  boundariesData: {fileID: 0}
+  - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+  boundariesData: {fileID: 11400000, guid: 3411bee9deea6ae4fb8e4aafea63f9a4, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
   prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
 --- !u!114 &4699198157692283021
@@ -89,7 +90,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873061175675691215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -130,13 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFrequencyData: {fileID: 11400000, guid: 21a69ea06dfd0f34a95033bad9d49800, type: 2}
-  spawnLocationData: {fileID: 11400000, guid: ab8417f4af79a3c40824f16a7085681b, type: 2}
-  spawner:
-    collectionCheck: 1
-    defaultCapacity: 5
-    maxSize: 10
-    prefab: {fileID: -7481374443165452413, guid: b8614f07155a0ef458963cbfa0364838, type: 3}
 --- !u!114 &5350667911276703195
 MonoBehaviour:
   m_ObjectHideFlags: 0
