@@ -700,6 +700,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
     - target: {fileID: 9074762068929310664, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.19

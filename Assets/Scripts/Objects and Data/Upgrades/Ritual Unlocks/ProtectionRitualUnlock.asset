@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1df109eb822f2448f9eee6467c8973, type: 3}
+  m_Name: ProtectionRitualUnlock
+  m_EditorClassIdentifier: 
+  upgradeName: Protection Ritual
+  description: Unlocks a powerfull barrier that stops objects from coming through.
+  cost: 0
+  ritualToUnlock: {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}
