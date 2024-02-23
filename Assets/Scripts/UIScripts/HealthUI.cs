@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_HealthAmount;
+    [SerializeField] private TextMeshProUGUI m_ArmourAmount;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class HealthUI : MonoBehaviour
     private void OnHealthAdjust()
     {
         m_HealthAmount.text = PlayerController.Instance.stats.Health.ToString();
+        m_ArmourAmount.text = PlayerController.Instance.stats.Armour.ToString();
     }
 
     private void OnUpdateUI()

@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     [SerializeField] private float healthRegenTime;
     [SerializeField] private int healthRegenRate = 1;
     public float Health => health;
+    public float Armour => armour;
     private float armour = 0;
 
     private bool isHealing = false;
@@ -18,6 +19,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     private Coroutine combatCoroutine;
     private bool isInCombat = false;
+    private bool isSelfRegenArmour = false;
     private float combatSeconds = 3;
 
     private void Start()
@@ -38,16 +40,30 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         StartCoroutine(PermaHealing());
     }
 
+    public void SetAutoRegenArmour()
+    {
+        isSelfRegenArmour = true;
+    }
+
     // Self-Healing Upgrade Unlock
     // If not in combat, heal up to the max health every n-th seconds
     private IEnumerator PermaHealing()
     {
         while(!GameManager.Instance.gameOver)
         {
-            if (!isInCombat && health < maxHealth)
+            if (!isInCombat)
             {
-                health = Math.Min(health + healthRegenRate, maxHealth);
-                PlayerEventHandler.Instance.AdjustHealth();
+                if (health < maxHealth)
+                {
+                    health = Math.Min(health + healthRegenRate, maxHealth);
+                    PlayerEventHandler.Instance.AdjustHealth();
+
+                }
+                else if(isSelfRegenArmour && armour < maxArmour)
+                {
+                    armour = Math.Min(armour + healthRegenRate, maxArmour);
+                    PlayerEventHandler.Instance.AdjustHealth();
+                }
             }
             yield return new WaitForSeconds(healthRegenTime);
         }
@@ -70,6 +86,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     {
         isArmourEnabled = true;
         armour = maxArmour;
+        PlayerEventHandler.Instance.AdjustHealth();
     }
 
     public void UpgradeHealth(int newMaxHealth)
