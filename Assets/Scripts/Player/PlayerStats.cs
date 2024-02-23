@@ -24,10 +24,23 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         GameManager.Instance.gameOver = true;
     }
 
-    public void HealInstantly(float healAmount)
+    public void SetPermanentHealing()
     {
-        health = Mathf.Min(health + healAmount, maxHealth);
-        PlayerEventHandler.Instance.AdjustHealth();
+        isHealing = true;
+        StartCoroutine(PermaHealing());
+    }
+
+    private IEnumerator PermaHealing()
+    {
+        while(!GameManager.Instance.gameOver)
+        {
+            if (!isInCombat && health < maxHealth)
+            {
+                health = Math.Min(health + healthRegenRate, maxHealth);
+                PlayerEventHandler.Instance.AdjustHealth();
+            }
+            yield return new WaitForSeconds(healthRegenTime);
+        }
     }
 
     private IEnumerator HealOverTime(float healthIncrease)
@@ -38,6 +51,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
             PlayerEventHandler.Instance.AdjustHealth();
             yield return new WaitForSeconds(healthRegenTime);
         }
+
         isHealing = false;
     }
 
@@ -56,17 +70,30 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         StartCoroutine(HealOverTime(healIncrease));
     }
 
-    public void TakeDamage()
-    {
-        health--;
-        PlayerEventHandler.Instance.AdjustHealth();
-        if (Health < 1) { Die(); }
-    }
+    private Coroutine combatCoroutine;
+    private bool isInCombat = false;
+    private float combatSeconds = 3;
 
     public void TakeDamage(float amount)
     {
         health -= amount;
         PlayerEventHandler.Instance.AdjustHealth();
+
+        if (isInCombat)
+        {
+            StopCoroutine(combatCoroutine);
+        }
+
+        combatCoroutine = StartCoroutine(CombatTimer());
+
+
         if (Health < 1) { Die(); }
+    }
+
+    private IEnumerator CombatTimer()
+    {
+        isInCombat = true;
+        yield return new WaitForSeconds(combatSeconds);
+        isInCombat = false;
     }
 }

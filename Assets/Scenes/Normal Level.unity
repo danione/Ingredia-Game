@@ -546,9 +546,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124932867271599943, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_Name
+      value: healingRitualBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 804897309435502136, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439455839083398572, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: upgradeSubject
+      value: 
+      objectReference: {fileID: 1760316102}
+    - target: {fileID: 1439455839083398572, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: upgradeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: 97341c9ee0511ec4ab5360cbe6069f46, type: 2}
     - target: {fileID: 2419922651679631055, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Name
       value: UI Display Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808273932673712943, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: upgradeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: 82ecda831bbd43f478d059c309648f0c, type: 2}
+    - target: {fileID: 4095549615632604084, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4301355466731736924, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
@@ -653,6 +677,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4301355466731736924, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - {fileID: 4659717910122078817, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - {fileID: 2326946245846458821, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+    - {fileID: 7956622503145969353, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
@@ -737,6 +764,14 @@ PrefabInstance:
       propertyPath: boundariesData
       value: 
       objectReference: {fileID: 11400000, guid: 3411bee9deea6ae4fb8e4aafea63f9a4, type: 2}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: _ingredients.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
     - target: {fileID: 9074762068929310664, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.19

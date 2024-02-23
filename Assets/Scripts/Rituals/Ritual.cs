@@ -81,7 +81,7 @@ public class Ritual : IRitual
         {
             isAvailable = false;
             currentRitualValues.Clear();
-            PlayerEventHandler.Instance.CollectedWrongIngredient(ritualData.name);
+            PlayerEventHandler.Instance.CollectedWrongIngredient(ritualData.ritualName);
             return;
         }
 
@@ -95,7 +95,7 @@ public class Ritual : IRitual
         { 
             isAvailable = true;
             CompleteAnEvent();
-            PlayerEventHandler.Instance.UnlockARitual(ritualData.name);
+            PlayerEventHandler.Instance.UnlockARitual(ritualData.ritualName);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ritual", menuName = "Scriptable Objects/Ritual")]
 public class RitualScriptableObject : ScriptableObject
 {
-    public new string name;
+    public string ritualName;
     public string description;
     public float sophisticationReward;
     public List<RitualRecipe> ritualRecipes = new();

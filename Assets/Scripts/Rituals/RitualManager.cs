@@ -22,7 +22,7 @@ public class RitualManager : MonoBehaviour
                
         foreach(var hidden in lockedRituals)
         {
-             lockedRitualsDict[hidden.name] = new Ritual(hidden);
+             lockedRitualsDict[hidden.ritualName] = new Ritual(hidden);
         }
     }
 
