@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d9c334a9053ce478205269ecd0fb7d, type: 3}
   m_Name: SteamjetRitualData
   m_EditorClassIdentifier: 
-  name: Steamjet Ritual
+  ritualName: Steamjet Ritual
   description: You cauldron releases a burst of steam, destroying everything in its
     path.
   sophisticationReward: 6
