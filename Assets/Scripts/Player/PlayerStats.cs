@@ -24,7 +24,6 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     {
         health = startingHealth;
         PlayerEventHandler.Instance.AdjustHealth();
-        EnableArmour();
     }
 
     public void Die()

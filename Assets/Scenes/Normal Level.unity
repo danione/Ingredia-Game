@@ -550,6 +550,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: healingRitualBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 714756892655109895, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: upgradeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: afea5454cffedae43bcec26e521e7632, type: 2}
+    - target: {fileID: 714756892655109895, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: requirements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 714756892655109895, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: requirements.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 804897309435502136, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 1
