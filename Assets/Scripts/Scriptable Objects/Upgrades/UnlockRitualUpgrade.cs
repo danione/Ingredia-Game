@@ -9,6 +9,6 @@ public class UnlockRitualUpgrade : UpgradeData
 
     public override void ApplyUpgrade(GameObject obj)
     {
-        obj.GetComponent<RitualManager>().AddRitualToUnlocked(ritualToUnlock.ritualName);
+        GameManager.Instance.GetComponent<RitualManager>().AddRitualToUnlocked(ritualToUnlock.ritualName);
     }
 }

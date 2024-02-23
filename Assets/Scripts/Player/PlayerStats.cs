@@ -6,17 +6,25 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 {
     [SerializeField] private float startingHealth;
     [SerializeField] private float maxHealth;
+    [SerializeField] private float maxArmour;
     [SerializeField] private float health;
     [SerializeField] private float healthRegenTime;
     [SerializeField] private int healthRegenRate = 1;
     public float Health => health;
+    private float armour = 0;
 
     private bool isHealing = false;
+    private bool isArmourEnabled = false;
+
+    private Coroutine combatCoroutine;
+    private bool isInCombat = false;
+    private float combatSeconds = 3;
 
     private void Start()
     {
         health = startingHealth;
         PlayerEventHandler.Instance.AdjustHealth();
+        EnableArmour();
     }
 
     public void Die()
@@ -24,12 +32,15 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         GameManager.Instance.gameOver = true;
     }
 
+    // Disable healing potions and start the self-healing process
     public void SetPermanentHealing()
     {
         isHealing = true;
         StartCoroutine(PermaHealing());
     }
 
+    // Self-Healing Upgrade Unlock
+    // If not in combat, heal up to the max health every n-th seconds
     private IEnumerator PermaHealing()
     {
         while(!GameManager.Instance.gameOver)
@@ -43,6 +54,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         }
     }
 
+    // Health potions heal over a set time
     private IEnumerator HealOverTime(float healthIncrease)
     {
         while(health < healthIncrease)
@@ -55,10 +67,21 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         isHealing = false;
     }
 
+    public void EnableArmour()
+    {
+        isArmourEnabled = true;
+        armour = maxArmour;
+    }
+
     public void UpgradeHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;
         Heal(newMaxHealth);
+    }
+
+    public void RepairAmour(float amount)
+    {
+        armour = Mathf.Min(maxArmour, armour + amount);
     }
 
     public void Heal(float amount)
@@ -70,13 +93,22 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         StartCoroutine(HealOverTime(healIncrease));
     }
 
-    private Coroutine combatCoroutine;
-    private bool isInCombat = false;
-    private float combatSeconds = 3;
-
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        if (isArmourEnabled)
+        {
+            armour -= amount;
+            if(armour < 0)
+            {
+                health += armour;
+                armour = 0;
+            }
+        }
+        else
+        {
+            health -= amount;
+        }
+
         PlayerEventHandler.Instance.AdjustHealth();
 
         if (isInCombat)
@@ -87,7 +119,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         combatCoroutine = StartCoroutine(CombatTimer());
 
 
-        if (Health < 1) { Die(); }
+        if (Health <= 0) { Die(); }
     }
 
     private IEnumerator CombatTimer()

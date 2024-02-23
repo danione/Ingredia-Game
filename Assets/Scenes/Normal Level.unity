@@ -838,6 +838,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1135961848}
     - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: maxArmour
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}

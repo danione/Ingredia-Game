@@ -6,6 +6,6 @@ public class SelfRepairUpgrade : UpgradeData
 {
     public override void ApplyUpgrade(GameObject obj)
     {
-        obj.GetComponent<PlayerStats>().SetPermanentHealing();
+        PlayerController.Instance.GetComponent<PlayerStats>().SetPermanentHealing();
     }
 }
