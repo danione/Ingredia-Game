@@ -7,6 +7,7 @@ public class EquippedWeaponUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_WeaponName;
     [SerializeField] private TextMeshProUGUI m_Ammo;
+    [SerializeField] private TextMeshProUGUI m_Unlimited;
     private PlayerInventory m_Inventory;
     private Weapon currentlyEquippedWeapon;
 
@@ -25,7 +26,18 @@ public class EquippedWeaponUI : MonoBehaviour
         if (currentlyEquippedWeapon == null) { return; }
 
         m_WeaponName.text = currentlyEquippedWeapon.weaponName;
-        m_Ammo.text = currentlyEquippedWeapon.ammo.ToString();
+
+        if (!currentlyEquippedWeapon.IsUnlimited)
+        {
+            m_Unlimited.gameObject.SetActive(false);
+            m_Ammo.gameObject.SetActive(true);
+            m_Ammo.text = currentlyEquippedWeapon.ammo.ToString();
+        }
+        else
+        {
+            m_Ammo.gameObject.SetActive(false);
+            m_Unlimited.gameObject.SetActive(true);
+        }
     }
 
     private void OnSwapWeapon()

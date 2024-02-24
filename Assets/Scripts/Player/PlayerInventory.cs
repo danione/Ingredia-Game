@@ -7,6 +7,7 @@ public class PlayerInventory: MonoBehaviour
     [SerializeField] public int size = 0;
 
     [SerializeField] private List<Weapon> weapons;
+    [SerializeField] private List<Weapon> lockedWeapons;
     private int currentlyEquippedWeapon = 0;
 
     [SerializeField] public int gold = 0;
@@ -36,6 +37,14 @@ public class PlayerInventory: MonoBehaviour
         catch { }
     }
 
+    public void SetUnlimitedWeapon(string weaponName)
+    {
+        foreach (var weapon in weapons)
+        {
+            if (weaponName == weapon.weaponName) { weapon.SetUnlimited(); }
+        }
+    }
+
     public Weapon GetCurrentlyEquippedWeapon()
     {
        return weapons[currentlyEquippedWeapon];
@@ -48,6 +57,8 @@ public class PlayerInventory: MonoBehaviour
 
     public void SubtractCurrentWeaponAmmo(int amount)
     {
+        if (weapons[currentlyEquippedWeapon].IsUnlimited) return;
+
         if (weapons[currentlyEquippedWeapon].ammo - amount > 0)
         {
             weapons[currentlyEquippedWeapon].ammo -= amount;
@@ -57,6 +68,8 @@ public class PlayerInventory: MonoBehaviour
 
     public void AddAmmo(string weaponName, int amount)
     {
+        if (weapons[currentlyEquippedWeapon].weaponName == weaponName && weapons[currentlyEquippedWeapon].IsUnlimited) return;
+
         foreach (var weapon in weapons)
         {
             if (weaponName == weapon.weaponName) { weapon.ammo += amount; break; }
@@ -70,6 +83,8 @@ public class PlayerInventory: MonoBehaviour
 
     public void SetMaxAmmo(string weaponName, int newMaxAmmo)
     {
+        if (weapons[currentlyEquippedWeapon].weaponName == weaponName && weapons[currentlyEquippedWeapon].IsUnlimited) return;
+
         foreach (var weapon in weapons)
         {
             if (weaponName == weapon.weaponName) { weapon.maxAmmo = newMaxAmmo; break; }
@@ -128,21 +143,4 @@ public class PlayerInventory: MonoBehaviour
         return sophistication;
     }
 }
-[System.Serializable]
-public class Weapon
-{
-    [SerializeField] public string weaponName;
-    [SerializeField] public int ammo;
-    [SerializeField] public int maxAmmo;
-    [SerializeField] private int objectPosition; // unique
 
-    public int GetObjectPosition()
-    {
-        return objectPosition;
-    }
-
-    public bool HasAvailableAmmo()
-    {
-        return ammo > 0;
-    }
-}
