@@ -157,7 +157,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log("Current requested ritual reward does not correspond to the actual data");
                 return;
             }
-            inventory.AddPotion(inventory.possibleRitual.RitualData.potionRewardData[Constants.Instance.currentRitualRewards]);
+            inventory.AddPotion(inventory.possibleRitual.GetPotionReward());
             PlayerEventHandler.Instance.RitualHasBeenPerformed(inventory.possibleRitual);
             PlayerEventHandler.Instance.EmptyCauldron();
         }

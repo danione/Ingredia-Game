@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bb5f91a038839f4e9faa8d564aef839, type: 3}
-  m_Name: MaxFireballAreaUpgrade
+  m_Name: RomanBathsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Fireball Area 3
-  description: Maximises fireball's area of damage
-  cost: 1500
-  areaIncreaseAmount: 8
+  upgradeName: Roman Baths Effect
+  description: Increases steamball's area, damage, and yield from ritual
+  cost: 0
+  areaAmount: 8
+  damageAmount: 3
+  newRitualYield: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}

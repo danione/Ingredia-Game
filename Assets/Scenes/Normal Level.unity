@@ -534,10 +534,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5164809470490039580, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6289351775266753092, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -618,18 +614,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6983700405158175897, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: requirements.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6983700405158175897, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: requirements.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 82ecda831bbd43f478d059c309648f0c, type: 2}
-    - target: {fileID: 7767538974107824955, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 195
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -706,16 +690,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: _ingredients.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: _ingredients.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
+      objectReference: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: _ingredients.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
+      objectReference: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: _ingredients.Array.data[2]
       value: 

@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ritual Yield Upgrade", menuName = "Scriptable Objects/Upgrades/Ritual Yield Upgrade")]
 public class RitualYieldUpgrade : UpgradeData
 {
-    public int upgradeLevel;
+    public RitualScriptableObject ritual;
     public override void ApplyUpgrade(GameObject obj)
     {
-        Constants.Instance.UpgradeCurrentRitualRewards(upgradeLevel);
+        GameManager.Instance.GetComponent<RitualManager>().ChangeYieldByIncrementing(ritual.ritualName);
     }
 }

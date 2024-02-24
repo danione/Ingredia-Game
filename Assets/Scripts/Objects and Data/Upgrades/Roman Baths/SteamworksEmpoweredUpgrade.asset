@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bb5f91a038839f4e9faa8d564aef839, type: 3}
-  m_Name: MediumFireballAreaUpgrade
+  m_Name: SteamworksEmpoweredUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Fireball Area 2
-  description: Greatly increases the area of the fireball
-  cost: 1000
-  areaIncreaseAmount: 7.5
+  upgradeName: Steamworks Empowered
+  description: Polish the cauldron so much, greatly increases damage, yield, and
+    area.
+  cost: 0
+  areaAmount: 10
+  damageAmount: 7
+  newRitualYield: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}

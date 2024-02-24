@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bb3638080d76d94cb17ae1d8a2e1a88, type: 3}
-  m_Name: PowerfulFireballPotion
+  m_Name: PowerfulSteamballPotion
   m_EditorClassIdentifier: 
   potionName: Powerful Fireball Potion
   ammoAmount: 10

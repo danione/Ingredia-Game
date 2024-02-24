@@ -15,6 +15,8 @@ public class Ritual : IRitual
     protected Dictionary<IngredientData, int> currentRitualValues;
     protected Dictionary<IngredientData, int> defaultRitualValues;
 
+    private int currentReward = 0;
+
     private int countCompleted;
 
     public Ritual(RitualScriptableObject data)
@@ -105,5 +107,30 @@ public class Ritual : IRitual
 
         PlayerController.Instance.inventory.AdjustSophistication(GetSophistication());
         countCompleted++;
+    }
+
+    // Can change the ritual data
+    // ---
+    // Useful for changing yield amount. Since SOs can't be used as
+    // memory, need to change the actual SO. Clear the ingredient values
+    // assign new and reassign the ritual data. Nothing else changes.
+    public void ChangeRitualData(RitualScriptableObject newRitualData)
+    {
+        ritualData = newRitualData;
+        currentRitualValues.Clear();
+        defaultRitualValues.Clear();
+        AddRange(GetRitualStages(), currentRitualValues);
+        AddRange(GetRitualStages(), defaultRitualValues);
+    }
+
+    public void IncrementPotionYield()
+    {
+        if (ritualData.potionRewardData.Count > currentReward + 1)
+            currentReward++;
+    }
+
+    public PotionsData GetPotionReward()
+    {
+        return RitualData.potionRewardData[currentReward];
     }
 }
