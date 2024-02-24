@@ -8,7 +8,7 @@ public class Rotator : MonoBehaviour
 
     private void Start()
     {
-        trickster = GetComponent<TricksterEnemy>();
+        trickster = GetComponentInParent<TricksterEnemy>();
     }
 
     private void OnTriggerEnter(Collider other)

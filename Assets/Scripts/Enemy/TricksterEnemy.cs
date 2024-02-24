@@ -8,12 +8,13 @@ public class TricksterEnemy : Enemy
     [SerializeField] private int maxIngredientsNeeded;
 
     private TricksterStateMachine m_StateMachine;
-    private List<GameObject> capturedIngredients;
+    private List<GameObject> capturedIngredients = new();
 
     private void Start()
     {
-        m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded);
+        m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0));
         m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
+        GameEventHandler.Instance.CapturedNeededIngredients += OnCapturedNeededIngredients;
     }
 
     private void Update()
@@ -26,9 +27,22 @@ public class TricksterEnemy : Enemy
     {
         capturedIngredients.Add(ingredient);
     }
-
-    private void ChangeState()
+    
+    private void OnCapturedNeededIngredients()
     {
+        for (int i = capturedIngredients.Count - 1; i >= 0; i--) 
+        {
+            capturedIngredients[i].GetComponent<FallableObject>().SwapToMove();
+            GameEventHandler.Instance.SpawnATricksterProjectileAt(capturedIngredients[i].transform.position, this);
+            GameEventHandler.Instance.DestroyObject(capturedIngredients[i]);
+            capturedIngredients.RemoveAt(i);
+        }
 
+        m_StateMachine.TransitiontTo(m_StateMachine.IdleState);
+    }
+
+    public void AddCapturedProjectile(Product projectile)
+    {
+        capturedIngredients.Add(projectile.gameObject);
     }
 }

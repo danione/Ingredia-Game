@@ -5,39 +5,48 @@ public class TricksterGatheringState : IState
 {
     private float timeInState = 0f;
     private float timeMaxInState;
-    private List<GameObject> controlledIngredients;
+    private List<GameObject> controlledIngredients = new();
     private int maxIngredients;
+    private Transform rotator;
+    private bool isComplete = false;
 
-    public TricksterGatheringState(List<GameObject> ingredientArray, float timeMaxInState, int maxIngredients)
+    public TricksterGatheringState(List<GameObject> ingredientArray, float timeMaxInState, int maxIngredients, Transform rotator)
     {
         controlledIngredients = ingredientArray;
         this.timeMaxInState = timeMaxInState;
         this.maxIngredients = maxIngredients;
-    }
-
-    private void Reset()
-    {
-        timeInState = 0;
+        this.rotator = rotator;
     }
 
     public void Enter()
     {
-        Reset();
+        timeInState = 0;
+        rotator.gameObject.SetActive(true);
+        isComplete = false;
+    }
+
+    private void Finished()
+    {
+        isComplete = true;
+        rotator.gameObject.SetActive(false);
+        GameEventHandler.Instance.CaptureNeededIngredients();
     }
 
     public void Exit()
     {
+
     }
 
     void IState.Update()
     {
-        if(maxIngredients >= controlledIngredients.Count || timeInState > timeMaxInState)
+        if(isComplete) return;
+
+        if(maxIngredients < controlledIngredients.Count || timeInState > timeMaxInState)
         {
-            Exit();
+            Finished();
             return;
         }
-
-        timeInState += Time.deltaTime;
         
+        timeInState += Time.deltaTime;
     }
 }
