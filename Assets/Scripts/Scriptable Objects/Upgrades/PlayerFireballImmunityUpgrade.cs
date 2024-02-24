@@ -7,6 +7,6 @@ public class PlayerFireballImmunityUpgrade : UpgradeData
     public override void ApplyUpgrade(GameObject obj)
     {
         if (obj == null) return;
-        obj.GetComponent<FireballProjectile>().StopAffectingPlayer();
+        obj.GetComponent<SteamballProjectile>().StopAffectingPlayer();
     }
 }

@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 5324218901782306886}
   - component: {fileID: 1465080288547946469}
   m_Layer: 0
-  m_Name: FireballProjectile
+  m_Name: SteamballProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f78bdacd7440947938fe8d4160b3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 10
+  fallSpeed: 15
   target:
   - Player
   - Projectile
@@ -299,7 +299,7 @@ MonoBehaviour:
   - Dangerous Object
   direction: {x: 0, y: 1, z: 0}
   strength: 1
-  areaOfEffect: 8
+  areaOfEffect: 6
 --- !u!114 &1465080288547946469
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FireballProjectile : SimpleProjectile
+public class SteamballProjectile : SimpleProjectile
 {
     [SerializeField] private float areaOfEffect = 8f;
     private static bool isAffectingPlayer = true;
