@@ -23,5 +23,6 @@ public class Weapon
     {
         ammo = int.MaxValue;
         maxAmmo = int.MaxValue;
+        isUnlimited = true;
     }
 }
