@@ -9,8 +9,9 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     private void Awake()
     {
-        currentHealth = enemyData.health;
-        GetComponent<Resettable>().SetResetFunction(ResetEnemy);
+        if(enemyData != null)
+            currentHealth = enemyData.health;
+        GetComponent<Resettable>()?.SetResetFunction(ResetEnemy);
     }
 
     public virtual void Die()
