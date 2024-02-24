@@ -1,19 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TricksterGatheringState : IState
 {
     private float timeInState = 0f;
-    private const float timeMaxInState = 3f;
-    private Transform thisObject;
+    private float timeMaxInState;
+    private List<GameObject> controlledIngredients;
+    private int maxIngredients;
 
-    public TricksterGatheringState(Transform currentObject)
+    public TricksterGatheringState(List<GameObject> ingredientArray, float timeMaxInState, int maxIngredients)
     {
-        thisObject = currentObject;
+        controlledIngredients = ingredientArray;
+        this.timeMaxInState = timeMaxInState;
+        this.maxIngredients = maxIngredients;
+    }
+
+    private void Reset()
+    {
+        timeInState = 0;
     }
 
     public void Enter()
     {
-        timeInState = 0;
+        Reset();
     }
 
     public void Exit()
@@ -22,14 +31,13 @@ public class TricksterGatheringState : IState
 
     void IState.Update()
     {
-       if(timeInState < timeMaxInState)
+        if(maxIngredients >= controlledIngredients.Count || timeInState > timeMaxInState)
         {
-            timeInState += Time.deltaTime;
+            Exit();
+            return;
+        }
 
-        }
-        else
-        {
-            Debug.Log("Elapsed");
-        }
+        timeInState += Time.deltaTime;
+        
     }
 }

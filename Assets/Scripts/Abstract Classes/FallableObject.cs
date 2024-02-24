@@ -28,6 +28,7 @@ public abstract class FallableObject : MonoBehaviour, IMovable
     public void SwapToMove()
     {
         currentMovementPattern = Move;
+        transform.Rotate(0, 0, 0);
     }
 
     private void Circulate()
