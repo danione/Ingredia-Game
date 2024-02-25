@@ -17,6 +17,21 @@ public class TricksterProjectile : SimpleProjectile
 
     public override void Move()
     {
+
+        if (transform.position.y > stopFollowing)
+        {
+            // Calculate the direction towards the target
+            initialDirection = (followTarget.position - transform.position).normalized;
+
+            // Calculate the angle towards the target
+            float angle = Mathf.Atan2(initialDirection.x, -initialDirection.y) * Mathf.Rad2Deg;
+
+            // Rotate towards the target
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        }
+        transform.position += initialDirection * speedOfFollow * Time.deltaTime;
+        /*
         if (transform.position.y > stopFollowing)
         {
             // Calculate the direction towards the target
@@ -24,13 +39,17 @@ public class TricksterProjectile : SimpleProjectile
 
             // Calculate the angle towards the target
             float angle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
-           
-            // When the angle difference is smaller than the step, move directly towards the target
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Rotate towards the target gradually
+            Quaternion targetRotation = Quaternion.AngleAxis(angle * stepPerAngle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speedOfFollow);
+
+            // Move towards the target
+            transform.position += transform.right * speedOfFollow * Time.deltaTime;
 
         }
-        transform.position += initialDirection * speedOfFollow * Time.deltaTime;
-
+        
+        */
     }
 
 
