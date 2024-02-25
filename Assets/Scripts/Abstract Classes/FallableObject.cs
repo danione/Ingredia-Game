@@ -25,6 +25,11 @@ public abstract class FallableObject : MonoBehaviour, IMovable
         currentMovementPattern = Circulate;
     }
 
+    public void SwapToFreeze()
+    {
+        currentMovementPattern = null;
+    }
+
     public void SwapToMove()
     {
         currentMovementPattern = Move;

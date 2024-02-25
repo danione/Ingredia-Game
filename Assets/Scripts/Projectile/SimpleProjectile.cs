@@ -7,7 +7,6 @@ public abstract class SimpleProjectile : FallableObject
     [SerializeField] private Vector3 direction;
     [SerializeField] protected int strength;
 
-    
     public override void Move()
     {
         gameObject.transform.Translate(direction * Time.deltaTime * fallSpeed);

@@ -16,7 +16,8 @@ public class TricksterFactory : MonoBehaviour
     private void OnSpawnProjectileAt(Vector3 pos, TricksterEnemy spawnedBy)
     {
         Product projectile = spawner.GetProduct(pos);
-        projectile.GetComponent<FallableObject>().SwapToCirculate(spawnedBy.transform);
+        projectile.GetComponent<SimpleProjectile>().SwapToFreeze();
+       //projectile.GetComponent<FallableObject>().SwapToCirculate(spawnedBy.transform);
         spawnedBy.AddCapturedProjectile(projectile);
     }
 }
