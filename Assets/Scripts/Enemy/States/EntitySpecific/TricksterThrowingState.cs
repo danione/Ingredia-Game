@@ -4,37 +4,49 @@ using UnityEngine;
 
 public class TricksterThrowingState : IState
 {
+    private TricksterMoveState moveState;
     private List<GameObject> capturedIngredients = new();
     private TricksterEnemy currentObject;
     private float currentTime = 0;
     private float maxTime = 3;
+    private bool isFinished = false;
 
-    public TricksterThrowingState(List<GameObject> capturedIngredients, TricksterEnemy currentObject)
+    public TricksterThrowingState(List<GameObject> capturedIngredients, TricksterEnemy currentObject, TricksterMoveState moveState)
     {
         this.capturedIngredients = capturedIngredients;
         this.currentObject = currentObject;
+        this.moveState = moveState;
     }
 
     public void Enter()
     {
         currentTime = 0;
+        isFinished = false;
+        moveState.Enter();
     }
 
     public void Exit()
     {
     }
 
+    private void Finished()
+    {
+        isFinished = true;
+        moveState.Exit();
+        GameEventHandler.Instance.FinishThrowingTrickster();
+    }
 
     void IState.Update()
     {
-        if (capturedIngredients.Count == 0)
-            return;
+        moveState.Update();
 
-        if(maxTime - currentTime > 0)
+        if (isFinished) { return; }
+
+        if (maxTime - currentTime > 0)
         {
             currentTime += Time.deltaTime;
             return;
-        } 
+        }
 
         int i = Random.Range(0, capturedIngredients.Count);
         FallableObject picked = capturedIngredients[i].GetComponent<FallableObject>();
@@ -52,5 +64,9 @@ public class TricksterThrowingState : IState
 
         currentTime = 0;
 
+        if (capturedIngredients.Count == 0)
+        {
+            Finished();
+        }
     }
 }

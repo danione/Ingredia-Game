@@ -12,9 +12,10 @@ public class TricksterEnemy : Enemy
 
     private void Start()
     {
-        m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0), this);
+        m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0), this, enemyData);
         m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
         GameEventHandler.Instance.CapturedNeededIngredients += OnCapturedNeededIngredients;
+        GameEventHandler.Instance.FinishedThrowingTrickster += OnFinishedThrowing;
     }
 
     private void Update()
@@ -40,10 +41,14 @@ public class TricksterEnemy : Enemy
 
         m_StateMachine.TransitiontTo(m_StateMachine.TricksterThrowingState);
     }
+
+    private void OnFinishedThrowing()
+    {
+        m_StateMachine.TransitiontTo(m_StateMachine.TricksterGatheringState);
+    }
     
     public void AddCapturedProjectile(Product projectile)
     {
         capturedIngredients.Add(projectile.gameObject);
     }
-
 }

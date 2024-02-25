@@ -41,11 +41,17 @@ public class GameEventHandler : MonoBehaviour
     public Action<UpgradeData> UpgradeTriggered;
     public Action CapturedNeededIngredients;
     public Action<Vector3, TricksterEnemy> SpawnedATricksterProjectileAt;
+    public Action FinishedThrowingTrickster;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void FinishThrowingTrickster()
+    {
+        FinishedThrowingTrickster?.Invoke();
     }
 
     public void SpawnATricksterProjectileAt(Vector3 pos, TricksterEnemy enemy)

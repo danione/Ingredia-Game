@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31f05c00acbd814780e96623b6e0352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: fa811f5251fe9864babc42ed9884919d, type: 2}
   maxTimeGathering: 10000
   maxIngredientsNeeded: 3
 --- !u!135 &480850821
