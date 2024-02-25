@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class AthameProjectile : SimpleProjectile
 {
+    private void Start()
+    {
+        SwapToMove();
+    }
+
     public override void HandleCollision(Collider other)
     {
         IUnitStats unitStats = other.GetComponent<IUnitStats>();

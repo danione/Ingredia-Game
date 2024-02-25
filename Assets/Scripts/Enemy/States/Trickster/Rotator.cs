@@ -15,7 +15,7 @@ public class Rotator : MonoBehaviour
     {
         if (other.CompareTag("Ingredient"))
         {
-            other.GetComponent<FallableObject>().SwapToCirculate(gameObject.transform);
+            other.GetComponent<FallableObject>().SwapToCirculate(gameObject.transform, new Vector3(0,0, Random.Range(0,2)* 2 - 1));
             trickster.AddCapturedIngredient(other.gameObject);
         }
     }

@@ -12,6 +12,11 @@ public abstract class SimpleProjectile : FallableObject
         gameObject.transform.Translate(direction * Time.deltaTime * fallSpeed);
     }
 
+    public override void SwapToFreeze()
+    {
+        base.SwapToFreeze();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (target == null) { return; }

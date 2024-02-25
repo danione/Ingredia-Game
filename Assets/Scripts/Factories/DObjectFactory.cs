@@ -20,7 +20,11 @@ public class DObjectFactory : MonoBehaviour
         while (!GameManager.Instance.gameOver)
         {
             Vector3 position = new Vector3(Random.Range(spawnLocation.xLeftMax, spawnLocation.xRightMax), spawnLocation.yLocation, 2);
-            spawner._pool.Get().gameObject.transform.position = position;
+
+            Product DObj = spawner._pool.Get();
+            DObj.gameObject.transform.position = position;
+            DObj.GetComponent<FallableObject>().SwapToMove();
+
             yield return new WaitForSeconds(spawnFrequency);
         }
     }

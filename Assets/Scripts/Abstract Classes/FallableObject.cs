@@ -8,24 +8,21 @@ public abstract class FallableObject : MonoBehaviour, IMovable
     [SerializeField] protected float fallSpeed = 10.0f;
     private Action currentMovementPattern;
     private Transform pivotObject;
-
-    private void Start()
-    {
-        currentMovementPattern = Move;
-    }
+    private Vector3 rotationDirection;
 
     public virtual void Move()
     {
         gameObject.transform.Translate(Vector3.down * Time.deltaTime * fallSpeed);
     }
 
-    public void SwapToCirculate(Transform pivotObject)
+    public void SwapToCirculate(Transform pivotObject, Vector3 direction)
     {
         this.pivotObject = pivotObject;
+        this.rotationDirection = direction; 
         currentMovementPattern = Circulate;
     }
 
-    public void SwapToFreeze()
+    public virtual void SwapToFreeze()
     {
         currentMovementPattern = null;
     }
@@ -33,18 +30,16 @@ public abstract class FallableObject : MonoBehaviour, IMovable
     public void SwapToMove()
     {
         currentMovementPattern = Move;
-        transform.Rotate(0, 0, 0);
+        transform.rotation = Quaternion.identity;
     }
 
-    private void Circulate()
+    protected void Circulate()
     {
-        gameObject.transform.RotateAround(pivotObject.position, new Vector3(0,0,1), fallSpeed * 30 * Time.deltaTime);
+        gameObject.transform.RotateAround(pivotObject.position, rotationDirection, fallSpeed * 30 * Time.deltaTime);
     }
 
     private void Update()
     {
         currentMovementPattern?.Invoke();
     }
-
-    
 }

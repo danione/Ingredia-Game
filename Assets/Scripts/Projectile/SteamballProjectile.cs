@@ -8,6 +8,11 @@ public class SteamballProjectile : SimpleProjectile
     [SerializeField] private float areaOfEffect = 8f;
     private static bool isAffectingPlayer = true;
 
+    private void Start()
+    {
+        SwapToMove();
+    }
+
     public override void HandleCollision(Collider other)
     {
         Collider[] nearbyEnemies = Physics.OverlapSphere(gameObject.transform.position, areaOfEffect);

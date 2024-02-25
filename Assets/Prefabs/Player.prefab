@@ -511,10 +511,13 @@ MonoBehaviour:
     ammo: 1100
     maxAmmo: 10
     objectPosition: 1
+    isUnlimited: 0
   - weaponName: Fireball
     ammo: 1000
     maxAmmo: 2
     objectPosition: 0
+    isUnlimited: 0
+  lockedWeapons: []
   gold: 0
   sophistication: 0
 --- !u!114 &7919030058201532917

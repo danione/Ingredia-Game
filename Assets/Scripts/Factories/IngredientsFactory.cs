@@ -54,8 +54,7 @@ public class IngredientsFactory: MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _ingredients.Count);
         // Select a random location at the top of the screen
-        spawner.GetProduct(pos, _ingredients[randomIndex]);
-
+        spawner.GetProduct(pos, _ingredients[randomIndex]).GetComponent<FallableObject>().SwapToMove();
     }
 
     private void HandleIngredientSpawn(List<IngredientData> list, int randomIndex)
@@ -68,7 +67,7 @@ public class IngredientsFactory: MonoBehaviour
 
         Vector3 newRandomLocation = new Vector3(newXPoint.pos, newYPoint.pos, spawnZLocation);
 
-        spawner.GetProduct(newRandomLocation, list[randomIndex]);
+        spawner.GetProduct(newRandomLocation, list[randomIndex]).GetComponent<FallableObject>().SwapToMove();
     }
 
     // Spawns ingredients at random times

@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 0}
   maxTimeGathering: 10000
-  maxIngredientsNeeded: 2
+  maxIngredientsNeeded: 3
 --- !u!135 &480850821
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -531,8 +531,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.8108716
-  m_Center: {x: 0, y: 0.5146284, z: 0}
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &720248274
 MonoBehaviour:
   m_ObjectHideFlags: 0
