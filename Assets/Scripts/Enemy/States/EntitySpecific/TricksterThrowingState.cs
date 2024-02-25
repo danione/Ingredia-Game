@@ -22,18 +22,20 @@ public class TricksterThrowingState : IState
     {
         currentTime = 0;
         isFinished = false;
+        moveState.SetFinished(false);
         moveState.Enter();
     }
 
     public void Exit()
     {
+        moveState.Exit();
     }
 
     private void Finished()
     {
         isFinished = true;
-        moveState.Exit();
-        GameEventHandler.Instance.FinishThrowingTrickster();
+        moveState.SetFinished(true);
+        GameEventHandler.Instance.FinishThrowingTrickster(currentObject);
     }
 
     void IState.Update()
@@ -49,7 +51,6 @@ public class TricksterThrowingState : IState
         }
 
         int i = Random.Range(0, capturedIngredients.Count);
-        Debug.Log(capturedIngredients.Count);
         if(i < capturedIngredients.Count)
         {
             FallableObject picked = capturedIngredients[i].GetComponent<FallableObject>();

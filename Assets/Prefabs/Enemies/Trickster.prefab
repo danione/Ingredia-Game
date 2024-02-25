@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 1294636229121220357}
   - component: {fileID: 4791549349591184098}
   - component: {fileID: 6773760622038747240}
+  - component: {fileID: 3656673296758444479}
+  - component: {fileID: 6982203611518975107}
   m_Layer: 0
   m_Name: Trickster
   m_TagString: Enemy
@@ -216,3 +218,27 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: fa811f5251fe9864babc42ed9884919d, type: 2}
   maxTimeGathering: 10000
   maxIngredientsNeeded: 3
+--- !u!114 &3656673296758444479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058637324477978121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38d7b6af5122fc4c8976e84a3dd152d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6982203611518975107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058637324477978121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

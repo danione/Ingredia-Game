@@ -29,7 +29,7 @@ public class TricksterGatheringState : IState
     {
         isComplete = true;
         rotator.gameObject.SetActive(false);
-        GameEventHandler.Instance.CaptureNeededIngredients();
+        GameEventHandler.Instance.CaptureNeededIngredients(rotator.transform.parent.GetComponent<TricksterEnemy>());
     }
 
     public void Exit()

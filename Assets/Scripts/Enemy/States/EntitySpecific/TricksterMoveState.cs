@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class TricksterMoveState : IState
 {
@@ -11,6 +7,7 @@ public class TricksterMoveState : IState
     private TricksterEnemy thisUnit;
     private float movementSpeed;
     private float stoppingDistance = 0.3f;
+    private bool isFinished = false;
 
     public TricksterMoveState(EnemyData _data, TricksterEnemy thisUnit)
     {
@@ -39,8 +36,14 @@ public class TricksterMoveState : IState
 
     }
 
+    public void SetFinished(bool finish)
+    {
+        isFinished = finish;
+    }
+
     public void Update()
     {
+        if (isFinished) return;
         Vector3 direction = (endOfMovement - thisUnit.transform.position).normalized;
 
         // Move towards the target

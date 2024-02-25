@@ -39,9 +39,9 @@ public class GameEventHandler : MonoBehaviour
     public Action TriggeredGameOver;
     public Action CompletedRecipe;
     public Action<UpgradeData> UpgradeTriggered;
-    public Action CapturedNeededIngredients;
+    public Action<TricksterEnemy> CapturedNeededIngredients;
     public Action<Vector3, TricksterEnemy> SpawnedATricksterProjectileAt;
-    public Action FinishedThrowingTrickster;
+    public Action<TricksterEnemy> FinishedThrowingTrickster;
 
     private void Awake()
     {
@@ -49,9 +49,9 @@ public class GameEventHandler : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void FinishThrowingTrickster()
+    public void FinishThrowingTrickster(TricksterEnemy enemy)
     {
-        FinishedThrowingTrickster?.Invoke();
+        FinishedThrowingTrickster?.Invoke(enemy);
     }
 
     public void SpawnATricksterProjectileAt(Vector3 pos, TricksterEnemy enemy)
@@ -59,9 +59,9 @@ public class GameEventHandler : MonoBehaviour
         SpawnedATricksterProjectileAt?.Invoke(pos, enemy);
     }
 
-    public void CaptureNeededIngredients()
+    public void CaptureNeededIngredients(TricksterEnemy enemy)
     {
-        CapturedNeededIngredients?.Invoke();
+        CapturedNeededIngredients?.Invoke(enemy);
     }
 
     public void UpgradeTrigger(UpgradeData data)

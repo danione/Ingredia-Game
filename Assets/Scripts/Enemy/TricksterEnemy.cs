@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class TricksterEnemy : Enemy
 {
@@ -35,8 +36,7 @@ public class TricksterEnemy : Enemy
 
     private void OnDestroyedObject(GameObject obj)
     {
-        
-        if(ingredients.ContainsKey(obj))
+        if (ingredients.ContainsKey(obj))
         {
             capturedIngredients.Remove(obj);
             ingredients.Remove(obj);
@@ -69,12 +69,20 @@ public class TricksterEnemy : Enemy
             GameEventHandler.Instance.DestroyedObject += OnDestroyedObject;
         }
         catch (Exception e) { Debug.LogException(e); }
+
+        if(m_StateMachine == null)
+        {
+            m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0), this, enemyData);
+            m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
+        }
         m_StateMachine.TransitiontTo(m_StateMachine.TricksterGatheringState);
     }
 
 
-    private void OnCapturedNeededIngredients()
+    private void OnCapturedNeededIngredients(TricksterEnemy enemy)
     {
+        if (enemy != this) return;
+
         for (int i = capturedIngredients.Count - 1; i >= 0; i--) 
         {
             capturedIngredients[i].GetComponent<FallableObject>().SwapToMove();
@@ -87,13 +95,17 @@ public class TricksterEnemy : Enemy
         m_StateMachine.TransitiontTo(m_StateMachine.TricksterThrowingState);
     }
 
-    private void OnFinishedThrowing()
+    private void OnFinishedThrowing(TricksterEnemy enemy)
     {
+        if(enemy != this) return;
+
         m_StateMachine.TransitiontTo(m_StateMachine.TricksterGatheringState);
     }
     
-    public void AddCapturedProjectile(Product projectile)
+    public void AddCapturedProjectile(Product projectile, TricksterEnemy enemy)
     {
+        if (enemy != this) return;
+
         capturedIngredients.Add(projectile.gameObject);
         ingredients[projectile.gameObject] = capturedIngredients.Count - 1;
     }
