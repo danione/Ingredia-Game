@@ -79,7 +79,8 @@ MonoBehaviour:
   strength: 1
   speedOfFollow: 10
   stopFollowing: -5
-  stepPerAngle: 0.0003
+  stepPerAngle: 0.25
+  decreaser: 0.5
 --- !u!114 &2136053290408127135
 MonoBehaviour:
   m_ObjectHideFlags: 0

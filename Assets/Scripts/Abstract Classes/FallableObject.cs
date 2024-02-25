@@ -9,6 +9,8 @@ public abstract class FallableObject : MonoBehaviour, IMovable
     private Action currentMovementPattern;
     private Transform pivotObject;
     private Vector3 rotationDirection;
+    private bool isRotating = false;
+    public bool IsRotating => isRotating;
 
     public virtual void Move()
     {
@@ -18,17 +20,20 @@ public abstract class FallableObject : MonoBehaviour, IMovable
     public void SwapToCirculate(Transform pivotObject, Vector3 direction)
     {
         this.pivotObject = pivotObject;
-        this.rotationDirection = direction; 
+        this.rotationDirection = direction;
+        isRotating = true;
         currentMovementPattern = Circulate;
     }
 
     public virtual void SwapToFreeze()
     {
+        isRotating = false;
         currentMovementPattern = null;
     }
 
     public void SwapToMove()
     {
+        isRotating = false;
         currentMovementPattern = Move;
         transform.rotation = Quaternion.identity;
     }

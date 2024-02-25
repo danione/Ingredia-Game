@@ -9,7 +9,6 @@ public class TricksterMoveState : IState
     private EnemyData _data;
     private Vector3 endOfMovement;
     private TricksterEnemy thisUnit;
-    private bool isFinished = false;
     private float movementSpeed;
     private float stoppingDistance = 0.3f;
 
