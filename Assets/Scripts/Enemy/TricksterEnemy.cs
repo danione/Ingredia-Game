@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,19 +30,49 @@ public class TricksterEnemy : Enemy
     public void AddCapturedIngredient(GameObject ingredient)
     {
         capturedIngredients.Add(ingredient);
-        Debug.Log(capturedIngredients.Count);
         ingredients[ingredient] = capturedIngredients.Count - 1; 
     }
 
     private void OnDestroyedObject(GameObject obj)
     {
+        
         if(ingredients.ContainsKey(obj))
         {
             capturedIngredients.Remove(obj);
             ingredients.Remove(obj);
         }
     }
-    
+
+    public override void DestroyEnemy()
+    {
+        base.DestroyEnemy();
+        try
+        {
+            GameEventHandler.Instance.DestroyedObject -= OnDestroyedObject;
+        }
+        catch(Exception e) { Debug.LogException(e); }
+
+        foreach (var obj in capturedIngredients)
+        {
+            GameEventHandler.Instance.DestroyedObject(obj);
+        }
+
+        capturedIngredients.Clear();
+        ingredients.Clear();
+    }
+
+    public override void ResetEnemy()
+    {
+        base.ResetEnemy();
+        try
+        {
+            GameEventHandler.Instance.DestroyedObject += OnDestroyedObject;
+        }
+        catch (Exception e) { Debug.LogException(e); }
+        m_StateMachine.TransitiontTo(m_StateMachine.TricksterGatheringState);
+    }
+
+
     private void OnCapturedNeededIngredients()
     {
         for (int i = capturedIngredients.Count - 1; i >= 0; i--) 
