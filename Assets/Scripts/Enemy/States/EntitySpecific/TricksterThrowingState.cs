@@ -49,24 +49,28 @@ public class TricksterThrowingState : IState
         }
 
         int i = Random.Range(0, capturedIngredients.Count);
-        FallableObject picked = capturedIngredients[i].GetComponent<FallableObject>();
-        Vector3 direction = PlayerController.Instance.transform.position - currentObject.transform.position;
-
-        // Calculate the rotation needed to look at the target object
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        // Smoothly rotate towards the target rotation
-        currentObject.gameObject.transform.rotation = Quaternion.Slerp(currentObject.gameObject.transform.rotation, targetRotation, 5 * Time.deltaTime);
-
-        picked.SwapToMove();
-
-        capturedIngredients.RemoveAt(i);
-
-        currentTime = 0;
-
-        if (capturedIngredients.Count == 0)
+        Debug.Log(capturedIngredients.Count);
+        if(i < capturedIngredients.Count)
         {
-            Finished();
+            FallableObject picked = capturedIngredients[i].GetComponent<FallableObject>();
+            Vector3 direction = PlayerController.Instance.transform.position - currentObject.transform.position;
+
+            // Calculate the rotation needed to look at the target object
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Smoothly rotate towards the target rotation
+            currentObject.gameObject.transform.rotation = Quaternion.Slerp(currentObject.gameObject.transform.rotation, targetRotation, 5 * Time.deltaTime);
+
+            picked.SwapToMove();
+
+            capturedIngredients.RemoveAt(i);
+
+            currentTime = 0;
+
+            if (capturedIngredients.Count == 0)
+            {
+                Finished();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db088f57aca773a4b921bf20e1e68026, type: 3}
   m_Name: TricksterEnemyData
   m_EditorClassIdentifier: 
-  health: 30
+  health: 15
   movementSpeed: 2.5
   goldDrop: 250
   spawnBoundaries: {fileID: 11400000, guid: f359dd3545db4f447b55fe7aceb00073, type: 2}

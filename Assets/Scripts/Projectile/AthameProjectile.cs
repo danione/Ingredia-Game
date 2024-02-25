@@ -19,7 +19,6 @@ public class AthameProjectile : SimpleProjectile
         }
         else if (isValidTarget)
         {
-
             GameEventHandler.Instance.DestroyObject(gameObject);
             GameEventHandler.Instance.DestroyObject(other.gameObject);
         }

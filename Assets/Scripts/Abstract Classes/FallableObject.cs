@@ -40,7 +40,8 @@ public abstract class FallableObject : MonoBehaviour, IMovable
 
     protected void Circulate()
     {
-        gameObject.transform.RotateAround(pivotObject.position, rotationDirection, fallSpeed * 30 * Time.deltaTime);
+        if(!gameObject.activeSelf || gameObject == null) SwapToFreeze();
+            gameObject.transform.RotateAround(pivotObject.position, rotationDirection, fallSpeed * 30 * Time.deltaTime);
     }
 
     private void Update()

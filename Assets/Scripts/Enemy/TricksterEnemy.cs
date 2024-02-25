@@ -9,6 +9,7 @@ public class TricksterEnemy : Enemy
 
     private TricksterStateMachine m_StateMachine;
     private List<GameObject> capturedIngredients = new();
+    private Dictionary<GameObject, int> ingredients = new();
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class TricksterEnemy : Enemy
         m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
         GameEventHandler.Instance.CapturedNeededIngredients += OnCapturedNeededIngredients;
         GameEventHandler.Instance.FinishedThrowingTrickster += OnFinishedThrowing;
+        GameEventHandler.Instance.DestroyedObject += OnDestroyedObject;
     }
 
     private void Update()
@@ -27,6 +29,17 @@ public class TricksterEnemy : Enemy
     public void AddCapturedIngredient(GameObject ingredient)
     {
         capturedIngredients.Add(ingredient);
+        Debug.Log(capturedIngredients.Count);
+        ingredients[ingredient] = capturedIngredients.Count - 1; 
+    }
+
+    private void OnDestroyedObject(GameObject obj)
+    {
+        if(ingredients.ContainsKey(obj))
+        {
+            capturedIngredients.Remove(obj);
+            ingredients.Remove(obj);
+        }
     }
     
     private void OnCapturedNeededIngredients()
@@ -34,6 +47,7 @@ public class TricksterEnemy : Enemy
         for (int i = capturedIngredients.Count - 1; i >= 0; i--) 
         {
             capturedIngredients[i].GetComponent<FallableObject>().SwapToMove();
+            ingredients.Remove(capturedIngredients[i]);
             GameEventHandler.Instance.SpawnATricksterProjectileAt(capturedIngredients[i].transform.position, this);
             GameEventHandler.Instance.DestroyObject(capturedIngredients[i]);
             capturedIngredients.RemoveAt(i);
@@ -50,5 +64,6 @@ public class TricksterEnemy : Enemy
     public void AddCapturedProjectile(Product projectile)
     {
         capturedIngredients.Add(projectile.gameObject);
+        ingredients[projectile.gameObject] = capturedIngredients.Count - 1;
     }
 }

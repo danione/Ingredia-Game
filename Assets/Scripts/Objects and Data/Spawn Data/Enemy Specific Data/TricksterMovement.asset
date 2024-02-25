@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xLeftMax: -5
   xRightMax: 5
-  yTopMax: 6
+  yTopMax: 5.5
   yBottomMax: 0
   offsetX: 0
   offsetY: 0
