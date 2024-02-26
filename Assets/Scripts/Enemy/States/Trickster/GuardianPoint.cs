@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GuardianPoint : MonoBehaviour, IUnitStats
 {
+    public int index;
     public float health;
     public float Health => health;
 

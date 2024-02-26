@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5350667911276703195}
   - component: {fileID: 9148559292740883961}
   - component: {fileID: 5445750503755775760}
+  - component: {fileID: 8422109505568854073}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -56,10 +57,8 @@ MonoBehaviour:
     maxSize: 100
     prefab: {fileID: 0}
   _ingredients:
-  - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-  - {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
   - {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
-  - {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
+  - {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
   boundariesData: {fileID: 11400000, guid: 3411bee9deea6ae4fb8e4aafea63f9a4, type: 2}
   spawnFrequency: {fileID: 11400000, guid: 25ced8c7e416ac949a4d803c3494f67b, type: 2}
   prefab: {fileID: 2717356947083886743, guid: 6abab1ae9f7964b41866cc5b3f7391ab, type: 3}
@@ -100,6 +99,8 @@ MonoBehaviour:
   - {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
   - {fileID: -1590132365824773583, guid: 7f3b4ac4095e745429740725bb199f9a, type: 3}
   - {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
+  - {fileID: 6982203611518975107, guid: e7fbfc9785e23ec40bcee6ad4ab01bdd, type: 3}
+  - {fileID: 1982504390974658238, guid: 1db81968d24212d40823931d8f38ee7e, type: 3}
   stage:
   - {fileID: 11400000, guid: 3ba7497a93a99dd48b64acfa5380e7a9, type: 2}
   - {fileID: 11400000, guid: 6206322afc876e7479810aaceca1d712, type: 2}
@@ -175,3 +176,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e8d57900a318440a37c1fb929fbc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8422109505568854073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895865c919220284bb8604c8f64190d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tricksterProjectile: {fileID: 4536548840237871150, guid: 32d4c57684bf3244186a853a111a89f4, type: 3}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 40
+    maxSize: 100
+    prefab: {fileID: 0}
