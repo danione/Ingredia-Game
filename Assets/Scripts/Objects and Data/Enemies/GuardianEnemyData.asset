@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db088f57aca773a4b921bf20e1e68026, type: 3}
   m_Name: GuardianEnemyData
   m_EditorClassIdentifier: 
-  health: 30
+  health: 3
   movementSpeed: 0
   goldDrop: 300
   spawnBoundaries: {fileID: 11400000, guid: f7ee6facb110aca47ad10d2a1553ccef, type: 2}

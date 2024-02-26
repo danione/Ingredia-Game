@@ -6,11 +6,19 @@ public abstract class SimpleProjectile : FallableObject
     [SerializeField] protected List<string> target = new ();
     [SerializeField] private Vector3 direction;
     [SerializeField] protected int strength;
+    private bool isSourcePlayer = false;
 
     public override void Move()
     {
         gameObject.transform.Translate(direction * Time.deltaTime * fallSpeed);
     }
+
+    public void SetSource(bool asPlayer)
+    {
+        isSourcePlayer = asPlayer;
+    }
+
+    public bool IsSourcePlayer() {  return isSourcePlayer; }
 
     public override void SwapToFreeze()
     {

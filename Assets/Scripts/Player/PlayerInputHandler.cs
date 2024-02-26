@@ -141,7 +141,9 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
         {
-            projectileSpawners[objectToShoot]._pool.Get().transform.position = spawnPoint.position;
+            Product projectile = projectileSpawners[objectToShoot]._pool.Get();
+            projectile.transform.position = spawnPoint.position;
+            projectile.GetComponent<SimpleProjectile>().SetSource(true);
             yield return new WaitForSeconds(fireRate);
             isNotOnCooldown = true;
         }

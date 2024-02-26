@@ -42,11 +42,17 @@ public class GameEventHandler : MonoBehaviour
     public Action<TricksterEnemy> CapturedNeededIngredients;
     public Action<Vector3, TricksterEnemy> SpawnedATricksterProjectileAt;
     public Action<TricksterEnemy> FinishedThrowingTrickster;
+    public Action<GuardianPoint> PointDestroyed;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void PointDestroy(GuardianPoint point)
+    {
+        PointDestroyed?.Invoke(point);
     }
 
     public void FinishThrowingTrickster(TricksterEnemy enemy)
