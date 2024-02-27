@@ -4,66 +4,27 @@ using UnityEngine;
 
 public class TimerStopperEnemy : Enemy
 {
-    private Vector3 point;
-    [SerializeField] private float radiusOfSuffocation;
-    [SerializeField] private GameObject visualPoint;
-    private bool areWeFreezing = true;
-    private bool coroutineEnabled = false;
+    [SerializeField] private int maxStopperPoints;
+    [SerializeField] private float timeInStopperState;
+
+    private TimeStopperStateMachine _stateMachine;
 
     private void Start()
     {
-        point = new Vector3(Random.Range(enemyData.spawnBoundaries.xLeftMax, enemyData.spawnBoundaries.xRightMax), 
-            Random.Range(enemyData.spawnBoundaries.yBottomMax, enemyData.spawnBoundaries.yTopMax), 2);
-        visualPoint.transform.position = point;
+        _stateMachine = new TimeStopperStateMachine(maxStopperPoints, enemyData.spawnBoundaries, timeInStopperState);
+        _stateMachine.Initialise(_stateMachine.TimeStopState);
+        GameEventHandler.Instance.FinishedTimeStopState += OnFinishedTimeStopState;
+    }
+
+    private void OnFinishedTimeStopState()
+    {
+        GameEventHandler.Instance.ReleaseAllTimeStopPoints(gameObject);
+        _stateMachine.TransitiontTo(_stateMachine.IdleState);
     }
 
     private void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(point, radiusOfSuffocation);
-        if(colliders.Length > 0 )
-        {
-            if (areWeFreezing)
-            {
-                Freeze(colliders);
-            } else if (!coroutineEnabled)
-            {
-                coroutineEnabled = true;
-                StartCoroutine(Unfreeze(colliders));
-            }
-        }
+        _stateMachine.CurrentState.Update();
     }
-
-    private void Freeze(Collider[] colliders)
-    {
-        int countOfFrozenObjects = 0;
-        foreach (Collider collider in colliders)
-        {
-            if (collider.gameObject.CompareTag("Ingredient") || collider.gameObject.CompareTag("Projectile"))
-            {
-                collider.GetComponent<FallableObject>().SwapToSuck(point);
-                countOfFrozenObjects++;
-            }
-        }
-
-        if(countOfFrozenObjects > 5)
-        {
-            areWeFreezing = false;
-        }
-    }
-
-    IEnumerator Unfreeze(Collider[] colliders)
-    {
-        yield return new WaitForSeconds(1);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.gameObject.CompareTag("Ingredient") || collider.gameObject.CompareTag("Projectile"))
-            {
-                collider.GetComponent<FallableObject>().SwapToMove();
-            }
-        }
-        yield return new WaitForSeconds(5);
-
-        areWeFreezing = true;
-        coroutineEnabled = false;
-    }
+    
 }
