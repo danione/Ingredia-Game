@@ -38,6 +38,29 @@ public abstract class FallableObject : MonoBehaviour, IMovable
         transform.rotation = Quaternion.identity;
     }
 
+    public void SwapToSuck(Vector3 point)
+    {
+        currentMovementPattern = Suck;
+    }
+
+    protected void Suck()
+    {
+        Vector3 direction = (transform.position - GetComponent<Collider>().transform.position).normalized;
+
+        // Calculate the perpendicular direction for circular motion
+        Vector3 perpendicular = Vector3.Cross(direction, Vector3.up).normalized;
+
+        // Calculate the rotation angle
+        float rotationAngle = fallSpeed * Time.deltaTime;
+
+        // Rotate the direction vector
+        Quaternion rotation = Quaternion.AngleAxis(rotationAngle, Vector3.up);
+        Vector3 circularDirection = rotation * direction;
+
+        // Move the object towards the center of the whirlpool along circular path
+        GetComponent<Collider>().transform.position += circularDirection * Time.deltaTime;
+    }
+
     protected void Circulate()
     {
         if(!gameObject.activeSelf || gameObject == null) {SwapToFreeze(); return; }
