@@ -712,6 +712,106 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.size
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 055984ae399c9ba48b1e8511927949ef, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ec85d23ddff88a4eba7e0914b3d2d50, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c688338ea75beb4eb0388646b0f678a, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: fc1a27bf335c30148a887f208eabd599, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 17d9517578dfdc647845f680ef67d12c, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: d151c0ccf7807df479f6dd85ba1ad119, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: e84144a266366854d95ee61d2cb11fdf, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[18]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7661824e5566fa64db6e98ee32667e03, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[19]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b09efb9abdda6c4db93c70cb40228fa, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[20]
+      value: 
+      objectReference: {fileID: 11400000, guid: 886849e0043aaf34f9bc375a693646d0, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: c163e85d27e85a544b271b7ce375ad44, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: 420b7aaaee4eb9349833115eec16bddc, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ba04b2bd46140945b6f7bcaece5af27, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b6235167fc3a6a4aa9bd85921c588fe, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9b26afbcb8faac449780942e01ed2ae, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[26]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7dab6a9657aec3448af26ae0bfb5edd, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[27]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d324687f31845042944130181318fed, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[28]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d2920a5f7557ef47a81154ebb87baf0, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[29]
+      value: 
+      objectReference: {fileID: 11400000, guid: d1b72444c401eb44993e41e23fcc6459, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[30]
+      value: 
+      objectReference: {fileID: 11400000, guid: e0122b7306a368146a014fa105214871, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[31]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0ee4e00b8040564fb7475273b544f04, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[32]
+      value: 
+      objectReference: {fileID: 11400000, guid: 19c037a6841030d4fa30d2d215c70273, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[33]
+      value: 
+      objectReference: {fileID: 11400000, guid: b033e37c2a3d80f429f664961bfd5d0d, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stage.Array.data[34]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7dab6a9657aec3448af26ae0bfb5edd, type: 2}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: uniqueEnemies.Array.size
       value: 7
       objectReference: {fileID: 0}
