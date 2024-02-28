@@ -50,6 +50,14 @@ public class UpgradesUIManager : MonoBehaviour
                 // Code to execute when the button is clicked
                 trigger.Upgrade(button);
             };
+            button.MouseOverOnceFunc = () =>
+            {
+                TooltipUI.ShowTooltip_Static(trigger.GetFullUpgradeInformation());
+            };
+            button.MouseOutOnceFunc = () =>
+            {
+                TooltipUI.HideTooltip_Static();
+            };
         }
     }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TooltipUI : MonoBehaviour
 {
+    public static TooltipUI instance;
+
     [SerializeField] private RectTransform backrgoundRectTransform;
     [SerializeField] private TextMeshProUGUI tooltipText;
     [SerializeField] private float textPaddingSize;
@@ -12,15 +14,30 @@ public class TooltipUI : MonoBehaviour
     private RectTransform rectTransform;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if(instance == null) { instance = this; }
+        else { Destroy(gameObject); }
+
         rectTransform = GetComponent<RectTransform>();
-        ShowTooltip("djhsajhdsjahdjshajhds");
+        HideTooltip();
     }
 
     private void Update()
     {
-        rectTransform.anchoredPosition = Input.mousePosition / canvas.localScale.x;
+        Vector2 anchoredPos = Input.mousePosition / canvas.localScale.x;
+
+        if(anchoredPos.x + backrgoundRectTransform.rect.width > canvas.rect.width)
+        {
+            anchoredPos.x = canvas.rect.width - backrgoundRectTransform.rect.width;
+        }
+
+        if(anchoredPos.y + backrgoundRectTransform.rect.height > canvas.rect.height)
+        {
+            anchoredPos.y = canvas.rect.height - backrgoundRectTransform.rect.height;
+        }
+
+        rectTransform.anchoredPosition = anchoredPos;
     }
 
 
@@ -42,5 +59,13 @@ public class TooltipUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public static void ShowTooltip_Static(string text)
+    {
+        instance.ShowTooltip(text);
+    }
 
+    public static void HideTooltip_Static()
+    {
+        instance.HideTooltip();
+    }
 }

@@ -84,4 +84,13 @@ public class UpgradeTrigger : MonoBehaviour
     {
         return upgradeInformation.upgradeName;
     }
+
+    public string GetFullUpgradeInformation()
+    {
+        string fullstring = "<color=yellow>" + upgradeInformation.upgradeName + "</color>\n";
+        fullstring += "<i>Upgrade Cost: </i>" + upgradeInformation.cost + "\n";
+        fullstring += "------" + "\n";
+        fullstring += upgradeInformation.description;
+        return fullstring;
+    }
 }
