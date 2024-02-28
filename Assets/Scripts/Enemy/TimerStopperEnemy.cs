@@ -6,25 +6,61 @@ public class TimerStopperEnemy : Enemy
 {
     [SerializeField] private int maxStopperPoints;
     [SerializeField] private float timeInStopperState;
+    [SerializeField] private float idleCooldown;
 
     private TimeStopperStateMachine _stateMachine;
 
-    private void Start()
+    public override void ResetEnemy()
     {
-        _stateMachine = new TimeStopperStateMachine(maxStopperPoints, enemyData.spawnBoundaries, timeInStopperState);
-        _stateMachine.Initialise(_stateMachine.TimeStopState);
+        base.ResetEnemy();
+
+        if(_stateMachine == null)
+        {
+            _stateMachine = new TimeStopperStateMachine(maxStopperPoints, enemyData.spawnBoundaries, timeInStopperState, gameObject);
+            StartCoroutine(WaitForInit());
+        }
+        else
+            _stateMachine.TransitiontTo(_stateMachine.TimeStopState);
         GameEventHandler.Instance.FinishedTimeStopState += OnFinishedTimeStopState;
+    }
+
+    private IEnumerator WaitForInit()
+    {
+        yield return new WaitForEndOfFrame();
+        _stateMachine.Initialise(_stateMachine.TimeStopState);
+
     }
 
     private void OnFinishedTimeStopState()
     {
         GameEventHandler.Instance.ReleaseAllTimeStopPoints(gameObject);
         _stateMachine.TransitiontTo(_stateMachine.IdleState);
+        StartCoroutine(TransformBackToTimeStopState());
+    }
+
+    public override void DestroyEnemy()
+    {
+        GameEventHandler.Instance.ReleaseAllTimeStopPoints(gameObject);
+        try
+        {
+            GameEventHandler.Instance.FinishedTimeStopState -= OnFinishedTimeStopState;
+
+        }
+        catch { }
+
+        StopAllCoroutines();
+        base.DestroyEnemy();
+    }
+
+    private IEnumerator TransformBackToTimeStopState()
+    {
+        yield return new WaitForSeconds(idleCooldown);
+        _stateMachine.Initialise(_stateMachine.TimeStopState);
     }
 
     private void Update()
     {
-        _stateMachine.CurrentState.Update();
+        _stateMachine.CurrentState?.Update();
     }
     
 }

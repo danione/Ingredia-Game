@@ -44,7 +44,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<TricksterEnemy> FinishedThrowingTrickster;
     public Action<GuardianPoint> PointDestroyed;
     public Action<GuardianPoint> PointRevived;
-    public Action<Vector3> SpawnedTimeStopPoint;
+    public Action<Vector3, GameObject> SpawnedTimeStopPoint;
     public Action<GameObject> ReleasedAllTimeStopPoints;
     public Action FinishedTimeStopState; 
 
@@ -64,9 +64,9 @@ public class GameEventHandler : MonoBehaviour
         ReleasedAllTimeStopPoints?.Invoke(obj);
     }
 
-    public void SpawnTimeStopPoint(Vector3 point)
+    public void SpawnTimeStopPoint(Vector3 point, GameObject source)
     {
-        SpawnedTimeStopPoint?.Invoke(point);
+        SpawnedTimeStopPoint?.Invoke(point, source);
     }
 
     public void PointRevive(GuardianPoint point)

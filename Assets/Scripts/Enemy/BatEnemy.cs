@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,9 +9,9 @@ public class BatEnemy : Enemy
     private float currentPositionDifferenceX;
 
     protected bool attacked = false;
-    public bool hasCollided = false;
+    [NonSerialized]public bool hasCollided = false;
     private static BatFuser fuser;
-    [SerializeField] protected bool isUpgraded = false;
+    protected bool isUpgraded = false;
     [SerializeField] protected ObjectsSpawner spawner;
     [SerializeField] private float spawnCooldown;
     [SerializeField] private float upgradedStateDuration;

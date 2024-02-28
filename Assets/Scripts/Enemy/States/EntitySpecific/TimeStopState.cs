@@ -10,12 +10,14 @@ public class TimeStopState : IState
     private float timeInState = 0f;
     private float defaultTimeInState;
     private bool hasFinished = false;
+    private GameObject source;
 
-    public TimeStopState(int maxAmount, BoundariesData data, float timeInState)
+    public TimeStopState(int maxAmount, BoundariesData data, float timeInState, GameObject source)
     {
         maxAmountOfTimeStopPoints = maxAmount;
         this.data = data;
         this.defaultTimeInState = timeInState;
+        this.source = source;
     }
     
     public void Enter()
@@ -26,9 +28,8 @@ public class TimeStopState : IState
         {
             Vector3 point = new Vector3(Random.Range(data.xLeftMax, data.xRightMax),
                 Random.Range(data.yBottomMax, data.yTopMax), 2);
-            GameEventHandler.Instance.SpawnTimeStopPoint(point);
+            GameEventHandler.Instance.SpawnTimeStopPoint(point, source);
         }
-
     }
 
     public void Exit()
@@ -50,6 +51,7 @@ public class TimeStopState : IState
         {
             Finish();
         }
+
         timeInState += Time.deltaTime;
     }
 }
