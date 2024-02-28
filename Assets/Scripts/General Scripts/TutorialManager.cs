@@ -37,7 +37,6 @@ public class TutorialManager : MonoBehaviour
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
     private GoldenNuggetsFactory goldenNuggets;
-    private RecipeFactory hiddenRituals;
 
     private void Start()
     {
@@ -46,7 +45,6 @@ public class TutorialManager : MonoBehaviour
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
         goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
-        hiddenRituals = spawnManager.GetComponent<RecipeFactory>();
         StartCoroutine(WaitForInitialisationOfObjects());
         GameManager.Instance.tutorialMode = true;
         
@@ -177,12 +175,6 @@ public class TutorialManager : MonoBehaviour
         {
             ExecuteCurrentStage();
         }
-    }
-
-    public void EnableRecipeFactory()
-    {
-        hiddenRituals.enabled = true;
-        hiddenRitualsUI.gameObject.SetActive(true);
     }
 
     public void AddLaserBeam()

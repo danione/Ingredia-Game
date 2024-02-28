@@ -14,9 +14,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<GhostPotionData> ActivatedGhost;
     public Action<OverloadElixirData> ActivatedLaser;
     public Action<float> ActivatedBarrier;
-    public Action ActivatedSmartRitualHelper;
     public Action<Ritual> CollectedExistingIngredient;
-    public Action<IngredientData> HighlightedIngredient;
     public Action<Vector3> GeneratedIngredientAtPos;
     public Action<GameObject> DestroyedObject;
     public Action UnlockedScrollSlip;
@@ -37,7 +35,6 @@ public class GameEventHandler : MonoBehaviour
     public Action SetNormalMode;
     public Action UpdatedUI;
     public Action TriggeredGameOver;
-    public Action CompletedRecipe;
     public Action<UpgradeData> UpgradeTriggered;
     public Action<TricksterEnemy> CapturedNeededIngredients;
     public Action<Vector3, TricksterEnemy> SpawnedATricksterProjectileAt;
@@ -52,11 +49,6 @@ public class GameEventHandler : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
-    }
-
-    public void FinishTimeStopState()
-    {
-        FinishedTimeStopState?.Invoke();
     }
 
     public void ReleaseAllTimeStopPoints(GameObject obj)
@@ -97,11 +89,6 @@ public class GameEventHandler : MonoBehaviour
     public void UpgradeTrigger(UpgradeData data)
     {
         UpgradeTriggered?.Invoke(data);
-    }
-
-    public void CompleteRecipe()
-    {
-        CompletedRecipe?.Invoke();
     }
 
     public void TriggerGameOver()
@@ -184,11 +171,6 @@ public class GameEventHandler : MonoBehaviour
         GhostActivated?.Invoke();
     }
 
-    public void GhostDeactivate()
-    {
-        GhostDeactivated?.Invoke();
-    }
-
     public void SpawnsGoldenNuggets(int amount, Vector3 position)
     {
         SpawnGoldenNugget?.Invoke(amount, position);
@@ -222,19 +204,10 @@ public class GameEventHandler : MonoBehaviour
         ActivatedBarrier?.Invoke(duration);
     }
 
-    public void ActivateSmartRitualHelper()
-    {
-        ActivatedSmartRitualHelper?.Invoke();
-    }
 
     public void CollectExistingIngredient(Ritual ritual)
     {
         CollectedExistingIngredient?.Invoke(ritual);
-    }
-
-    public void HighlightIngredient(IngredientData ingredient)
-    {
-        HighlightedIngredient?.Invoke(ingredient);
     }
 
     public void GenerateIngredientAtPos(Vector3 pos)
@@ -255,11 +228,6 @@ public class GameEventHandler : MonoBehaviour
     public void ScrollSlipGenerate(RitualScriptableObject scroll)
     {
         ScrollSlipGenerated?.Invoke(scroll);
-    }
-
-    public void CallToSpawnASlip(Vector3 position)
-    {
-        SpawnAScrollSlip?.Invoke(position);
     }
 
     public void SwappedProjectilesPressed()

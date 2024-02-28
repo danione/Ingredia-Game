@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 7136158874665668531}
   - component: {fileID: 4699198157692283021}
   - component: {fileID: 139695619008634371}
-  - component: {fileID: 8001124186574533078}
   - component: {fileID: 5350667911276703195}
   - component: {fileID: 9148559292740883961}
   - component: {fileID: 5445750503755775760}
   - component: {fileID: 8422109505568854073}
+  - component: {fileID: 8789475828947173760}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873061175675691215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a9a24faf5490143b40eda3777b7137, type: 3}
   m_Name: 
@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
   - {fileID: 6982203611518975107, guid: e7fbfc9785e23ec40bcee6ad4ab01bdd, type: 3}
   - {fileID: 1982504390974658238, guid: 1db81968d24212d40823931d8f38ee7e, type: 3}
+  - {fileID: -7540803056115772831, guid: 6cad7cdc242821c47b58d7fb3a4f81d4, type: 3}
   stage:
   - {fileID: 11400000, guid: 3ba7497a93a99dd48b64acfa5380e7a9, type: 2}
   - {fileID: 11400000, guid: 6206322afc876e7479810aaceca1d712, type: 2}
@@ -113,6 +114,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc9fb0e201e98d74097491ca58dd4918, type: 2}
   - {fileID: 11400000, guid: 8a9ecb3b67bc8ea418c87aa3cd2a240c, type: 2}
   - {fileID: 11400000, guid: 4bcedb6df1dc1f240b22ddd6ad1208b0, type: 2}
+  - {fileID: 11400000, guid: 055984ae399c9ba48b1e8511927949ef, type: 2}
+  - {fileID: 11400000, guid: 0ec85d23ddff88a4eba7e0914b3d2d50, type: 2}
+  - {fileID: 11400000, guid: 7c688338ea75beb4eb0388646b0f678a, type: 2}
+  - {fileID: 11400000, guid: fc1a27bf335c30148a887f208eabd599, type: 2}
+  - {fileID: 11400000, guid: 17d9517578dfdc647845f680ef67d12c, type: 2}
+  - {fileID: 11400000, guid: d151c0ccf7807df479f6dd85ba1ad119, type: 2}
+  - {fileID: 11400000, guid: e84144a266366854d95ee61d2cb11fdf, type: 2}
+  - {fileID: 11400000, guid: 7661824e5566fa64db6e98ee32667e03, type: 2}
+  - {fileID: 11400000, guid: 7b09efb9abdda6c4db93c70cb40228fa, type: 2}
+  - {fileID: 11400000, guid: 886849e0043aaf34f9bc375a693646d0, type: 2}
+  - {fileID: 11400000, guid: c163e85d27e85a544b271b7ce375ad44, type: 2}
+  - {fileID: 11400000, guid: 420b7aaaee4eb9349833115eec16bddc, type: 2}
+  - {fileID: 11400000, guid: 3ba04b2bd46140945b6f7bcaece5af27, type: 2}
+  - {fileID: 11400000, guid: 7b6235167fc3a6a4aa9bd85921c588fe, type: 2}
+  - {fileID: 11400000, guid: d9b26afbcb8faac449780942e01ed2ae, type: 2}
+  - {fileID: 11400000, guid: a7dab6a9657aec3448af26ae0bfb5edd, type: 2}
+  - {fileID: 11400000, guid: 9d324687f31845042944130181318fed, type: 2}
+  - {fileID: 11400000, guid: 8d2920a5f7557ef47a81154ebb87baf0, type: 2}
+  - {fileID: 11400000, guid: d1b72444c401eb44993e41e23fcc6459, type: 2}
+  - {fileID: 11400000, guid: e0122b7306a368146a014fa105214871, type: 2}
+  - {fileID: 11400000, guid: d0ee4e00b8040564fb7475273b544f04, type: 2}
+  - {fileID: 11400000, guid: 19c037a6841030d4fa30d2d215c70273, type: 2}
+  - {fileID: 11400000, guid: b033e37c2a3d80f429f664961bfd5d0d, type: 2}
   spawnFrequencyInSeconds: 2
   waveSpawnCooldownInSeconds: 3
   upgradedBat: {fileID: -1062922097895098718, guid: 861fd83bc1e8e3c4a99f386a0a7779c1, type: 3}
@@ -120,18 +144,6 @@ MonoBehaviour:
   currentStage: 
   boundariesData: {fileID: 11400000, guid: db5db13a96cb37149bb750da88eb2811, type: 2}
   dequeueTime: 3
---- !u!114 &8001124186574533078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873061175675691215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154a6006347a17a4abe2162e44bbf0cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5350667911276703195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +201,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tricksterProjectile: {fileID: 4536548840237871150, guid: 32d4c57684bf3244186a853a111a89f4, type: 3}
+  spawner:
+    collectionCheck: 1
+    defaultCapacity: 40
+    maxSize: 100
+    prefab: {fileID: 0}
+--- !u!114 &8789475828947173760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873061175675691215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fc43d2c61b9c04b80133e0ed3f2c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStopperPoint: {fileID: -4919075698356894222, guid: 5f14454da6ca6bd46b3d5f9bbefa17da, type: 3}
   spawner:
     collectionCheck: 1
     defaultCapacity: 40
