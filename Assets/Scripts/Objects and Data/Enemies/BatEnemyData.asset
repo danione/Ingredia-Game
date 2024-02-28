@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db088f57aca773a4b921bf20e1e68026, type: 3}
   m_Name: BatEnemyData
   m_EditorClassIdentifier: 
-  health: 1
+  health: 10
   movementSpeed: 1
   goldDrop: 10
   spawnBoundaries: {fileID: 11400000, guid: b92b28a4fb371494180f74dc40dd2ccc, type: 2}

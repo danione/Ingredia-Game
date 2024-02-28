@@ -30,6 +30,7 @@ public abstract class Enemy : MonoBehaviour, IUnitStats
 
     public virtual void TakeDamage(float amount)
     {
+        GameEventHandler.Instance.TakeDamage(transform.position, amount);
         currentHealth -= amount;
         if(currentHealth <= 0) { DestroyEnemy(); }
     }

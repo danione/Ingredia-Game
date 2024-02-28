@@ -43,12 +43,18 @@ public class GameEventHandler : MonoBehaviour
     public Action<GuardianPoint> PointRevived;
     public Action<Vector3, GameObject> SpawnedTimeStopPoint;
     public Action<GameObject> ReleasedAllTimeStopPoints;
-    public Action FinishedTimeStopState; 
+    public Action FinishedTimeStopState;
+    public Action<Vector3, float> TookDamage;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void TakeDamage(Vector3 pos, float amount)
+    {
+        TookDamage?.Invoke(pos, amount);
     }
 
     public void ReleaseAllTimeStopPoints(GameObject obj)

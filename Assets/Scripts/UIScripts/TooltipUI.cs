@@ -47,7 +47,8 @@ public class TooltipUI : MonoBehaviour
 
         tooltipText.text = text;
         tooltipText.ForceMeshUpdate();
-
+        
+        
         Vector2 bgSize = tooltipText.GetRenderedValues(false);
         Vector2 padding = new Vector2(textPaddingSize * 2, textPaddingSize*2);
 
