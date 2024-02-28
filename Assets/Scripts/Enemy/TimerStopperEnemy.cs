@@ -19,8 +19,7 @@ public class TimerStopperEnemy : Enemy
             _stateMachine = new TimeStopperStateMachine(maxStopperPoints, enemyData.spawnBoundaries, timeInStopperState, gameObject);
             StartCoroutine(WaitForInit());
         }
-        else
-            _stateMachine.TransitiontTo(_stateMachine.TimeStopState);
+        else _stateMachine.TransitiontTo(_stateMachine.TimeStopState);
         GameEventHandler.Instance.FinishedTimeStopState += OnFinishedTimeStopState;
     }
 
@@ -33,8 +32,8 @@ public class TimerStopperEnemy : Enemy
 
     private void OnFinishedTimeStopState()
     {
-        GameEventHandler.Instance.ReleaseAllTimeStopPoints(gameObject);
         _stateMachine.TransitiontTo(_stateMachine.IdleState);
+        GameEventHandler.Instance.ReleaseAllTimeStopPoints(gameObject);
         StartCoroutine(TransformBackToTimeStopState());
     }
 

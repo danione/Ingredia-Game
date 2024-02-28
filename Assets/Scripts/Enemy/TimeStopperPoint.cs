@@ -16,6 +16,7 @@ public class TimeStopperPoint : MonoBehaviour
     public void Init(GameObject parent)
     {
         GameEventHandler.Instance.ReleasedAllTimeStopPoints += OnRelease;
+        hasBeenReleased = false;
         this.parent = parent;
     }
 

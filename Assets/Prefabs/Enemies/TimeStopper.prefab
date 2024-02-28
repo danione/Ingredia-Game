@@ -103,6 +103,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 67cd639de27fef74d82df8a4471ae7fa, type: 2}
   maxStopperPoints: 2
   timeInStopperState: 10
+  idleCooldown: 2
 --- !u!114 &6847866981009798862
 MonoBehaviour:
   m_ObjectHideFlags: 0
