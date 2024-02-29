@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class ScrollSlip : FallableObject
 {
-    
+    private void Start()
+    {
+        SwapToMove();
+    }
 }
