@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7136158874665668531}
   - component: {fileID: 4699198157692283021}
   - component: {fileID: 139695619008634371}
-  - component: {fileID: 5350667911276703195}
   - component: {fileID: 9148559292740883961}
   - component: {fileID: 5445750503755775760}
   - component: {fileID: 8422109505568854073}
@@ -144,23 +143,6 @@ MonoBehaviour:
   currentStage: 
   boundariesData: {fileID: 11400000, guid: db5db13a96cb37149bb750da88eb2811, type: 2}
   dequeueTime: 3
---- !u!114 &5350667911276703195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873061175675691215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03c4c19b173f534a811befcf9b5b5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner:
-    collectionCheck: 1
-    defaultCapacity: 20
-    maxSize: 100
-    prefab: {fileID: 8399539123009634397, guid: d7af244caa7018644bf6b1ce3aa9ebda, type: 3}
 --- !u!114 &9148559292740883961
 MonoBehaviour:
   m_ObjectHideFlags: 0

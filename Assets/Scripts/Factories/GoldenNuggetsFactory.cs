@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class GoldenNuggetsFactory : MonoBehaviour
 {
-    [SerializeField] private ObjectsSpawner spawner;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Product goldenNuggets;
+    private RectTransform canvas;
+    private ObjectsSpawner spawner;
 
     private void Start()
     {
+        spawner = new ObjectsSpawner(goldenNuggets);
+        canvas = GetComponent<RectTransform>();
         GameEventHandler.Instance.SpawnGoldenNugget += OnSpawnGoldenNugget;
     }
 
     private void OnSpawnGoldenNugget(int value, Vector3 position)
     {
         Product product = spawner._pool.Get();
-        product.transform.position = position;
-        product.GetComponent<GoldenNuggets>().Amount = value;        
+        product.transform.SetParent(canvas.transform, false);
+        product.transform.SetAsFirstSibling();
+        product.transform.position = _camera.WorldToScreenPoint(position);
+        product.GetComponent<GoldenNuggetUI>().DisplayGoldValue(value);
     }
 }

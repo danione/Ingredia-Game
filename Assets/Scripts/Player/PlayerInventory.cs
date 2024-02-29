@@ -25,6 +25,7 @@ public class PlayerInventory: MonoBehaviour
         powerupManager = GetComponent<PlayerPotionsManager>();
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
+        GameEventHandler.Instance.SpawnGoldenNugget += AddGold;
     }
 
     private void OnDestroy()
@@ -115,7 +116,7 @@ public class PlayerInventory: MonoBehaviour
         possibleRitual = ritual;
     }
 
-    public void AddGold(int amount)
+    public void AddGold(int amount, Vector3 atPos = new Vector3())
     {
         gold += amount;
         PlayerEventHandler.Instance.CollectGold(gold);
