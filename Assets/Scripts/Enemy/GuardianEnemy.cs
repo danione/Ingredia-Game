@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class GuardianEnemy : Enemy
 {
@@ -19,8 +17,8 @@ public class GuardianEnemy : Enemy
     {
         if (activePoints > 0 && guardianPoints.Contains(point))
         {
-            point.transform.GetChild(0).gameObject.SetActive(false);
-            StartCoroutine(point.Regenerate());
+            point.gameObject.SetActive(false);
+            StartCoroutine(Regenerate(point));
             activePoints--;
             if (activePoints == 0)
             {
@@ -40,13 +38,11 @@ public class GuardianEnemy : Enemy
     {
         SetupGuardianPoints();
         GameEventHandler.Instance.PointDestroyed += OnDestroyedObject;
-        GameEventHandler.Instance.PointRevived += RestorePoints;
     }
 
     public override void DestroyEnemy()
     {
         GameEventHandler.Instance.PointDestroyed -= OnDestroyedObject;
-        GameEventHandler.Instance.PointRevived -= RestorePoints;
 
         guardianPoints.Clear();
         points.Clear();
@@ -57,10 +53,17 @@ public class GuardianEnemy : Enemy
     {
         if (guardianPoints.Contains(point))
         {
-            point.transform.GetChild(0).gameObject.SetActive(true);
-            point.gameObject.GetComponent<IUnitStats>().Heal(enemyData.health / guardianPoints.Count);
+            point.gameObject.SetActive(true);
+            point.gameObject.GetComponent<GuardianPoint>().Revive();
             activePoints++;
+            GameEventHandler.Instance.PointRevive(point);
         }
+    }
+
+    private IEnumerator Regenerate(GuardianPoint point)
+    {
+        yield return new WaitForSeconds(timeToRegenerate);
+        RestorePoints(point);
     }
 
     void PositionEdge(Vector3 point1, Vector3 point2, Transform edge)
@@ -106,7 +109,7 @@ public class GuardianEnemy : Enemy
         for (int i = 0; i < 3; i++)
         {
             GuardianPoint pointChild = gameObject.transform.GetChild(i).gameObject.GetComponent<GuardianPoint>();
-            pointChild.GetComponent<GuardianPoint>().Init(enemyData.health / 3, timeToRegenerate);
+            pointChild.GetComponent<GuardianPoint>().Init(enemyData.health / 3);
             pointChild.transform.position = points[i];
             pointChild.gameObject.SetActive(true);
             activePoints++;

@@ -6,29 +6,28 @@ public class GuardianPoint : MonoBehaviour, IUnitStats
 {
     public int index;
     private float defaultHealth;
-    private float timeOfRegen;
     public float health;
     public float Health => health;
     private bool isDead = false;
 
-    public void Init(float health, float timeOfRegen)
+    public void Init(float health)
     {
         defaultHealth = health;
-        this.timeOfRegen = timeOfRegen;
         GameEventHandler.Instance.DestroyedObject += OnDestroyed;
         Heal(defaultHealth);
     }
 
+    // When the parent object has died, it needs to destroy all its points
     public void OnDestroyed(GameObject obj)
     {
         if(obj == gameObject.transform.parent)
         {
             isDead = true;
             GameEventHandler.Instance.DestroyedObject -= OnDestroyed;
-            StopCoroutine(Regenerate());
         }
     }
 
+    // When this particular object has died
     public void Die()
     {
         if (isDead) return;
@@ -37,15 +36,9 @@ public class GuardianPoint : MonoBehaviour, IUnitStats
         GameEventHandler.Instance.PointDestroy(this);
     }
 
-    public IEnumerator Regenerate()
-    {
-        yield return new WaitForSeconds(timeOfRegen);
-        isDead = false;
-        GameEventHandler.Instance.PointRevive(this);
-    }
-
     public void Revive()
     {
+        isDead = false;
         Heal(defaultHealth);
     }
 
