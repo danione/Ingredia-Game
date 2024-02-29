@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7575862923752291342, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: testPotion
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
     - target: {fileID: 8107452749978856494, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: _camera
       value: 
