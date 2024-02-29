@@ -517,6 +517,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1401265968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1436265349536415285, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+  m_PrefabInstance: {fileID: 3278442347076411136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1760316102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
@@ -534,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Display Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3476888255204905069, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: controlsMenu
+      value: 
+      objectReference: {fileID: 1401265968}
     - target: {fileID: 5189182655803722387, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: _camera
       value: 

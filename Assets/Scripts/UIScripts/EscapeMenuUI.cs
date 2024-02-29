@@ -5,6 +5,7 @@ using UnityEngine;
 public class EscapeMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject escapeMenu;
+    [SerializeField] private GameObject controlsMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +23,12 @@ public class EscapeMenuUI : MonoBehaviour
     {
         if(escapeMenu.activeSelf == false)
         {
+            controlsMenu.SetActive(false);
             GameManager.Instance.PauseGame();
         }
         else
         {
+            controlsMenu.SetActive(false);
             PlayerEventHandler.Instance.CloseAMenu();
             GameManager.Instance.ResumeGame();
         }
