@@ -52,10 +52,14 @@ public class TricksterEnemy : Enemy
         }
         catch(Exception e) { Debug.LogException(e); }
 
-        foreach (var obj in capturedIngredients)
+        try
         {
-            GameEventHandler.Instance.DestroyedObject(obj);
+            foreach (var obj in capturedIngredients)
+            {
+                GameEventHandler.Instance.DestroyedObject(obj);
+            }
         }
+        catch { }
 
         capturedIngredients.Clear();
         ingredients.Clear();

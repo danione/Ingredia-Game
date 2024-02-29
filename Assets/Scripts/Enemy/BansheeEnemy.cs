@@ -14,13 +14,19 @@ public class BansheeEnemy : Enemy
 
     private void Start()
     {
-        _state = new BansheeStateMachine(this, enemyData);
         GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
     }
 
     public override void ResetEnemy()
     {
-        _state.Initialise(_state.MoveState);
+        if(_state == null)
+        {
+            _state = new BansheeStateMachine(this, enemyData);
+            _state.Initialise(_state.MoveState);
+        } else
+            _state.TransitiontTo(_state.MoveState);
+
+
         hasDetectedPlayer = false;
         hasDetectedPlayer = false;
         isColliding = true;

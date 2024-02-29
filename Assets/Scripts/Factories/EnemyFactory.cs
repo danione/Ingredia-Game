@@ -15,11 +15,13 @@ public class EnemyFactory : MonoBehaviour
     private Dictionary<Product, ObjectsSpawner> spawner = new();
 
     [SerializeField] private int currentAliveEnemies = 0;
-    [SerializeField] private List<int> currentStage = new();
     [SerializeField] private SpawnPointManager spawnPointManager;
     [SerializeField] private BoundariesData boundariesData;
     [SerializeField] private float dequeueTime;
-    private int currentStageIndex = 0;
+
+    [SerializeField] private int currentStageIndex = 0;
+    private List<int> currentStage = new();
+
 
     void Start()
     {
