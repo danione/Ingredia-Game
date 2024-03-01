@@ -13,6 +13,15 @@ public class TimeStopperPointFactory : MonoBehaviour
         GameEventHandler.Instance.SpawnedTimeStopPoint += OnSpawnedTimeStopPoint;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.SpawnedTimeStopPoint += OnSpawnedTimeStopPoint;
+        }
+        catch { }
+    }
+
     private void OnSpawnedTimeStopPoint(Vector3 pos, GameObject source)
     {
 

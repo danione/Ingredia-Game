@@ -22,13 +22,13 @@ public class SteamballProjectile : SimpleProjectile
         {
             IUnitStats stats = c.GetComponent<IUnitStats>();
 
-            if ((!isAffectingPlayer && c.CompareTag("Player")) || !IsATarget(c.tag)) continue;
+            if ((!isAffectingPlayer && c.CompareTag("Player")) || !IsATarget(c.tag) && !c.gameObject.activeSelf) continue;
 
             if (stats != null)
             {
                 stats.TakeDamage(strength);
             }
-            else
+            else if(c.CompareTag("Dangerous Object") || c.CompareTag("Projectile"))
             {
                 GameEventHandler.Instance.DestroyObject(c.gameObject);
             }

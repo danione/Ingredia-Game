@@ -13,6 +13,15 @@ public class TricksterFactory : MonoBehaviour
         GameEventHandler.Instance.SpawnedATricksterProjectileAt += OnSpawnProjectileAt;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.SpawnedATricksterProjectileAt -= OnSpawnProjectileAt;
+        }
+        catch { }
+    }
+
     private void OnSpawnProjectileAt(Vector3 pos, TricksterEnemy spawnedBy)
     {
         Product projectile = spawner.GetProduct(pos);

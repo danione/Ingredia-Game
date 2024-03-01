@@ -23,6 +23,15 @@ public class TimerStopperEnemy : Enemy
         GameEventHandler.Instance.FinishedTimeStopState += OnFinishedTimeStopState;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.FinishedTimeStopState -= OnFinishedTimeStopState;
+        }
+        catch { }
+    }
+
     private IEnumerator WaitForInit()
     {
         yield return new WaitForEndOfFrame();

@@ -121,7 +121,7 @@ public class GuardianEnemy : Enemy
         for (int i = 0; i < activePoints; i++)
         {
             PositionEdge(points[i], points[(i + 1) % activePoints], edges[i]);
-
+            edges[i].gameObject.SetActive(true);
             edges[i].gameObject.GetComponent<Edge>().Init(guardPoints[i].gameObject, guardPoints[(i + 1) % activePoints].gameObject);
         }
     }
