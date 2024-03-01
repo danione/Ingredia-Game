@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour, IUnitStats
 {
-    [SerializeField] private float startingHealth;
     [SerializeField] private float maxHealth;
     [SerializeField] private float maxArmour;
-    [SerializeField] private float health;
     [SerializeField] private float healthRegenTime;
     [SerializeField] private int healthRegenRate = 1;
+    private float health;
+
     public float Health => health;
     public float Armour => armour;
     private float armour = 0;
@@ -24,7 +25,23 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     private void Start()
     {
-        health = startingHealth;
+        health = maxHealth;
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        try
+        {
+            SceneManager.sceneLoaded -= OnLevelLoaded;
+
+        }
+        catch { }
+    }
+
+    private void OnLevelLoaded(Scene a, LoadSceneMode b)
+    {
+        health = maxHealth;
         PlayerEventHandler.Instance.AdjustHealth();
     }
 

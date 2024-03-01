@@ -21,6 +21,19 @@ public class EquippedWeaponUI : MonoBehaviour
         GameEventHandler.Instance.UpdatedUI += OnUpdateUI;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.SwappedProjectiles -= OnSwapWeapon;
+            PlayerEventHandler.Instance.FiredWeapon -= OnChangeWeapon;
+            InputEventHandler.instance.UsedPotion -= OnChangeWeapon;
+            GameEventHandler.Instance.UpdatedUI -= OnUpdateUI;
+        }
+        catch { }
+        
+    }
+
     private void OnChangeWeapon()
     {
         if (currentlyEquippedWeapon == null) { return; }

@@ -21,6 +21,15 @@ public class HealthPopupUIManager : MonoBehaviour
         GameEventHandler.Instance.TookDamage += OnTakenDamage;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.TookDamage -= OnTakenDamage;
+
+        } catch { }
+    }
+
     private void OnTakenDamage(Vector3 atPos, float amount)
     {
         Product newPopup = spawner._pool.Get();

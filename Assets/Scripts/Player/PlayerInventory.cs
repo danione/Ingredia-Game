@@ -34,6 +34,8 @@ public class PlayerInventory: MonoBehaviour
         {
             PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
             PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
+            GameEventHandler.Instance.SpawnGoldenNugget -= AddGold;
+
         }
         catch { }
     }

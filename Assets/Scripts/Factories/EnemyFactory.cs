@@ -40,6 +40,17 @@ public class EnemyFactory : MonoBehaviour
         StartCoroutine(spawnPointManager.ResetNextPoint());
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.DestroyedEnemy -= OnEnemyDestroyed;
+            GameEventHandler.Instance.FuseBats -= OnFusedTwoBats;
+        }
+        catch { }
+
+    }
+
     private void SetNextStage()
     {
         if (currentStageIndex >= stage.Count) return;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [RequireComponent( typeof(PlayerInventory))]
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -22,6 +23,15 @@ public class PlayerInputHandler : MonoBehaviour
         inventory = GetComponent<PlayerInventory>();
         permissions.UnlockAll();
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        SceneManager.sceneLoaded += OnSceneLoaded;    
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        foreach(var projectile in projectileSpawners)
+        {
+            projectile._pool.Clear();
+        }
     }
 
     private void OnSetTutorialMode()
@@ -142,10 +152,13 @@ public class PlayerInputHandler : MonoBehaviour
         if (objectToShoot >= 0 && objectToShoot < projectileSpawners.Count)
         {
             Product projectile = projectileSpawners[objectToShoot]._pool.Get();
-            projectile.transform.position = spawnPoint.position;
-            projectile.GetComponent<SimpleProjectile>().SetSource(true);
-            yield return new WaitForSeconds(fireRate);
-            isNotOnCooldown = true;
+            if(projectile != null)
+            {
+                projectile.transform.position = spawnPoint.position;
+                projectile.GetComponent<SimpleProjectile>().SetSource(true);
+                yield return new WaitForSeconds(fireRate);
+                isNotOnCooldown = true;
+            }
         }
     }
 

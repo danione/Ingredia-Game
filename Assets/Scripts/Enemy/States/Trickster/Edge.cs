@@ -16,6 +16,18 @@ public class Edge : MonoBehaviour
         GameEventHandler.Instance.DestroyedObject += OnDestroyed;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.PointDestroyed -= CheckPoints;
+            GameEventHandler.Instance.PointRevived -= CheckIfActive;
+            GameEventHandler.Instance.DestroyedObject -= OnDestroyed;
+        }
+        catch { }
+
+    }
+
     private void OnDestroyed(GameObject obj)
     {
         if(obj == gameObject.transform.parent)

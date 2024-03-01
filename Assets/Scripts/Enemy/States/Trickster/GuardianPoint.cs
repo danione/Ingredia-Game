@@ -17,6 +17,16 @@ public class GuardianPoint : MonoBehaviour, IUnitStats
         Heal(defaultHealth);
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.DestroyedObject -= OnDestroyed;
+
+        }
+        catch { }
+    }
+
     // When the parent object has died, it needs to destroy all its points
     public void OnDestroyed(GameObject obj)
     {

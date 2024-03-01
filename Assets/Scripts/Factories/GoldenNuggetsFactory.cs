@@ -17,6 +17,15 @@ public class GoldenNuggetsFactory : MonoBehaviour
         GameEventHandler.Instance.SpawnGoldenNugget += OnSpawnGoldenNugget;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.SpawnGoldenNugget -= OnSpawnGoldenNugget;
+        }
+        catch { }
+    }
+
     private void OnSpawnGoldenNugget(int value, Vector3 position)
     {
         Product product = spawner._pool.Get();

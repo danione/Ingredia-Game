@@ -38,6 +38,15 @@ public class IngredientsFactory: MonoBehaviour
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.GeneratedIngredientAtPos -= SpawnRandomIngredient;
+        }
+        catch { }
+    }
+
     public void SetSpawning(bool isSpawning)
     {
         this.isSpawning = isSpawning;
