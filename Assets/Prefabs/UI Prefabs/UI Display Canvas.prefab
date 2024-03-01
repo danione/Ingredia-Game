@@ -5300,17 +5300,17 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7316378479977335897}
+  - {fileID: 3350779570866405516}
   - {fileID: 959206226722064537}
   - {fileID: 5140154348306515993}
   - {fileID: 1401826761310581661}
   - {fileID: 2867565811462196411}
   - {fileID: 165390825383399773}
   - {fileID: 5281199325949011453}
-  - {fileID: 7316378479977335897}
   - {fileID: 548473070069611246}
   - {fileID: 4531225016020907036}
   - {fileID: 3036060771415207466}
-  - {fileID: 3350779570866405516}
   - {fileID: 7167655543865815691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5457,6 +5457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeMenu: {fileID: 3670493138176780399}
+  controlsMenu: {fileID: 0}
 --- !u!114 &7575862923752291342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5597,11 +5598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03c4c19b173f534a811befcf9b5b5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner:
-    collectionCheck: 1
-    defaultCapacity: 40
-    maxSize: 100
-    prefab: {fileID: 0}
+  _camera: {fileID: 0}
+  goldenNuggets: {fileID: 0}
 --- !u!1 &2454102220886514947
 GameObject:
   m_ObjectHideFlags: 0
