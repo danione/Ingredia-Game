@@ -15,25 +15,30 @@ public class SteamballProjectile : SimpleProjectile
 
     public override void HandleCollision(Collider other)
     {
+        bool validCollision = IsATarget(other.tag);
         Collider[] nearbyEnemies = Physics.OverlapSphere(gameObject.transform.position, areaOfEffect);
         Collider[] activeObjects = nearbyEnemies.Where(collider => collider.gameObject.activeSelf).ToArray();
 
-        foreach (Collider c in activeObjects)
+        if (validCollision)
         {
-            IUnitStats stats = c.GetComponent<IUnitStats>();
-
-            if ((!isAffectingPlayer && c.CompareTag("Player")) || !IsATarget(c.tag) && !c.gameObject.activeSelf) continue;
-
-            if (stats != null)
+            foreach (Collider c in activeObjects)
             {
-                stats.TakeDamage(strength);
+                if ((!isAffectingPlayer && c.CompareTag("Player")) || !IsATarget(c.tag)) continue;
+
+                IUnitStats stats = c.GetComponent<IUnitStats>();
+                Debug.Log(c.tag);
+
+                if (stats != null)
+                {
+                    stats.TakeDamage(strength);
+                }
+                else if (c.CompareTag("Dangerous Object") || c.CompareTag("Projectile"))
+                {
+                    GameEventHandler.Instance.DestroyObject(c.gameObject);
+                }
             }
-            else if(c.CompareTag("Dangerous Object") || c.CompareTag("Projectile"))
-            {
-                GameEventHandler.Instance.DestroyObject(c.gameObject);
-            }
+            GameEventHandler.Instance.DestroyObject(gameObject);
         }
-        GameEventHandler.Instance.DestroyObject(gameObject);
     }
 
     private bool IsATarget(string tag)
