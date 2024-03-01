@@ -15,6 +15,7 @@ public class EquippedWeaponUI : MonoBehaviour
     {
         m_Inventory = PlayerController.Instance.inventory;
         currentlyEquippedWeapon = m_Inventory.GetCurrentlyEquippedWeapon();
+        OnSwapWeapon();
         GameEventHandler.Instance.SwappedProjectiles += OnSwapWeapon;
         PlayerEventHandler.Instance.FiredWeapon += OnChangeWeapon;
         InputEventHandler.instance.UsedPotion += OnChangeWeapon;
