@@ -82,6 +82,7 @@ public class GameManager: MonoBehaviour
         {
             try
             {
+                product.gameObject.transform.position = new Vector3(-100, 0, 2);
                 product.ObjectPool.Release(product);
             }
             catch (Exception e)

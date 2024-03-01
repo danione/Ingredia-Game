@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GuardianPoint : MonoBehaviour, IUnitStats
@@ -31,8 +32,9 @@ public class GuardianPoint : MonoBehaviour, IUnitStats
     // When the parent object has died, it needs to destroy all its points
     public void OnDestroyed(GameObject obj)
     {
-        if (gameObject == null) Debug.Log("Hello");
-        if (obj == gameObject.transform.parent)
+        if (!obj.GetComponent<GuardianEnemy>()) return;
+
+        if (this != null && obj == gameObject.transform.parent)
         {
             isDead = true;
             try

@@ -30,7 +30,9 @@ public class Edge : MonoBehaviour
 
     private void OnDestroyed(GameObject obj)
     {
-        if(obj == gameObject.transform.parent)
+        if (!obj.GetComponent<GuardianEnemy>()) return;
+
+        if (this!= null && obj == gameObject.transform.parent)
         {
             GameEventHandler.Instance.PointDestroyed -= CheckPoints;
             GameEventHandler.Instance.PointRevived -= CheckIfActive;
@@ -50,14 +52,14 @@ public class Edge : MonoBehaviour
     {
         if(pointA == point.gameObject)
         {
-            if (pointB.transform.GetChild(0).gameObject.activeSelf)
+            if (pointB.gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
 
             }
         } else if (pointB == point.gameObject) 
         { 
-            if(pointA.transform.GetChild(0).gameObject.activeSelf)
+            if(pointA.gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
             }
