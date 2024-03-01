@@ -42,10 +42,10 @@ public class TimeStopperPoint : MonoBehaviour
     {
         if((other.CompareTag("Ingredient") || other.CompareTag("Projectile")) && !hasBeenReleased)
         {
-            
             FallableObject otherFall = other.GetComponent<FallableObject>();
             if (!otherFall.IsRotating)
             {
+                Debug.Log(other.GetComponent<SimpleProjectile>()?.name);
                 otherFall.SwapToFreeze();
                 if (!colliders.Contains(other)) colliders.Add(other);
             }

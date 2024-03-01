@@ -155,7 +155,9 @@ public class PlayerInputHandler : MonoBehaviour
             if(projectile != null)
             {
                 projectile.transform.position = spawnPoint.position;
-                projectile.GetComponent<SimpleProjectile>().SetSource(true);
+                SimpleProjectile projComp = projectile.GetComponent<SimpleProjectile>();
+                projComp.SetSource(true);
+                projComp.SwapToMove();
                 yield return new WaitForSeconds(fireRate);
                 isNotOnCooldown = true;
             }
