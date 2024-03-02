@@ -25,6 +25,11 @@ public class TricksterFactory : MonoBehaviour
     private void OnSpawnProjectileAt(Vector3 pos, TricksterEnemy spawnedBy)
     {
         Product projectile = spawner.GetProduct(pos);
+        if (spawnedBy == null)
+        {
+            projectile.GetComponent<FallableObject>().SwapToMove();
+            return;
+        }
         projectile.GetComponent<FallableObject>().SwapToCirculate(spawnedBy.transform, new Vector3(0,0, Random.Range(0, 2) * 2 - 1)); // Giving -1 or 1
         spawnedBy.AddCapturedProjectile(projectile, spawnedBy);
     }

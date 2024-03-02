@@ -28,8 +28,15 @@ public class TimeStopperPoint : MonoBehaviour
 
         foreach(var collider in colliders)
         {
-            if(collider.gameObject.activeSelf)
-                collider.GetComponent<FallableObject>().SwapToMove();
+            SimpleProjectile projectile = collider.GetComponent<SimpleProjectile>();
+            if(collider.gameObject.activeSelf && projectile != null && projectile.IsSourcePlayer())
+            {
+                GameEventHandler.Instance.SpawnATricksterProjectileAt(projectile.gameObject.transform.position, null);
+                GameEventHandler.Instance.DestroyObject(projectile.gameObject);
+            } else if (collider.gameObject.activeSelf)
+            {
+                collider.GetComponent<FallableObject>()?.SwapToMove();
+            }
         }
 
         GameEventHandler.Instance.ReleasedAllTimeStopPoints -= OnRelease;
@@ -45,7 +52,6 @@ public class TimeStopperPoint : MonoBehaviour
             FallableObject otherFall = other.GetComponent<FallableObject>();
             if (!otherFall.IsRotating)
             {
-                Debug.Log(other.GetComponent<SimpleProjectile>()?.name);
                 otherFall.SwapToFreeze();
                 if (!colliders.Contains(other)) colliders.Add(other);
             }
