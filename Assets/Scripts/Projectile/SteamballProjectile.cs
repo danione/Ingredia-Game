@@ -26,7 +26,6 @@ public class SteamballProjectile : SimpleProjectile
                 if ((!isAffectingPlayer && c.CompareTag("Player")) || !IsATarget(c.tag)) continue;
 
                 IUnitStats stats = c.GetComponent<IUnitStats>();
-                Debug.Log(c.tag);
 
                 if (stats != null)
                 {

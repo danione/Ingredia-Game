@@ -17,6 +17,11 @@ public class BansheeEnemy : Enemy
         GameEventHandler.Instance.BansheeDetectedPlayer += OnPlayerInDetectionZone;
     }
 
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.BansheeDetectedPlayer -= OnPlayerInDetectionZone;
+    }
+
     public override void ResetEnemy()
     {
         if(_state == null)

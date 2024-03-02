@@ -23,7 +23,8 @@ public class UpgradedBatEnemy : BatEnemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasCollided && other.CompareTag("Enemy") && !isRevulted)
+        BatEnemy bat = other.GetComponent<BatEnemy>();
+        if (bat != null && !hasCollided  && !isRevulted)
         {
             hasCollided = true;
             UpgradedBatEnemy uBat = other.GetComponent<UpgradedBatEnemy>();
@@ -34,14 +35,9 @@ public class UpgradedBatEnemy : BatEnemy
                 SelfRevultion(isGoingLeft: true);
                 isRevulted = true;
             }
-            else
+            else if (!uBat.hasCollided)
             {
-                BatEnemy bat = other.GetComponent<BatEnemy>();
-                
-                if (bat == null) return;
-                
                 bat.DestroyEnemy();
-
                 FusingState();
             }
 

@@ -45,11 +45,17 @@ public class GameEventHandler : MonoBehaviour
     public Action<GameObject> ReleasedAllTimeStopPoints;
     public Action FinishedTimeStopState;
     public Action<Vector3, float> TookDamage;
+    public Action<int> StageChanged;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void StageChange(int currentStage)
+    {
+        StageChanged?.Invoke(currentStage);
     }
 
     public void TakeDamage(Vector3 pos, float amount)
