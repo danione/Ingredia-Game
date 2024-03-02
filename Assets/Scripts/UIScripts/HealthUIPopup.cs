@@ -27,7 +27,7 @@ public class HealthUIPopup : MonoBehaviour
 
     public void DisplayDamage(float value)
     {
-        textValue.text = "-" + value.ToString();
+        textValue.text = "-" + Mathf.Ceil(value).ToString();
         textValue.alpha = 1;
     }
 }

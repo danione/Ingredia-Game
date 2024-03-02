@@ -35,7 +35,7 @@ public class UpgradedBatEnemy : BatEnemy
                 SelfRevultion(isGoingLeft: true);
                 isRevulted = true;
             }
-            else if (!uBat.hasCollided)
+            else 
             {
                 bat.DestroyEnemy();
                 FusingState();
