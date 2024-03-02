@@ -22,6 +22,8 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private int currentStageIndex = 0;
     private List<int> currentStage = new();
 
+    private bool hasSpawnedAll = false;
+
 
     void Start()
     {
@@ -32,12 +34,12 @@ public class EnemyFactory : MonoBehaviour
         }
 
         SetNextStage();
+        StartCoroutine(spawnPointManager.ResetNextPoint());
 
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
 
-        StartCoroutine(SpawnEnemies());
-        StartCoroutine(spawnPointManager.ResetNextPoint());
+        
     }
 
     private void OnDestroy()
@@ -55,6 +57,8 @@ public class EnemyFactory : MonoBehaviour
     {
         if (currentStageIndex >= stage.Count) return;
 
+        hasSpawnedAll = false;
+
         currentStage.Clear();
         
         try
@@ -65,6 +69,7 @@ public class EnemyFactory : MonoBehaviour
             }
         }
         catch (Exception ex) { Debug.LogError(ex); }
+        StartCoroutine(SpawnEnemies());
 
     }
 
@@ -79,11 +84,16 @@ public class EnemyFactory : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (uniqueEnemies.Count == 0 || currentStage.Count == 0) return;
+        if (uniqueEnemies.Count == 0 || currentStage.Count == 0 || hasSpawnedAll) return;
 
         if (stage[currentStageIndex].isRandom)
         {
             int randomEnemyIndex = UnityEngine.Random.Range(0, currentStage.Count);
+
+            while(currentStage[randomEnemyIndex] <= 0 && !hasSpawnedAll)
+            {
+                randomEnemyIndex = UnityEngine.Random.Range(0, currentStage.Count);
+            }
             SpawnEnemyAt(randomEnemyIndex);
         }
         else
@@ -92,25 +102,33 @@ public class EnemyFactory : MonoBehaviour
         }
     }
 
+    private void CheckIfAllSpawned()
+    {
+        if (hasSpawnedAll) return;
+
+        foreach(var enemyCount in currentStage)
+        {
+            if (enemyCount > 0)
+                return;
+        }
+        hasSpawnedAll = true;
+    }
+
     private void SpawnEnemyAt(int index = 0)
     {
         if (currentStage[index] <= 0)
         {
-            currentStage.Remove(index);
             return;
         }
-
         Product enemy = stage[currentStageIndex].enemyList[index].enemy;
         Vector3 position = GetRandomPosition();
-
+       
         if (position == Vector3.zero) return;
 
         spawner[enemy].GetProduct(position);
         currentAliveEnemies++;
         currentStage[index]--;
-
-        if (currentStage[index] <= 0)
-            currentStage.Remove(index);
+        CheckIfAllSpawned();
     }
 
     private Vector3 GetRandomPosition()
@@ -128,7 +146,7 @@ public class EnemyFactory : MonoBehaviour
     {
         while (!GameManager.Instance.gameOver)
         {
-            if(currentStage.Count > 0)
+            if(!hasSpawnedAll)
             {
                 SpawnEnemy();
             }
@@ -140,6 +158,7 @@ public class EnemyFactory : MonoBehaviour
 
     private IEnumerator NextStage()
     {
+        StopCoroutine(SpawnEnemies());
         yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
         currentStageIndex++;
         SetNextStage();

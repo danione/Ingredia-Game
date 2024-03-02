@@ -86,7 +86,8 @@ public class BansheeEnemy : Enemy
 
     public override void DestroyEnemy()
     {
-        base.DestroyEnemy();
+        GameEventHandler.Instance.BansheeDetectedPlayer -= OnPlayerInDetectionZone;
         InputEventHandler.instance.SetMovement(isMoving: true);
+        base.DestroyEnemy();
     }
 }
