@@ -36,6 +36,11 @@ public class UpgradeTrigger : MonoBehaviour
         catch { }
     }
 
+    public UpgradeData GetData()
+    {
+        return upgradeInformation;
+    }
+
     /*
      * Check if the upgrade is still available and has requirements
      * then broadcast the information to others to remove requirements

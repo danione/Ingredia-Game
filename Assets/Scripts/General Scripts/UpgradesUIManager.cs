@@ -1,10 +1,12 @@
 using CodeMonkey.Utils;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 public class UpgradesUIManager : MonoBehaviour
 {
     [SerializeField] private Transform upgradesMenu;
     [SerializeField] private Transform departmentContainer;
+    private UpgradeManager upgradeManager;
 
     private void Start()
     {
@@ -12,7 +14,21 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
-        
+        FullInUpgradeCosts();
+    }
+
+    private void FullInUpgradeCosts()
+    {
+        upgradeManager = GameManager.Instance.GetComponent<UpgradeManager>();
+
+        Button_UI[] buttons = departmentContainer.GetComponentsInChildren<Button_UI>(includeInactive: true);
+
+        // Iterate through each button and add an onClick event listener
+        foreach (Button_UI button in buttons)
+        {
+            UpgradeTrigger trigger = button.GetComponent<UpgradeTrigger>();
+            upgradeManager.AddUpgradeCost(trigger.GetData());
+        }
     }
 
     private void Awake()

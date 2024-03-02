@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
+    private Dictionary<UpgradeData, int> upgradeCost = new();
+
     private HashSet<UpgradeData> upgradesPurchased = new ();
     private bool newScene = false;
 
@@ -14,10 +16,16 @@ public class UpgradeManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void AddUpgradeCost(UpgradeData data)
+    {
+        upgradeCost[data] = data.cost;
+    }
+
     private void OnUpgradePurchased(UpgradeData upgrade)
     {
         if(!newScene && !upgradesPurchased.Contains(upgrade))
         {
+            upgradeCost.Remove(upgrade);
             upgradesPurchased.Add(upgrade);
         }
     }
@@ -29,5 +37,15 @@ public class UpgradeManager : MonoBehaviour
             GameEventHandler.Instance.UpgradeTrigger(upgrade);
         }
         newScene = false;
+    }
+
+    public bool canAffordUpgrades()
+    {
+        foreach(var upgrade in upgradeCost)
+        {
+            if(PlayerController.Instance.inventory.gold > upgrade.Key.cost)
+                return true;
+        }
+        return false;
     }
 }
