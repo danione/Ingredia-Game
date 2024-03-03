@@ -23,6 +23,17 @@ public class TooltipUI : MonoBehaviour
         HideTooltip();
     }
 
+    private void Start()
+    {
+        PlayerEventHandler.Instance.UpgradesMenuClose += HideTooltip;  
+    }
+
+    private void OnDestroy()
+    {
+        PlayerEventHandler.Instance.UpgradesMenuClose -= HideTooltip;
+
+    }
+
     private void Update()
     {
         Vector2 anchoredPos = Input.mousePosition / canvas.localScale.x;

@@ -1022,6 +1022,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6983700405158175897, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: upgradeInformation
+      value: 
+      objectReference: {fileID: 11400000, guid: 51b7ee603de82eb4b8afcb536d0d187c, type: 2}
     - target: {fileID: 7187104740419048461, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1245,6 +1249,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[1].weaponName
+      value: Steamball
+      objectReference: {fileID: 0}
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
