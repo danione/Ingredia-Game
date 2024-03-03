@@ -11,7 +11,11 @@ public class TooltipUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tooltipText;
     [SerializeField] private float textPaddingSize;
     [SerializeField] private RectTransform canvas;
+    [SerializeField] float fixedWidth;
+
     private RectTransform rectTransform;
+    private RectTransform tooltipRectTransform;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +24,7 @@ public class TooltipUI : MonoBehaviour
         else { Destroy(gameObject); }
 
         rectTransform = GetComponent<RectTransform>();
+        tooltipRectTransform = tooltipText.rectTransform;
         HideTooltip();
     }
 
@@ -58,11 +63,17 @@ public class TooltipUI : MonoBehaviour
 
         tooltipText.text = text;
         tooltipText.ForceMeshUpdate();
-        
-        
+
         Vector2 bgSize = tooltipText.GetRenderedValues(false);
+
+        // Calculate the desired height
+        float desiredHeight = Mathf.Max(bgSize.y, (bgSize.x / fixedWidth) * bgSize.y);
+
+        bgSize.y = desiredHeight;
+        bgSize.x = fixedWidth;
         Vector2 padding = new Vector2(textPaddingSize * 2, textPaddingSize*2);
 
+        tooltipRectTransform.sizeDelta = bgSize + padding;
         backrgoundRectTransform.sizeDelta = bgSize + padding;
     }
 
