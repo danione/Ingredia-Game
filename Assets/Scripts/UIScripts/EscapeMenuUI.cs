@@ -14,6 +14,12 @@ public class EscapeMenuUI : MonoBehaviour
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
     }
 
+    private void OnDestroy()
+    {
+        PlayerEventHandler.Instance.EscapeMenuOpened -= OnEscapeMenuOpened;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
+    }
+
     private void OnCloseMenu()
     {
         escapeMenu.SetActive(false);

@@ -17,6 +17,11 @@ public class UpgradeAvailablePopup : MonoBehaviour
         PlayerEventHandler.Instance.CollectedGold += OnGoldCollected;
     }
 
+    private void OnDestroy()
+    {
+        PlayerEventHandler.Instance.CollectedGold -= OnGoldCollected;
+    }
+
     private void OnGoldCollected(int amount)
     {
         if (manager.canAffordUpgrades() && !popup.gameObject.activeSelf)

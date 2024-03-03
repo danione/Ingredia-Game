@@ -22,6 +22,13 @@ public class ScrollSlipUIManager : MonoBehaviour
         slipCellsPerRow = normalSlipsContainerUI.GetChild(0).childCount;
     }
 
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.ScrollSlipGenerated -= OnScrollSlipGenerated;
+        PlayerEventHandler.Instance.OpenedScrollsMenu -= OnScrollSlipMenuOpen;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
+    }
+
     private void OnCloseMenu()
     {
         scrollSlipMenu.gameObject.SetActive(false);
