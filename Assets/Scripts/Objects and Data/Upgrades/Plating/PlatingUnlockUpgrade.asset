@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Plating Unlock
   description: Unlocks plating, or armour, which negates damage before health.
-  cost: 0
+  goldCost: 100
+  sophisticationCost: 0

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Magical Properties
   description: Cauldron will now improve its armour as well as health.
-  cost: 0
+  goldCost: 750
+  sophisticationCost: 0

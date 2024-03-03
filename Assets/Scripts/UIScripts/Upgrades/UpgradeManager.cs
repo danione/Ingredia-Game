@@ -18,7 +18,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void AddUpgradeCost(UpgradeData data)
     {
-        upgradeCost[data] = data.cost;
+        upgradeCost[data] = data.goldCost;
     }
 
     private void OnUpgradePurchased(UpgradeData upgrade)
@@ -43,7 +43,7 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach(var upgrade in upgradeCost)
         {
-            if(PlayerController.Instance.inventory.gold > upgrade.Key.cost)
+            if(PlayerController.Instance.inventory.gold > upgrade.Key.goldCost)
                 return true;
         }
         return false;

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Aerodynamics
   description: Final movement speed upgrade - you are lightning fast
-  cost: 650
+  goldCost: 750
+  sophisticationCost: 0
   newMovementSpeed: 20

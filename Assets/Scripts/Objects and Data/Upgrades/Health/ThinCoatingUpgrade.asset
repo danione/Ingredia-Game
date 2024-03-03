@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Thin Coating
   description: Increase the base coating (health) of the cauldron.
-  cost: 150
+  goldCost: 60
+  sophisticationCost: 0
   newMaxHealth: 5

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Athame Absorption
   description: Your cauldron absorbs the athame ritual, yielding unlimited ammo.
-  cost: 0
+  goldCost: 450
+  sophisticationCost: 0
   weaponName: Athame

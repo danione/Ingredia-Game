@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Aluminium Coating
   description: Generously increase the base coating (health) of the cauldron.
-  cost: 300
+  goldCost: 360
+  sophisticationCost: 0
   newMaxHealth: 8

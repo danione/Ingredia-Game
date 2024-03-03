@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Cauldron Feet
   description: Medium movement speed upgrade which allows you to travel much faster
-  cost: 250
+  goldCost: 300
+  sophisticationCost: 0
   newMovementSpeed: 16

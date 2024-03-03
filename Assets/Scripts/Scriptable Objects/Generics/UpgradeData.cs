@@ -5,6 +5,7 @@ public abstract class UpgradeData : ScriptableObject
 {
     public string upgradeName;
     public string description;
-    public int cost;
+    public int goldCost;
+    public int sophisticationCost;
     public abstract void ApplyUpgrade(GameObject obj);
 }

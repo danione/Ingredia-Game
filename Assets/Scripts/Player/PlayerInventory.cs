@@ -136,6 +136,7 @@ public class PlayerInventory: MonoBehaviour
         if(amount + sophistication > 0)
         {
             sophistication += amount;
+            PlayerEventHandler.Instance.CollectSophistication((int)amount);
             return true;
         }
 

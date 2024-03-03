@@ -25,6 +25,7 @@ public class PlayerEventHandler : MonoBehaviour
     public event Action ClosedAllOpenMenus;
     public Action UpgradesMenuOpen;
     public Action UpgradesMenuClose;
+    public Action<int> CollectedSophistication;
 
     private int openMenus = 0;
     private int idOfLastMenu = -1;
@@ -39,6 +40,11 @@ public class PlayerEventHandler : MonoBehaviour
         {
             Destroy(Instance);
         }
+    }
+
+    public void CollectSophistication(int amount)
+    {
+        CollectedSophistication?.Invoke(amount);
     }
 
     public void CloseAllOpenMenus()

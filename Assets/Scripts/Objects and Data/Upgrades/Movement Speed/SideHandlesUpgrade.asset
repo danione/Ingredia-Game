@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Side Handles
   description: Basic movement speed upgrade
-  cost: 50
+  goldCost: 60
+  sophisticationCost: 0
   newMovementSpeed: 12

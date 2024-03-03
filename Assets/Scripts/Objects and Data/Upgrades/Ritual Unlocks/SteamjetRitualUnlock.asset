@@ -15,5 +15,6 @@ MonoBehaviour:
   upgradeName: Steamjet Ritual
   description: Unlocks the powerful steamjet ritual which annihilates everything
     in its path.
-  cost: 0
+  goldCost: 900
+  sophisticationCost: 0
   ritualToUnlock: {fileID: 11400000, guid: 5752d38832317df4d8a599f86ab2e08c, type: 2}

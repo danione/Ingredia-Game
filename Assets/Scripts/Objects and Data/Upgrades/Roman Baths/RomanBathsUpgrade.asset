@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Roman Baths Effect
   description: Increases steamball's area, damage, and yield from ritual
-  cost: 0
+  goldCost: 650
+  sophisticationCost: 0
   areaAmount: 8
   damageAmount: 3
   newRitualYield: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}

@@ -16,14 +16,34 @@ public class UpgradeTrigger : MonoBehaviour
 
     private bool isUpgraded = false;
     private bool HasExistingRequirements => requirements.Count > 0;
+    private PlayerInventory playerInventory;
 
     private void Start()
     {
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradeUnlocked;
-        if (HasExistingRequirements)
+        PlayerEventHandler.Instance.CollectedGold += OnResourceCollected;
+        PlayerEventHandler.Instance.CollectedSophistication += OnResourceCollected;
+
+        playerInventory = PlayerController.Instance.inventory;
+        if (HasExistingRequirements || !CanAfford())
         {
             GetComponent<Image>().color = Color.gray;
         }
+    }
+
+    private void OnResourceCollected(int resouce)
+    {
+        if(!isUpgraded && CanAfford())
+        {
+            GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    private bool CanAfford()
+    {
+        bool canAffordGold = (playerInventory.gold - upgradeInformation.goldCost) >= 0;
+        bool canAffordSophistication = (playerInventory.sophistication - upgradeInformation.sophisticationCost) >= 0;
+        return canAffordGold && canAffordSophistication;
     }
 
     private void OnDestroy()
@@ -31,6 +51,8 @@ public class UpgradeTrigger : MonoBehaviour
         try
         {
             GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
+            PlayerEventHandler.Instance.CollectedGold -= OnResourceCollected;
+            PlayerEventHandler.Instance.CollectedSophistication -= OnResourceCollected;
 
         }
         catch { }
@@ -49,7 +71,7 @@ public class UpgradeTrigger : MonoBehaviour
     {
         if (!isUpgraded)
         {
-            if (!HasExistingRequirements)
+            if (!HasExistingRequirements && CanAfford())
             {
                 upgradeInformation.ApplyUpgrade(upgradeSubject);
                 isUpgraded = true;
@@ -57,10 +79,13 @@ public class UpgradeTrigger : MonoBehaviour
                 try
                 {
                     GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
+                    PlayerEventHandler.Instance.CollectedGold -= OnResourceCollected;
+                    PlayerEventHandler.Instance.CollectedSophistication -= OnResourceCollected;
                 }
                 catch { Debug.Log("Tried to unsubscribe"); }
                 GetComponent<Image>().color = Color.green;
-
+                playerInventory.AddGold(-upgradeInformation.goldCost);
+                playerInventory.AdjustSophistication(-upgradeInformation.sophisticationCost);
             }
             else
             {
@@ -78,7 +103,7 @@ public class UpgradeTrigger : MonoBehaviour
         if (requirements.Contains(upgrade))
         {
             requirements.Remove(upgrade);
-            if (!HasExistingRequirements)
+            if (!HasExistingRequirements && CanAfford())
             {
                 GetComponent<Image>().color = Color.white;
             }
@@ -93,7 +118,7 @@ public class UpgradeTrigger : MonoBehaviour
     public string GetFullUpgradeInformation()
     {
         string fullstring = "<color=yellow>" + upgradeInformation.upgradeName + "</color>\n";
-        fullstring += "<i>Upgrade Cost: </i>" + upgradeInformation.cost + "\n";
+        fullstring += "<i>Upgrade Cost: </i>" + upgradeInformation.goldCost + "\n";
         fullstring += "------" + "\n";
         fullstring += upgradeInformation.description;
         return fullstring;

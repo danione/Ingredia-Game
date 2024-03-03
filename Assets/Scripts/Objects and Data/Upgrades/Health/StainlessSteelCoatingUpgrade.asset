@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Stainless Steel Coating
   description: Greatly increase the base coating (health) of the cauldron.
-  cost: 1000
+  goldCost: 750
+  sophisticationCost: 0
   newMaxHealth: 10

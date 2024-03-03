@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Streammunity
   description: Causes the player to be immune to damage from a steamball.
-  cost: 0
+  goldCost: 450
+  sophisticationCost: 0
