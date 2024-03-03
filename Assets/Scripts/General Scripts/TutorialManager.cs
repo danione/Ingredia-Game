@@ -165,7 +165,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnEnemyDestroyed(Vector3 pos)
     {
-        enemyFactory.SetTutorialCurrency(-100);
+        enemyFactory.SetTutorialCurrency();
         ExecuteCurrentStage();
     }
 
@@ -180,7 +180,6 @@ public class TutorialManager : MonoBehaviour
     public void AddLaserBeam()
     {
         PlayerController.Instance.inventory.AddPotion(overloadElixirData);
-        goldenNuggets.enabled = true;
         conjuredWall.SetActive(true);
     }
 

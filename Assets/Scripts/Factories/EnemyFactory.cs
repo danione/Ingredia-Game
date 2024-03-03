@@ -178,9 +178,10 @@ public class EnemyFactory : MonoBehaviour
         currentAliveEnemies++;
     }
 
-    public void SetTutorialCurrency(int i)
+    public void SetTutorialCurrency()
     {
-        //currentCurrency = i;
+        hasSpawnedAll = true;
+        currentAliveEnemies = 10;
     }
 }
 
