@@ -117,8 +117,16 @@ public class UpgradeTrigger : MonoBehaviour
 
     public string GetFullUpgradeInformation()
     {
-        string fullstring = "<color=yellow>" + upgradeInformation.upgradeName + "</color>\n";
-        fullstring += "<i>Upgrade Cost: </i>" + upgradeInformation.goldCost + "\n";
+        string fullstring = "<b>" + upgradeInformation.upgradeName + "</b>\n";
+        if (upgradeInformation.goldCost > 0)
+        {
+            fullstring += "<color=yellow>Gold Cost: </color>" + upgradeInformation.goldCost + "\n";
+        }
+        if(upgradeInformation.sophisticationCost > 0)
+        {
+            fullstring += "<color=blue>Sophistication Cost: </color>" + upgradeInformation.sophisticationCost + "\n";
+
+        }
         if (upgradeInformation.GetType() == typeof(UnlockRitualUpgrade))
         {
             UnlockRitualUpgrade upgrade = (UnlockRitualUpgrade)upgradeInformation;

@@ -16,5 +16,5 @@ MonoBehaviour:
   description: Research the devastating steamball. Deal area of effect damage to
     all enemies in its radius, including you.
   goldCost: 300
-  sophisticationCost: 0
+  sophisticationCost: 10
   ritualToUnlock: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}

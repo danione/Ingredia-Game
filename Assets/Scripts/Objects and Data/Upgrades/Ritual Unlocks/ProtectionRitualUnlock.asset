@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Protection Ritual
   description: Unlocks a powerfull barrier that stops objects from coming through.
-  cost: 0
+  goldCost: 0
+  sophisticationCost: 8
   ritualToUnlock: {fileID: 11400000, guid: f2fa86c14e0a6a34ca04ed7faef5e6f0, type: 2}

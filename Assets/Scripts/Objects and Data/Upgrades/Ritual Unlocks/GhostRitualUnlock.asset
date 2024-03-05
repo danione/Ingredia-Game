@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Ghost Ritual
   description: Leave your corporeal body, avoiding collisions with all objects.
-  cost: 0
+  goldCost: 0
+  sophisticationCost: 10
   ritualToUnlock: {fileID: 11400000, guid: 716952429a4f27541b0f764d1670df82, type: 2}
