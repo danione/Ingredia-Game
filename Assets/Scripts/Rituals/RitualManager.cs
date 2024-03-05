@@ -22,6 +22,7 @@ public class RitualManager : MonoBehaviour
                
         foreach(var locked in lockedRituals)
         {
+            if(locked.ritualName == null) continue;
              lockedRitualsDict[locked.ritualName] = new Ritual(locked);
         }
     }

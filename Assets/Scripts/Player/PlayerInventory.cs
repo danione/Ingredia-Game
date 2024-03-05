@@ -85,16 +85,6 @@ public class PlayerInventory: MonoBehaviour
         powerupManager.AddPotion(potion);
     }
 
-    public void SetMaxAmmo(string weaponName, int newMaxAmmo)
-    {
-        if (weapons[currentlyEquippedWeapon].weaponName == weaponName && weapons[currentlyEquippedWeapon].IsUnlimited) return;
-
-        foreach (var weapon in weapons)
-        {
-            if (weaponName == weapon.weaponName) { weapon.maxAmmo = newMaxAmmo; break; }
-        }
-    }
-
     public void AddToCauldron(IIngredient ingredient)
     {
         if (cauldronContents.Count >= size) return;

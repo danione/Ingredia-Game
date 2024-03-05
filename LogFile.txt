@@ -4,3 +4,38 @@ Log: Locking permissions...
 Log: Moving permissions subscribing...
 
 
+Exception: ArgumentNullException: Value cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[TKey,TValue].TryInsert (TKey key, TValue value, System.Collections.Generic.InsertionBehavior behavior) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+System.Collections.Generic.Dictionary`2[TKey,TValue].set_Item (TKey key, TValue value) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+RitualManager.Start () (at Assets/Scripts/Rituals/RitualManager.cs:25)
+
+
+Exception: ArgumentNullException: Value cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[TKey,TValue].TryInsert (TKey key, TValue value, System.Collections.Generic.InsertionBehavior behavior) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+System.Collections.Generic.Dictionary`2[TKey,TValue].set_Item (TKey key, TValue value) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+RitualManager.Start () (at Assets/Scripts/Rituals/RitualManager.cs:25)
+
+
+Exception: ArgumentNullException: Value cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[TKey,TValue].TryInsert (TKey key, TValue value, System.Collections.Generic.InsertionBehavior behavior) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+System.Collections.Generic.Dictionary`2[TKey,TValue].set_Item (TKey key, TValue value) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+RitualManager.Start () (at Assets/Scripts/Rituals/RitualManager.cs:25)
+
+
+Exception: ArgumentNullException: Value cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[TKey,TValue].TryInsert (TKey key, TValue value, System.Collections.Generic.InsertionBehavior behavior) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+System.Collections.Generic.Dictionary`2[TKey,TValue].set_Item (TKey key, TValue value) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+RitualManager.Start () (at Assets/Scripts/Rituals/RitualManager.cs:25)
+
+
+Exception: ArgumentNullException: Value cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[TKey,TValue].TryInsert (TKey key, TValue value, System.Collections.Generic.InsertionBehavior behavior) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+System.Collections.Generic.Dictionary`2[TKey,TValue].set_Item (TKey key, TValue value) (at <eef08f56e2e042f1b3027eca477293d9>:0)
+RitualManager.Start () (at Assets/Scripts/Rituals/RitualManager.cs:26)
+
+

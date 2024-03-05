@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 453c72e6f418d174e98b18613261ba86, type: 3}
-  m_Name: SteamballUnlockUpgrade
+  m_Name: RepairUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Steamball Ritual
-  description: Research the devastating steamball. Deal area of effect damage to
-    all enemies in its radius, including you.
-  goldCost: 300
-  sophisticationCost: 10
+  upgradeName: Repair Ritual
+  description: Learn how to conjure a ritual which repairs your cauldron after a
+    short time.
+  goldCost: 40
+  sophisticationCost: 2
   ritualToUnlock: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}

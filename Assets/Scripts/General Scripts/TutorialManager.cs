@@ -36,7 +36,6 @@ public class TutorialManager : MonoBehaviour
 
     private IngredientsFactory ingredientsFactory;
     private EnemyFactory enemyFactory;
-    private GoldenNuggetsFactory goldenNuggets;
 
     private void Start()
     {
@@ -44,7 +43,6 @@ public class TutorialManager : MonoBehaviour
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();
-        goldenNuggets = spawnManager.GetComponent<GoldenNuggetsFactory>();
         StartCoroutine(WaitForInitialisationOfObjects());
         GameManager.Instance.tutorialMode = true;
         

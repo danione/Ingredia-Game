@@ -4,7 +4,6 @@ public class Weapon
 {
     [SerializeField] public string weaponName;
     [SerializeField] public int ammo;
-    [SerializeField] public int maxAmmo;
     [SerializeField] private int objectPosition; // unique
     [SerializeField] private bool isUnlimited;
     public bool IsUnlimited => isUnlimited;
@@ -22,7 +21,6 @@ public class Weapon
     public void SetUnlimited()
     {
         ammo = int.MaxValue;
-        maxAmmo = int.MaxValue;
         isUnlimited = true;
     }
 }
