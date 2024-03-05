@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScrollSlipManager : MonoBehaviour
 {
     private List<RitualScriptableObject> unlockedScrollSlips = new();
-    [SerializeField] private List<RitualScriptableObject> availableScrollSlips = new();
+    private List<RitualScriptableObject> availableScrollSlips = new();
     private bool isTutorial = false;
 
 
@@ -13,6 +13,7 @@ public class ScrollSlipManager : MonoBehaviour
     {
         GameEventHandler.Instance.UnlockedScrollSlip += OnScrollSlipUnlock;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        availableScrollSlips = GetComponent<RitualManager>().GetAllRituals();
     }
 
     public void OnSetTutorialMode()

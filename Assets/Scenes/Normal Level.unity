@@ -681,12 +681,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: ingredients.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: ingredients.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: cc814b5cba64b55439680158044bdb7f, type: 2}
+      objectReference: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
+    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: ingredients.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -753,6 +757,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148559292740883961, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: spawnChance
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148559292740883961, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: scrollSlipManagerRef
       value: 
       objectReference: {fileID: 1760316102}
@@ -779,6 +787,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: lockedWeapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[0].ammo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: weapons.Array.data[1].ammo
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

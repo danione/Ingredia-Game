@@ -1,7 +1,5 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class RitualManager : MonoBehaviour
@@ -25,6 +23,19 @@ public class RitualManager : MonoBehaviour
             if(locked.ritualName == null) continue;
              lockedRitualsDict[locked.ritualName] = new Ritual(locked);
         }
+    }
+
+    public List<RitualScriptableObject> GetAllRituals()
+    {
+        List<RitualScriptableObject> combinedList = new List<RitualScriptableObject>();
+
+        // Add all elements from list1
+        combinedList.AddRange(unlockedRituals);
+
+        // Add all elements from list2
+        combinedList.AddRange(lockedRituals);
+
+        return combinedList;
     }
 
 
