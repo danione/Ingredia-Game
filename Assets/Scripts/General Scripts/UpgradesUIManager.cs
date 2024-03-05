@@ -16,7 +16,15 @@ public class UpgradesUIManager : MonoBehaviour
         PlayerEventHandler.Instance.UpgradesMenuClose += OnUpgradesMenuClosed;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnUpgradesMenuClosed;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
+        PlayerEventHandler.Instance.CollectedGold += OnResourcesAdjusted;
+        PlayerEventHandler.Instance.CollectedSophistication += OnResourcesAdjusted;
         FullInUpgradeCosts();
+    }
+
+    private void OnResourcesAdjusted(int amount = 0)
+    {
+        goldText.text = "Gold: " + PlayerController.Instance.inventory.gold;
+        sophText.text = "Sophistication: " + Mathf.FloorToInt(PlayerController.Instance.inventory.sophistication);
     }
 
     private void FullInUpgradeCosts()
@@ -98,8 +106,7 @@ public class UpgradesUIManager : MonoBehaviour
         }
 
         upgradesMenu.gameObject.SetActive(!upgradesMenu.gameObject.activeSelf);
-        goldText.text = "Gold: " + PlayerController.Instance.inventory.gold;
-        sophText.text = "Sophistication: " + Mathf.FloorToInt(PlayerController.Instance.inventory.sophistication);
+        OnResourcesAdjusted();
     }
 
     private void OnUpgradesMenuClosed()

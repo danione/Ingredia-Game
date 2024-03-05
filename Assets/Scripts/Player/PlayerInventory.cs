@@ -133,7 +133,7 @@ public class PlayerInventory: MonoBehaviour
 
     public bool AdjustSophistication(float amount)
     {
-        if(amount + sophistication > 0)
+        if(amount + sophistication >= 0)
         {
             sophistication += amount;
             PlayerEventHandler.Instance.CollectSophistication((int)amount);

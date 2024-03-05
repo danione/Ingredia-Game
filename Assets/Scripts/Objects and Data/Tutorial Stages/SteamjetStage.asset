@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb8812bc84dd533438dc6572b20db28c, type: 3}
-  m_Name: LaserStage
+  m_Name: SteamjetStage
   m_EditorClassIdentifier: 
-  title: Fire Laser Beam
-  description: 'Destroy the conjured walls with the laserbeam potion. Remember -
-    Press 1 to use the potion.
+  title: Steamjet
+  description: 'Destroy the conjured walls with the steamjet potion. Remember - Press
+    1 to use the potion.
 
 
-    Hold Q to cast your fiery flame on them.'
+    Hold Q to melt down the walls.'

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: RitualStage
   m_EditorClassIdentifier: 
   title: First Ritual
-  description: Well, ignore that... Let's proceed. Collect athame x1 and eye x1 and
-    press R. That's rituals for you.
-  knifeThrowPotion: {fileID: 11400000, guid: 905163cba4777744e843715e75c4aacb, type: 2}
+  description: 'Well, ignore that... Let''s proceed. Collect athame x1 and eye x1
+    and press R. Rituals provide sophistication which will be useful later.
+
+
+'
+  athameThrowPotion: {fileID: 0}

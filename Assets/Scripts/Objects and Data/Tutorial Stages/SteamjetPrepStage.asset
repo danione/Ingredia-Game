@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35a1616974a7458438ff263bd0429a0c, type: 3}
-  m_Name: LaserPrepStage
+  m_Name: SteamjetPrepStage
   m_EditorClassIdentifier: 
   title: Hold Still
-  description: Now we have unlocked it, let me show you something really cool. Go
-    to the center location.
+  description: Now, let me show you the steamjet - something really cool. Go to the
+    center location.
   LaserPos: {fileID: 4801744699995341749, guid: ae7f58ea25acfb54d864988a3b0489ba, type: 3}
