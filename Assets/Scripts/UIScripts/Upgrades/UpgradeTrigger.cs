@@ -119,6 +119,19 @@ public class UpgradeTrigger : MonoBehaviour
     {
         string fullstring = "<color=yellow>" + upgradeInformation.upgradeName + "</color>\n";
         fullstring += "<i>Upgrade Cost: </i>" + upgradeInformation.goldCost + "\n";
+        if (upgradeInformation.GetType() == typeof(UnlockRitualUpgrade))
+        {
+            UnlockRitualUpgrade upgrade = (UnlockRitualUpgrade)upgradeInformation;
+            if(upgrade.ritualToUnlock.ritualRecipes.Count != 0)
+            {
+                fullstring += "<color=yellow><i>Ingredients: ";
+                for (int i = 0; i < upgrade.ritualToUnlock.ritualRecipes.Count - 1; i++)
+                {
+                    fullstring += "<b>" + upgrade.ritualToUnlock.ritualRecipes[i].item.ingredientName + ",</b> ";
+                }
+                fullstring += "<b>" + upgrade.ritualToUnlock.ritualRecipes[upgrade.ritualToUnlock.ritualRecipes.Count - 1].item.ingredientName + "</b></i></color>\n";
+            }
+        }
         fullstring += "------" + "\n";
         fullstring += upgradeInformation.description;
         return fullstring;
