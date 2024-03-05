@@ -9,12 +9,11 @@ using UnityEngine;
 public class IngredientsFactory: MonoBehaviour
 {
     [SerializeField] private ObjectsSpawner spawner;
-    [SerializeField] private List<IngredientData> _ingredients;
     [SerializeField] private BoundariesData boundariesData;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
     private bool isSpawning;
-
+    private List<IngredientData> _ingredients = new();
     private SpawnPointManager spawnPointManager;
     
     // Private Variables
@@ -22,14 +21,15 @@ public class IngredientsFactory: MonoBehaviour
 
     private void Awake()
     {
-        // ingredientsFactories = new ObjectFactory(prefab);
         spawner = new ObjectsSpawner(prefab);
+
     }
 
     void Start()
     {
         spawnPointManager = new SpawnPointManager(boundariesData, (spawnFrequency.maxFrequency - spawnFrequency.minFrequency) / 2);
-        
+        _ingredients = GameManager.Instance.GetComponent<IngredientManager>().GetIngredients();
+
         isSpawning = true;
 
         StartCoroutine(SpawnIngredients(() => SpawnRandomIngredient()));

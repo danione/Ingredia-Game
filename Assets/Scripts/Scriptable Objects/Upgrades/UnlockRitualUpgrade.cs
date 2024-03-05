@@ -10,5 +10,11 @@ public class UnlockRitualUpgrade : UpgradeData
     public override void ApplyUpgrade(GameObject obj)
     {
         GameManager.Instance.GetComponent<RitualManager>().AddRitualToUnlocked(ritualToUnlock.ritualName);
+        
+        IngredientManager manager = GameManager.Instance.GetComponent<IngredientManager>();
+        foreach(var ritualIngredient in ritualToUnlock.ritualRecipes)
+        {
+            manager.UnlockIngredient(ritualIngredient.item);
+        }
     }
 }
