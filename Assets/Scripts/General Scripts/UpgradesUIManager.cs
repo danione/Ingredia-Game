@@ -6,6 +6,8 @@ public class UpgradesUIManager : MonoBehaviour
 {
     [SerializeField] private Transform upgradesMenu;
     [SerializeField] private Transform departmentContainer;
+    [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI sophText;
     private UpgradeManager upgradeManager;
 
     private void Start()
@@ -96,6 +98,8 @@ public class UpgradesUIManager : MonoBehaviour
         }
 
         upgradesMenu.gameObject.SetActive(!upgradesMenu.gameObject.activeSelf);
+        goldText.text = "Gold: " + PlayerController.Instance.inventory.gold;
+        sophText.text = "Sophistication: " + Mathf.FloorToInt(PlayerController.Instance.inventory.sophistication);
     }
 
     private void OnUpgradesMenuClosed()

@@ -91,9 +91,9 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     {
         while(health < healthIncrease)
         {
+            yield return new WaitForSeconds(healthRegenTime);
             health = Math.Min(health + healthRegenRate, healthIncrease);
             PlayerEventHandler.Instance.AdjustHealth();
-            yield return new WaitForSeconds(healthRegenTime);
         }
 
         isHealing = false;

@@ -15,5 +15,6 @@ MonoBehaviour:
   upgradeName: Repair Ritual Unlock
   description: Unlocks the ritual which yields potions which regenerate your health
     over time.
-  cost: 0
+  goldCost: 0
+  sophisticationCost: 1
   ritualToUnlock: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
