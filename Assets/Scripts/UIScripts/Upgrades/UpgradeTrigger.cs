@@ -21,6 +21,7 @@ public class UpgradeTrigger : MonoBehaviour
     private void Start()
     {
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradeUnlocked;
+        GameEventHandler.Instance.UpgradeTriggered += OnUpgradedSomewhere;
         PlayerEventHandler.Instance.CollectedGold += OnResourceCollected;
         PlayerEventHandler.Instance.CollectedSophistication += OnResourceCollected;
 
@@ -29,6 +30,18 @@ public class UpgradeTrigger : MonoBehaviour
         {
             GetComponent<Image>().color = Color.gray;
         }
+    }
+
+    private void OnUpgradedSomewhere(UpgradeData data)
+    {
+        if (data == upgradeInformation) return;
+        Debug.Log(upgradeInformation.upgradeName + " " + CanAfford());
+
+        if (!isUpgraded && !CanAfford())
+        {
+            GetComponent<Image>().color = Color.gray;
+        }
+
     }
 
     private void OnResourceCollected(int resouce)
@@ -41,8 +54,8 @@ public class UpgradeTrigger : MonoBehaviour
 
     private bool CanAfford()
     {
-        bool canAffordGold = (playerInventory.gold - upgradeInformation.goldCost) >= 0;
-        bool canAffordSophistication = (playerInventory.sophistication - upgradeInformation.sophisticationCost) >= 0;
+        bool canAffordGold = playerInventory.gold>= upgradeInformation.goldCost;
+        bool canAffordSophistication = playerInventory.sophistication >= upgradeInformation.sophisticationCost;
         return canAffordGold && canAffordSophistication;
     }
 
@@ -53,6 +66,7 @@ public class UpgradeTrigger : MonoBehaviour
             GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
             PlayerEventHandler.Instance.CollectedGold -= OnResourceCollected;
             PlayerEventHandler.Instance.CollectedSophistication -= OnResourceCollected;
+            GameEventHandler.Instance.UpgradeTriggered -= OnUpgradedSomewhere;
 
         }
         catch { }
@@ -75,7 +89,6 @@ public class UpgradeTrigger : MonoBehaviour
             {
                 upgradeInformation.ApplyUpgrade(upgradeSubject);
                 isUpgraded = true;
-                GameEventHandler.Instance.UpgradeTrigger(upgradeInformation);
                 try
                 {
                     GameEventHandler.Instance.UpgradeTriggered -= OnUpgradeUnlocked;
@@ -86,6 +99,7 @@ public class UpgradeTrigger : MonoBehaviour
                 GetComponent<Image>().color = Color.green;
                 playerInventory.AddGold(-upgradeInformation.goldCost);
                 playerInventory.AdjustSophistication(-upgradeInformation.sophisticationCost);
+                GameEventHandler.Instance.UpgradeTrigger(upgradeInformation);
             }
             else
             {
