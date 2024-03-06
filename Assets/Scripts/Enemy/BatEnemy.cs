@@ -17,6 +17,7 @@ public class BatEnemy : Enemy
     [SerializeField] private float upgradedStateDuration;
     [SerializeField] private float boundaryMovement;
     [SerializeField] private GameObject SpawnManager;
+    [SerializeField] private float trackingCooldown;
 
 
     private void Start()
@@ -49,7 +50,7 @@ public class BatEnemy : Enemy
                 Shoot();
             }
         }
-        else if(_state.CurrentState == _state.MoveState || _state.CurrentState == _state.IdleState)
+        else if(_state.CurrentState == _state.MoveState)
         {
             FollowPlayerAndShoot();
         }
@@ -62,12 +63,19 @@ public class BatEnemy : Enemy
         {
             attacked = true;
             _state.TransitiontTo(_state.IdleState);
+            StartCoroutine(TrackingPlayerCooldown());
             Shoot();
         }
         else if (currentPositionDifferenceX >= boundaryMovement)
         {
             _state.TransitiontTo(_state.MoveState);
         }
+    }
+
+    private IEnumerator TrackingPlayerCooldown()
+    {
+        yield return new WaitForSeconds(trackingCooldown);
+        _state.TransitiontTo(_state.MoveState);
     }
 
     protected virtual void Shoot()

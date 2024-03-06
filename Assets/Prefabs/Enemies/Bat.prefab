@@ -124,8 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 957704234a1c28a40874d9265947f2f4, type: 2}
-  hasCollided: 0
-  isUpgraded: 0
   spawner:
     collectionCheck: 1
     defaultCapacity: 40
@@ -135,6 +133,7 @@ MonoBehaviour:
   upgradedStateDuration: 0
   boundaryMovement: 2
   SpawnManager: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+  trackingCooldown: 5
 --- !u!54 &-6506927491223567469
 Rigidbody:
   m_ObjectHideFlags: 0
