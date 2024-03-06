@@ -71,21 +71,6 @@ public class TutorialManager : MonoBehaviour
         InitialiseNextStage();
     }
 
-    public void OnCompletedRecipe()
-    {
-        ExecuteCurrentStage();
-    }
-
-    public void EnableFire()
-    {
-        ingredientsFactory.AppendARegularIngredient(fireData);
-    }
-
-    public void OnCollidedWithRecipe()
-    {
-        ExecuteCurrentStage();
-    }
-
     public void OnPlayerMoved(float direction)
     {
         playerMovementThreshold -= Time.deltaTime;
@@ -117,7 +102,7 @@ public class TutorialManager : MonoBehaviour
 
     public void RemoveOneSpawnIngredient()
     {
-        ingredientsFactory.RemoveRegularIngredient();
+        //GameManager.Instance.GetComponent<IngredientManager>?.RemoveRegularIngredient();
     }
 
     public void OnCollectedIngredient(IIngredient ingredient, int count)
@@ -135,8 +120,8 @@ public class TutorialManager : MonoBehaviour
 
     public void FirstRitual()
     {
-        ingredientsFactory.AppendARegularIngredient(eyeData);
-        ingredientsFactory.AppendARegularIngredient(athameData);
+        //ingredientsFactory.AppendARegularIngredient(eyeData);
+        //ingredientsFactory.AppendARegularIngredient(athameData);
         inventorySlotsUI.SetActive(true);
     }
 
@@ -194,12 +179,6 @@ public class TutorialManager : MonoBehaviour
     public void OnUpgraded()
     {
         ExecuteCurrentStage();
-    }
-
-    public void UnlockSlips()
-    {
-        GameManager.Instance.gameObject.GetComponent<ScrollSlipManager>().enabled = true;
-        ingredientsFactory.gameObject.GetComponent<ScrollSlipFactory>().enabled = true;
     }
 
     public void EnableSwapUI()

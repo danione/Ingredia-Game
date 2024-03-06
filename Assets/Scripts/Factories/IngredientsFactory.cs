@@ -96,19 +96,4 @@ public class IngredientsFactory: MonoBehaviour
     {
         return _ingredients.Count;
     }
-    
-    // Should be used for tutorial only
-    public void AppendARegularIngredient(IngredientData ingredient)
-    {
-        _ingredients.Add(ingredient);
-    }
-
-    public void RemoveRegularIngredient()
-    {
-        if(_ingredients.Count == 0) return;
-
-        _ingredients.RemoveAt(_ingredients.Count - 1);
-
-        if(_ingredients.Count == 0) isSpawning = false;
-    }
 }

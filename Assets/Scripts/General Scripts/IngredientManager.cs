@@ -25,4 +25,13 @@ public class IngredientManager : MonoBehaviour
     {
         return ingredients;
     }
+
+    public void RemoveOneIngredient()
+    {
+        if(ingredients.Count == 0) { return; }
+
+        IngredientData data = ingredients[ingredients.Count - 1];
+        ingredients.RemoveAt(ingredients.Count - 1);
+        ingredientsSet.Remove(data);
+    }
 }
