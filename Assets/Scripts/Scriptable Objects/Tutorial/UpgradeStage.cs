@@ -8,6 +8,7 @@ public class UpgradeStage : TutorialStage
     {
         PlayerInputHandler.permissions.canOpenUpgrades = true;
         PlayerInputHandler.permissions.canOpenMenus = true;
+        PlayerEventHandler.Instance.StopLaser();
     }
 
     public override void NextStage()
@@ -18,6 +19,7 @@ public class UpgradeStage : TutorialStage
 
     public override void Reward()
     {
+        PlayerEventHandler.Instance.StopLaser();
         PlayerInputHandler.permissions.canOpenUpgrades = true;
         PlayerInputHandler.permissions.canOpenMenus = true;
         PlayerInputHandler.permissions.canMove = false;

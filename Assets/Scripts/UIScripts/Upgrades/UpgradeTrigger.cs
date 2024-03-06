@@ -35,7 +35,6 @@ public class UpgradeTrigger : MonoBehaviour
     private void OnUpgradedSomewhere(UpgradeData data)
     {
         if (data == upgradeInformation) return;
-        Debug.Log(upgradeInformation.upgradeName + " " + CanAfford());
 
         if (!isUpgraded && !CanAfford())
         {

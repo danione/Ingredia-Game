@@ -17,4 +17,4 @@ MonoBehaviour:
     short time.
   goldCost: 40
   sophisticationCost: 2
-  ritualToUnlock: {fileID: 11400000, guid: 42aea433566367b48b9eb573fcc334d1, type: 2}
+  ritualToUnlock: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}

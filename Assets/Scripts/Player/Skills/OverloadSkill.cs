@@ -13,6 +13,12 @@ public class OverloadSkill
     {
         laser = new LaserBeam(PlayerController.Instance.transform, Vector3.up);
         PlayerEventHandler.Instance.LaserFired += OnFiringLaser;
+        PlayerEventHandler.Instance.StoppedLaser += OnStoppingLaser;
+    }
+
+    private void OnStoppingLaser()
+    {
+        isActive = false;
     }
 
     private void OnFiringLaser(bool isPlayerPressingFiring)

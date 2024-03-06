@@ -28,6 +28,7 @@ public class PlayerEventHandler : MonoBehaviour
     public Action<int> CollectedSophistication;
     public Action ResetWeapons;
     public Action ResetPotionsInventory;
+    public Action StoppedLaser;
 
     private int openMenus = 0;
     private int idOfLastMenu = -1;
@@ -42,6 +43,11 @@ public class PlayerEventHandler : MonoBehaviour
         {
             Destroy(Instance);
         }
+    }
+
+    public void StopLaser()
+    {
+        StoppedLaser?.Invoke();
     }
 
     public void ResetsPotionsInventory()

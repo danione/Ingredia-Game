@@ -108,3 +108,203 @@ Log: Roman Baths Effect False
 Log: Streammunity False
 
 
+Log: Thin Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Aluminium Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Stainless Steel Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Side Handles False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Cauldron Feet False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Aerodynamics False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Plating Unlock False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Self-Repair False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Magical Properties False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Thin Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Aluminium Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Stainless Steel Coating False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Side Handles False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Cauldron Feet False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Aerodynamics False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Protection Ritual False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Ghost Ritual False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Steamball Ritual False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Steamjet Ritual False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Athame Absorption False
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:OnUpgradedSomewhere (UpgradeData) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:38)
+GameEventHandler:UpgradeTrigger (UpgradeData) (at Assets/Scripts/General Scripts/Event Handlers/GameEventHandler.cs:103)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:102)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
