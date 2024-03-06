@@ -18,10 +18,8 @@ MonoBehaviour:
   sophisticationReward: 3
   ritualRecipes:
   - item: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
+  - item: {fileID: 11400000, guid: 13a0b74d116e47a43944fbee1013819e, type: 2}
     amount: 1
   potionRewardData:
   - {fileID: 11400000, guid: fc8f3b882280669428498478ba60349f, type: 2}

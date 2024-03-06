@@ -17,8 +17,8 @@ public class PlayerPotionsManager: MonoBehaviour
 
     public void PurgeContents()
     {
-        potionsInInventory.Clear();
-        potionsQuantity.Clear();    
+        potionsInInventory = Enumerable.Repeat((PotionsData)null, sizeOfPotionsInventory).ToList();
+        potionsQuantity = Enumerable.Repeat(0, sizeOfPotionsInventory).ToList();    
     }
 
     public void AddPotion(PotionsData potion)

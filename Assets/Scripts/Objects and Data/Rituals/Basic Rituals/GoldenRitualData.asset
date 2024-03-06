@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d9c334a9053ce478205269ecd0fb7d, type: 3}
   m_Name: GoldenRitualData
   m_EditorClassIdentifier: 
-  name: Golden Ritual
+  ritualName: Golden Ticket Ritual
   description: Convert all ingredients, projectiles, and dangerous objects into golden
     nuggets.
   sophisticationReward: 7.7
   ritualRecipes:
+  - item: {fileID: 11400000, guid: 7df2079410562364c8198029a4721f4c, type: 2}
+    amount: 1
   - item: {fileID: 11400000, guid: e85bcd3e43d7da0458f8481b80fe0b97, type: 2}
-    amount: 4
+    amount: 1
+  - item: {fileID: 11400000, guid: 8a42ac0841366504b860510f8937d54d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: e0b84ebd027afd64187c26d3fbfbef60, type: 2}
+    amount: 1
   potionRewardData:
   - {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
   - {fileID: 11400000, guid: 4674b776ac37bfa4090c11b3d93a6902, type: 2}

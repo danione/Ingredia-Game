@@ -16,9 +16,9 @@ MonoBehaviour:
   description: Ignites the cauldron providing ammo for explosive ranged attacks.
   sophisticationReward: 4.73
   ritualRecipes:
-  - item: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
+  - item: {fileID: 11400000, guid: 1b0fbe056190df64ca6641f11ad6a70c, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: b10aee416afbb174a98f3ac49331d2f6, type: 2}
     amount: 1
   potionRewardData:
   - {fileID: 11400000, guid: f4d54879c917a8b45bd03b4a0f0c0962, type: 2}
