@@ -24,7 +24,7 @@ public class UpgradeAvailablePopup : MonoBehaviour
 
     private void OnGoldCollected(int amount)
     {
-        if (manager.canAffordUpgrades() && !popup.gameObject.activeSelf)
+        if (manager.CanAffordUpgrades() && !popup.gameObject.activeSelf)
         {
             popup.alpha = 0;
             popup.gameObject.SetActive(true);

@@ -39,11 +39,11 @@ public class UpgradeManager : MonoBehaviour
         newScene = false;
     }
 
-    public bool canAffordUpgrades()
+    public bool CanAffordUpgrades()
     {
         foreach(var upgrade in upgradeCost)
         {
-            if(PlayerController.Instance.inventory.gold > upgrade.Key.goldCost)
+            if(PlayerController.Instance.inventory.gold >= upgrade.Key.goldCost && PlayerController.Instance.inventory.sophistication >= upgrade.Key.sophisticationCost)
                 return true;
         }
         return false;
