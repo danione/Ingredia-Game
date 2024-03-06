@@ -10,10 +10,16 @@ public class MainMenuUI : MonoBehaviour
         try
         {
             GameObject gameManager;
+            GameObject player;
             gameManager = FindObjectOfType<GameManager>().gameObject;
+            player = FindObjectOfType<PlayerController>().gameObject;
             if (gameManager != null)
             {
                 Destroy(gameManager);
+            }
+            if(player != null)
+            {
+                Destroy(player);
             }
         }
         catch { }
