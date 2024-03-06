@@ -27,6 +27,8 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
         GameEventHandler.Instance.SpawnGoldenNugget += AddGold;
+        PlayerEventHandler.Instance.ResetWeapons += OnWeaponsReset;
+        PlayerEventHandler.Instance.ResetPotionsInventory += OnPotionsReset;
     }
 
     private void OnDestroy()
@@ -36,9 +38,25 @@ public class PlayerInventory: MonoBehaviour
             PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
             PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
             GameEventHandler.Instance.SpawnGoldenNugget -= AddGold;
-
+            PlayerEventHandler.Instance.ResetWeapons -= OnWeaponsReset;
+            PlayerEventHandler.Instance.ResetPotionsInventory -= OnPotionsReset;
         }
         catch { }
+    }
+
+    public void OnPotionsReset()
+    {
+        cauldronContents.Clear();
+        powerupManager.PurgeContents();
+    }
+
+    public void OnWeaponsReset()
+    {
+        foreach (var weapon in weapons)
+        {
+            if (weapon.IsUnlimited) continue;
+            weapon.ammo = 0;
+        }
     }
 
     public void SetUnlimitedWeapon(string weaponName)

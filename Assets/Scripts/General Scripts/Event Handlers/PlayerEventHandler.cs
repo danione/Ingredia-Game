@@ -26,6 +26,8 @@ public class PlayerEventHandler : MonoBehaviour
     public Action UpgradesMenuOpen;
     public Action UpgradesMenuClose;
     public Action<int> CollectedSophistication;
+    public Action ResetWeapons;
+    public Action ResetPotionsInventory;
 
     private int openMenus = 0;
     private int idOfLastMenu = -1;
@@ -40,6 +42,16 @@ public class PlayerEventHandler : MonoBehaviour
         {
             Destroy(Instance);
         }
+    }
+
+    public void ResetsPotionsInventory()
+    {
+        ResetPotionsInventory?.Invoke();
+    }
+
+    public void ResetsWeapons()
+    {
+        ResetWeapons?.Invoke();
     }
 
     public void CollectSophistication(int amount)
