@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: GhostProtectionRitualData
   m_EditorClassIdentifier: 
   ritualName: Ghost Protection Ritual
-  description: Leave your corporeal body behind for a limited time when holding [Insert
-    button], becoming untargetable.
+  description: Leave your corporeal body behind for a limited time when holding Space.
   sophisticationReward: 5.78
   ritualRecipes:
   - item: {fileID: 11400000, guid: 1ae648c6d0df451499f2e92b66779cf0, type: 2}
