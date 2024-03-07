@@ -44,6 +44,12 @@ public class PlayerInventory: MonoBehaviour
         catch { }
     }
 
+    public void OnDeath()
+    {
+        gold = 0;
+        sophistication = 0;
+    }
+
     public void OnPotionsReset()
     {
         cauldronContents.Clear();

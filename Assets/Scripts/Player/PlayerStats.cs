@@ -50,6 +50,9 @@ public class PlayerStats : MonoBehaviour, IUnitStats
         PlayerEventHandler.Instance.EmptyCauldron();
         PlayerEventHandler.Instance.ResetsWeapons();
         PlayerEventHandler.Instance.ResetsPotionsInventory();
+        PlayerController.Instance.inventory.OnDeath();
+        GameManager.Instance.GetComponent<UpgradeManager>().OnDeath();
+        GameManager.Instance.GetComponent<IngredientManager>().RevertToDefault();
         GameManager.Instance.gameOver = true;
     }
 

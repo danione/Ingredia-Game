@@ -16,9 +16,19 @@ public class UpgradeManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void OnDeath()
+    {
+        upgradeCost.Clear();
+        upgradesPurchased.Clear();
+    }
+
     public void AddUpgradeCost(UpgradeData data)
     {
-        upgradeCost[data] = data.goldCost;
+        if (!upgradesPurchased.Contains(data) && !upgradeCost.ContainsKey(data))
+        {
+            upgradeCost[data] = data.goldCost;
+
+        }
     }
 
     private void OnUpgradePurchased(UpgradeData upgrade)

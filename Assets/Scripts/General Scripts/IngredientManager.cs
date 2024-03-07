@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class IngredientManager : MonoBehaviour
 {
+    [SerializeField] private List<IngredientData> defaultIngredients = new();
     [SerializeField] private List<IngredientData> ingredients = new();
     private HashSet<IngredientData> ingredientsSet = new();
 
@@ -33,5 +34,16 @@ public class IngredientManager : MonoBehaviour
         IngredientData data = ingredients[ingredients.Count - 1];
         ingredients.RemoveAt(ingredients.Count - 1);
         ingredientsSet.Remove(data);
+    }
+
+    public void RevertToDefault()
+    {
+        ingredients.Clear();
+        ingredientsSet.Clear();
+        foreach(var ingredient in defaultIngredients)
+        {
+            ingredients.Add(ingredient);
+        }
+        ingredientsSet = ingredients.ToHashSet();
     }
 }
