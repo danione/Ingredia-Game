@@ -41,25 +41,7 @@ public class TooltipUI : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        Vector2 anchoredPos = Input.mousePosition / canvas.localScale.x;
-
-        if(anchoredPos.x + backrgoundRectTransform.rect.width > canvas.rect.width)
-        {
-            anchoredPos.x = canvas.rect.width - backrgoundRectTransform.rect.width;
-        }
-
-        if(anchoredPos.y + backrgoundRectTransform.rect.height > canvas.rect.height)
-        {
-            anchoredPos.y = canvas.rect.height - backrgoundRectTransform.rect.height;
-        }
-
-        rectTransform.anchoredPosition = anchoredPos;
-    }
-
-
-    private void ShowTooltip(string text)
+    private void ShowTooltip(string text, RectTransform obj)
     {
         gameObject.SetActive(true);
 
@@ -77,16 +59,37 @@ public class TooltipUI : MonoBehaviour
 
         tooltipRectTransform.sizeDelta = bgSize + padding;
         backrgoundRectTransform.sizeDelta = bgSize + padding;
+        SetPos(obj);
     }
+
+    private void SetPos(RectTransform obj)
+    {
+        Vector2 anchoredPos = obj.position;
+        anchoredPos.x = obj.position.x - obj.rect.width / 2;
+        anchoredPos.y = obj.position.y + obj.rect.height / 2;
+
+        if (anchoredPos.x + backrgoundRectTransform.rect.width > canvas.rect.width)
+        {
+            anchoredPos.x = canvas.rect.width - backrgoundRectTransform.rect.width;
+        }
+
+        if (anchoredPos.y + backrgoundRectTransform.rect.height > canvas.rect.height)
+        {
+            anchoredPos.y = canvas.rect.height - backrgoundRectTransform.rect.height;
+        }
+
+        rectTransform.anchoredPosition = anchoredPos;
+    }
+
 
     private void HideTooltip()
     {
         gameObject.SetActive(false);
     }
 
-    public static void ShowTooltip_Static(string text)
+    public static void ShowTooltip_Static(string text, RectTransform obj)
     {
-        instance.ShowTooltip(text);
+        instance.ShowTooltip(text, obj);
     }
 
     public static void HideTooltip_Static()

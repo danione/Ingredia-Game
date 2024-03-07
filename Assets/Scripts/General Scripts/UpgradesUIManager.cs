@@ -78,7 +78,7 @@ public class UpgradesUIManager : MonoBehaviour
             };
             button.MouseOverOnceFunc = () =>
             {
-                TooltipUI.ShowTooltip_Static(trigger.GetFullUpgradeInformation());
+                TooltipUI.ShowTooltip_Static(trigger.GetFullUpgradeInformation(), button.GetComponent<RectTransform>());
             };
             button.MouseOutOnceFunc = () =>
             {
