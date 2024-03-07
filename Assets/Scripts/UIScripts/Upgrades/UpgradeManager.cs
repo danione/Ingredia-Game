@@ -22,6 +22,11 @@ public class UpgradeManager : MonoBehaviour
         upgradesPurchased.Clear();
     }
 
+    public bool WasUpgraded(UpgradeData upgradeData)
+    {
+        return upgradesPurchased.Contains(upgradeData);
+    }
+
     public void AddUpgradeCost(UpgradeData data)
     {
         if (!upgradesPurchased.Contains(data) && !upgradeCost.ContainsKey(data))

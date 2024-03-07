@@ -14,7 +14,7 @@ public class UpgradeStage : TutorialStage
     public override void NextStage()
     {
         GameManager.Instance.ResumeGame();
-        PlayerEventHandler.Instance.UpgradesMenuClose();
+        PlayerEventHandler.Instance.UpgradesMenuOpen();
     }
 
     public override void Reward()

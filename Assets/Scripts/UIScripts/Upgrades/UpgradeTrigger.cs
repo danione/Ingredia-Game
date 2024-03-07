@@ -30,6 +30,11 @@ public class UpgradeTrigger : MonoBehaviour
         {
             GetComponent<Image>().color = Color.gray;
         }
+        if (GameManager.Instance.GetComponent<UpgradeManager>().WasUpgraded(upgradeInformation))
+        {
+            isUpgraded = true;
+            GetComponent<Image>().color = Color.green;
+        }
     }
 
     private void OnUpgradedSomewhere(UpgradeData data)
