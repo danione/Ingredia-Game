@@ -202,12 +202,6 @@ public class PlayerEventHandler : MonoBehaviour
         
     }
 
-    public void ClosingDownUpgradesMenu()
-    {
-        if(openMenus > 0) { openMenus--; }
-        UpgradesMenuClose?.Invoke();
-    }
-
     public void CloseAMenu()
     {
         if (openMenus > 0) { openMenus--; }

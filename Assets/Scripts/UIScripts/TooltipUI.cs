@@ -30,12 +30,14 @@ public class TooltipUI : MonoBehaviour
 
     private void Start()
     {
-        PlayerEventHandler.Instance.UpgradesMenuClose += HideTooltip;  
+        PlayerEventHandler.Instance.UpgradesMenuOpen += HideTooltip_Static;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus += HideTooltip_Static;
     }
 
     private void OnDestroy()
     {
-        PlayerEventHandler.Instance.UpgradesMenuClose -= HideTooltip;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus -= HideTooltip_Static;
+        PlayerEventHandler.Instance.UpgradesMenuOpen -= HideTooltip_Static;
 
     }
 
