@@ -12,7 +12,6 @@ public class TutorialHealingRitualUnlock : UpgradeData
         GameManager.Instance.GetComponent<RitualManager>().AddRitualToUnlocked(ritualToUnlock.ritualName);
         foreach (var item in ritualToUnlock.ritualRecipes)
         {
-            Debug.Log(item.item);
             GameManager.Instance.GetComponent<IngredientManager>().UnlockIngredient(item.item);
         }
         if(TutorialManager.instance != null)

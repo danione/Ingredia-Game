@@ -102,7 +102,7 @@ public class TutorialManager : MonoBehaviour
 
     public void RemoveOneSpawnIngredient()
     {
-        //GameManager.Instance.GetComponent<IngredientManager>?.RemoveRegularIngredient();
+        GameManager.Instance.GetComponent<IngredientManager>()?.RemoveOneIngredient();
     }
 
     public void OnCollectedIngredient(IIngredient ingredient, int count)
@@ -120,8 +120,8 @@ public class TutorialManager : MonoBehaviour
 
     public void FirstRitual()
     {
-        //ingredientsFactory.AppendARegularIngredient(eyeData);
-        //ingredientsFactory.AppendARegularIngredient(athameData);
+        GameManager.Instance.GetComponent<IngredientManager>()?.UnlockIngredient(eyeData);
+        GameManager.Instance.GetComponent<IngredientManager>()?.UnlockIngredient(athameData);
         inventorySlotsUI.SetActive(true);
     }
 

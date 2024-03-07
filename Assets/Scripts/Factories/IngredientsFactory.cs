@@ -85,15 +85,10 @@ public class IngredientsFactory: MonoBehaviour
         while (!GameManager.Instance.gameOver)
         {
             // Select a random object to spawn
-            if(isSpawning) spawnMethod();
+            if (isSpawning && _ingredients.Count > 0) spawnMethod();
             yield return new WaitForSeconds(UnityEngine.Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
 
         }
         yield return null;
-    }
-
-    public int GetCountOfIngredients()
-    {
-        return _ingredients.Count;
     }
 }
