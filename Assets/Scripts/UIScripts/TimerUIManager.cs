@@ -38,10 +38,42 @@ public class TimerUIManager : MonoBehaviour
         ShieldSetup();
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.GhostActivated -= OnGhostActivated;
+            GameEventHandler.Instance.LaserActivated -= OnLaserEnabled;
+            GameEventHandler.Instance.ShieldEnabled -= OnShieldActivated;
+        }
+        catch { }
+        try
+        {
+            GameEventHandler.Instance.LaserDeactivated -= laserObject.OnDeactivated;
+            GameEventHandler.Instance.SentLaserStats -= laserObject.OnSendCurrentTimers;
+            PlayerEventHandler.Instance.LaserFired -= laserObject.OnTransform;
+        }
+        catch { }
+        try
+        {
+
+            GameEventHandler.Instance.GhostDeactivated -= ghostObject.OnDeactivated;
+            GameEventHandler.Instance.SentGhostCurrentTimers -= ghostObject.OnSendCurrentTimers;
+            PlayerEventHandler.Instance.TransformIntoGhost -= ghostObject.OnTransform;
+        }
+        catch { }
+
+        try
+        {
+            GameEventHandler.Instance.ShieldDisabled -= shieldObject.OnDeactivated;
+            GameEventHandler.Instance.SentShieldStats -= shieldObject.OnSendCurrentTimers;
+        }
+        catch { }
+        listObjects.Clear();
+    }
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerController.Instance.inventory.AddPotion(testPotion);
