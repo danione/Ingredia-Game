@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HealthPopupUIManager : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
+    private Camera _camera;
     [SerializeField] private Product healthUIPrefab;
+    [SerializeField] private float waitingtimeBetweenShowing;
     private Dictionary<Vector3, float> recentlySpawnedAt = new();
     private RectTransform canvas;
 
@@ -15,6 +16,7 @@ public class HealthPopupUIManager : MonoBehaviour
     {
         spawner = new ObjectsSpawner(healthUIPrefab);
         canvas = GetComponent<RectTransform>();
+        _camera = FindObjectOfType<Camera>();
     }
 
     private void Start()
@@ -56,7 +58,7 @@ public class HealthPopupUIManager : MonoBehaviour
 
     private IEnumerator SpawnAgain(Vector3 atPos)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(waitingtimeBetweenShowing);
         float value = recentlySpawnedAt[atPos];
         recentlySpawnedAt.Remove(atPos);
 

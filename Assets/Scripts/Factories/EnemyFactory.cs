@@ -153,12 +153,11 @@ public class EnemyFactory : MonoBehaviour
     {
         while (!GameManager.Instance.gameOver)
         {
-            if(!hasSpawnedAll)
+            yield return new WaitForSeconds(spawnFrequencyInSeconds);
+            if (!hasSpawnedAll)
             {
                 SpawnEnemy();
             }
-            yield return new WaitForSeconds(spawnFrequencyInSeconds);
-
         }
         yield return null;
     }

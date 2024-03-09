@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class GoldenNuggetsFactory : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
     [SerializeField] private Product goldenNuggets;
     private RectTransform canvas;
     private ObjectsSpawner spawner;
+    private Camera _camera;
+
 
     private void Start()
     {
+        _camera = FindObjectOfType<Camera>();
         spawner = new ObjectsSpawner(goldenNuggets);
         canvas = GetComponent<RectTransform>();
         GameEventHandler.Instance.SpawnGoldenNugget += OnSpawnGoldenNugget;
