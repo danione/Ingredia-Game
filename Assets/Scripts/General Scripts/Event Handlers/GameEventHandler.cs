@@ -46,11 +46,17 @@ public class GameEventHandler : MonoBehaviour
     public Action FinishedTimeStopState;
     public Action<GameObject, float> TookDamage;
     public Action<int> StageChanged;
+    public Action UnlockedRitual;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void UnlocksRitual()
+    {
+        UnlockedRitual?.Invoke();
     }
 
     public void StageChange(int currentStage)

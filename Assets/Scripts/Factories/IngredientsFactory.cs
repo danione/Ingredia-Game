@@ -12,6 +12,8 @@ public class IngredientsFactory: MonoBehaviour
     [SerializeField] private BoundariesData boundariesData;
     [SerializeField] private SpawnFrequencyData spawnFrequency;
     [SerializeField] private Product prefab;
+    [SerializeField] private float spawnModifier;
+    private float currentModifier = 0;
     private bool isSpawning;
     private List<IngredientData> _ingredients = new();
     private SpawnPointManager spawnPointManager;
@@ -36,6 +38,7 @@ public class IngredientsFactory: MonoBehaviour
         StartCoroutine(spawnPointManager.ResetNextPoint());
 
         GameEventHandler.Instance.GeneratedIngredientAtPos += SpawnRandomIngredient;
+        GameEventHandler.Instance.UnlockedRitual += OnNewRitualUnlocked;
     }
 
     private void OnDestroy()
@@ -45,6 +48,13 @@ public class IngredientsFactory: MonoBehaviour
             GameEventHandler.Instance.GeneratedIngredientAtPos -= SpawnRandomIngredient;
         }
         catch { }
+    }
+
+    private void OnNewRitualUnlocked()
+    {
+        currentModifier += spawnModifier;
+        Debug.Log(currentModifier);
+        spawnPointManager.ChangeDequeueTime((spawnFrequency.maxFrequency - spawnFrequency.minFrequency - currentModifier) / 2);
     }
 
     public void SetSpawning(bool isSpawning)
@@ -86,7 +96,7 @@ public class IngredientsFactory: MonoBehaviour
         {
             // Select a random object to spawn
             if (isSpawning && _ingredients.Count > 0) spawnMethod();
-            yield return new WaitForSeconds(UnityEngine.Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(spawnFrequency.minFrequency, spawnFrequency.maxFrequency - currentModifier));
 
         }
         yield return null;

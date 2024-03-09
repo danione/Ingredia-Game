@@ -35,6 +35,11 @@ public class SpawnPointManager
         this.dequeueCooldown = dequeueCooldown;
     }
 
+    public void ChangeDequeueTime(float newTime)
+    {
+        if(newTime > 0) dequeueCooldown = newTime;
+    }
+
     private int CountPointsBetween(float leftMax, float rightMax, float offset)
     {
         // Calculate the distance between the x-coordinates of the start and end points
