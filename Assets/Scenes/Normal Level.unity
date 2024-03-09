@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4699198157692283021, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: stageToUnlock
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7136158874665668531, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_Enabled
       value: 1

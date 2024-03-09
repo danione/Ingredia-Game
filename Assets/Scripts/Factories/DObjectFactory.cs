@@ -8,11 +8,31 @@ public class DObjectFactory : MonoBehaviour
     [SerializeField] private float spawnFrequency;
     [SerializeField] private Product dangerousObject;
     [SerializeField] private ObjectsSpawner spawner;
+    [SerializeField] private int stageToUnlock;
 
     private void Start()
     {
         spawner = new ObjectsSpawner(dangerousObject);
-        StartCoroutine(SpawnObstacle());
+        GameEventHandler.Instance.StageChanged += OnStageChange;
+    }
+
+    private void OnStageChange(int currentStage)
+    {
+        Debug.Log(currentStage);
+        if(stageToUnlock <= currentStage)
+        {
+            StartCoroutine(SpawnObstacle());
+            GameEventHandler.Instance.StageChanged -= OnStageChange;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        try
+        {
+            GameEventHandler.Instance.StageChanged -= OnStageChange;
+        }
+        catch { }
     }
 
     IEnumerator SpawnObstacle()
