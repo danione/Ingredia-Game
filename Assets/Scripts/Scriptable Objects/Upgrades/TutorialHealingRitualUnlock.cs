@@ -17,7 +17,6 @@ public class TutorialHealingRitualUnlock : UpgradeData
         if(TutorialManager.instance != null)
         {
             TutorialManager.instance.OnUpgraded(ritualToUnlock.ritualRecipes);
-
         }
     }
 }

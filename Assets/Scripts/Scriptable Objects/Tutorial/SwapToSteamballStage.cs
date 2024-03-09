@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Swap To Fireball Tutorial Stage", menuName = "Scriptable Objects/Tutorials/Swap To Fireball Stage")]
-public class SwapToFireballStage : TutorialStage
+[CreateAssetMenu(fileName = "New Swap To Steamball Tutorial Stage", menuName = "Scriptable Objects/Tutorials/Swap To Steamball Stage")]
+public class SwapToSteamballStage : TutorialStage
 {
     public override void InitiateStage()
     {
         GameEventHandler.Instance.SwappedProjectiles += TutorialManager.instance.OnSwappedProjectiles;
         TutorialManager.instance.EnableSwapUI();
-        PlayerController.Instance.inventory.AddAmmo("Fireball", 5);
+        PlayerController.Instance.inventory.AddAmmo("Steamball", 5);
     }
 
     public override void NextStage()
@@ -19,6 +19,6 @@ public class SwapToFireballStage : TutorialStage
     public override void Reward()
     {
         TutorialManager.instance.EnableSwapUI();
-        PlayerController.Instance.inventory.AddAmmo("Fireball", 5);
+        PlayerController.Instance.inventory.AddAmmo("Steamball", 5);
     }
 }

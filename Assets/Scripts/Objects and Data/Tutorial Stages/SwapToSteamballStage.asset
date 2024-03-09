@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01cac877596cbe548b1923f6e046cd30, type: 3}
-  m_Name: SwapToFireballStage
+  m_Name: SwapToSteamballStage
   m_EditorClassIdentifier: 
   title: Different Spitters
-  description: Now you can swap between bombs and knives. Press X and try it out.
-    Be careful, bombs can hurt you.
+  description: Now you can swap between steamballs and athames. Press X and try it
+    out. Be careful, steamballs can hurt you.
