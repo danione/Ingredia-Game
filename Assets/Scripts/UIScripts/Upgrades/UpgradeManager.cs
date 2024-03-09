@@ -14,6 +14,14 @@ public class UpgradeManager : MonoBehaviour
     {
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradePurchased;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        PlayerEventHandler.Instance.PlayerDied += OnDeath;
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.UpgradeTriggered -= OnUpgradePurchased;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        PlayerEventHandler.Instance.PlayerDied -= OnDeath;
     }
 
     public void OnDeath()

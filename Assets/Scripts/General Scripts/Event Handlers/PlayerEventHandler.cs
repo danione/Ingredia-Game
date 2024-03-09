@@ -13,8 +13,6 @@ public class PlayerEventHandler : MonoBehaviour
     public Action<bool> LaserFired;
     public Action<bool> TransformIntoGhost;
     public event Action<string> CollectedInvalidIngredient;
-    public event Action<string> UnlockedRitual;
-    public event Action<RitualScriptableObject> SetUpUIRitualInterface;
     public event Action CollidedWithRecipe;
     public event Action<string, int, int> UpdatedPotions;
     public event Action OpenedScrollsMenu;
@@ -26,9 +24,8 @@ public class PlayerEventHandler : MonoBehaviour
     public Action UpgradesMenuOpen;
     public Action UpgradesMenuClose;
     public Action<int> CollectedSophistication;
-    public Action ResetWeapons;
-    public Action ResetPotionsInventory;
     public Action StoppedLaser;
+    public Action PlayerDied;
 
     private int openMenus = 0;
     private int idOfLastMenu = -1;
@@ -41,7 +38,7 @@ public class PlayerEventHandler : MonoBehaviour
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
 
@@ -50,16 +47,10 @@ public class PlayerEventHandler : MonoBehaviour
         StoppedLaser?.Invoke();
     }
 
-    public void ResetsPotionsInventory()
+    public void PlayerDies()
     {
-        ResetPotionsInventory?.Invoke();
+        PlayerDied?.Invoke();   
     }
-
-    public void ResetsWeapons()
-    {
-        ResetWeapons?.Invoke();
-    }
-
     public void CollectSophistication(int amount)
     {
         CollectedSophistication?.Invoke(amount);
@@ -111,16 +102,6 @@ public class PlayerEventHandler : MonoBehaviour
     public void CollectedWrongIngredient(string ritual)
     {
         CollectedInvalidIngredient?.Invoke(ritual);
-    }
-
-    public void UnlockARitual(string ritual)
-    {
-        UnlockedRitual?.Invoke(ritual);
-    }
-
-    public void SetUpHiddenRitual(RitualScriptableObject data)
-    {
-        SetUpUIRitualInterface?.Invoke(data);
     }
 
     public void CollidedWithRecipeObject()

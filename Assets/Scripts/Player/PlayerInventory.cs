@@ -27,27 +27,30 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.EmptiedCauldron += OnEmptiedCauldron;
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
         GameEventHandler.Instance.SpawnGoldenNugget += AddGold;
-        PlayerEventHandler.Instance.ResetWeapons += OnWeaponsReset;
-        PlayerEventHandler.Instance.ResetPotionsInventory += OnPotionsReset;
+        PlayerEventHandler.Instance.PlayerDied += OnDeath;
     }
 
     private void OnDestroy()
     {
         try
         {
-            PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
             PlayerEventHandler.Instance.EmptiedCauldron -= OnEmptiedCauldron;
+            PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
             GameEventHandler.Instance.SpawnGoldenNugget -= AddGold;
-            PlayerEventHandler.Instance.ResetWeapons -= OnWeaponsReset;
-            PlayerEventHandler.Instance.ResetPotionsInventory -= OnPotionsReset;
+            PlayerEventHandler.Instance.PlayerDied -= OnDeath;
         }
         catch { }
     }
+
 
     public void OnDeath()
     {
         gold = 0;
         sophistication = 0;
+        OnPotionsReset();
+        OnWeaponsReset();
+        OnEmptiedCauldron();
+        possibleRitual = null;
     }
 
     public void OnPotionsReset()
@@ -120,6 +123,7 @@ public class PlayerInventory: MonoBehaviour
         {
             cauldronContents[ingredient.Data.ingredientName] = 1;
         }
+
         PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);
     }
 

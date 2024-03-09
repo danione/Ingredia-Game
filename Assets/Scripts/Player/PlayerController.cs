@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-[RequireComponent(typeof(PlayerInventory), typeof(PlayerStats), typeof(PlayerPotionsManager))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;

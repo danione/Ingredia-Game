@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RitualManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RitualManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         foreach(var ritual in unlockedRituals)
         {
             unlockedRitualsDict[ritual.ritualName] = new Ritual(ritual);
@@ -22,6 +24,19 @@ public class RitualManager : MonoBehaviour
         {
             if(locked.ritualName == null) continue;
              lockedRitualsDict[locked.ritualName] = new Ritual(locked);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        foreach(var ritual in unlockedRitualsDict)
+        {
+            ritual.Value.Reset();
         }
     }
 

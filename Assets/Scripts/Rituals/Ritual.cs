@@ -30,6 +30,27 @@ public class Ritual : IRitual
         isEnabled = false;
     }
 
+    ~Ritual()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.EmptiedCauldron -= OnCauldronEmptied;
+            PlayerEventHandler.Instance.CollectedIngredient -= OnIngredientCollected;
+            PlayerEventHandler.Instance.PerformedRitual -= AwardSophistication;
+        }
+        catch { }
+    }
+
+    public void Reset()
+    {
+        countCompleted = 0;
+        currentRitualValues = new();
+        defaultRitualValues = new();
+        AddRange(GetRitualStages(), currentRitualValues);
+        AddRange(GetRitualStages(), defaultRitualValues);
+        isEnabled = false;
+    }
+
     private float GetSophistication()
     {
         return ritualData.sophisticationReward * Mathf.Exp(-(countCompleted * Constants.Instance.sophisticationDecayConstant));
@@ -49,11 +70,6 @@ public class Ritual : IRitual
     {
         Dictionary<IngredientData, int> ritualStages = ritualData.ritualRecipes.ToDictionary(item => item.item, item => item.amount);
         return ritualStages;
-    }
-
-    protected void CompleteAnEvent()
-    {
-        PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
     }
 
     private void AddRange(Dictionary<IngredientData, int> source, Dictionary<IngredientData, int> destination)
@@ -96,8 +112,7 @@ public class Ritual : IRitual
         if(currentRitualValues.Count == 0) 
         { 
             isAvailable = true;
-            CompleteAnEvent();
-            PlayerEventHandler.Instance.UnlockARitual(ritualData.ritualName);
+            PlayerEventHandler.Instance.CompleteBenevolentRitual(this);
         }
     }
 

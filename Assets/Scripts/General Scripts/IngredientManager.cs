@@ -12,6 +12,12 @@ public class IngredientManager : MonoBehaviour
     private void Start()
     {
         ingredientsSet = ingredients.ToHashSet();
+        PlayerEventHandler.Instance.PlayerDied += RevertToDefault;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerEventHandler.Instance.PlayerDied -= RevertToDefault;
     }
 
     public void UnlockIngredient(IngredientData ingredient)
