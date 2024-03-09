@@ -28,6 +28,7 @@ public class TimerStopperEnemy : Enemy
         try
         {
             GameEventHandler.Instance.FinishedTimeStopState -= OnFinishedTimeStopState;
+            StopAllCoroutines();
         }
         catch { }
     }

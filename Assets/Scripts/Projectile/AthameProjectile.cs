@@ -17,7 +17,7 @@ public class AthameProjectile : SimpleProjectile
             unitStats.TakeDamage(strength);
             GameEventHandler.Instance.DestroyObject(gameObject);
         }
-        else if (isValidTarget)
+        else if (isValidTarget || (!other.GetComponent<SimpleProjectile>()?.IsSourcePlayer() ?? false))
         {
             GameEventHandler.Instance.DestroyObject(gameObject);
             GameEventHandler.Instance.DestroyObject(other.gameObject);

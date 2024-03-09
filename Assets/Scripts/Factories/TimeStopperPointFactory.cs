@@ -17,7 +17,7 @@ public class TimeStopperPointFactory : MonoBehaviour
     {
         try
         {
-            GameEventHandler.Instance.SpawnedTimeStopPoint += OnSpawnedTimeStopPoint;
+            GameEventHandler.Instance.SpawnedTimeStopPoint -= OnSpawnedTimeStopPoint;
         }
         catch { }
     }

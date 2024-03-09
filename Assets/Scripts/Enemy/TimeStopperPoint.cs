@@ -28,8 +28,10 @@ public class TimeStopperPoint : MonoBehaviour
 
         foreach(var collider in colliders)
         {
-            SimpleProjectile projectile = collider.GetComponent<SimpleProjectile>();
-            if(collider.gameObject.activeSelf && projectile != null && projectile.IsSourcePlayer())
+            if (collider == null || !collider.gameObject.activeSelf) continue;
+
+            SimpleProjectile projectile = collider?.GetComponent<SimpleProjectile>();
+            if(projectile != null && projectile.IsSourcePlayer())
             {
                 GameEventHandler.Instance.SpawnATricksterProjectileAt(projectile.gameObject.transform.position, null);
                 GameEventHandler.Instance.DestroyObject(projectile.gameObject);

@@ -18,7 +18,6 @@ public class DObjectFactory : MonoBehaviour
 
     private void OnStageChange(int currentStage)
     {
-        Debug.Log(currentStage);
         if(stageToUnlock <= currentStage)
         {
             StartCoroutine(SpawnObstacle());

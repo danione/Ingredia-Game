@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Stage 1
   m_EditorClassIdentifier: 
   enemyList:
-  - enemy: {fileID: 759701358677561439, guid: 1d5dc7ff6abd8ae4d9d4d6a2d2159320, type: 3}
+  - enemy: {fileID: -7540803056115772831, guid: 6cad7cdc242821c47b58d7fb3a4f81d4, type: 3}
     amount: 1
   isRandom: 1

@@ -9,6 +9,6 @@ public class HealthUpgrade : UpgradeData
 
     public override void ApplyUpgrade(GameObject obj)
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().UpgradeHealth(newMaxHealth);
+        PlayerController.Instance.GetComponent<PlayerStats>().UpgradeHealth(newMaxHealth);
     }
 }
