@@ -23,6 +23,7 @@ public class EnemyFactory : MonoBehaviour
     private List<int> currentStage = new();
 
     private bool hasSpawnedAll = false;
+    private bool isNextStageTransitioning = false;
 
 
     void Start()
@@ -33,7 +34,7 @@ public class EnemyFactory : MonoBehaviour
             spawner[enemy] = new ObjectsSpawner(enemy);
         }
 
-        SetNextStage();
+        InitNextStage();
         StartCoroutine(spawnPointManager.ResetNextPoint());
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
@@ -47,18 +48,27 @@ public class EnemyFactory : MonoBehaviour
         {
             GameEventHandler.Instance.DestroyedEnemy -= OnEnemyDestroyed;
             GameEventHandler.Instance.FuseBats -= OnFusedTwoBats;
+            StopAllCoroutines();
         }
         catch { }
 
     }
 
+    // Done for UI, the StageChange function is only sent to it
+    // This function is added since the UI is not updating
     private IEnumerator WaitEnd()
     {
         yield return new WaitForEndOfFrame();
         GameEventHandler.Instance.StageChange(currentStageIndex);
+        StartCoroutine(SpawnEnemies());
     }
 
-    private void SetNextStage()
+
+    // Initialises the next stage
+    // ---
+    // Clears the current stage info, for each enemy in the next stage,
+    // add their count
+    private void InitNextStage()
     {
         if (currentStageIndex >= stage.Count) return;
 
@@ -74,10 +84,9 @@ public class EnemyFactory : MonoBehaviour
             {
                 currentStage.Add(enemy.amount);
             }
+            isNextStageTransitioning = false;
         }
         catch (Exception ex) { Debug.LogError(ex); }
-        StartCoroutine(SpawnEnemies());
-
     }
 
     private void OnEnemyDestroyed(Vector3 pos)
@@ -85,12 +94,39 @@ public class EnemyFactory : MonoBehaviour
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
         
-        if (currentAliveEnemies == 0)
-            StartCoroutine(NextStage());
+        if (currentAliveEnemies == 0 && !isNextStageTransitioning)
+        {
+            isNextStageTransitioning = true;
+            StartCoroutine(TransitionToNextStage());
+        }
+    }
+
+    private IEnumerator TransitionToNextStage()
+    {
+        yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
+        currentStageIndex++;
+        InitNextStage();
+    }
+
+
+    // Spawns ingredients at random times
+    private IEnumerator SpawnEnemies()
+    {
+        while (!GameManager.Instance.gameOver)
+        {
+            yield return new WaitForSeconds(spawnFrequencyInSeconds);
+            if (!hasSpawnedAll)
+            {
+                Debug.Log("Hello");
+                SpawnEnemy();
+            }
+        }
+        yield return null;
     }
 
     private void SpawnEnemy()
     {
+        CheckIfAllSpawned();
         if (uniqueEnemies.Count == 0 || currentStage.Count == 0 || hasSpawnedAll) return;
 
         if (stage[currentStageIndex].isRandom)
@@ -101,27 +137,15 @@ public class EnemyFactory : MonoBehaviour
             {
                 randomEnemyIndex = UnityEngine.Random.Range(0, currentStage.Count);
             }
-            SpawnEnemyAt(randomEnemyIndex);
+            SpawnAtPos(randomEnemyIndex);
         }
         else
         {
-            SpawnEnemyAt();
+            SpawnAtPos();
         }
     }
 
-    private void CheckIfAllSpawned()
-    {
-        if (hasSpawnedAll) return;
-
-        foreach(var enemyCount in currentStage)
-        {
-            if (enemyCount > 0)
-                return;
-        }
-        hasSpawnedAll = true;
-    }
-
-    private void SpawnEnemyAt(int index = 0)
+    private void SpawnAtPos(int index = 0)
     {
         if (currentStage[index] <= 0)
         {
@@ -129,13 +153,12 @@ public class EnemyFactory : MonoBehaviour
         }
         Product enemy = stage[currentStageIndex].enemyList[index].enemy;
         Vector3 position = GetRandomPosition();
-       
+
         if (position == Vector3.zero) return;
 
         spawner[enemy].GetProduct(position);
         currentAliveEnemies++;
         currentStage[index]--;
-        CheckIfAllSpawned();
     }
 
     private Vector3 GetRandomPosition()
@@ -148,26 +171,16 @@ public class EnemyFactory : MonoBehaviour
         return new(xPoint.pos, yPoint.pos, 2);
     }
 
-        // Spawns ingredients at random times
-    private IEnumerator SpawnEnemies()
+    private void CheckIfAllSpawned()
     {
-        while (!GameManager.Instance.gameOver)
-        {
-            yield return new WaitForSeconds(spawnFrequencyInSeconds);
-            if (!hasSpawnedAll)
-            {
-                SpawnEnemy();
-            }
-        }
-        yield return null;
-    }
+        if (hasSpawnedAll) return;
 
-    private IEnumerator NextStage()
-    {
-        StopCoroutine(SpawnEnemies());
-        yield return new WaitForSeconds(waveSpawnCooldownInSeconds);
-        currentStageIndex++;
-        SetNextStage();
+        foreach(var enemyCount in currentStage)
+        {
+            if (enemyCount > 0)
+                return;
+        }
+        hasSpawnedAll = true;
     }
 
     private void OnFusedTwoBats(Vector3 position)
