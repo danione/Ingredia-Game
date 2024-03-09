@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PotentGoldenTicketElixir
   m_EditorClassIdentifier: 
   potionName: Potent Golden Ticket Elixir
-  nuggetValue: 45
+  nuggetValue: 150
   objectTagsToConvert:
   - Ingredient
   - Projectile
+  - Dangerous Object
