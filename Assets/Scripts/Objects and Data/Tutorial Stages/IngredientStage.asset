@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IngredientStage
   m_EditorClassIdentifier: 
   title: Ingredient Spawn Stage
-  description: Look, ingredients are falling in the sky. Collect some. You can have
-    up to 4 different types in your cauldron.
+  description: Look, ingredients are falling from the sky. Collect some. You can
+    have up to 4 different types in your cauldron.
