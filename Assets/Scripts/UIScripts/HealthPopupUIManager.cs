@@ -7,7 +7,8 @@ public class HealthPopupUIManager : MonoBehaviour
     private Camera _camera;
     [SerializeField] private Product healthUIPrefab;
     [SerializeField] private float waitingtimeBetweenShowing;
-    private Dictionary<Vector3, float> recentlySpawnedAt = new();
+    private Dictionary<GameObject, float> recentlySpawnedAt = new();
+    private Dictionary<GameObject, float> accumulatedDamage = new();
     private RectTransform canvas;
 
     private ObjectsSpawner spawner;
@@ -29,22 +30,25 @@ public class HealthPopupUIManager : MonoBehaviour
         try
         {
             GameEventHandler.Instance.TookDamage -= OnTakenDamage;
+            StopAllCoroutines();
 
         } catch { }
     }
 
-    private void OnTakenDamage(Vector3 atPos, float amount)
+    private void OnTakenDamage(GameObject obj, float amount)
     {
-        if (recentlySpawnedAt.ContainsKey(atPos))
+        if (recentlySpawnedAt.ContainsKey(obj) && accumulatedDamage.ContainsKey(obj))
         {
-            recentlySpawnedAt[atPos] += amount;
+            accumulatedDamage[obj] += amount;
             return;
         }
 
-        SpawnAt(atPos, amount);
+        recentlySpawnedAt[obj] = 0;
+        accumulatedDamage[obj] = amount;
 
-        recentlySpawnedAt[atPos] = 0;
-        StartCoroutine(SpawnAgain(atPos));
+        SpawnAt(obj.transform.position, amount);
+
+        StartCoroutine(SpawnAfterDelay(obj));
     }
 
     private void SpawnAt(Vector3 atPos, float amount)
@@ -56,13 +60,31 @@ public class HealthPopupUIManager : MonoBehaviour
         newPopup.GetComponent<HealthUIPopup>().DisplayDamage(amount);
     }
 
-    private IEnumerator SpawnAgain(Vector3 atPos)
+    private IEnumerator SpawnAfterDelay(GameObject obj)
     {
-        yield return new WaitForSeconds(waitingtimeBetweenShowing);
-        float value = recentlySpawnedAt[atPos];
-        recentlySpawnedAt.Remove(atPos);
+        while(obj != null && obj.activeSelf)
+        {
+            yield return new WaitForSeconds(waitingtimeBetweenShowing);
 
-        if (value != 0)
-            SpawnAt(atPos, value);
+            float totalDamage = 0;
+            if (accumulatedDamage.ContainsKey(obj))
+            {
+                totalDamage = accumulatedDamage[obj];
+                if (totalDamage != 0 && obj != null && obj.activeSelf)
+                {
+                    SpawnAt(obj.transform.position, totalDamage);
+                }
+                // Reset accumulated damage for the object
+                accumulatedDamage[obj] = 0;
+            }
+        }
+        if(recentlySpawnedAt.ContainsKey(obj))
+        {
+            recentlySpawnedAt.Remove(obj);
+        }
+        if(accumulatedDamage.ContainsKey(obj))
+        {
+            accumulatedDamage.Remove(obj);
+        }
     }
 }

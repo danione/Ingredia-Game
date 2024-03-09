@@ -44,7 +44,7 @@ public class GameEventHandler : MonoBehaviour
     public Action<Vector3, GameObject> SpawnedTimeStopPoint;
     public Action<GameObject> ReleasedAllTimeStopPoints;
     public Action FinishedTimeStopState;
-    public Action<Vector3, float> TookDamage;
+    public Action<GameObject, float> TookDamage;
     public Action<int> StageChanged;
 
     private void Awake()
@@ -58,9 +58,9 @@ public class GameEventHandler : MonoBehaviour
         StageChanged?.Invoke(currentStage);
     }
 
-    public void TakeDamage(Vector3 pos, float amount)
+    public void TakeDamage(GameObject obj, float amount)
     {
-        TookDamage?.Invoke(pos, amount);
+        TookDamage?.Invoke(obj, amount);
     }
 
     public void ReleaseAllTimeStopPoints(GameObject obj)

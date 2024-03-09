@@ -117,7 +117,6 @@ public class EnemyFactory : MonoBehaviour
             yield return new WaitForSeconds(spawnFrequencyInSeconds);
             if (!hasSpawnedAll)
             {
-                Debug.Log("Hello");
                 SpawnEnemy();
             }
         }
