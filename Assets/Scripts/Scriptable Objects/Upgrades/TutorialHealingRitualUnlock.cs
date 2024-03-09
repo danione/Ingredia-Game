@@ -15,6 +15,9 @@ public class TutorialHealingRitualUnlock : UpgradeData
             GameManager.Instance.GetComponent<IngredientManager>().UnlockIngredient(item.item);
         }
         if(TutorialManager.instance != null)
-            TutorialManager.instance.OnUpgraded();
+        {
+            TutorialManager.instance.OnUpgraded(ritualToUnlock.ritualRecipes);
+
+        }
     }
 }

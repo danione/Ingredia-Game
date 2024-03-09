@@ -176,8 +176,13 @@ public class TutorialManager : MonoBehaviour
         laserStarterPosition.SetActive(true);
     }
 
-    public void OnUpgraded()
+    public void OnUpgraded(List<RitualRecipe> recipe)
     {
+        IngredientManager ingreMan = GameManager.Instance.GetComponent<IngredientManager>();
+        foreach(var ingredient in recipe)
+        {
+            ingreMan.UnlockIngredientDefault(ingredient.item);
+        }
         ExecuteCurrentStage();
     }
 

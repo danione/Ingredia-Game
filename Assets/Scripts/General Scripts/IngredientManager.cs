@@ -36,6 +36,14 @@ public class IngredientManager : MonoBehaviour
         ingredientsSet.Remove(data);
     }
 
+    // Should only be used from the tutorial
+    // --
+    // Adds a default unlockable ingredient
+    public void UnlockIngredientDefault(IngredientData ingredient)
+    {
+        defaultIngredients.Add(ingredient);
+    }
+
     public void RevertToDefault()
     {
         ingredients.Clear();
