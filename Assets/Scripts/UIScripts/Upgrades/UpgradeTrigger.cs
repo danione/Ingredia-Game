@@ -145,7 +145,7 @@ public class UpgradeTrigger : MonoBehaviour
             fullstring += "<color=blue>Sophistication Cost: </color>" + upgradeInformation.sophisticationCost + "\n";
 
         }
-        if (upgradeInformation.GetType() == typeof(UnlockRitualUpgrade))
+        if (upgradeInformation.GetType() == typeof(UnlockRitualUpgrade) || (upgradeInformation.GetType() == typeof(TutorialHealingRitualUnlock)))
         {
             UnlockRitualUpgrade upgrade = (UnlockRitualUpgrade)upgradeInformation;
             if(upgrade.ritualToUnlock.ritualRecipes.Count != 0)
