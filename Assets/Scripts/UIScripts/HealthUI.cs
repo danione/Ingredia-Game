@@ -15,6 +15,16 @@ public class HealthUI : MonoBehaviour
         OnHealthAdjust();
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            PlayerEventHandler.Instance.HealthAdjusted -= OnHealthAdjust;
+            GameEventHandler.Instance.UpdatedUI -= OnUpdateUI;
+        }
+        catch { }
+    }
+
     private void OnHealthAdjust()
     {
         m_HealthAmount.text = PlayerController.Instance.stats.Health.ToString();

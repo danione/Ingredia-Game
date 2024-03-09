@@ -14,7 +14,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private IngredientData eyeData;
     [SerializeField] private IngredientData fireData;
     [SerializeField] private GameObject inventorySlotsUI;
-    [SerializeField] private GameObject hiddenRitualsUI;
+    [SerializeField] private GameObject sophisticationUI;
     [SerializeField] private List<TutorialStage> tutorialStages = new();
     [SerializeField] private TutorialManagerUI tutorialUiManager;
     [SerializeField] private OverloadElixirData overloadElixirData;
@@ -123,6 +123,7 @@ public class TutorialManager : MonoBehaviour
         GameManager.Instance.GetComponent<IngredientManager>()?.UnlockIngredient(eyeData);
         GameManager.Instance.GetComponent<IngredientManager>()?.UnlockIngredient(athameData);
         inventorySlotsUI.SetActive(true);
+        sophisticationUI.SetActive(true);
     }
 
     public void OnPerformedFirstRitual(IRitual ritual)

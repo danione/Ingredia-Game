@@ -185,7 +185,7 @@ MonoBehaviour:
   eyeData: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
   fireData: {fileID: 11400000, guid: db6b719a0965a34439da529f04199434, type: 2}
   inventorySlotsUI: {fileID: 305430310}
-  hiddenRitualsUI: {fileID: 0}
+  sophisticationUI: {fileID: 2020322518}
   tutorialStages:
   - {fileID: 11400000, guid: 70eb6164c7b36814293e86c17acca27d, type: 2}
   - {fileID: 11400000, guid: 0c18f8d8d0a2b7d479ae609edadbbdfc, type: 2}
@@ -207,7 +207,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 6
+  forwardToStage: 0
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +958,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 5513209580259523118, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5794376102825807610, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1067,6 +1071,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+--- !u!1 &2020322518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5513209580259523118, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+  m_PrefabInstance: {fileID: 2020322517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3655337330680414798
 PrefabInstance:
   m_ObjectHideFlags: 0

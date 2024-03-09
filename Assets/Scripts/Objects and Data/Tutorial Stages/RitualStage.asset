@@ -17,5 +17,5 @@ MonoBehaviour:
     and press R. Rituals provide sophistication which will be useful later.
 
 
-'
-  athameThrowPotion: {fileID: 0}
+    Sophistication
+    yield gradually decreases, the more you conjure the same ritual.'
