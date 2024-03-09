@@ -127,13 +127,13 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
 
-        if (!Input.GetKeyDown(KeyCode.E)) return;
+        if (!Input.GetKey(KeyCode.E)) return;
 
         Weapon equippedWeapon = PlayerController.Instance.inventory.GetCurrentlyEquippedWeapon();
-        bool hasAvailableAmmo = equippedWeapon.HasAvailableAmmo();
-
-        if (hasAvailableAmmo && isNotOnCooldown)
+        
+        if (isNotOnCooldown && equippedWeapon.HasAvailableAmmo())
         {
+            isNotOnCooldown = false;
             PlayerController.Instance.inventory.SubtractCurrentWeaponAmmo(1);
             StartCoroutine(FireAProjectile(equippedWeapon.GetObjectPosition()));
             PlayerEventHandler.Instance.FiresWeapon();

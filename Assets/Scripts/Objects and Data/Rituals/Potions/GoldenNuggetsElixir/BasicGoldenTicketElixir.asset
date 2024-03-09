@@ -16,3 +16,5 @@ MonoBehaviour:
   nuggetValue: 10
   objectTagsToConvert:
   - Ingredient
+  - Projectile
+  - Dangerous Object
