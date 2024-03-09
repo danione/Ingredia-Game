@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb3638080d76d94cb17ae1d8a2e1a88, type: 3}
   m_Name: BasicSteamballPotion
   m_EditorClassIdentifier: 
-  potionName: Weak Fireball Potion
+  potionName: Weak Steamball Potion
   ammoAmount: 2
