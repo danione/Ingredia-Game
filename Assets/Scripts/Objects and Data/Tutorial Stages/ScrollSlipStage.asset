@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: ScrollSlipStage
   m_EditorClassIdentifier: 
   title: Scroll Slip
-  description: Wow, you have received your first scroll slip. Press J to open and
-    review.
+  description: 'Wow, you have received your first scroll slip. Press J to open and
+    review your grimoire.
+
+
+    Scroll slips show the recipe for rituals which you
+    unlock. They are dropped by defeated enemies.'
