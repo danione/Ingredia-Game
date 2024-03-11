@@ -16,6 +16,5 @@ public class UnlockRitualUpgrade : UpgradeData
         {
             manager.UnlockIngredient(ritualIngredient.item);
         }
-        GameEventHandler.Instance.UnlocksRitual(ritualToUnlock);
     }
 }

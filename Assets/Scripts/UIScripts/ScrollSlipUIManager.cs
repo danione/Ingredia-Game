@@ -1,3 +1,4 @@
+using CodeMonkey.Utils;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
@@ -12,6 +13,12 @@ public class ScrollSlipUIManager : MonoBehaviour
     [SerializeField] private float contentsOffset;
     private Dictionary<RitualScriptableObject, GameObject> ritualToObjectContents = new();
 
+    // More info panel
+    [SerializeField] private TextMeshProUGUI ritualNameText;
+    [SerializeField] private TextMeshProUGUI ritualDescription;
+    [SerializeField] private TextMeshProUGUI ritualIngredients;
+    [SerializeField] private GameObject ritualLockedScreen;
+
     private void Start()
     {
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
@@ -24,7 +31,7 @@ public class ScrollSlipUIManager : MonoBehaviour
     // Fills in the contents of the grimoire
     // --
     // Gets all the rituals and creates the contents objects,
-    // filling them in with ritual name, offseting them
+    // then enabling it
     private void FillInContents()
     {
         GameObject ritualTemplate = contentsParent.transform.GetChild(0).gameObject;
@@ -42,29 +49,83 @@ public class ScrollSlipUIManager : MonoBehaviour
                 newRitual.SetActive(true);
             }
         }
+        if (allRituals.Count > 0)
+            DisplayMoreInfo(contentsParent.transform.GetChild(1).gameObject);
     }
 
+    // Generic function that holds all setting up
     private void SetupRitualObject(GameObject ritualTemplate, int numItem, GameObject newRitual, RitualScriptableObject ritualScr)
     {
         SetPosition(ritualTemplate, numItem, newRitual);
         SetText(newRitual, ritualScr);
+        SetButton(newRitual);
     }
 
-    private void SetText(GameObject newRitual, RitualScriptableObject ritualScr)
+    // Sets the object as a button which will populate the information
+    private void SetButton(GameObject newRitual)
     {
-        newRitual.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ritualScr.ritualName;
-        CheckIfUnlocked(ritualScr);
-    }
-
-    private void CheckIfUnlocked(RitualScriptableObject ritualScr)
-    {
-        RitualManager ritualManager = GameManager.Instance.GetComponent<RitualManager>();
-        if (ritualManager.IsUpgraded(ritualScr.ritualName) && ritualToObjectContents.ContainsKey(ritualScr))
+        Button_UI button = newRitual.GetComponent<Button_UI>();
+        button.ClickFunc = () =>
         {
-            ritualToObjectContents[ritualScr].gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            DisplayMoreInfo(newRitual);
+        };
+
+    }
+
+    private void DisplayMoreInfo(GameObject ritualObject)
+    {
+        ContentGrimoire content = ritualObject.GetComponent<ContentGrimoire>();
+        
+        if (content == null) return;
+
+        ritualNameText.text = content.ritual.ritualName;
+        ritualDescription.text = content.ritual.description;
+        LimitInformation(content);
+    }
+
+    private void LimitInformation(ContentGrimoire content)
+    {
+        if (content.isUpgraded)
+        {
+            ritualLockedScreen.SetActive(false);
+            ritualIngredients.text = "";
+            foreach (var ingredient in content.ritual.ritualRecipes)
+            {
+                ritualIngredients.text += ingredient.item.ingredientName + " x " + ingredient.amount + "\n";
+            }
+        }
+        else
+        {
+            ritualLockedScreen.SetActive(true);
+            ritualIngredients.text = "Find more scroll slips to determine the exact ritual ingredients.";
         }
     }
 
+    // Set the Text and check if its unlocked -> to set the colour
+    private void SetText(GameObject newRitual, RitualScriptableObject ritualScr)
+    {
+        TextMeshProUGUI component = newRitual.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        component.text = ritualScr.ritualName;
+        CheckIfUnlocked(ritualScr);
+    }
+
+    // Checks if unlocked - also used when unlocking a ritual
+    private void CheckIfUnlocked(RitualScriptableObject ritualScr)
+    {
+        RitualManager ritualManager = GameManager.Instance.GetComponent<RitualManager>();
+
+        ContentGrimoire content = ritualToObjectContents[ritualScr].gameObject.GetComponent<ContentGrimoire>();
+
+        if (ritualManager.IsUpgraded(ritualScr.ritualName) && ritualToObjectContents.ContainsKey(ritualScr))
+        {
+            content.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            content.isUpgraded = true;
+        }
+        content.ritual = ritualScr;
+
+    }
+
+    // Sets the position
     private void SetPosition(GameObject ritualTemplate, int numItem, GameObject newRitual)
     {
         Vector3 pos = new Vector2(ritualTemplate.transform.position.x, ritualTemplate.transform.position.y - (contentsOffset * numItem));
@@ -77,6 +138,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         GameEventHandler.Instance.ScrollSlipGenerated -= OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu -= OnScrollSlipMenuOpen;
         PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
+        GameEventHandler.Instance.UnlockedRitual -= CheckIfUnlocked;
     }
 
     private void OnCloseMenu()
@@ -105,16 +167,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         }
 
         scrollSlipMenu.gameObject.SetActive(!scrollSlipMenu.gameObject.activeSelf);
-
-        //PopulateMenus();
     }
-
-    private void CheckCountRituals()
-    {
-        int contentsAmount = contentsParent.transform.childCount - 1;
-        
-    }
-
 }
 
 [System.Serializable]
