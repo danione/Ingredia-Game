@@ -138,7 +138,7 @@ public class TimerUIManager : MonoBehaviour
 
     public void AssignNewTimer(NotificationObject notObject)
     {
-        Transform newObject = notObject.GenerateANewTimer(this, activeTimersCount);
+        Transform newObject = notObject.GenerateANewTimer(activeTimersCount);
         if (newObject == null) { return; }
         AssignTimer(newObject);
     }

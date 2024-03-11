@@ -40,7 +40,7 @@ public class NotificationObject
         }
     }
 
-    public Transform GenerateANewTimer(TimerUIManager manager, int currentId)
+    public Transform GenerateANewTimer(int currentId)
     {
         if (timerNotification.currentObject != null) return null;
 
