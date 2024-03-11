@@ -8,15 +8,36 @@ public class ScrollSlipUIManager : MonoBehaviour
     [SerializeField] private ScrollPopup popup;
     [SerializeField] private Transform scrollSlipMenu;
 
-    [SerializeField] private Transform countScrollsUI;
-    [SerializeField] private Transform normalSlipsContainerUI;
-
+    [SerializeField] private GameObject contentsParent; // for contents page
+    [SerializeField] private float contentsOffset;
 
     private void Start()
     {
         GameEventHandler.Instance.ScrollSlipGenerated += OnScrollSlipGenerated;
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
+        FillInContents();
+    }
+
+    // Fills in the contents of the grimoire
+    // --
+    // Gets all the rituals and creates the contents objects,
+    // filling them in with ritual name, offseting them
+    private void FillInContents()
+    {
+        GameObject ritualTemplate = contentsParent.transform.GetChild(0).gameObject;
+        RitualManager ritualManager = GameManager.Instance.GetComponent<RitualManager>();
+        List<RitualScriptableObject> allRituals = ritualManager.GetAllRituals();
+
+        for (int i = 0; i < allRituals.Count; i++)
+        {
+            GameObject newRitual = Instantiate(ritualTemplate, contentsParent.transform);
+            Vector3 pos = new Vector2(ritualTemplate.transform.position.x, ritualTemplate.transform.position.y - (contentsOffset * i));
+            newRitual.transform.position = pos;
+            newRitual.transform.SetParent(contentsParent.transform);
+            newRitual.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = allRituals[i].ritualName;
+            newRitual.SetActive(true);
+        }
     }
 
     private void OnDestroy()
@@ -54,6 +75,12 @@ public class ScrollSlipUIManager : MonoBehaviour
         scrollSlipMenu.gameObject.SetActive(!scrollSlipMenu.gameObject.activeSelf);
 
         //PopulateMenus();
+    }
+
+    private void CheckCountRituals()
+    {
+        int contentsAmount = contentsParent.transform.childCount - 1;
+        
     }
 
 }
