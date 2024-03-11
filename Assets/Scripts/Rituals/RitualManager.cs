@@ -75,23 +75,14 @@ public class RitualManager : MonoBehaviour
             lockedRitualsDict[newRitual].EnableRitual();
             unlockedRitualsDict[newRitual] = lockedRitualsDict[newRitual];
             lockedRitualsDict.Remove(newRitual);
+            GameEventHandler.Instance.UnlocksRitual(ritualObject);
         }
         return ritualObject;
     }
 
-    public void ChangeRitualDataOfExistingRitual(RitualScriptableObject ritualData)
+    public bool IsUpgraded(string ritual)
     {
-        if (IsValidRitual(ritualData.ritualName, lockedRitualsDict))
-        {
-            lockedRitualsDict[ritualData.ritualName].ChangeRitualData(ritualData);
-        } else if(IsValidRitual(ritualData.ritualName, unlockedRitualsDict))
-        {
-            unlockedRitualsDict[ritualData.ritualName].ChangeRitualData(ritualData);
-        }
-        else
-        {
-            Debug.LogWarning("Ritual does not exist");
-        }
+        return unlockedRitualsDict.ContainsKey(ritual);
     }
 
     public void ChangeYieldByIncrementing(string id)

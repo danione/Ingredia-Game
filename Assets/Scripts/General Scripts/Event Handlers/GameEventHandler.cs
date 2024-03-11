@@ -46,7 +46,7 @@ public class GameEventHandler : MonoBehaviour
     public Action FinishedTimeStopState;
     public Action<GameObject, float> TookDamage;
     public Action<int> StageChanged;
-    public Action UnlockedRitual;
+    public Action<RitualScriptableObject> UnlockedRitual;
 
     private void Awake()
     {
@@ -54,9 +54,9 @@ public class GameEventHandler : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void UnlocksRitual()
+    public void UnlocksRitual(RitualScriptableObject ritual)
     {
-        UnlockedRitual?.Invoke();
+        UnlockedRitual?.Invoke(ritual);
     }
 
     public void StageChange(int currentStage)

@@ -50,7 +50,7 @@ public class IngredientsFactory: MonoBehaviour
         catch { }
     }
 
-    private void OnNewRitualUnlocked()
+    private void OnNewRitualUnlocked(RitualScriptableObject ritual)
     {
         currentModifier += spawnModifier;
         Debug.Log(currentModifier);
