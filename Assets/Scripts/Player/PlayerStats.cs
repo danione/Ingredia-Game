@@ -110,7 +110,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     public void UpgradeHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;
-        Heal(newMaxHealth);
+        health = newMaxHealth;
     }
 
     public void RepairAmour(float amount)

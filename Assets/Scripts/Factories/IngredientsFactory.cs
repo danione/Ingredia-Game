@@ -53,7 +53,6 @@ public class IngredientsFactory: MonoBehaviour
     private void OnNewRitualUnlocked(RitualScriptableObject ritual)
     {
         currentModifier += spawnModifier;
-        Debug.Log(currentModifier);
         spawnPointManager.ChangeDequeueTime((spawnFrequency.maxFrequency - spawnFrequency.minFrequency - currentModifier) / 2);
     }
 
