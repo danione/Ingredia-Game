@@ -6,4 +6,5 @@ public class ContentGrimoire : MonoBehaviour
 {
     public RitualScriptableObject ritual;
     public bool isUpgraded = false;
+    public bool hasScrollSlip = false;
 }

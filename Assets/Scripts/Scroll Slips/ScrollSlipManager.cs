@@ -16,6 +16,11 @@ public class ScrollSlipManager : MonoBehaviour
         availableScrollSlips = GetComponent<RitualManager>().GetAllRituals();
     }
 
+    public bool IsScrollUnlocked(RitualScriptableObject scroll)
+    {
+        return unlockedScrollSlips.Contains(scroll);
+    }
+
     public void OnSetTutorialMode()
     {
         isTutorial = true;

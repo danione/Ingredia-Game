@@ -25,6 +25,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         PlayerEventHandler.Instance.OpenedScrollsMenu += OnScrollSlipMenuOpen;
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
         GameEventHandler.Instance.UnlockedRitual += CheckIfUnlocked;
+        GameEventHandler.Instance.ScrollSlipGenerated += CheckIfScrollCollected;
         FillInContents();
     }
 
@@ -88,6 +89,14 @@ public class ScrollSlipUIManager : MonoBehaviour
         if (content.isUpgraded)
         {
             ritualLockedScreen.SetActive(false);
+        }
+        else
+        {
+            ritualLockedScreen.SetActive(true);
+        }
+
+        if (content.hasScrollSlip)
+        {
             ritualIngredients.text = "";
             foreach (var ingredient in content.ritual.ritualRecipes)
             {
@@ -96,8 +105,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         }
         else
         {
-            ritualLockedScreen.SetActive(true);
-            ritualIngredients.text = "Find more scroll slips to determine the exact ritual ingredients.";
+            ritualIngredients.text = "Defeat more enemies and obtain more scroll slips to unlock the ingredients of this ritual.";
         }
     }
 
@@ -105,15 +113,27 @@ public class ScrollSlipUIManager : MonoBehaviour
     private void SetText(GameObject newRitual, RitualScriptableObject ritualScr)
     {
         TextMeshProUGUI component = newRitual.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        
         component.text = ritualScr.ritualName;
+
+        CheckIfScrollCollected(ritualScr);
         CheckIfUnlocked(ritualScr);
+    }
+
+    private void CheckIfScrollCollected(RitualScriptableObject ritualScr)
+    {
+        ContentGrimoire content = ritualToObjectContents[ritualScr].gameObject.GetComponent<ContentGrimoire>();
+
+        if (GameManager.Instance.GetComponent<ScrollSlipManager>()?.IsScrollUnlocked(ritualScr) ?? false)
+        {
+            content.hasScrollSlip = true;
+        }
     }
 
     // Checks if unlocked - also used when unlocking a ritual
     private void CheckIfUnlocked(RitualScriptableObject ritualScr)
     {
         RitualManager ritualManager = GameManager.Instance.GetComponent<RitualManager>();
-
         ContentGrimoire content = ritualToObjectContents[ritualScr].gameObject.GetComponent<ContentGrimoire>();
 
         if (ritualManager.IsUpgraded(ritualScr.ritualName) && ritualToObjectContents.ContainsKey(ritualScr))
@@ -122,8 +142,9 @@ public class ScrollSlipUIManager : MonoBehaviour
             content.isUpgraded = true;
         }
         content.ritual = ritualScr;
-
     }
+
+
 
     // Sets the position
     private void SetPosition(GameObject ritualTemplate, int numItem, GameObject newRitual)
