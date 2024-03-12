@@ -9,6 +9,8 @@ public class EnemyFactory : MonoBehaviour
 
     [SerializeField] private List<SpawnStage> stage;
     [SerializeField] private float spawnFrequencyInSeconds = 2.0f;
+    [SerializeField] private float spawnTimeDecreaser;
+    [SerializeField] private float minSpawnTime;
     [SerializeField] private float waveSpawnCooldownInSeconds = 3.0f;
     [SerializeField] private Product upgradedBat;
 
@@ -94,10 +96,11 @@ public class EnemyFactory : MonoBehaviour
         if(currentAliveEnemies > 0)
             currentAliveEnemies--;
         
-        if (currentAliveEnemies == 0 && !isNextStageTransitioning)
+        if (currentAliveEnemies == 0 && !isNextStageTransitioning && hasSpawnedAll)
         {
             isNextStageTransitioning = true;
             StartCoroutine(TransitionToNextStage());
+            spawnFrequencyInSeconds = spawnFrequencyInSeconds > minSpawnTime ? spawnFrequencyInSeconds - spawnTimeDecreaser : minSpawnTime;
         }
     }
 
@@ -142,6 +145,8 @@ public class EnemyFactory : MonoBehaviour
         {
             SpawnAtPos();
         }
+
+        CheckIfAllSpawned();
     }
 
     private void SpawnAtPos(int index = 0)

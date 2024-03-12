@@ -35,6 +35,7 @@ public class BansheeEnemy : Enemy
         hasDetectedPlayer = false;
         hasDetectedPlayer = false;
         isColliding = true;
+        base.ResetEnemy();
     }
 
     private void Update()
