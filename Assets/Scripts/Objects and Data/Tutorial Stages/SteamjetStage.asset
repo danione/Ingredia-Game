@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SteamjetStage
   m_EditorClassIdentifier: 
   title: Steamjet
-  description: 'Destroy the conjured walls with the steamjet potion. Remember - Press
-    1 to use the potion.
+  description: 'Destroy the conjured walls with the steamjet potion. Remember - press
+    the number on your keyboard corresponding with the Potion.
 
 
-    Hold Q to melt down the walls.'
+    Hold Q to melt
+    down the walls.'
