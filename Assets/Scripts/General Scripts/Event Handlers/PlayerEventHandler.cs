@@ -26,6 +26,8 @@ public class PlayerEventHandler : MonoBehaviour
     public Action<int> CollectedSophistication;
     public Action StoppedLaser;
     public Action PlayerDied;
+    public Action<bool> MovementSpeedAdjusted;
+    public Action<Transform> RitualistFinishedChanneling;
 
     private int openMenus = 0;
     private int idOfLastMenu = -1;
@@ -40,6 +42,16 @@ public class PlayerEventHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void RitualistFinishChanneling(Transform circle)
+    {
+        RitualistFinishedChanneling?.Invoke(circle);
+    }
+
+    public void AdjustMovementSpeed(bool isAdjusting)
+    {
+        MovementSpeedAdjusted?.Invoke(isAdjusting);
     }
 
     public void StopLaser()

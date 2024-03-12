@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour, IMovable
     [SerializeField] private float movementSpeed;
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
+    [SerializeField] private float movementSpeedModifier = 0f;
+    private float modifierCount = 0f;
     private float moveDirectionExternalControl = 0f;
 
     private void Start()
@@ -12,6 +14,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
         InputEventHandler.instance.MoveRandomly += OnMoveRandomly;
         InputEventHandler.instance.PickDirection += OnPickRandomDirection;
         InputEventHandler.instance.MoveTowardsTarget += OnMoveTowards;
+        PlayerEventHandler.Instance.MovementSpeedAdjusted += OnMoveSpeedAdjusted;
     }
 
     public void Move()
@@ -23,6 +26,14 @@ public class PlayerMovement : MonoBehaviour, IMovable
         if (!PlayerInputHandler.permissions.canMove) return;
 
         MovementValidation(goingLeft);
+    }
+
+    private void OnMoveSpeedAdjusted(bool modifier)
+    {
+        if (modifier) modifierCount++;
+        else {
+            modifierCount--;
+        }
     }
 
     private void MovementValidation(float direction)
@@ -37,7 +48,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
         }
         else
         {
-            transform.Translate(movementSpeed * direction * Time.deltaTime * Vector3.left);
+            transform.Translate((movementSpeed - (movementSpeedModifier * modifierCount)) * direction * Time.deltaTime * Vector3.left);
         }
     }
 

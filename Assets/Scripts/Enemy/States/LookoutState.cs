@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class LookoutState : IState
 {
-    private float speed = 8f;
+    private float speed = 5f;
     private float stoppingDistance = 3.0f;
     private float xBorder = 13.0f;
-    private float yBorder = 13.0f;
+    private float yBorder = 9.0f;
     private readonly float defaultChannelDuration = 1.0f;
     private float channelDuration;
     public Action FinishedChanneling;
@@ -41,7 +41,6 @@ public class LookoutState : IState
         if(distance > stoppingDistance)
         {
             Vector3 desiredVelocity = targetDirection.normalized;
-
             // Apply the steering force to move the object.
             ritualistCircle.position += desiredVelocity * speed * Time.deltaTime;
         }
@@ -52,7 +51,7 @@ public class LookoutState : IState
 
         if(channelDuration <= 0)
         {
-            FinishedChanneling?.Invoke();
+            PlayerEventHandler.Instance.RitualistFinishChanneling(ritualistCircle);
         }
     }
 }

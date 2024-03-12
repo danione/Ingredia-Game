@@ -6,43 +6,33 @@ public class RitualistEnemy : Enemy
 {
     public static int RitualistEnemyCount = 0;
 
-    private Transform player; // Used to detect ingredients near the player
-
     [SerializeField] private Transform ritualistCircle;
     [SerializeField] private Transform ingredientCircle;
     [SerializeField] private float radiusOfSwap;
     [SerializeField] private float cooldownSwapSelectSeconds;
+    [SerializeField] private float damageInCircle;
 
     private RitualistStateMachine stateMachine;
 
     private void Awake()
     {
         stateMachine = new RitualistStateMachine(ritualistCircle, ingredientCircle);
-        stateMachine.Initialise(stateMachine.LookoutState);
-        stateMachine.LookoutState.FinishedChanneling += OnFinishedChanneling;
-        stateMachine.SelectIngredientState.SwapPositionReady += OnSwapPositionReady;
     }
 
     private void Start()
     {
-        player = PlayerController.Instance.gameObject.GetComponent<Transform>();
         RitualistEnemyCount++;
+        ResetEnemy();
     }
 
-    private void OnFinishedChanneling()
+    private void OnFinishedChanneling(Transform circle)
     {
-        Collider[] colliders = Physics.OverlapSphere(player.gameObject.transform.position, radiusOfSwap);
+        if (circle != ritualistCircle) return;
 
-        foreach (Collider collider in colliders)
+        if(ritualistCircle.GetComponent<DetectionCircle>()?.hasPlayer ?? false)
         {
-            if (collider.CompareTag("Player")) continue;
-
-            if (collider.CompareTag("Ingredient"))
-            {
-                SwapIngredient(collider.gameObject);
-            }
+            PlayerController.Instance.GetComponent<PlayerStats>().TakeDamage(damageInCircle);
         }
-
         stateMachine.TransitiontTo(stateMachine.IdleState);
         StartCoroutine(CooldownSwapPosition(stateMachine.SelectIngredientState));
     }
@@ -55,12 +45,28 @@ public class RitualistEnemy : Enemy
 
     private void OnSwapPositionReady(Transform target)
     {
-        Vector3 tempPosition = transform.position;
-        transform.position = target.position;
-        target.position = tempPosition;
+        int rand = UnityEngine.Random.Range(0, 2);
+
+        if (rand == 0)
+        {
+            SwapPos(target);
+
+        }
+        else
+        {
+            GameEventHandler.Instance.SpawnATricksterProjectileAt(target.position, null);
+            GameEventHandler.Instance.DestroyObject(target.gameObject);
+        }
 
         stateMachine.TransitiontTo(stateMachine.IdleState);
         StartCoroutine(CooldownSwapPosition(stateMachine.LookoutState));
+    }
+
+    private void SwapPos(Transform target)
+    {
+        Vector3 tempPosition = transform.position;
+        transform.position = target.position;
+        target.position = tempPosition;
     }
 
     private void Update()
@@ -68,31 +74,20 @@ public class RitualistEnemy : Enemy
         stateMachine.Update();
     }
 
-    private void SwapIngredient(GameObject ingredient)
-    {
-        if(ingredient == null) { return; }
-
-        Vector3 currentPos = ingredient.transform.position;
-
-        Product product = ingredient.GetComponent<Product>();
-        product.ObjectPool.Release(product);
-
-        GameEventHandler.Instance.GenerateIngredientAtPos(currentPos);
-    }
-
     public override void DestroyEnemy()
     {
-        base.DestroyEnemy();
-        stateMachine.LookoutState.FinishedChanneling -= OnFinishedChanneling;
+        PlayerEventHandler.Instance.RitualistFinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
         RitualistEnemyCount--;
+        base.DestroyEnemy();
     }
 
     public override void ResetEnemy()
     {
         RitualistEnemyCount++;
         stateMachine.Initialise(stateMachine.LookoutState);
-        stateMachine.LookoutState.FinishedChanneling += OnFinishedChanneling;
+        PlayerEventHandler.Instance.RitualistFinishedChanneling += OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady += OnSwapPositionReady;
+        base.ResetEnemy();
     }
 }
