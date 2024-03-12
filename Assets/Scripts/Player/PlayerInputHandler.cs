@@ -25,6 +25,12 @@ public class PlayerInputHandler : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;    
     }
 
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.SetTutorialMode -= OnSetTutorialMode;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void OnSceneLoaded(Scene a, LoadSceneMode b)
     {
         foreach(var projectile in projectileSpawners)

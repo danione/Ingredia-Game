@@ -20,6 +20,13 @@ public class PlayerSkillsManager : MonoBehaviour
         GameEventHandler.Instance.ActivatedBarrier += OnActivateBarrier;
     }
 
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.ActivatedGhost -= OnActivateGhost;
+        GameEventHandler.Instance.ActivatedLaser -= OnActivateLaser;
+        GameEventHandler.Instance.ActivatedBarrier -= OnActivateBarrier;
+    }
+
     private void Update()
     {
         ghost.Tick();

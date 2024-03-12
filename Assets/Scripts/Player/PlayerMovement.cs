@@ -17,6 +17,14 @@ public class PlayerMovement : MonoBehaviour, IMovable
         PlayerEventHandler.Instance.MovementSpeedAdjusted += OnMoveSpeedAdjusted;
     }
 
+    private void OnDestroy()
+    {
+        InputEventHandler.instance.MoveRandomly -= OnMoveRandomly;
+        InputEventHandler.instance.PickDirection -= OnPickRandomDirection;
+        InputEventHandler.instance.MoveTowardsTarget -= OnMoveTowards;
+        PlayerEventHandler.Instance.MovementSpeedAdjusted -= OnMoveSpeedAdjusted;
+    }
+
     public void Move()
     {
         float goingLeft = Input.GetAxis("Horizontal");
