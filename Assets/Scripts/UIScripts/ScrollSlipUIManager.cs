@@ -2,6 +2,7 @@ using CodeMonkey.Utils;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class ScrollSlipUIManager : MonoBehaviour
@@ -28,6 +29,17 @@ public class ScrollSlipUIManager : MonoBehaviour
         GameEventHandler.Instance.ScrollSlipGenerated += CheckIfScrollCollected;
         FillInContents();
     }
+
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.ScrollSlipGenerated -= OnScrollSlipGenerated;
+        PlayerEventHandler.Instance.OpenedScrollsMenu -= OnScrollSlipMenuOpen;
+        PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
+        GameEventHandler.Instance.UnlockedRitual -= CheckIfUnlocked;
+        GameEventHandler.Instance.ScrollSlipGenerated -= CheckIfScrollCollected;
+    }
+
 
     // Fills in the contents of the grimoire
     // --
@@ -154,13 +166,6 @@ public class ScrollSlipUIManager : MonoBehaviour
         newRitual.transform.SetParent(contentsParent.transform);
     }
 
-    private void OnDestroy()
-    {
-        GameEventHandler.Instance.ScrollSlipGenerated -= OnScrollSlipGenerated;
-        PlayerEventHandler.Instance.OpenedScrollsMenu -= OnScrollSlipMenuOpen;
-        PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
-        GameEventHandler.Instance.UnlockedRitual -= CheckIfUnlocked;
-    }
 
     private void OnCloseMenu()
     {
