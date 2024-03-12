@@ -30,7 +30,6 @@ public class ScrollSlipUIManager : MonoBehaviour
         FillInContents();
     }
 
-
     private void OnDestroy()
     {
         GameEventHandler.Instance.ScrollSlipGenerated -= OnScrollSlipGenerated;
