@@ -60,4 +60,17 @@ public class IngredientManager : MonoBehaviour
         }
         ingredientsSet = ingredients.ToHashSet();
     }
+
+    public void RemoveRitualValues(RitualScriptableObject ritual)
+    {
+        foreach(var ingredient in ritual.ritualRecipes)
+        {
+            if (ingredientsSet.Contains(ingredient.item))
+            {
+                ingredientsSet.Remove(ingredient.item);
+                ingredients.Remove(ingredient.item);
+            }
+        }
+
+    }
 }
