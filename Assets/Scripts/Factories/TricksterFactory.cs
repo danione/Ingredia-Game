@@ -27,7 +27,7 @@ public class TricksterFactory : MonoBehaviour
         Product projectile = spawner.GetProduct(pos);
         if (spawnedBy == null)
         {
-            projectile.GetComponent<FallableObject>().SwapToMove();
+            projectile.GetComponent<TricksterProjectile>()?.SwapToMove();
             return;
         }
         projectile.GetComponent<FallableObject>().SwapToCirculate(spawnedBy.transform, new Vector3(0,0, Random.Range(0, 2) * 2 - 1)); // Giving -1 or 1
