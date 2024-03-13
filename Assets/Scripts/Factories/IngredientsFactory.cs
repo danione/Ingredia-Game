@@ -46,6 +46,7 @@ public class IngredientsFactory: MonoBehaviour
         try
         {
             GameEventHandler.Instance.GeneratedIngredientAtPos -= SpawnRandomIngredient;
+            GameEventHandler.Instance.UnlockedRitual -= OnNewRitualUnlocked;
         }
         catch { }
     }
