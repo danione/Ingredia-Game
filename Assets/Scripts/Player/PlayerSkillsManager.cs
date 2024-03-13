@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSkillsManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerSkillsManager : MonoBehaviour
         GameEventHandler.Instance.ActivatedGhost += OnActivateGhost;
         GameEventHandler.Instance.ActivatedLaser += OnActivateLaser;
         GameEventHandler.Instance.ActivatedBarrier += OnActivateBarrier;
+        PlayerEventHandler.Instance.PlayerDied += OnPlayerDeath;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDestroy()
@@ -25,6 +28,19 @@ public class PlayerSkillsManager : MonoBehaviour
         GameEventHandler.Instance.ActivatedGhost -= OnActivateGhost;
         GameEventHandler.Instance.ActivatedLaser -= OnActivateLaser;
         GameEventHandler.Instance.ActivatedBarrier -= OnActivateBarrier;
+        PlayerEventHandler.Instance.PlayerDied -= OnPlayerDeath;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        OnPlayerDeath();
+    }
+
+    private void OnPlayerDeath()
+    {
+        isShielding = false;
+        shieldObject.gameObject.SetActive(false);
     }
 
     private void Update()
