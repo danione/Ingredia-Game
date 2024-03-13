@@ -19,8 +19,12 @@ public class AthameProjectile : SimpleProjectile
         }
         else if (isValidTarget)
         {
-            GameEventHandler.Instance.DestroyObject(gameObject);
-            GameEventHandler.Instance.DestroyObject(other.gameObject);
+            bool isOtherFromPlayer = other.gameObject.GetComponent<SimpleProjectile>()?.IsSourcePlayer() ?? false;
+            if((isOtherFromPlayer && !IsSourcePlayer()) || (!isOtherFromPlayer && IsSourcePlayer()) || (!isOtherFromPlayer && !IsSourcePlayer()))
+            {
+                GameEventHandler.Instance.DestroyObject(gameObject);
+                GameEventHandler.Instance.DestroyObject(other.gameObject);
+            }
         }
     }
 }
