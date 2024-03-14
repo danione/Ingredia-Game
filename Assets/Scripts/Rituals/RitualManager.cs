@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RitualManager : MonoBehaviour
 {
+    [SerializeField] private List<RitualScriptableObject> defaultRituals = new();
     [SerializeField] private List<RitualScriptableObject> unlockedRituals = new();
     [SerializeField] private List<RitualScriptableObject> lockedRituals = new();
 
@@ -14,16 +16,30 @@ public class RitualManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        foreach(var ritual in unlockedRituals)
+        InitRituals();
+    }
+
+    private void InitRituals()
+    {
+        unlockedRituals.Clear();
+        lockedRitualsDict.Clear();
+        unlockedRitualsDict.Clear();
+
+        foreach (var ritual in defaultRituals)
+        {
+            unlockedRituals.Add(ritual);
+        }
+
+        foreach (var ritual in unlockedRituals)
         {
             unlockedRitualsDict[ritual.ritualName] = new Ritual(ritual);
             unlockedRitualsDict[ritual.ritualName].EnableRitual();
         }
-               
-        foreach(var locked in lockedRituals)
+
+        foreach (var locked in lockedRituals)
         {
-            if(locked.ritualName == null) continue;
-             lockedRitualsDict[locked.ritualName] = new Ritual(locked);
+            if (locked.ritualName == null) continue;
+            lockedRitualsDict[locked.ritualName] = new Ritual(locked);
         }
     }
 
@@ -34,10 +50,7 @@ public class RitualManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene a, LoadSceneMode b)
     {
-        foreach(var ritual in unlockedRitualsDict)
-        {
-            ritual.Value.Reset();
-        }
+        InitRituals();
     }
 
     public List<RitualScriptableObject> GetAllRituals()
@@ -80,9 +93,23 @@ public class RitualManager : MonoBehaviour
         return ritualObject;
     }
 
+    // To be used only from the tutorial when we want the ritual to remain unlocked
+    public void AddToDefaultUnlocked(RitualScriptableObject ritual)
+    {
+        if(!defaultRituals.Contains(ritual))
+            defaultRituals.Add(ritual);
+    }
+
     public bool IsUpgraded(string ritual)
     {
-        return unlockedRitualsDict.ContainsKey(ritual);
+        if (unlockedRitualsDict.ContainsKey(ritual))
+        {
+            return true;
+        } else if(defaultRituals.Any(ritualName => ritualName.ritualName == ritual))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void ChangeYieldByIncrementing(string id)

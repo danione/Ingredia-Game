@@ -15,6 +15,7 @@ public class TutorialHealingRitualUnlock : UnlockRitualUpgrade
         if(TutorialManager.instance != null)
         {
             TutorialManager.instance.OnUpgraded(ritualToUnlock.ritualRecipes);
+            GameManager.Instance.GetComponent<RitualManager>()?.AddToDefaultUnlocked(ritualToUnlock);
         }
     }
 }

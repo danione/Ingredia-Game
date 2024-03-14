@@ -144,10 +144,12 @@ public class ScrollSlipUIManager : MonoBehaviour
     // Checks if unlocked - also used when unlocking a ritual
     private void CheckIfUnlocked(RitualScriptableObject ritualScr)
     {
+        if(!ritualToObjectContents.ContainsKey(ritualScr)) { return; }
+
         RitualManager ritualManager = GameManager.Instance.GetComponent<RitualManager>();
         ContentGrimoire content = ritualToObjectContents[ritualScr].gameObject.GetComponent<ContentGrimoire>();
 
-        if (ritualManager.IsUpgraded(ritualScr.ritualName) && ritualToObjectContents.ContainsKey(ritualScr))
+        if (ritualManager.IsUpgraded(ritualScr.ritualName))
         {
             content.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
             content.isUpgraded = true;

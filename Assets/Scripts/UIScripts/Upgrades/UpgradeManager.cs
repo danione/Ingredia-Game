@@ -32,7 +32,16 @@ public class UpgradeManager : MonoBehaviour
 
     public bool WasUpgraded(UpgradeData upgradeData)
     {
-        return upgradesPurchased.Contains(upgradeData);
+        bool isUnlocked = upgradesPurchased.Contains(upgradeData);
+        bool unlockedByDefault = false;
+
+        if(upgradeData.GetType() == typeof(UnlockRitualUpgrade) || upgradeData.GetType() == typeof(TutorialHealingRitualUnlock))
+        {
+            UnlockRitualUpgrade ritual = upgradeData as UnlockRitualUpgrade;
+            unlockedByDefault = GameManager.Instance.GetComponent<RitualManager>()?.IsUpgraded(ritual.ritualToUnlock.ritualName) ?? false;
+            Debug.Log(upgradeData.upgradeName + " " + unlockedByDefault);
+        }
+        return isUnlocked || unlockedByDefault;
     }
 
     public void AddUpgradeCost(UpgradeData data)

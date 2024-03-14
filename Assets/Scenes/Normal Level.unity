@@ -683,6 +683,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: defaultRituals.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: unlockedRituals.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: lockedRituals.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: lockedRituals.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: defaultRituals.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
+    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
+      propertyPath: defaultRituals.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -823,7 +847,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3019187900030061865, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: targets.Array.size
