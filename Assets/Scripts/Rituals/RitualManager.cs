@@ -21,6 +21,7 @@ public class RitualManager : MonoBehaviour
 
     private void InitRituals()
     {
+        lockedRituals = lockedRituals.Except(defaultRituals).ToList();
         unlockedRituals.Clear();
         lockedRitualsDict.Clear();
         unlockedRitualsDict.Clear();

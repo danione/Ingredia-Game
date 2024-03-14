@@ -39,7 +39,6 @@ public class UpgradeManager : MonoBehaviour
         {
             UnlockRitualUpgrade ritual = upgradeData as UnlockRitualUpgrade;
             unlockedByDefault = GameManager.Instance.GetComponent<RitualManager>()?.IsUpgraded(ritual.ritualToUnlock.ritualName) ?? false;
-            Debug.Log(upgradeData.upgradeName + " " + unlockedByDefault);
         }
         return isUnlocked || unlockedByDefault;
     }

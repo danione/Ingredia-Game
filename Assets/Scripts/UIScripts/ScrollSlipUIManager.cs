@@ -1,4 +1,5 @@
 using CodeMonkey.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
@@ -27,7 +28,7 @@ public class ScrollSlipUIManager : MonoBehaviour
         PlayerEventHandler.Instance.ClosedAllOpenMenus += OnCloseMenu;
         GameEventHandler.Instance.UnlockedRitual += CheckIfUnlocked;
         GameEventHandler.Instance.ScrollSlipGenerated += CheckIfScrollCollected;
-        FillInContents();
+        StartCoroutine(WaitToFillInContents());
     }
 
     private void OnDestroy()
@@ -37,6 +38,14 @@ public class ScrollSlipUIManager : MonoBehaviour
         PlayerEventHandler.Instance.ClosedAllOpenMenus -= OnCloseMenu;
         GameEventHandler.Instance.UnlockedRitual -= CheckIfUnlocked;
         GameEventHandler.Instance.ScrollSlipGenerated -= CheckIfScrollCollected;
+    }
+
+    private IEnumerator WaitToFillInContents()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        FillInContents();
     }
 
 
