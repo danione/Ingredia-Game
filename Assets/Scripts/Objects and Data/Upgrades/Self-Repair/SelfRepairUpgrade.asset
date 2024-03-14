@@ -15,5 +15,5 @@ MonoBehaviour:
   upgradeName: Self-Repair
   description: Never think about healing rituals again. Regenerate health when not
     damaged for a certain time.
-  goldCost: 250
+  goldCost: 450
   sophisticationCost: 0

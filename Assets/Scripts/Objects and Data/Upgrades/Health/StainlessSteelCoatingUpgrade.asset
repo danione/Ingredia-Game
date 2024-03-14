@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Greatly increase the base coating (health) of the cauldron.
   goldCost: 750
   sophisticationCost: 0
-  newMaxHealth: 10
+  newMaxHealth: 12

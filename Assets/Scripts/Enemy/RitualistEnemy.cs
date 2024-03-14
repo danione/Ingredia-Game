@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RitualistEnemy : Enemy
 {
-    public static int RitualistEnemyCount = 0;
-
     [SerializeField] private Transform ritualistCircle;
     [SerializeField] private Transform ingredientCircle;
     [SerializeField] private float radiusOfSwap;
@@ -21,7 +19,6 @@ public class RitualistEnemy : Enemy
 
     private void Start()
     {
-        RitualistEnemyCount++;
         ResetEnemy();
     }
 
@@ -78,16 +75,14 @@ public class RitualistEnemy : Enemy
     {
         PlayerEventHandler.Instance.RitualistFinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
-        RitualistEnemyCount--;
         base.DestroyEnemy();
     }
 
     public override void ResetEnemy()
     {
-        RitualistEnemyCount++;
+        base.ResetEnemy();
         stateMachine.Initialise(stateMachine.LookoutState);
         PlayerEventHandler.Instance.RitualistFinishedChanneling += OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady += OnSwapPositionReady;
-        base.ResetEnemy();
     }
 }

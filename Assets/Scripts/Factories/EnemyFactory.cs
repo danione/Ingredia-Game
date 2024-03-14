@@ -160,7 +160,8 @@ public class EnemyFactory : MonoBehaviour
 
         if (position == Vector3.zero) return;
 
-        spawner[enemy].GetProduct(position);
+        Product newEnemy = spawner[enemy].GetProduct(position);
+        newEnemy.GetComponent<Enemy>()?.ResetEnemy();
         currentAliveEnemies++;
         currentStage[index]--;
     }
