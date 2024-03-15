@@ -50,7 +50,7 @@ public class UpgradeTrigger : MonoBehaviour
 
     private void OnResourceCollected(int resouce)
     {
-        if(!isUpgraded && CanAfford())
+        if(!isUpgraded && CanAfford() && !HasExistingRequirements)
         {
             GetComponent<Image>().color = Color.white;
         }

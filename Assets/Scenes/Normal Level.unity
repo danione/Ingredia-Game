@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: defaultRituals.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: unlockedRituals.Array.size
