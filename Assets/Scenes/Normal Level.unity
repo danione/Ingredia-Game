@@ -538,6 +538,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5561326791432327738, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5869578639936926156, guid: 31432dda782558e4593f4597cfe7c437, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -847,7 +851,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3019187900030061865, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: targets.Array.size
@@ -879,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[0].ammo
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[1].ammo
