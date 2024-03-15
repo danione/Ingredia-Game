@@ -12,16 +12,6 @@ public class RitualistEnemy : Enemy
 
     private RitualistStateMachine stateMachine;
 
-    private void Awake()
-    {
-        stateMachine = new RitualistStateMachine(ritualistCircle, ingredientCircle);
-    }
-
-    private void Start()
-    {
-        ResetEnemy();
-    }
-
     private void OnFinishedChanneling(Transform circle)
     {
         if (circle != ritualistCircle) return;
@@ -81,6 +71,8 @@ public class RitualistEnemy : Enemy
     public override void ResetEnemy()
     {
         base.ResetEnemy();
+        if(stateMachine == null)
+            stateMachine = new RitualistStateMachine(ritualistCircle, ingredientCircle);
         stateMachine.Initialise(stateMachine.LookoutState);
         PlayerEventHandler.Instance.RitualistFinishedChanneling += OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady += OnSwapPositionReady;

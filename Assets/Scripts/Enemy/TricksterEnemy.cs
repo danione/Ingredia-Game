@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class TricksterEnemy : Enemy
 {
@@ -12,15 +10,6 @@ public class TricksterEnemy : Enemy
     private TricksterStateMachine m_StateMachine;
     private List<GameObject> capturedIngredients = new();
     private Dictionary<GameObject, int> ingredients = new();
-
-    private void Start()
-    {
-        m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0), this, enemyData);
-        m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
-        GameEventHandler.Instance.CapturedNeededIngredients += OnCapturedNeededIngredients;
-        GameEventHandler.Instance.FinishedThrowingTrickster += OnFinishedThrowing;
-        GameEventHandler.Instance.DestroyedObject += OnDestroyedObject;
-    }
 
     private void Update()
     {
@@ -48,6 +37,8 @@ public class TricksterEnemy : Enemy
         base.DestroyEnemy();
         try
         {
+            GameEventHandler.Instance.CapturedNeededIngredients -= OnCapturedNeededIngredients;
+            GameEventHandler.Instance.FinishedThrowingTrickster -= OnFinishedThrowing;
             GameEventHandler.Instance.DestroyedObject -= OnDestroyedObject;
         }
         catch(Exception e) { Debug.LogException(e); }
@@ -70,6 +61,8 @@ public class TricksterEnemy : Enemy
         base.ResetEnemy();
         try
         {
+            GameEventHandler.Instance.CapturedNeededIngredients += OnCapturedNeededIngredients;
+            GameEventHandler.Instance.FinishedThrowingTrickster += OnFinishedThrowing;
             GameEventHandler.Instance.DestroyedObject += OnDestroyedObject;
         }
         catch (Exception e) { Debug.LogException(e); }
@@ -77,9 +70,8 @@ public class TricksterEnemy : Enemy
         if(m_StateMachine == null)
         {
             m_StateMachine = new TricksterStateMachine(capturedIngredients, maxTimeGathering, maxIngredientsNeeded, transform.GetChild(0), this, enemyData);
-            m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
         }
-        m_StateMachine.TransitiontTo(m_StateMachine.TricksterGatheringState);
+        m_StateMachine.Initialise(m_StateMachine.TricksterGatheringState);
     }
 
 
