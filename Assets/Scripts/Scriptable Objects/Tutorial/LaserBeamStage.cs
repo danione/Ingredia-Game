@@ -13,6 +13,7 @@ public class LaserBeamStage : TutorialStage
 
     public override void NextStage()
     {
+        GameEventHandler.Instance.LaserDeactivate();
         GameEventHandler.Instance.DestroyedEnemy -= TutorialManager.instance.OnWallDestroyed;
     }
 

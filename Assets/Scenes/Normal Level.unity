@@ -898,6 +898,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7652357504156553977, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: movementSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652357504156553977, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: defaultMovementSpeed
       value: 12
       objectReference: {fileID: 0}

@@ -21,6 +21,7 @@ public class OverloadSkill
     {
         PlayerEventHandler.Instance.LaserFired -= OnFiringLaser;
         PlayerEventHandler.Instance.StoppedLaser -= OnStoppingLaser;
+        PlayerEventHandler.Instance.PlayerDied -= OnPlayerDies;
     }
 
     private void OnPlayerDies()
@@ -32,6 +33,7 @@ public class OverloadSkill
     private void OnStoppingLaser()
     {
         isActive = false;
+        laser.Refresh();
     }
 
     private void OnFiringLaser(bool isPlayerPressingFiring)
