@@ -65,6 +65,7 @@ public class RitualistEnemy : Enemy
     {
         PlayerEventHandler.Instance.RitualistFinishedChanneling -= OnFinishedChanneling;
         stateMachine.SelectIngredientState.SwapPositionReady -= OnSwapPositionReady;
+        ingredientCircle.gameObject.SetActive(false);
         base.DestroyEnemy();
     }
 
