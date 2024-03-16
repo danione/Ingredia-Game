@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Medium movement speed upgrade which allows you to travel much faster
   goldCost: 300
   sophisticationCost: 0
-  newMovementSpeed: 16
+  newMovementSpeed: 18

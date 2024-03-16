@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
+    [SerializeField] private SteamballProjectile projectile;
     private Dictionary<UpgradeData, int> upgradeCost = new();
 
     private HashSet<UpgradeData> upgradesPurchased = new ();
@@ -13,14 +14,14 @@ public class UpgradeManager : MonoBehaviour
     private void Start()
     {
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradePurchased;
-        SceneManager.sceneLoaded += OnSceneLoaded;
         PlayerEventHandler.Instance.PlayerDied += OnDeath;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDestroy()
     {
         GameEventHandler.Instance.UpgradeTriggered -= OnUpgradePurchased;
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
         PlayerEventHandler.Instance.PlayerDied -= OnDeath;
     }
 
@@ -28,6 +29,24 @@ public class UpgradeManager : MonoBehaviour
     {
         upgradeCost.Clear();
         upgradesPurchased.Clear();
+        projectile.ResetAffectingPlayer();
+    }
+
+    void OnSceneUnloaded(Scene scene)
+    {
+        if(scene.name == "Normal Level")
+        {
+            OnDeath();
+        }
+        else
+        {
+            newScene = true;
+            foreach (var upgrade in upgradesPurchased)
+            {
+                GameEventHandler.Instance.UpgradeTrigger(upgrade);
+            }
+            newScene = false;
+        }
     }
 
     public bool WasUpgraded(UpgradeData upgradeData)
@@ -61,14 +80,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {   
-        newScene = true;
-        foreach(var upgrade in upgradesPurchased) { 
-            GameEventHandler.Instance.UpgradeTrigger(upgrade);
-        }
-        newScene = false;
-    }
+
 
     public bool CanAffordUpgrades()
     {

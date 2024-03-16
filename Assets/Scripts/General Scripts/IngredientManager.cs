@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IngredientManager : MonoBehaviour
 {
@@ -13,11 +14,21 @@ public class IngredientManager : MonoBehaviour
     {
         ingredientsSet = ingredients.ToHashSet();
         PlayerEventHandler.Instance.PlayerDied += RevertToDefault;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDestroy()
     {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
         PlayerEventHandler.Instance.PlayerDied -= RevertToDefault;
+    }
+
+    private void OnSceneUnloaded(Scene a)
+    {
+        if(a.name == "Normal Level")
+        {
+            RevertToDefault();
+        }
     }
 
     public void UnlockIngredient(IngredientData ingredient)

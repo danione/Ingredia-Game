@@ -28,6 +28,7 @@ public class PlayerInventory: MonoBehaviour
         PlayerEventHandler.Instance.BenevolentRitualCompleted += OnRitualCompleted;
         GameEventHandler.Instance.SpawnGoldenNugget += AddGold;
         PlayerEventHandler.Instance.PlayerDied += OnDeath;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDestroy()
@@ -38,8 +39,15 @@ public class PlayerInventory: MonoBehaviour
             PlayerEventHandler.Instance.BenevolentRitualCompleted -= OnRitualCompleted;
             GameEventHandler.Instance.SpawnGoldenNugget -= AddGold;
             PlayerEventHandler.Instance.PlayerDied -= OnDeath;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
         }
         catch { }
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        OnDeath();
     }
 
 
@@ -63,7 +71,7 @@ public class PlayerInventory: MonoBehaviour
     {
         foreach (var weapon in weapons)
         {
-            if (weapon.IsUnlimited) continue;
+            weapon.Reset();
             weapon.ammo = 0;
         }
     }

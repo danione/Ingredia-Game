@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour, IUnitStats
 {
+    [SerializeField] private float defaultStartingHealth;
     [SerializeField] private float maxHealth;
     [SerializeField] private float maxArmour;
     [SerializeField] private float healthRegenTime;
@@ -25,7 +26,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     private void Start()
     {
-        health = maxHealth;
+        health = defaultStartingHealth;
         SceneManager.sceneLoaded += OnLevelLoaded;
     }
 
@@ -41,7 +42,8 @@ public class PlayerStats : MonoBehaviour, IUnitStats
 
     private void OnLevelLoaded(Scene a, LoadSceneMode b)
     {
-        health = maxHealth;
+        maxHealth = defaultStartingHealth;
+        health = defaultStartingHealth;
         PlayerEventHandler.Instance.AdjustHealth();
     }
 

@@ -299,7 +299,7 @@ MonoBehaviour:
   - Dangerous Object
   direction: {x: 0, y: 1, z: 0}
   strength: 1
-  areaOfEffect: 6
+  areaOfEffect: 10
 --- !u!114 &1465080288547946469
 MonoBehaviour:
   m_ObjectHideFlags: 0

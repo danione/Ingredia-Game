@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -49,6 +48,7 @@ public class Ritual : IRitual
         AddRange(GetRitualStages(), currentRitualValues);
         AddRange(GetRitualStages(), defaultRitualValues);
         isEnabled = false;
+        currentReward = 0;
     }
 
     private float GetSophistication()
@@ -65,6 +65,7 @@ public class Ritual : IRitual
         PlayerEventHandler.Instance.CollectedIngredient += OnIngredientCollected;
         PlayerEventHandler.Instance.PerformedRitual += AwardSophistication;
     }
+
 
     protected Dictionary<IngredientData, int> GetRitualStages()
     {

@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Basic movement speed upgrade
   goldCost: 60
   sophisticationCost: 0
-  newMovementSpeed: 12
+  newMovementSpeed: 15

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SteamballProjectile : SimpleProjectile
 {
@@ -31,7 +30,7 @@ public class SteamballProjectile : SimpleProjectile
                 {
                     stats.TakeDamage(strength);
                 }
-                else if (c.CompareTag("Dangerous Object") || c.CompareTag("Projectile"))
+                else if (c.CompareTag("Dangerous Object") || c.CompareTag("Projectile") || c.CompareTag("Ingredient"))
                 {
                     GameEventHandler.Instance.DestroyObject(c.gameObject);
                 }
@@ -53,5 +52,10 @@ public class SteamballProjectile : SimpleProjectile
     public void StopAffectingPlayer()
     {
         isAffectingPlayer = false;
+    }
+
+    public void ResetAffectingPlayer()
+    {
+        isAffectingPlayer = true;
     }
 }

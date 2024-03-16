@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Final movement speed upgrade - you are lightning fast
   goldCost: 750
   sophisticationCost: 0
-  newMovementSpeed: 20
+  newMovementSpeed: 22

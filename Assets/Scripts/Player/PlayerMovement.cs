@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour, IMovable
 {
+    [SerializeField] private float defaultMovementSpeed;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
@@ -15,6 +17,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
         InputEventHandler.instance.PickDirection += OnPickRandomDirection;
         InputEventHandler.instance.MoveTowardsTarget += OnMoveTowards;
         PlayerEventHandler.Instance.MovementSpeedAdjusted += OnMoveSpeedAdjusted;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDestroy()
@@ -23,6 +26,13 @@ public class PlayerMovement : MonoBehaviour, IMovable
         InputEventHandler.instance.PickDirection -= OnPickRandomDirection;
         InputEventHandler.instance.MoveTowardsTarget -= OnMoveTowards;
         PlayerEventHandler.Instance.MovementSpeedAdjusted -= OnMoveSpeedAdjusted;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        modifierCount = 0;
+        movementSpeed = defaultMovementSpeed;
     }
 
     public void Move()

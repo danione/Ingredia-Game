@@ -687,58 +687,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultRituals.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: unlockedRituals.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: lockedRituals.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: lockedRituals.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultRituals.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: faa5b01be259ed2458e0bdcfa06e3e46, type: 2}
-    - target: {fileID: 1845047172615663189, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultRituals.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
     - target: {fileID: 6594054986871680392, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: ingredients.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: ingredients.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: ingredients.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultIngredients.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultIngredients.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ac1172035fed0804fa6c19e3655e81aa, type: 2}
-    - target: {fileID: 8114982767394219878, guid: 54c9e2b5a2723a142b8353fcb1bc7673, type: 3}
-      propertyPath: defaultIngredients.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: c0a16390ced126749bb3d58e0d4615f6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -853,6 +805,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: defaultStartingHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3019187900030061865, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: targets.Array.size
       value: 2
@@ -887,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[1].ammo
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[2].ammo
@@ -940,6 +896,10 @@ PrefabInstance:
     - target: {fileID: 6735097968459126054, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652357504156553977, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: defaultMovementSpeed
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7652357504156553977, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: movementSpeedModifier
