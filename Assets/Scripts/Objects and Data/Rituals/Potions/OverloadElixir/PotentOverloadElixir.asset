@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PotentOverloadElixir
   m_EditorClassIdentifier: 
   potionName: Potent Overload Elixir
-  durationInSeconds: 15
+  durationInSeconds: 25
   usageStrengthInSeconds: 10

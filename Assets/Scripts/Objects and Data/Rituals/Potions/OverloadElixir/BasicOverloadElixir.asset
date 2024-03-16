@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BasicOverloadElixir
   m_EditorClassIdentifier: 
   potionName: Weak Overload Elixir
-  durationInSeconds: 10
+  durationInSeconds: 15
   usageStrengthInSeconds: 5

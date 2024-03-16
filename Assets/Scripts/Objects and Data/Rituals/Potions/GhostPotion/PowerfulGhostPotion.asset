@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: PowerfulGhostPotion
   m_EditorClassIdentifier: 
   potionName: Powerful Spectral Potion
-  countDownTimer: 20
-  powerPoolValue: 15
+  countDownTimer: 45
   target: {fileID: 8573449581943901330, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}

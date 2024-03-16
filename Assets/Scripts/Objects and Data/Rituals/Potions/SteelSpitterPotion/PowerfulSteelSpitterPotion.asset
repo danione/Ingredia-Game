@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PowerfulSteelSpitterPotion
   m_EditorClassIdentifier: 
   potionName: Powerful Steel Spitter Potion
-  amount: 35
+  amount: 25

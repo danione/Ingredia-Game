@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PotentProtectionElixir
   m_EditorClassIdentifier: 
   potionName: Potent Protection Elixir
-  durationInSeconds: 10
+  durationInSeconds: 25

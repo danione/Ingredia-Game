@@ -25,3 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc8f3b882280669428498478ba60349f, type: 2}
   - {fileID: 11400000, guid: a0ec75829853daa4d8c662c01dd2d67e, type: 2}
   - {fileID: 11400000, guid: cde7fe18bb0817a4982bcc40049f2d9b, type: 2}
+  iterationRewards: 050000000f00000019000000

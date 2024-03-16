@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PowerfulHealingPotion
   m_EditorClassIdentifier: 
   potionName: Powerful Endurance Potion
-  amount: 10
+  amount: 5

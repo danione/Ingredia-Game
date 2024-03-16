@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BasicProtectionElixir
   m_EditorClassIdentifier: 
   potionName: Weak Protection Elixir
-  durationInSeconds: 5
+  durationInSeconds: 10

@@ -9,6 +9,7 @@ public class RitualScriptableObject : ScriptableObject
     public float sophisticationReward;
     public List<RitualRecipe> ritualRecipes = new();
     public List<PotionsData> potionRewardData;
+    public List<int> iterationRewards;
 }
 
 [System.Serializable]

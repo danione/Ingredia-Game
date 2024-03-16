@@ -33,7 +33,7 @@ public class PlayerPotionsManager: MonoBehaviour
             if (potion.GetType() == potionsInInventory[i].GetType())
             {
                 potionsQuantity[i]++;
-                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.name, potionsQuantity[i], i + 1);
+                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.potionName, potionsQuantity[i], i + 1);
                 return;
             }
         }
@@ -46,7 +46,7 @@ public class PlayerPotionsManager: MonoBehaviour
                 potionsInInventory[i] = potion;
                 potionsQuantity[i]++;
 
-                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.name, potionsQuantity[i], i + 1);
+                PlayerEventHandler.Instance.UpdateInventoryPotions(potion.potionName, potionsQuantity[i], i + 1);
                 return;
             }
         }

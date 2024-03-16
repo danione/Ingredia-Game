@@ -28,4 +28,4 @@ MonoBehaviour:
   potionRewardData:
   - {fileID: 11400000, guid: 8b3f64204d13745439a969d1c6b4c164, type: 2}
   - {fileID: 11400000, guid: 4674b776ac37bfa4090c11b3d93a6902, type: 2}
-  - {fileID: 11400000, guid: d8fc47e54fac8bc4b82de58e60bbc331, type: 2}
+  iterationRewards: 
