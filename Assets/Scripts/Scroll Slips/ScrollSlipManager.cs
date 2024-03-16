@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScrollSlipManager : MonoBehaviour
 {
-    private List<RitualScriptableObject> unlockedScrollSlips = new();
-    private List<RitualScriptableObject> availableScrollSlips = new();
-    private bool isTutorial = false;
+    [SerializeField] private List<RitualScriptableObject> unlockedScrollSlips = new();
+    [SerializeField] private List<RitualScriptableObject> availableScrollSlips = new();
+    [SerializeField] private bool isTutorial = false;
 
 
     private void Start()
@@ -14,6 +15,23 @@ public class ScrollSlipManager : MonoBehaviour
         GameEventHandler.Instance.UnlockedScrollSlip += OnScrollSlipUnlock;
         GameEventHandler.Instance.SetTutorialMode += OnSetTutorialMode;
         availableScrollSlips = GetComponent<RitualManager>().GetAllRituals();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        GameEventHandler.Instance.UnlockedScrollSlip -= OnScrollSlipUnlock;
+        GameEventHandler.Instance.SetTutorialMode -= OnSetTutorialMode;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+    }
+
+    private void OnSceneLoaded(Scene a, LoadSceneMode b)
+    {
+        if(a.name == "Normal Level")
+        {
+            isTutorial = false;
+        }
     }
 
     public bool IsScrollUnlocked(RitualScriptableObject scroll)
