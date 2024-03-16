@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ScrollSlipManager : MonoBehaviour
 {
-    [SerializeField] private List<RitualScriptableObject> unlockedScrollSlips = new();
-    [SerializeField] private List<RitualScriptableObject> availableScrollSlips = new();
-    [SerializeField] private bool isTutorial = false;
+    private List<RitualScriptableObject> unlockedScrollSlips = new();
+    private List<RitualScriptableObject> availableScrollSlips = new();
+    private bool isTutorial = false;
 
 
     private void Start()

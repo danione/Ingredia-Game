@@ -162,3 +162,123 @@ Log: Requires:
 Log: Requires: 
 
 
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+
+Log: Requires: Repair Ritual
+UnityEngine.Debug:Log (object)
+UpgradeTrigger:Upgrade (CodeMonkey.Utils.Button_UI) (at Assets/Scripts/UIScripts/Upgrades/UpgradeTrigger.cs:110)
+UpgradesUIManager/<>c__DisplayClass10_0:<Initialise>b__0 () (at Assets/Scripts/General Scripts/UpgradesUIManager.cs:77)
+CodeMonkey.Utils.Button_UI:OnPointerClick (UnityEngine.EventSystems.PointerEventData) (at Assets/CodeMonkey/Utils/Button_UI.cs:98)
+UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+
+

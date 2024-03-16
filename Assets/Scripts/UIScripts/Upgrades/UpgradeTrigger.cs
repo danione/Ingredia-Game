@@ -13,6 +13,7 @@ public class UpgradeTrigger : MonoBehaviour
     [SerializeField] private UpgradeData upgradeInformation;
     [SerializeField] private GameObject upgradeSubject;
     [SerializeField] private List<UpgradeData> requirements;
+    private UpgradeManager upgradeManager;
 
     private bool isUpgraded = false;
     private bool HasExistingRequirements => requirements.Count > 0;
@@ -24,8 +25,17 @@ public class UpgradeTrigger : MonoBehaviour
         GameEventHandler.Instance.UpgradeTriggered += OnUpgradedSomewhere;
         PlayerEventHandler.Instance.CollectedGold += OnResourceCollected;
         PlayerEventHandler.Instance.CollectedSophistication += OnResourceCollected;
-
+        upgradeManager = GameManager.Instance.GetComponent<UpgradeManager>();
         playerInventory = PlayerController.Instance.inventory;
+
+        for (int i = requirements.Count - 1; i >= 0; i--)
+        {
+            if (upgradeManager.WasUpgraded(requirements[i]))
+            {
+                requirements.RemoveAt(i);
+            }
+        }
+
         if (HasExistingRequirements || !CanAfford())
         {
             GetComponent<Image>().color = Color.gray;
