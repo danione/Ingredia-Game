@@ -17,3 +17,4 @@ MonoBehaviour:
     damaged for a certain time.
   goldCost: 450
   sophisticationCost: 0
+  ritual: {fileID: 11400000, guid: 65cb4ba941a43cc4ca49af6c0e3ea420, type: 2}
