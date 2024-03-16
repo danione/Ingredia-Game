@@ -207,7 +207,7 @@ MonoBehaviour:
   postTutorialSceneName: Normal Level
   tickUntilNextScene: 3
   SwapUI: {fileID: 672824200}
-  forwardToStage: 6
+  forwardToStage: 0
 --- !u!1 &672665152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1294,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
+      propertyPath: defaultStartingHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.data[0].ammo
       value: 0
