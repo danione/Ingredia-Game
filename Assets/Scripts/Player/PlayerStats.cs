@@ -27,21 +27,28 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     private void Start()
     {
         health = defaultStartingHealth;
-        SceneManager.sceneLoaded += OnLevelLoaded;
+        SceneManager.sceneUnloaded += OnLevelUnloaded;
     }
 
     private void OnDestroy()
     {
         try
         {
-            SceneManager.sceneLoaded -= OnLevelLoaded;
+            SceneManager.sceneUnloaded -= OnLevelUnloaded;
 
         }
         catch { }
     }
 
-    private void OnLevelLoaded(Scene a, LoadSceneMode b)
+    private void OnLevelUnloaded(Scene a)
     {
+        if (a.name == "Normal Level")
+        {
+            isArmourEnabled = false;
+            StopCoroutine(PermaHealing());
+            armour = 0;
+            isSelfRegenArmour = false;
+        }
         maxHealth = defaultStartingHealth;
         health = defaultStartingHealth;
         PlayerEventHandler.Instance.AdjustHealth();
