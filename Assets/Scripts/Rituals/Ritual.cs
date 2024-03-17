@@ -130,6 +130,7 @@ public class Ritual : IRitual
             countCompleted++;
             if(countCompleted >= ritualData.iterationRewards[currentReward])
             {
+                GameEventHandler.Instance.UpgradeImproved(ritualData.ritualName);
                 IncrementPotionYield();
             }
         }
