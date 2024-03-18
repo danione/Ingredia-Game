@@ -68,7 +68,6 @@ public class GuardianPoint : MonoBehaviour, IUnitStats
 
     public void TakeDamage(float amount)
     {
-        Debug.Log(amount);
         health -= amount;
         if (health <= 0) Die();
     }

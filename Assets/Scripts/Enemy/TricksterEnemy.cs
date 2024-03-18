@@ -81,6 +81,11 @@ public class TricksterEnemy : Enemy
 
         for (int i = capturedIngredients.Count - 1; i >= 0; i--) 
         {
+            if (capturedIngredients[i] == null)
+            {
+                capturedIngredients.RemoveAt(i);
+                continue;
+            }
             capturedIngredients[i].GetComponent<FallableObject>().SwapToMove();
             ingredients.Remove(capturedIngredients[i]);
             GameEventHandler.Instance.SpawnATricksterProjectileAt(capturedIngredients[i].transform.position, this);

@@ -10,14 +10,14 @@ public class ProtectionBarrier : MonoBehaviour
     {
         if (targets.Contains(other.tag))
         {
-            Destroy(other.gameObject);
+            GameEventHandler.Instance.DestroyObject(other.gameObject);
             return;
         }
         
         SimpleProjectile proj = other.GetComponent<SimpleProjectile>();
         if (proj != null && !proj.IsSourcePlayer())
         {
-            Destroy(other.gameObject);
+            GameEventHandler.Instance.DestroyObject(other.gameObject);
         }
     }
 }

@@ -14,7 +14,7 @@ public class MainCamera : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

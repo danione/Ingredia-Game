@@ -39,7 +39,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        if (instance == null) { instance = this; } else { Destroy(this); }
+        if (instance == null) { instance = this; } else { Destroy(gameObject); }
 
         ingredientsFactory = spawnManager.GetComponent<IngredientsFactory>();
         enemyFactory = spawnManager.GetComponent<EnemyFactory>();

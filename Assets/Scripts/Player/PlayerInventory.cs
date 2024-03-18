@@ -122,14 +122,16 @@ public class PlayerInventory: MonoBehaviour
 
     public void AddToCauldron(IIngredient ingredient)
     {
-        if (cauldronContents.Count >= size) return;
-
         if(cauldronContents.ContainsKey(ingredient.Data.ingredientName))
         {
             cauldronContents[ingredient.Data.ingredientName] += 1;
         } else if (cauldronContents.Count < size)
         {
             cauldronContents[ingredient.Data.ingredientName] = 1;
+        }
+        else
+        {
+            return;
         }
 
         PlayerEventHandler.Instance.CollectIngredient(ingredient, cauldronContents[ingredient.Data.ingredientName]);

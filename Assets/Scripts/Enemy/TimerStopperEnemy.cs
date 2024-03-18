@@ -13,8 +13,6 @@ public class TimerStopperEnemy : Enemy
     public override void ResetEnemy()
     {
         base.ResetEnemy();
-        Debug.Log(_stateMachine == null);
-
         if(_stateMachine == null)
         {
             _stateMachine = new TimeStopperStateMachine(maxStopperPoints, enemyData.spawnBoundaries, timeInStopperState, gameObject);
