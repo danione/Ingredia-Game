@@ -47,6 +47,11 @@ public class UpgradeTrigger : MonoBehaviour
         }
     }
 
+    public bool hasBeenUpgraded()
+    {
+        return isUpgraded;
+    }
+
     private void OnUpgradedSomewhere(UpgradeData data)
     {
         if (data == upgradeInformation) return;
