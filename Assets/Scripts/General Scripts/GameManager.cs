@@ -92,7 +92,7 @@ public class GameManager: MonoBehaviour
         }
         else
         {
-            Debug.Log("Destroyed an object");
+            Debug.Log(System.DateTime.Now + " Destroyed an object");
             Destroy(obj.gameObject);
         }
     }
