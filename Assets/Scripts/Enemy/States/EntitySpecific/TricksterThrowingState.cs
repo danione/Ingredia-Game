@@ -67,11 +67,11 @@ public class TricksterThrowingState : IState
             capturedIngredients.RemoveAt(i);
 
             currentTime = 0;
+        }
 
-            if (capturedIngredients.Count == 0)
-            {
-                Finished();
-            }
+        if (capturedIngredients.Count == 0)
+        {
+            Finished();
         }
     }
 }

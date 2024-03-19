@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721426842820912189, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: defaultStartingHealth
-      value: 5
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 3019187900030061865, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: targets.Array.size
@@ -823,11 +823,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: gold
-      value: 0
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: sophistication
-      value: 0
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 5262753251196657516, guid: 9d5cfd363a4353142a9660d53282ba55, type: 3}
       propertyPath: weapons.Array.size
