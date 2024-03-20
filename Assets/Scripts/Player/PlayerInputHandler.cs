@@ -48,9 +48,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         movement.Move();
 
-        UseOrRemoveIngredients();
+        if(Time.timeScale != 0f)
+        {
+            UseOrRemoveIngredients();
 
-        UseAPowerUp();
+            UseAPowerUp();
+        }
+        
 
         OpenMenuUI();
     }
@@ -82,13 +86,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void UsePotion()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) inventory.UsePotion(0);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) inventory.UsePotion(0);
         else if(Input.GetKeyDown(KeyCode.Alpha2)) inventory.UsePotion(1);
         else if(Input.GetKeyDown(KeyCode.Alpha3)) inventory.UsePotion(2);
     }
 
     public void EmptyCauldron()
     {
+        if (Time.timeScale == 0) return;
+
         if (Input.GetKeyDown(KeyCode.Z) && isNotOnCooldown)
         {
             isNotOnCooldown = false;
@@ -171,6 +178,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void AttemptRitual()
     {
+        if (Time.timeScale == 0) return;
         if (Input.GetKeyDown(KeyCode.R) && inventory.possibleRitual != null && inventory.possibleRitual.IsAvailable)
         {
 
