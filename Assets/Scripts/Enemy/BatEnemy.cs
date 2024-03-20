@@ -70,7 +70,7 @@ public class BatEnemy : Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasCollided && !isUpgraded && other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null)
+        if(!hasCollided && !isUpgraded && other.CompareTag("Enemy"))
         {
             hasCollided = true;
             fuser.Fuse(this);

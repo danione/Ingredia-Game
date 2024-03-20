@@ -40,7 +40,7 @@ public class EnemyFactory : MonoBehaviour
         StartCoroutine(spawnPointManager.ResetNextPoint());
         GameEventHandler.Instance.DestroyedEnemy += OnEnemyDestroyed;
         GameEventHandler.Instance.FuseBats += OnFusedTwoBats;
-
+        GameEventHandler.Instance.NoDropDestroyedEnemy += OnNoDropDestroy;
         StartCoroutine(WaitEnd());
     }
 
@@ -192,7 +192,13 @@ public class EnemyFactory : MonoBehaviour
         Product product = spawner[upgradedBat]._pool.Get();
         product.gameObject.transform.position = position;
         product.ResetObject();
-        currentAliveEnemies++;
+        currentAliveEnemies--;
+    }
+
+    private void OnNoDropDestroy()
+    {
+        if(currentAliveEnemies > 0)
+            currentAliveEnemies--;
     }
 
     public void SetTutorialCurrency()

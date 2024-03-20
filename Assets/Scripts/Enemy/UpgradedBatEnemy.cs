@@ -52,6 +52,7 @@ public class UpgradedBatEnemy : BatEnemy
             else 
             {
                 GameEventHandler.Instance.DestroyObject(bat.gameObject);
+                GameEventHandler.Instance.NoDropDestroyedEnemy();
                 FusingState();
             }
 

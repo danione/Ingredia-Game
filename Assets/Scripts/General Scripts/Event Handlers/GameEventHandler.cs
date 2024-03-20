@@ -48,11 +48,17 @@ public class GameEventHandler : MonoBehaviour
     public Action<int> StageChanged;
     public Action<RitualScriptableObject> UnlockedRitual;
     public Action<string> UpgradeImproved;
+    public Action NoDropDestroyedEnemy;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void NoDropDestroyEnemy()
+    {
+        NoDropDestroyedEnemy?.Invoke();
     }
 
     public void UpgradeImprove(string name)
