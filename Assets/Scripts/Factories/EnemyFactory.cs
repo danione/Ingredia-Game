@@ -191,6 +191,7 @@ public class EnemyFactory : MonoBehaviour
     {
         Product product = spawner[upgradedBat]._pool.Get();
         product.gameObject.transform.position = position;
+        product.ResetObject();
         currentAliveEnemies++;
     }
 

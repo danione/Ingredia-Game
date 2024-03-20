@@ -8,7 +8,7 @@ public class UpgradedBatEnemy : BatEnemy
     [SerializeField] private float revulsionCooldown = 2f;
     private bool isRevulted = false;
 
-    protected override void Shoot()
+    public override void Shoot()
     {
         if(_state.CurrentState == _state.FusionAttackState)
         {

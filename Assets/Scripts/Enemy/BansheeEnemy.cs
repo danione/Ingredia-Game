@@ -11,6 +11,7 @@ public class BansheeEnemy : Enemy
 
     [SerializeField] private float cooldownWaitingSeconds;
     [SerializeField] private float cooldownDetectionOfPlayer;
+    [SerializeField] private EnemyStateData _enemyStateData;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class BansheeEnemy : Enemy
     {
         if(_state == null)
         {
-            _state = new BansheeStateMachine(this, enemyData);
+            _state = new BansheeStateMachine(this, enemyData, _enemyStateData);
             _state.Initialise(_state.MoveState);
         } else
             _state.TransitiontTo(_state.MoveState);

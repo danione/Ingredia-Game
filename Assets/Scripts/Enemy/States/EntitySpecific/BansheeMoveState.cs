@@ -7,7 +7,7 @@ public class BansheeMoveState : MoveState
     private Vector3 m_targetPosition;
     private const float differenceTolerance = 0.3f;
 
-    public BansheeMoveState(PlayerController controller, Enemy currentUnit, float movementSpeed, BoundariesData boundaries) : base(controller, currentUnit, movementSpeed)
+    public BansheeMoveState(PlayerController controller, Enemy currentUnit, EnemyStateData stateData, BoundariesData boundaries) : base(controller, currentUnit, stateData)
     {
         m_Bounds = boundaries;
     }
@@ -37,7 +37,7 @@ public class BansheeMoveState : MoveState
 
         if (!HasReachedDestination())
         {
-            currentUnit.transform.position += direction * movementSpeed * Time.deltaTime;
+            currentUnit.transform.position += direction * enemyStateData.MovementSpecs.movementSpeed * Time.deltaTime;
         }
         else
         {

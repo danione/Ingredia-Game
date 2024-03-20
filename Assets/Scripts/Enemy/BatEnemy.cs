@@ -5,9 +5,6 @@ using UnityEngine;
 public class BatEnemy : Enemy
 {
     protected BatRitualistStateMachine _state;
-
-    private float currentPositionDifferenceX;
-
     protected bool attacked = false;
     [NonSerialized]public bool hasCollided = false;
     private static BatFuser fuser;
@@ -15,27 +12,29 @@ public class BatEnemy : Enemy
     [SerializeField] protected ObjectsSpawner spawner;
     [SerializeField] private float spawnCooldown;
     [SerializeField] private float upgradedStateDuration;
-    [SerializeField] private float boundaryMovement;
     [SerializeField] private GameObject SpawnManager;
-    [SerializeField] private float trackingCooldown;
+    [SerializeField] private EnemyStateData stateData;
 
 
     private void Start()
     {
         if (fuser == null) fuser = SpawnManager.GetComponent<BatFuser>();
-        _state = new BatRitualistStateMachine(PlayerController.Instance, this, enemyData.movementSpeed);
+        _state = new BatRitualistStateMachine(PlayerController.Instance, this, stateData);
         _state.Initialise(_state.MoveState);
-        currentPositionDifferenceX = GetCurrentPositionDifferenceX();
     }
 
     public override void ResetEnemy()
     {
         base.ResetEnemy();
-        if(_state != null)
+        if(_state == null)
+        {
+            _state = new BatRitualistStateMachine(PlayerController.Instance, this, stateData);
             _state.Initialise(_state.MoveState);
+        }
+        else
+            _state.TransitiontTo(_state.MoveState);
         attacked = false;
         hasCollided = false;
-        isUpgraded = false;
     }
 
     private void Update()
@@ -50,36 +49,12 @@ public class BatEnemy : Enemy
                 Shoot();
             }
         }
-        else if(_state.CurrentState == _state.MoveState)
-        {
-            FollowPlayerAndShoot();
-        }
     }
 
-    private void FollowPlayerAndShoot()
+    public virtual void Shoot()
     {
-        currentPositionDifferenceX = GetCurrentPositionDifferenceX();
-        if (currentPositionDifferenceX < boundaryMovement && !attacked)
-        {
-            attacked = true;
-            _state.TransitiontTo(_state.IdleState);
-            StartCoroutine(TrackingPlayerCooldown());
-            Shoot();
-        }
-        else if (currentPositionDifferenceX >= boundaryMovement)
-        {
-            _state.TransitiontTo(_state.MoveState);
-        }
-    }
-
-    private IEnumerator TrackingPlayerCooldown()
-    {
-        yield return new WaitForSeconds(trackingCooldown);
-        _state.TransitiontTo(_state.MoveState);
-    }
-
-    protected virtual void Shoot()
-    {
+        if (attacked) return;
+        attacked = true;
         var creature = spawner._pool.Get();
         if (creature == null) return;
 
@@ -87,10 +62,6 @@ public class BatEnemy : Enemy
         StartCoroutine(Cooldown());
     }
 
-    private float GetCurrentPositionDifferenceX()
-    {
-        return Mathf.Abs(PlayerController.Instance.gameObject.transform.position.x - transform.position.x);
-    }
 
     IEnumerator Cooldown()
     {
@@ -100,7 +71,7 @@ public class BatEnemy : Enemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!hasCollided && other.CompareTag("Enemy") && !isUpgraded)
+        if(!hasCollided && !isUpgraded && other.CompareTag("Enemy") && other.GetComponent<BatEnemy>() != null)
         {
             hasCollided = true;
             fuser.Fuse(this);

@@ -134,6 +134,7 @@ MonoBehaviour:
   boundaryMovement: 2
   SpawnManager: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
   trackingCooldown: 1.5
+  stateData: {fileID: 11400000, guid: d650b90cb1d43dd459d29f76abb542c5, type: 2}
   rapidShootRateCooldown: 0.3
   fusingStateAttackDuration: 2
   revulsionCooldown: 2

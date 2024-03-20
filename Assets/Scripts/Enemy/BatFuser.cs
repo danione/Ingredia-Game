@@ -15,7 +15,7 @@ public class BatFuser : MonoBehaviour
         {
             enemy1 = enemy;
         }
-        else if (enemy2 == null)
+        else if (enemy2 == null && enemy != enemy1)
         {
             enemy2 = enemy;
         }
@@ -29,12 +29,10 @@ public class BatFuser : MonoBehaviour
     {
         Vector3 position = enemy1.gameObject.transform.position;
 
+        GameEventHandler.Instance.DestroyObject(enemy1.gameObject);
+        GameEventHandler.Instance.DestroyObject(enemy2.gameObject);
+
         GameEventHandler.Instance.FuseTwoBats(position);
-
-        enemy1.DestroyEnemy();
-        enemy2.DestroyEnemy();
-
-        
 
         enemy1 = null;
         enemy2 = null;

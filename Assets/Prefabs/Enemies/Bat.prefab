@@ -134,6 +134,7 @@ MonoBehaviour:
   boundaryMovement: 2
   SpawnManager: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
   trackingCooldown: 5
+  stateData: {fileID: 11400000, guid: 39b9fa5c94f1d36429f8929f753a726c, type: 2}
 --- !u!54 &-6506927491223567469
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,21 +4,13 @@ public abstract class MoveState : IState
     protected PlayerController controller;
     protected Vector3 playerLocation;
     protected Enemy currentUnit;
-    protected float movementSpeed;
-    protected float boundaryOfChange = 1.75f;
+    protected EnemyStateData enemyStateData;
 
-    public MoveState(PlayerController controller, Enemy currentUnit, float movementSpeed)
+    public MoveState(PlayerController controller, Enemy currentUnit, EnemyStateData data)
     {
         this.controller = controller;
         this.currentUnit = currentUnit;
-        this.movementSpeed = movementSpeed;
-    }
-    public MoveState(PlayerController controller, Enemy currentUnit, float movementSpeed, float boundaryOfChange)
-    {
-        this.controller = controller;
-        this.currentUnit = currentUnit;
-        this.movementSpeed = movementSpeed;
-        this.boundaryOfChange = boundaryOfChange;
+        this.enemyStateData = data;
     }
 
     public virtual void Enter()
