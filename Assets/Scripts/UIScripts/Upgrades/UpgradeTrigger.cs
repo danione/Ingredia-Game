@@ -54,13 +54,17 @@ public class UpgradeTrigger : MonoBehaviour
 
     private void OnUpgradedSomewhere(UpgradeData data)
     {
-        if (data == upgradeInformation) return;
+        if (data == upgradeInformation)
+        {
+            GetComponent<Image>().color = Color.green;
+            isUpgraded = true;
+            return;
+        }
 
         if (!isUpgraded && !CanAfford())
         {
             GetComponent<Image>().color = Color.gray;
         }
-
     }
 
     private void OnResourceCollected(int resouce)
@@ -119,10 +123,6 @@ public class UpgradeTrigger : MonoBehaviour
                 playerInventory.AddGold(-upgradeInformation.goldCost);
                 playerInventory.AdjustSophistication(-upgradeInformation.sophisticationCost);
                 GameEventHandler.Instance.UpgradeTrigger(upgradeInformation);
-            }
-            else
-            {
-                Debug.Log("Requires: " + string.Join(", ", requirements.Select(obj => obj.upgradeName).ToArray()));
             }
         }
     }
