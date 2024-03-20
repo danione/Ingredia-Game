@@ -29,10 +29,12 @@ public class BatFuser : MonoBehaviour
     {
         Vector3 position = enemy1.gameObject.transform.position;
 
+        GameEventHandler.Instance.FuseTwoBats(position);
+
         enemy1.DestroyEnemy();
         enemy2.DestroyEnemy();
 
-        GameEventHandler.Instance.FuseTwoBats(position);
+        
 
         enemy1 = null;
         enemy2 = null;
