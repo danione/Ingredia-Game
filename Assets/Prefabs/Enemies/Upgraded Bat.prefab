@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: d56a90c911f6aff4ea2a21c47738f02b, type: 2}
+  isUpgraded: 1
   spawner:
     collectionCheck: 1
     defaultCapacity: 40
@@ -131,9 +132,7 @@ MonoBehaviour:
     prefab: {fileID: -147688969018236340, guid: a6b5ef0f29d6ad242931788cc1ea504e, type: 3}
   spawnCooldown: 0.8
   upgradedStateDuration: 10
-  boundaryMovement: 2
   SpawnManager: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
-  trackingCooldown: 1.5
   stateData: {fileID: 11400000, guid: d650b90cb1d43dd459d29f76abb542c5, type: 2}
   rapidShootRateCooldown: 0.3
   fusingStateAttackDuration: 2

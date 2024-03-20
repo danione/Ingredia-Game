@@ -14,6 +14,6 @@ public class BatRitualistStateMachine : EntityStateMachine
         this.MoveState = new BatMoveState(controller, currentUnit, stateData);
         this.IdleState = new IdleState();
         this.FusionAttackState = new BatEnhancedMovementState(currentUnit);
-        this.RevultedState = new RevultedState();
+        this.RevultedState = new RevultedState(currentUnit, stateData);
     }
 }

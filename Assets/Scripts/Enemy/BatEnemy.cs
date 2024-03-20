@@ -8,13 +8,12 @@ public class BatEnemy : Enemy
     protected bool attacked = false;
     [NonSerialized]public bool hasCollided = false;
     private static BatFuser fuser;
-    protected bool isUpgraded = false;
+    [SerializeField] public bool isUpgraded = false;
     [SerializeField] protected ObjectsSpawner spawner;
     [SerializeField] private float spawnCooldown;
     [SerializeField] private float upgradedStateDuration;
     [SerializeField] private GameObject SpawnManager;
     [SerializeField] private EnemyStateData stateData;
-
 
     private void Start()
     {

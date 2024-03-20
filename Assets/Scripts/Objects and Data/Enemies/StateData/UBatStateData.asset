@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UBatStateData
   m_EditorClassIdentifier: 
   MovementSpecs:
-    movementSpeed: 1
+    movementSpeed: 10
     trackingCooldown: 1.5
     movementBoundaries: 2

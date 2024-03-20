@@ -6,6 +6,7 @@ public class UpgradedBatEnemy : BatEnemy
     [SerializeField] private float rapidShootRateCooldown = 2f;
     [SerializeField] private float fusingStateAttackDuration  = 2f;
     [SerializeField] private float revulsionCooldown = 2f;
+    private Vector3 direction = Vector3.zero;
     private bool isRevulted = false;
 
     public override void Shoot()
@@ -21,27 +22,39 @@ public class UpgradedBatEnemy : BatEnemy
         }
     }
 
+    public void ChangeDirection(Vector3 direction)
+    {
+        this.direction = direction;
+        isRevulted = true;
+        SelfRevultion();
+    }
+
+    public Vector3 GetDirection()
+    {
+        return this.direction;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         BatEnemy bat = other.GetComponent<BatEnemy>();
         if (bat != null && !hasCollided  && !isRevulted)
         {
             hasCollided = true;
-            UpgradedBatEnemy uBat = other.GetComponent<UpgradedBatEnemy>();
-
-            if (uBat != null && !uBat.hasCollided)
+            if (bat.isUpgraded)
             {
-                uBat.SelfRevultion(isGoingLeft: false);
-                SelfRevultion(isGoingLeft: true);
-                isRevulted = true;
+
+                UpgradedBatEnemy uBat = other.GetComponent<UpgradedBatEnemy>();
+                
+                if (!uBat.isRevulted) uBat.ChangeDirection(Vector3.left);
+
+                ChangeDirection(Vector3.right);
             }
             else 
             {
-                bat.DestroyEnemy();
+                GameEventHandler.Instance.DestroyObject(bat.gameObject);
                 FusingState();
             }
 
-            hasCollided = false;
         }
     }
 
@@ -57,43 +70,25 @@ public class UpgradedBatEnemy : BatEnemy
         if (_state.CurrentState != _state.FusionAttackState)
         {
             _state.TransitiontTo(_state.FusionAttackState);
-            StartCoroutine(TransitionBackToNormalState());
+            StartCoroutine(TransitionBackToNormalState(fusingStateAttackDuration));
         }
     }
 
-    IEnumerator TransitionBackToNormalState()
+    IEnumerator TransitionBackToNormalState(float secondsToWait)
     {
         if (gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(fusingStateAttackDuration);
+            yield return new WaitForSeconds(secondsToWait);
             _state.TransitiontTo(_state.MoveState);
             attacked = false;
+            hasCollided = false;
+            isRevulted = false;
         }
     }
 
-    public void SelfRevultion(bool isGoingLeft)
+    public void SelfRevultion()
     {
         _state.TransitiontTo(_state.RevultedState);
-        StartCoroutine(Revulsion(isGoingLeft));
-        StartCoroutine(RevertToNormalState());
-
-    }
-
-    IEnumerator RevertToNormalState()
-    {
-        yield return new WaitForSeconds(revulsionCooldown);
-        _state.TransitiontTo(_state.MoveState);
-        attacked = false;
-        isRevulted = false;
-    }
-
-    IEnumerator Revulsion(bool isGoingLeft)
-    {
-        Vector3 direction = isGoingLeft ? Vector3.left : Vector3.right;
-        while (_state.CurrentState == _state.RevultedState)
-        {
-            transform.Translate(enemyData.movementSpeed * 2 * Time.deltaTime * direction);
-            yield return new WaitForEndOfFrame();
-        }
+        StartCoroutine(TransitionBackToNormalState(revulsionCooldown));
     }
 }
