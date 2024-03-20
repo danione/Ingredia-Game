@@ -710,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: currentStageIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: spawnTimeDecreaser
