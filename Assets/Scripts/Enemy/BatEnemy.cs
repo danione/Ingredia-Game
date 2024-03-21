@@ -58,6 +58,7 @@ public class BatEnemy : Enemy
         if (creature == null) return;
 
         creature.transform.position = gameObject.transform.position;
+        creature.GetComponent<AthameProjectile>()?.SwapToMove();
         StartCoroutine(Cooldown());
     }
 

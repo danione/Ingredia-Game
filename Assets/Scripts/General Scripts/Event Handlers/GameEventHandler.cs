@@ -49,11 +49,17 @@ public class GameEventHandler : MonoBehaviour
     public Action<RitualScriptableObject> UnlockedRitual;
     public Action<string> UpgradeImproved;
     public Action NoDropDestroyedEnemy;
+    public Action WonCondition;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public void WinCondition()
+    {
+        WonCondition?.Invoke();
     }
 
     public void NoDropDestroyEnemy()

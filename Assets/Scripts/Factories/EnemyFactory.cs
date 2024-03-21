@@ -50,6 +50,7 @@ public class EnemyFactory : MonoBehaviour
         {
             GameEventHandler.Instance.DestroyedEnemy -= OnEnemyDestroyed;
             GameEventHandler.Instance.FuseBats -= OnFusedTwoBats;
+            GameEventHandler.Instance.NoDropDestroyedEnemy -= OnNoDropDestroy;
             StopAllCoroutines();
         }
         catch { }
@@ -72,7 +73,11 @@ public class EnemyFactory : MonoBehaviour
     // add their count
     private void InitNextStage()
     {
-        if (currentStageIndex >= stage.Count) return;
+        if (currentStageIndex >= stage.Count)
+        {
+            GameEventHandler.Instance.WinCondition();
+            return;
+        }
 
         GameEventHandler.Instance.StageChange(currentStageIndex);
 
