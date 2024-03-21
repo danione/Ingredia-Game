@@ -39,7 +39,7 @@ public class TricksterProjectile : SimpleProjectile
         {
             SetDirection();
         }
-        Debug.Log(initialDirection);
+
         transform.position += initialDirection * speedOfFollow * Time.deltaTime;
     }
 
