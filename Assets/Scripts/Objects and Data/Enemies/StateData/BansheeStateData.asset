@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7333fbcae747da847b4a4c298044bf6b, type: 3}
-  m_Name: Stage 1
+  m_Script: {fileID: 11500000, guid: 886fcb5b06733ed43963bfd3183d4e4f, type: 3}
+  m_Name: BansheeStateData
   m_EditorClassIdentifier: 
-  enemyList:
-  - enemy: {fileID: -1183355627990224993, guid: 8430c4dbed8c6a3469ee04f85e671959, type: 3}
-    amount: 1
-  isRandom: 1
+  MovementSpecs:
+    movementSpeed: 10
+    trackingCooldown: 0
+    movementBoundaries: 0

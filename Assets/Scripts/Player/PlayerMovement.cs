@@ -77,12 +77,23 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     public void OnMoveRandomly()
     {
-        MovementValidation(moveDirectionExternalControl);
+        OnMoveTowards(moveDirectionExternalControl);
     }
 
     public void OnMoveTowards(float direction)
     {
-        MovementValidation(direction);
+        if (transform.position.x > leftBorder)
+        {
+            transform.position = new Vector3(leftBorder, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x < rightBorder)
+        {
+            transform.position = new Vector3(rightBorder, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            transform.Translate((movementSpeed / 2) * direction * Time.deltaTime * Vector3.left);
+        }
     }
     public void OnPickRandomDirection()
     {

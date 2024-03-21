@@ -51,8 +51,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.472426
-  m_Center: {x: 0, y: -1.969584, z: -0.8682971}
+  m_Radius: 3.5374165
+  m_Center: {x: 0, y: -3.0345736, z: -0.86829615}
 --- !u!1 &7813600764018216676
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 625d27b71e1c41845bd65d718e608af3, type: 2}
-  fieldOfMovement: {fileID: 11400000, guid: e1831181be0486e4ab360decfaeec14a, type: 2}
-  cooldownWaitingSeconds: 3
-  cooldownDetectionOfPlayer: 5
+  cooldownWaitingSeconds: 1.5
+  cooldownDetectionOfPlayer: 3
+  _enemyStateData: {fileID: 11400000, guid: b9da222f21c330d489d4128ac8a88c23, type: 2}
 --- !u!54 &8650439978217509237
 Rigidbody:
   m_ObjectHideFlags: 0
