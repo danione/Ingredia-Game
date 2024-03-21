@@ -14,6 +14,17 @@ public class TricksterProjectile : SimpleProjectile
     private void Start()
     {
         followTarget = PlayerController.Instance.transform;
+        SetDirection();
+    }
+
+    private void SetDirection()
+    {
+        initialDirection = (followTarget.position - transform.position).normalized;
+        // Calculate the angle towards the target
+        float angle = Mathf.Atan2(initialDirection.x, -initialDirection.y) * Mathf.Rad2Deg;
+
+        // Rotate towards the target
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     public override void Move()
@@ -21,16 +32,14 @@ public class TricksterProjectile : SimpleProjectile
 
         if (transform.position.y > stopFollowing)
         {
-            // Calculate the direction towards the target
-            initialDirection = (followTarget.position - transform.position).normalized;
-
-            // Calculate the angle towards the target
-            float angle = Mathf.Atan2(initialDirection.x, -initialDirection.y) * Mathf.Rad2Deg;
-
-            // Rotate towards the target
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+            SetDirection();
         }
+
+        if(initialDirection == Vector3.zero || transform.rotation.z == 0)
+        {
+            SetDirection();
+        }
+        Debug.Log(initialDirection);
         transform.position += initialDirection * speedOfFollow * Time.deltaTime;
     }
 
