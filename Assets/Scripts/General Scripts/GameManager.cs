@@ -90,7 +90,7 @@ public class GameManager: MonoBehaviour
                 Debug.LogWarning(e);
             }
         }
-        else if(product.isActiveAndEnabled)
+        else if(obj.activeSelf)
         {
             Destroy(obj.gameObject);
         }
