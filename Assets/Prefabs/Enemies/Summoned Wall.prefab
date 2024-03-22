@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6581001772780643128}
   - component: {fileID: 6558597468272558606}
   - component: {fileID: 1213204783113032556}
+  - component: {fileID: -6273246669577917519}
+  - component: {fileID: 2435434627737022335}
   m_Layer: 0
   m_Name: Summoned Wall
   m_TagString: Enemy
@@ -118,6 +120,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666466ade0a6c6f44b6f5193723b480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  goldRewardOnDeath: 10
-  spawnBoundaries: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 2211109a998110245ad8be6c2fca7256, type: 2}
+  reflectingStateDuration: 5
+--- !u!114 &-6273246669577917519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851902599752171882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38d7b6af5122fc4c8976e84a3dd152d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2435434627737022335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851902599752171882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e6c86409fc5194ab3c5d80437e48cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

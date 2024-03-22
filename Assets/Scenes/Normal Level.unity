@@ -721,9 +721,17 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: waveSpawnCooldownInSeconds
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 139695619008634371, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
+      propertyPath: uniqueEnemies.Array.data[7]
+      value: 
+      objectReference: {fileID: 2435434627737022335, guid: 324972de8fa53e740b83cb4b4e86df62, type: 3}
     - target: {fileID: 873061175675691215, guid: 995a8c29daaa55b4da851b27388f0456, type: 3}
       propertyPath: m_Name
       value: SpawnManager
