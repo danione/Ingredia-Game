@@ -17,4 +17,6 @@ MonoBehaviour:
     amount: 3
   - enemy: {fileID: 6982203611518975107, guid: e7fbfc9785e23ec40bcee6ad4ab01bdd, type: 3}
     amount: 1
+  - enemy: {fileID: 2435434627737022335, guid: 324972de8fa53e740b83cb4b4e86df62, type: 3}
+    amount: 2
   isRandom: 1

@@ -68,7 +68,7 @@ public class PlayerPotionsManager: MonoBehaviour
             potionsInInventory[slot].UsePotion();
             potionsQuantity[slot]--; // Decrease quantity of the said potion
 
-            PlayerEventHandler.Instance.UpdateInventoryPotions(potionsInInventory[slot].name, potionsQuantity[slot], slot + 1);
+            PlayerEventHandler.Instance.UpdateInventoryPotions(potionsInInventory[slot].potionName, potionsQuantity[slot], slot + 1);
 
             if (potionsQuantity[slot] == 0) // Remove the potion if none are left
             {
