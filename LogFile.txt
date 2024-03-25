@@ -1,0 +1,16 @@
+Warning: System.NullReferenceException: Object reference not set to an instance of an object
+  at GameManager.OnDestroyObject (UnityEngine.GameObject obj) [0x00042] in <ed3e0e86cd9f41129dc3072d3145e2cf>:0 
+
+
+Warning: System.NullReferenceException: Object reference not set to an instance of an object
+  at GameManager.OnDestroyObject (UnityEngine.GameObject obj) [0x00042] in <ed3e0e86cd9f41129dc3072d3145e2cf>:0 
+
+
+Warning: System.NullReferenceException: Object reference not set to an instance of an object
+  at GameManager.OnDestroyObject (UnityEngine.GameObject obj) [0x00042] in <ed3e0e86cd9f41129dc3072d3145e2cf>:0 
+
+
+Warning: System.NullReferenceException: Object reference not set to an instance of an object
+  at GameManager.OnDestroyObject (UnityEngine.GameObject obj) [0x00042] in <ed3e0e86cd9f41129dc3072d3145e2cf>:0 
+
+

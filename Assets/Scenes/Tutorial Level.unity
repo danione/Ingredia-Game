@@ -1102,8 +1102,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2806516197202844880, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
       propertyPath: uniqueEnemies.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2806516197202844880, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
+      propertyPath: uniqueEnemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 2435434627737022335, guid: 324972de8fa53e740b83cb4b4e86df62, type: 3}
     - target: {fileID: 3107289623353778716, guid: eff006a513772cf41b5aeb7daf303a06, type: 3}
       propertyPath: m_Name
       value: SpawnManager

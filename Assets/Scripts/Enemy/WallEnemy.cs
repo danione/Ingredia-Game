@@ -4,6 +4,5 @@ public class WallEnemy : Enemy
     {
         // None atm
         base.ResetEnemy();
-        
     }
 }
