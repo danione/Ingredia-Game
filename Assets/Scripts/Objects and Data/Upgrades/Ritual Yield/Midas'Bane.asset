@@ -15,5 +15,5 @@ MonoBehaviour:
   upgradeName: Midas' Bane
   description: Increases the yield of Midas' Touch Ritual greatly.
   goldCost: 500
-  sophisticationCost: 0
+  sophisticationCost: 12
   ritual: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}

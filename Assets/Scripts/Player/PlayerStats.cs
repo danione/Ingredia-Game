@@ -28,6 +28,7 @@ public class PlayerStats : MonoBehaviour, IUnitStats
     {
         health = defaultStartingHealth;
         SceneManager.sceneUnloaded += OnLevelUnloaded;
+        GameEventHandler.Instance.UpdateUI();
     }
 
     private void OnDestroy()

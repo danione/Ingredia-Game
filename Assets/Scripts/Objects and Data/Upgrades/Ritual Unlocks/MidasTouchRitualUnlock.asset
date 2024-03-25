@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Midas' Touch
   description: Turns all projectiles, dangerous objects, and ingredients into gold.
-  goldCost: 450
+  goldCost: 670
   sophisticationCost: 4
   ritualToUnlock: {fileID: 11400000, guid: eae0bc5fc7504314e9dfda9dd4a45274, type: 2}

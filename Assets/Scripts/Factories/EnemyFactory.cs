@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
@@ -22,10 +23,10 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private float dequeueTime;
 
     [SerializeField] private int currentStageIndex = 0;
+    [SerializeField] private TextMeshProUGUI currentEnemies;
     private List<int> currentStage = new();
 
     private bool hasSpawnedAll = false;
-    private bool isNextStageTransitioning = false;
 
 
     void Start()
@@ -91,7 +92,6 @@ public class EnemyFactory : MonoBehaviour
             {
                 currentStage.Add(enemy.amount);
             }
-            isNextStageTransitioning = false;
         }
         catch (Exception ex) { Debug.LogError(ex); }
     }
@@ -99,11 +99,13 @@ public class EnemyFactory : MonoBehaviour
     private void OnEnemyDestroyed(Vector3 pos)
     {
         if(currentAliveEnemies > 0)
-            currentAliveEnemies--;
-        
-        if (currentAliveEnemies == 0 && !isNextStageTransitioning && hasSpawnedAll)
         {
-            isNextStageTransitioning = true;
+            currentAliveEnemies--;
+            currentEnemies.text = "Num of enemies: " + currentAliveEnemies.ToString();
+        }
+
+        if (currentAliveEnemies == 0 && hasSpawnedAll)
+        {
             StartCoroutine(TransitionToNextStage());
             spawnFrequencyInSeconds = spawnFrequencyInSeconds > minSpawnTime ? spawnFrequencyInSeconds - spawnTimeDecreaser : minSpawnTime;
         }
@@ -167,6 +169,7 @@ public class EnemyFactory : MonoBehaviour
 
         spawner[enemy].GetProduct(position);
         currentAliveEnemies++;
+        currentEnemies.text = "Num of enemies: " + currentAliveEnemies.ToString();
         currentStage[index]--;
     }
 
