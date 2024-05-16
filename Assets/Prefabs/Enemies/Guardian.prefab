@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440969788567057681, guid: e60219e53e5c05b44bf7c0287bff97c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -408,6 +408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6495821224187476851}
     m_Modifications:
+    - target: {fileID: 538048308603768486, guid: efd0c0999d2ae5448bb8185734df9e1f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2634168192900448263, guid: efd0c0999d2ae5448bb8185734df9e1f, type: 3}
       propertyPath: m_Name
       value: GuardianPoint (2)
